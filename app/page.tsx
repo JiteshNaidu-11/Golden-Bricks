@@ -199,48 +199,77 @@ image: "/images/properties/p9.jpg"
       </div>
 
       {/* RIGHT SIDE LEAD MAGNET */}
-      <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-6 sm:p-8 rounded-2xl shadow-2xl max-w-lg w-full mx-auto lg:mx-0">
+<div className="bg-white/10 backdrop-blur-xl border border-white/20 p-6 sm:p-8 rounded-2xl shadow-2xl max-w-lg w-full mx-auto lg:mx-0">
 
-        <h3 className="text-white text-lg sm:text-xl font-semibold mb-3">
-          Get Free Property Investment Guide
-        </h3>
+  <h3 className="text-white text-lg sm:text-xl font-semibold mb-3">
+    Get Free Property Investment Guide
+  </h3>
 
-        <p className="text-white/70 mb-6 text-sm leading-relaxed">
-          Discover the best areas to invest in Mumbai, price trends,
-          upcoming luxury projects and ROI insights curated by
-          Golden Bricks experts.
-        </p>
+  <p className="text-white/70 mb-6 text-sm leading-relaxed">
+    Discover the best areas to invest in Mumbai, price trends,
+    upcoming luxury projects and ROI insights curated by
+    Golden Bricks experts.
+  </p>
 
-        {/* Lead Inputs */}
-        <div className="space-y-4">
+  {/* Lead Inputs */}
+  <div className="space-y-4">
 
-          <input
-            type="text"
-            placeholder="Your Name"
-            className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none"
-          />
+    <input
+      type="text"
+      placeholder="Your Name"
+      className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none"
+    />
 
-          <input
-            type="email"
-            placeholder="Email Address"
-            className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none"
-          />
+    <input
+      type="email"
+      placeholder="Email Address"
+      className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none"
+    />
 
-          <button
-            onClick={() => openWhatsApp()}
-            className="w-full gold-gradient py-3 rounded-lg font-semibold text-white hover:scale-[1.02] transition"
-          >
-            Get Free Guide
-          </button>
+    {/* Phone */}
+    <input
+      type="tel"
+      placeholder="Phone Number"
+      className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none"
+    />
 
-        </div>
+    {/* Budget */}
+    <select
+      defaultValue="₹50L - ₹1Cr"
+      className="w-full px-4 py-3 rounded-lg bg-white/20 text-white outline-none"
+    >
+      <option className="text-black">₹50L - ₹1Cr</option>
+      <option className="text-black">₹1Cr - ₹2Cr</option>
+      <option className="text-black">₹2Cr - ₹5Cr</option>
+      <option className="text-black">₹5Cr+</option>
+    </select>
 
-        <p className="text-xs text-white/50 mt-4">
-          No spam. Your information is safe with us.
-        </p>
+    {/* Location */}
+    <select
+      defaultValue="Navi Mumbai"
+      className="w-full px-4 py-3 rounded-lg bg-white/20 text-white outline-none"
+    >
+      <option className="text-black">Navi Mumbai</option>
+      <option className="text-black">Thane</option>
+      <option className="text-black">Powai</option>
+      <option className="text-black">Andheri</option>
+      <option className="text-black">Open to suggestions</option>
+    </select>
 
-      </div>
+    <button
+      onClick={() => openWhatsApp()}
+      className="w-full gold-gradient py-3 rounded-lg font-semibold text-white hover:scale-[1.02] transition"
+    >
+      Get Free Guide
+    </button>
 
+  </div>
+
+  <p className="text-xs text-white/50 mt-4">
+    No spam. Your information is safe with us.
+  </p>
+
+</div>
     </div>
 
   </div>
@@ -520,6 +549,85 @@ View Details
   </div>
 
 </section>
+
+{/* BLOGS */}
+<section id="blogs" className="py-24 px-6 lg:px-20 bg-white">
+
+<div className="max-w-7xl mx-auto text-center mb-16">
+
+<p className="text-[#C5A24A] uppercase text-sm tracking-widest">
+Insights & Guides
+</p>
+
+<h2
+className="text-4xl font-bold"
+style={{ fontFamily: "var(--font-playfair), serif" }}
+>
+Latest Real Estate Blogs
+</h2>
+
+<p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+Expert insights, property trends, and investment tips for Mumbai
+and Navi Mumbai real estate buyers.
+</p>
+
+</div>
+
+<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+
+{[
+{
+title: "Top 5 Areas To Invest In Navi Mumbai In 2025",
+image: "/images/properties/p1.jpg",
+date: "March 2026"
+},
+{
+title: "Things To Check Before Buying A Property",
+image: "/images/properties/p5.jpg",
+date: "February 2026"
+},
+{
+title: "Why Navi Mumbai Is A Real Estate Hotspot",
+image: "/images/Hero/3.jpg",
+date: "January 2026"
+}
+].map((blog,i)=> (
+
+<div
+key={i}
+className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group"
+>
+
+<img
+src={blog.image}
+className="h-52 w-full object-cover group-hover:scale-105 transition duration-500"
+/>
+
+<div className="p-6">
+
+<p className="text-xs text-[#C5A24A] mb-2">{blog.date}</p>
+
+<h3 className="font-semibold text-lg mb-4 leading-snug">
+{blog.title}
+</h3>
+
+<Link
+href="/#blogs"
+className="text-[#C5A24A] font-medium text-sm hover:underline"
+>
+Read Article →
+</Link>
+
+</div>
+
+</div>
+
+))}
+
+</div>
+
+</section>
+
       {/* DEVELOPERS
       <section className="py-20 px-6 lg:px-20 bg-[#001F3F]">
 
@@ -558,13 +666,22 @@ View Details
     </p>
 
     <div className="flex justify-center gap-4 flex-wrap">
-      <button className="px-10 py-4 bg-[#C5A059] text-white rounded-lg font-semibold hover:bg-[#B38F4D] transition-all shadow-lg hover:shadow-xl">
-        Contact Us Now
-      </button>
+      {/* WHATSAPP BUTTON */}
+  <a
+    href="https://wa.me/917738384100?text=Hello%20I%20am%20interested%20in%20properties"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="px-10 py-4 bg-[#C5A059] text-white rounded-lg font-semibold hover:bg-[#B38F4D] transition-all shadow-lg hover:shadow-xl"
+  >
+    Contact Us Now
+  </a>
 
-      <button className="px-10 py-4 border-2 border-[#C5A059] text-[#C5A059] rounded-lg font-semibold hover:bg-[#C5A059] hover:text-white transition-all">
-        View Properties
-      </button>
+  {/* VIEW PROPERTIES BUTTON */}
+  <Link href="/#projects">
+    <button className="px-10 py-4 border-2 border-[#C5A059] text-[#C5A059] rounded-lg font-semibold hover:bg-[#C5A059] hover:text-white transition-all">
+      View Properties
+    </button>
+  </Link>
     </div>
   </div>
 </section>
