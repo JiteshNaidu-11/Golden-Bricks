@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 255, 255, 255;
+  --gold: #C5A24A;
+  --gold-dark: #B8940B;
+  --gold-light: #EBD181;
+  --navy-blue: #001F3F;
+  --navy-blue-dark: #001529;
+  --navy-blue-light: #003366;
+  --white: #FFFFFF;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: white;
+  font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .gold-gradient {
+    background: linear-gradient(135deg, #C5A24A 0%, #EBD181 50%, #C5A24A 100%);
+  }
+  
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #C5A24A 0%, #EBD181 50%, #C5A24A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .navy-gradient {
+    background: linear-gradient(135deg, #001F3F 0%, #003366 50%, #001F3F 100%);
+  }
+  
+  .navy-gradient-text {
+    color: #001F3F;
+  }
+  
+  .gold-gradient-border {
+    border-image: linear-gradient(135deg, #C5A24A 0%, #EBD181 50%, #C5A24A 100%) 1;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+/* Custom scrollbar with gold theme */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #001F3F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #C5A24A, #EBD181, #C5A24A);
+  border-radius: 6px;
+  border: 2px solid #001F3F;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #EBD181, #C5A24A, #EBD181);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 3s infinite;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(212, 175, 55, 0.15) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(197, 162, 74, 0.3);
+  color: #001F3F;
+}
+
+/* Smooth transitions */
+button,
+a,
+.group {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Premium typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Premium spacing */
+section {
+  padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 0;
+  }
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(0, 31, 63, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(197, 162, 74, 0.15);
+}
+
+/* Premium button styles */
+button.gold-gradient,
+a.gold-gradient {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button.gold-gradient::before,
+a.gold-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+button.gold-gradient:hover::before,
+a.gold-gradient:hover::before {
+  left: 100%;
+}
+
+/* Premium card hover effects */
+.premium-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+}
+
+.premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 31, 63, 0.2);
+}
+
+/* Premium text effects */
+.premium-text {
+  text-shadow: 0 2px 20px rgba(0, 31, 63, 0.1);
+}
+
+/* Enhanced gold gradient */
+.gold-gradient-enhanced {
+  background: linear-gradient(135deg, #C5A24A 0%, #EBD181 30%, #F5E6B8 60%, #EBD181 80%, #C5A24A 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Floating WhatsApp button animation */
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+/* Hide scrollbar but keep scrolling functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+

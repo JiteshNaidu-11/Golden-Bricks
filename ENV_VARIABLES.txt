@@ -1,0 +1,15 @@
+# EmailJS Configuration
+# Create a .env.local file in the root directory with these variables:
+
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+NEXT_PUBLIC_RECIPIENT_EMAIL=Inquiry@truestar.ae
+
+# Instructions:
+# 1. Sign up at https://www.emailjs.com/
+# 2. Create an email service and get Service ID
+# 3. Create an email template and get Template ID
+# 4. Get Public Key from Account > API Keys
+# 5. Replace the values above with your actual credentials
+

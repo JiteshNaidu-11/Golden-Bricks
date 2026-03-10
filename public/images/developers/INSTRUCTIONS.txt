@@ -1,0 +1,50 @@
+HOW TO ADD DEVELOPER LOGOS
+===========================
+
+1. Get logo images from each developer (PNG format recommended, with transparent background)
+
+2. Save them in this folder with these exact filenames:
+   - arada.png
+   - nshama.png
+   - iman.png
+   - azizi.png
+   - binghatti.png
+   - baya.png
+   - damac.png
+   - omniyat.png
+   - ellington.png
+   - emaar.png
+   - meraas.png
+   - nakheel.png
+   - object-1.png
+   - samana.png
+   - select-group.png
+   - sobha.png
+   - aldar.png
+   - al-habtoor.png
+   - al-futtaim.png
+   - deyaar.png
+   - dubx.png
+   - mag.png
+   - union.png
+   - danube.png
+
+3. Image requirements:
+   - Format: PNG (transparent background) or JPG (white background)
+   - Size: 200x200px to 400x400px recommended
+   - Quality: High resolution for crisp display
+
+4. The system will automatically:
+   - Display the logo if the file exists
+   - Fall back to showing the developer name/initials if logo is missing
+   - Handle errors gracefully
+
+5. Where to find logos:
+   - Developer websites (usually in press kit or about sections)
+   - Search "developer name logo PNG transparent"
+   - Contact developer marketing teams for official logos
+
+CURRENT STATUS: System is ready to display logos. Add logo files to see them appear on:
+- Home page "Developers We Work With" section
+- Developer Partners page (/communities/developers)
+

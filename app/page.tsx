@@ -1,0 +1,576 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import DevelopersGrid from '@/components/DevelopersGrid';
+import { Star, CheckCircle, Home as HomeIcon, Building2, TrendingUp, Quote } from 'lucide-react';
+import { openWhatsApp } from '@/lib/whatsapp';
+import Link from "next/link";
+
+export default function Home() {
+
+  const heroImages = [
+    "/images/Hero/1.jpg",
+    "/images/Hero/2.jpg",
+    "/images/Hero/3.jpg",
+    "/images/Hero/4.jpg"
+  ];
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 7000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+ const properties = [
+{
+name: "Harbour View Residences",
+location: "Seawoods, Navi Mumbai",
+price: "₹ 82L – ₹ 1.9 Cr",
+bhk: "1 BHK, 2 BHK, 3 BHK",
+image: "/images/properties/p1.jpg"
+},
+{
+name: "Urban Crest Towers",
+location: "Kharghar, Navi Mumbai",
+price: "₹ 74L – ₹ 1.6 Cr",
+bhk: "2 BHK, 3 BHK",
+image: "/images/properties/p2.jpg"
+},
+{
+name: "Crystal Bay Heights",
+location: "Ulwe, Navi Mumbai",
+price: "₹ 68L – ₹ 1.3 Cr",
+bhk: "1 BHK, 2 BHK",
+image: "/images/properties/p3.jpg"
+},
+{
+name: "Skyline Prime Residences",
+location: "Panvel, Navi Mumbai",
+price: "₹ 79L – ₹ 1.7 Cr",
+bhk: "2 BHK, 3 BHK",
+image: "/images/properties/p4.jpg"
+},
+{
+name: "Palm Grove Apartments",
+location: "Nerul, Navi Mumbai",
+price: "₹ 72L – ₹ 1.5 Cr",
+bhk: "1 BHK, 2 BHK",
+image: "/images/properties/p5.jpg"
+},
+{
+name: "Blue Horizon Towers",
+location: "Belapur, Navi Mumbai",
+price: "₹ 1.1 Cr – ₹ 2.4 Cr",
+bhk: "2 BHK, 3 BHK",
+image: "/images/properties/p6.jpg"
+},
+{
+name: "West Bay Residences",
+location: "Andheri West, Mumbai",
+price: "₹ 1.8 Cr – ₹ 3.6 Cr",
+bhk: "2 BHK, 3 BHK",
+image: "/images/properties/p7.jpg"
+},
+{
+name: "Aurora Heights",
+location: "Powai, Mumbai",
+price: "₹ 2.2 Cr – ₹ 4.8 Cr",
+bhk: "3 BHK, 4 BHK",
+image: "/images/properties/p8.jpg"
+},
+{
+name: "Lakeview Signature Homes",
+location: "Thane West, Mumbai",
+price: "₹ 95L – ₹ 2.2 Cr",
+bhk: "2 BHK, 3 BHK",
+image: "/images/properties/p9.jpg"
+}
+];
+
+  // const developers = [
+  //   { name: "LODHA", description: "" },
+  //   { name: "GODREJ PROPERTIES", description: "" },
+  //   { name: "OBEROI REALTY", description: "" },
+  //   { name: "RUNWAL GROUP", description: "" },
+  //   { name: "KALPATARU", description: "" },
+  //   { name: "RUSTOMJEE", description: "" },
+  //   { name: "RAHEJA", description: "" },
+  //   { name: "SHAPOORJI PALLONJI", description: "" },
+  //   { name: "MAHINDRA LIFESPACES", description: "" },
+  //   { name: "PRESTIGE GROUP", description: "" }
+  // ];
+
+  return (
+    <main className="min-h-screen bg-white text-[#001F3F]">
+
+      <Header />
+
+      {/* HERO */}
+<section
+  id="home"
+  className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16"
+>
+  {/* Background Slider */}
+  <div className="absolute inset-0">
+    {heroImages.map((img, index) => (
+      <img
+        key={index}
+        src={img}
+        alt="Luxury Property"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ${
+          index === currentImage ? "opacity-100" : "opacity-0"
+        }`}
+      />
+    ))}
+
+    <div className="absolute inset-0 bg-black/55"></div>
+  </div>
+
+  <div className="relative z-10 container mx-auto px-6 lg:px-20">
+
+    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      {/* LEFT CONTENT */}
+      <div>
+
+        {/* Brand Label */}
+        <p className="text-[#C5A24A] uppercase tracking-widest text-sm mb-4">
+          Golden Bricks Real Estate
+        </p>
+
+        <h1
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
+          style={{ fontFamily: "var(--font-playfair), serif" }}
+        >
+          Luxury Living
+          <span className="block gold-gradient-text">
+            In Mumbai
+          </span>
+        </h1>
+
+        <p className="text-white/80 mt-6 text-base md:text-lg max-w-xl">
+          Discover exclusive residences, premium investment opportunities,
+          and high-end properties across Mumbai and Navi Mumbai with
+          <span className="font-semibold text-white"> Golden Bricks.</span>
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-wrap gap-4 mt-8">
+
+          <button
+            onClick={() => openWhatsApp()}
+            className="px-7 py-3 gold-gradient text-white font-semibold rounded-lg hover:scale-105 transition-all"
+          >
+            Book Consultation
+          </button>
+
+          <button className="px-7 py-3 border border-[#C5A24A] text-white rounded-lg hover:bg-[#C5A24A] hover:text-black transition-all">
+            Download Investment Guide
+          </button>
+
+        </div>
+
+        {/* Trust Stats */}
+        <div className="flex flex-wrap gap-8 mt-10 text-white">
+
+          <div>
+            <p className="text-2xl md:text-3xl font-bold gold-gradient-text">120+</p>
+            <p className="text-white/70 text-sm">Properties Sold</p>
+          </div>
+
+          <div>
+            <p className="text-2xl md:text-3xl font-bold gold-gradient-text">25+</p>
+            <p className="text-white/70 text-sm">Developers</p>
+          </div>
+
+          <div>
+            <p className="text-2xl md:text-3xl font-bold gold-gradient-text">10+</p>
+            <p className="text-white/70 text-sm">Years Experience</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* RIGHT SIDE LEAD MAGNET */}
+      <div className="bg-white/10 backdrop-blur-xl border border-white/20 p-6 sm:p-8 rounded-2xl shadow-2xl max-w-lg w-full mx-auto lg:mx-0">
+
+        <h3 className="text-white text-lg sm:text-xl font-semibold mb-3">
+          Get Free Property Investment Guide
+        </h3>
+
+        <p className="text-white/70 mb-6 text-sm leading-relaxed">
+          Discover the best areas to invest in Mumbai, price trends,
+          upcoming luxury projects and ROI insights curated by
+          Golden Bricks experts.
+        </p>
+
+        {/* Lead Inputs */}
+        <div className="space-y-4">
+
+          <input
+            type="text"
+            placeholder="Your Name"
+            className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none"
+          />
+
+          <input
+            type="email"
+            placeholder="Email Address"
+            className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none"
+          />
+
+          <button
+            onClick={() => openWhatsApp()}
+            className="w-full gold-gradient py-3 rounded-lg font-semibold text-white hover:scale-[1.02] transition"
+          >
+            Get Free Guide
+          </button>
+
+        </div>
+
+        <p className="text-xs text-white/50 mt-4">
+          No spam. Your information is safe with us.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+{/* Projects section */}
+<section id="projects" className="py-24 px-6 lg:px-20 bg-[#f6f4ef]">
+
+<div className="max-w-7xl mx-auto text-center mb-16">
+
+<p className="text-[#C5A24A] uppercase text-sm tracking-widest">
+Our Portfolio
+</p>
+
+<h2
+className="text-4xl font-bold"
+style={{ fontFamily: "var(--font-playfair), serif" }}
+>
+Featured Properties
+</h2>
+
+</div>
+
+<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+{properties.map((property, i) => (
+
+<div
+key={i}
+className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition group"
+>
+
+<div className="relative overflow-hidden">
+
+<img
+src={property.image}
+className="h-56 w-full object-cover group-hover:scale-110 transition duration-500"
+/>
+
+<span className="absolute top-3 left-3 bg-[#C5A24A] text-white text-xs px-3 py-1 rounded">
+{property.bhk}
+</span>
+
+</div>
+
+<div className="p-6">
+
+<h3 className="font-semibold text-lg mb-1">
+{property.name}
+</h3>
+
+<p className="text-sm text-gray-500 mb-3">
+📍 {property.location}
+</p>
+
+<p className="text-[#C5A24A] font-semibold mb-4">
+{property.price}
+</p>
+
+<Link
+href={`/property/${property.name.toLowerCase().replace(/\s+/g, '-')}`}
+className="block text-center w-full bg-[#C5A24A] text-white py-2 rounded hover:opacity-90 transition"
+>
+View Details
+</Link>
+
+</div>
+
+</div>
+
+))}
+
+</div>
+
+</section>
+
+      {/* About Section */}
+<section id="about" className="py-24 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-[#faf8f3] via-[#f3efe6] to-[#ece6da] relative overflow-hidden">
+
+  {/* Background accents */}
+  <div className="absolute top-0 left-0 w-96 h-96 bg-[#C5A24A]/10 rounded-full blur-[120px]"></div>
+  <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#001F3F]/10 rounded-full blur-[120px]"></div>
+
+  <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+
+    {/* LEFT CONTENT */}
+    <div>
+
+      <p className="text-[#C5A24A] uppercase tracking-[0.25em] text-xs mb-4">
+        About Golden Bricks
+      </p>
+
+      <h2
+        className="text-4xl lg:text-5xl font-bold leading-tight mb-6 text-[#0c1b2a]"
+        style={{ fontFamily: "var(--font-playfair), serif" }}
+      >
+        Your Trusted Partner in
+        <span className="block text-[#C5A24A]">
+          Premium Real Estate
+        </span>
+      </h2>
+
+      <p className="text-gray-600 mb-8 leading-relaxed max-w-xl">
+        Golden Bricks is a trusted real estate advisory specializing in
+        premium residential and investment opportunities across Mumbai
+        and Navi Mumbai. With years of industry expertise, we help
+        clients discover properties aligned with their lifestyle,
+        financial goals, and long-term investment strategies.
+      </p>
+
+      {/* Features */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-sm">
+
+        <div className="flex items-center gap-3">
+          <span className="text-[#C5A24A] text-lg">✓</span>
+          <span>15+ Years of Experience</span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <span className="text-[#C5A24A] text-lg">✓</span>
+          <span>500+ Happy Families</span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <span className="text-[#C5A24A] text-lg">✓</span>
+          <span>Transparent Dealings</span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <span className="text-[#C5A24A] text-lg">✓</span>
+          <span>RERA Registered</span>
+        </div>
+
+      </div>
+
+      <button className="mt-10 px-8 py-4 bg-[#C5A24A] text-white rounded-lg font-semibold hover:scale-105 transition shadow-lg">
+        Learn More About Us
+      </button>
+
+    </div>
+
+    {/* IMAGE */}
+    <div className="relative group">
+
+      <img
+        src="/images/Hero/1.jpg"
+        alt="Luxury property"
+        className="rounded-xl shadow-2xl w-full h-[420px] object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+
+      {/* Experience badge */}
+      <div className="absolute -bottom-8 -left-8 bg-[#C5A24A] text-white px-10 py-6 rounded-xl shadow-xl">
+
+        <p className="text-3xl font-bold">15+</p>
+        <p className="text-sm opacity-90">Years Experience</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+      {/*Services */}
+      <section id="services" className="py-24 px-6 lg:px-20 bg-[#0c1b2a] text-white">
+
+  <div className="max-w-7xl mx-auto text-center mb-16">
+
+    <p className="text-[#C5A24A] tracking-widest text-sm uppercase">
+      What We Offer
+    </p>
+
+    <h2
+      className="text-4xl lg:text-5xl font-bold mt-4"
+      style={{ fontFamily: 'var(--font-playfair), serif' }}
+    >
+      Our Services
+    </h2>
+
+  </div>
+
+  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+
+    {[
+      {
+        title: "Buy / Sell / Rent",
+        desc: "Complete end-to-end support for buying, selling, or renting residential properties."
+      },
+      {
+        title: "Residential Properties",
+        desc: "Discover luxury apartments, villas, and premium residences in top locations."
+      },
+      {
+        title: "Commercial Properties",
+        desc: "Find the perfect office, retail space, or investment property."
+      },
+      {
+        title: "Investment Advisory",
+        desc: "Data-driven property investment strategies to maximize ROI."
+      }
+    ].map((service, i) => (
+
+      <div
+        key={i}
+        className="bg-white/5 border border-white/10 rounded-xl p-8 hover:border-[#C5A24A] hover:-translate-y-2 transition-all"
+      >
+
+        <h3 className="text-xl font-semibold mb-4">
+          {service.title}
+        </h3>
+
+        <p className="text-white/70 text-sm leading-relaxed">
+          {service.desc}
+        </p>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
+
+      {/*Enhanced TESTIMONIALS */}
+      <section id="testimonials" className="py-24 px-6 lg:px-20 bg-[#f6f4ef]">
+
+  <div className="max-w-7xl mx-auto text-center mb-16">
+
+    <p className="text-[#C5A24A] uppercase text-sm tracking-widest">
+      Testimonials
+    </p>
+
+    <h2
+      className="text-4xl font-bold"
+      style={{ fontFamily: 'var(--font-playfair), serif' }}
+    >
+      What Our Clients Say
+    </h2>
+
+  </div>
+
+  <div className="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto">
+
+    {[
+      {
+        name: "Amit Kulkarni",
+        text: "Golden Bricks helped us find a perfect 2BHK in Kharghar. Their team was very responsive and explained every step of the buying process clearly."
+      },
+      {
+        name: "Sneha Patil",
+        text: "We were looking for an investment property in Navi Mumbai and the team suggested great options. Very professional and transparent service."
+      },
+      {
+        name: "Rahul Nair",
+        text: "Great experience working with Golden Bricks. They helped us finalize our apartment in Seawoods and handled the paperwork smoothly."
+      }
+    ].map((t, i) => (
+
+      <div
+        key={i}
+        className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition"
+      >
+
+        <p className="text-gray-600 mb-6 leading-relaxed">
+          "{t.text}"
+        </p>
+
+        <p className="font-semibold">
+          {t.name}
+        </p>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</section>
+      {/* DEVELOPERS
+      <section className="py-20 px-6 lg:px-20 bg-[#001F3F]">
+
+        <div className="max-w-7xl mx-auto text-center">
+
+          <h2
+            className="text-4xl font-bold mb-4 gold-gradient-text"
+            style={{ fontFamily: 'var(--font-playfair), serif' }}
+          >
+            Developers We Work With
+          </h2>
+
+          <p className="text-white/70 mb-12">
+            Trusted partnerships with India’s leading real estate developers
+          </p>
+
+          <DevelopersGrid developers={developers} compact={true} />
+
+        </div>
+
+      </section> */}
+
+      {/* Final CTA */}
+<section className="py-28 px-6 lg:px-20 bg-[#F7F7F7] text-center">
+  <div id="contact" className="max-w-4xl mx-auto">
+    <h2
+      className="text-4xl lg:text-5xl font-bold mb-6 text-[#1A1A1B]"
+      style={{ fontFamily: 'var(--font-playfair), serif' }}
+    >
+      Find Your Dream Home Today
+    </h2>
+
+    <p className="max-w-2xl mx-auto mb-10 text-[#4A4A4A] text-lg">
+      Let our experts help you discover the perfect property in Mumbai or
+      Navi Mumbai. Start your real estate journey with Golden Bricks today.
+    </p>
+
+    <div className="flex justify-center gap-4 flex-wrap">
+      <button className="px-10 py-4 bg-[#C5A059] text-white rounded-lg font-semibold hover:bg-[#B38F4D] transition-all shadow-lg hover:shadow-xl">
+        Contact Us Now
+      </button>
+
+      <button className="px-10 py-4 border-2 border-[#C5A059] text-[#C5A059] rounded-lg font-semibold hover:bg-[#C5A059] hover:text-white transition-all">
+        View Properties
+      </button>
+    </div>
+  </div>
+</section>
+
+      <Footer />
+
+    </main>
+  );
+}

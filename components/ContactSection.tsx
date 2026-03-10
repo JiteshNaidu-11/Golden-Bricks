@@ -1,0 +1,174 @@
+'use client';
+
+import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { useState } from 'react';
+
+export default function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission
+    console.log('Form submitted:', formData);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  return (
+    <section id="contact" className="py-20 bg-[#1a1a1a]">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'var(--font-playfair), serif' }}>
+            Prompt Consultation
+          </h2>
+          <p className="text-xl text-white/70">
+            Need help? Request a prompt consultation.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-6 gold-gradient-text">
+                Get In Touch
+              </h3>
+              <p className="text-white/80 mb-8 leading-relaxed">
+                Our expert team is ready to assist you with all your real estate needs. 
+                Whether you're looking to buy, sell, or invest, we're here to help.
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-6 h-6 text-[#1a1a1a]" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white mb-1">Address</h4>
+                  <p className="text-white/70">
+                    Business Bay, Dubai, UAE<br />
+                    Office 101, 1st Floor, Opal Tower
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-6 h-6 text-[#1a1a1a]" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white mb-1">Phone</h4>
+                  <p className="text-white/70">
+                    +971 4 XXX XXXX<br />
+                    +971 50 XXX XXXX
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-6 h-6 text-[#1a1a1a]" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-white mb-1">Email</h4>
+                  <p className="text-white/70">
+                    info@truestar.ae<br />
+                    sales@truestar.ae
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="glass rounded-2xl p-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-white/80 mb-2 font-medium">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37] transition-colors"
+                  placeholder="Your full name"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-white/80 mb-2 font-medium">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37] transition-colors"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block text-white/80 mb-2 font-medium">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37] transition-colors"
+                  placeholder="+971 XX XXX XXXX"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-white/80 mb-2 font-medium">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none"
+                  placeholder="Tell us about your requirements..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:shadow-2xl hover:shadow-[#D4AF37]/50 transition-all flex items-center justify-center gap-2"
+              >
+                <Send className="w-5 h-5" />
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
