@@ -15,10 +15,10 @@
     "country-flag-emoji-polyfill": "^0.1.8",
     "framer-motion": "^12.35.2",
     "lucide-react": "^0.546.0",
-    "next": "16.0.0",
+    "next": "^16.1.6",
     "nodemailer": "^7.0.10",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "react-phone-number-input": "^3.4.14"
   },
   "devDependencies": {
