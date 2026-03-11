@@ -80,7 +80,7 @@ export default function Header() {
   const shouldShowGlassEffect = isScrolled || !isHomePage;
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header className={`fixed top-3 md:top-4 left-0 right-0 z-50 transition-all duration-300 ${
       shouldShowGlassEffect
         ? 'md:bg-white/60 md:backdrop-blur-xl md:border md:border-[#C5A24A]/20 md:shadow-sm md:mx-4 md:mt-4 md:rounded-2xl' 
         : ''

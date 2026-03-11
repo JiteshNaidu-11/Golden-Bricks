@@ -141,7 +141,7 @@ image: "/images/properties/p9.jpg"
 
         {/* Brand Label */}
         <p className="text-[#C5A24A] uppercase tracking-widest text-sm mb-4">
-          Golden Bricks Real Estate
+          Golden Brix Properties 
         </p>
 
         <h1
@@ -157,7 +157,7 @@ image: "/images/properties/p9.jpg"
         <p className="text-white/80 mt-6 text-base md:text-lg max-w-xl">
           Discover exclusive residences, premium investment opportunities,
           and high-end properties across Mumbai and Navi Mumbai with
-          <span className="font-semibold text-white"> Golden Bricks.</span>
+          <span className="font-semibold text-white"> Golden Brix Properties.</span>
         </p>
 
         {/* CTA Buttons */}
@@ -198,45 +198,42 @@ image: "/images/properties/p9.jpg"
 
       </div>
 
-      {/* RIGHT SIDE LEAD MAGNET */}
-<div className="bg-white/10 backdrop-blur-xl border border-white/20 p-6 sm:p-8 rounded-2xl shadow-2xl max-w-lg w-full mx-auto lg:mx-0">
+     {/* RIGHT SIDE LEAD MAGNET */}
+<div className="bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl shadow-2xl max-w-sm w-full ml-auto">
 
-  <h3 className="text-white text-lg sm:text-xl font-semibold mb-3">
+  <h3 className="text-white text-base font-semibold mb-2">
     Get Free Property Investment Guide
   </h3>
 
-  <p className="text-white/70 mb-6 text-sm leading-relaxed">
+  <p className="text-white/70 mb-4 text-xs leading-relaxed">
     Discover the best areas to invest in Mumbai, price trends,
     upcoming luxury projects and ROI insights curated by
-    Golden Bricks experts.
+    Golden Brix Properties experts.
   </p>
 
-  {/* Lead Inputs */}
-  <div className="space-y-4">
+  <div className="space-y-3">
 
     <input
       type="text"
       placeholder="Your Name"
-      className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none"
+      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none text-sm"
     />
 
     <input
       type="email"
       placeholder="Email Address"
-      className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none"
+      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none text-sm"
     />
 
-    {/* Phone */}
     <input
       type="tel"
       placeholder="Phone Number"
-      className="w-full px-4 py-3 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none"
+      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none text-sm"
     />
 
-    {/* Budget */}
     <select
       defaultValue="₹50L - ₹1Cr"
-      className="w-full px-4 py-3 rounded-lg bg-white/20 text-white outline-none"
+      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white outline-none text-sm"
     >
       <option className="text-black">₹50L - ₹1Cr</option>
       <option className="text-black">₹1Cr - ₹2Cr</option>
@@ -244,10 +241,9 @@ image: "/images/properties/p9.jpg"
       <option className="text-black">₹5Cr+</option>
     </select>
 
-    {/* Location */}
     <select
       defaultValue="Navi Mumbai"
-      className="w-full px-4 py-3 rounded-lg bg-white/20 text-white outline-none"
+      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white outline-none text-sm"
     >
       <option className="text-black">Navi Mumbai</option>
       <option className="text-black">Thane</option>
@@ -258,14 +254,14 @@ image: "/images/properties/p9.jpg"
 
     <button
       onClick={() => openWhatsApp()}
-      className="w-full gold-gradient py-3 rounded-lg font-semibold text-white hover:scale-[1.02] transition"
+      className="w-full gold-gradient py-2.5 rounded-lg font-semibold text-white text-sm"
     >
       Get Free Guide
     </button>
 
   </div>
 
-  <p className="text-xs text-white/50 mt-4">
+  <p className="text-xs text-white/50 mt-3">
     No spam. Your information is safe with us.
   </p>
 
@@ -359,7 +355,7 @@ View Details
     <div>
 
       <p className="text-[#C5A24A] uppercase tracking-[0.25em] text-xs mb-4">
-        About Golden Bricks
+        About Golden Brix Properties 
       </p>
 
       <h2
@@ -373,7 +369,7 @@ View Details
       </h2>
 
       <p className="text-gray-600 mb-8 leading-relaxed max-w-xl">
-        Golden Bricks is a trusted real estate advisory specializing in
+        Golden Brix Properties is a trusted real estate advisory specializing in
         premium residential and investment opportunities across Mumbai
         and Navi Mumbai. With years of industry expertise, we help
         clients discover properties aligned with their lifestyle,
@@ -517,7 +513,7 @@ View Details
     {[
       {
         name: "Amit Kulkarni",
-        text: "Golden Bricks helped us find a perfect 2BHK in Kharghar. Their team was very responsive and explained every step of the buying process clearly."
+        text: "Golden Brix  Properties helped us find a perfect 2BHK in Kharghar. Their team was very responsive and explained every step of the buying process clearly."
       },
       {
         name: "Sneha Patil",
@@ -525,7 +521,7 @@ View Details
       },
       {
         name: "Rahul Nair",
-        text: "Great experience working with Golden Bricks. They helped us finalize our apartment in Seawoods and handled the paperwork smoothly."
+        text: "Great experience working with Golden Brix Properties. They helped us finalize our apartment in Seawoods and handled the paperwork smoothly."
       }
     ].map((t, i) => (
 
@@ -662,7 +658,7 @@ Read Article →
 
     <p className="max-w-2xl mx-auto mb-10 text-[#4A4A4A] text-lg">
       Let our experts help you discover the perfect property in Mumbai or
-      Navi Mumbai. Start your real estate journey with Golden Bricks today.
+      Navi Mumbai. Start your real estate journey with Golden Brix Properties today.
     </p>
 
     <div className="flex justify-center gap-4 flex-wrap">
