@@ -19,7 +19,7 @@ export default function Footer() {
               <div className="relative h-14 w-48">
                 <Image
                   src="/images/logo/truestarLogonew.png"
-                  alt="Golden Bricks"
+                  alt="Golden brix"
                   fill
                   className="object-contain"
                 />
@@ -27,7 +27,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              Golden Bricks is a trusted real estate advisory specializing
+              Golden brix is a trusted real estate advisory specializing
               in premium residential and investment opportunities across
               Mumbai and Navi Mumbai.
             </p>
@@ -169,10 +169,10 @@ export default function Footer() {
     <div className="flex items-center gap-3">
       <Mail className="w-5 h-5 text-[#C5A24A]" />
       <a
-        href="mailto:goldenbricks@gmail.com.com"
+        href="mailto:goldenbrix@gmail.com.com"
         className="text-white/70 hover:text-[#EBD181] transition"
       >
-        goldenbricks@gmail.com
+        goldenbrix@gmail.com
       </a>
     </div>
 
@@ -185,7 +185,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/10 mt-12 pt-6 text-center text-sm text-white/60">
 
-          © {new Date().getFullYear()} Golden Bricks Real Estate. All Rights Reserved.
+          © {new Date().getFullYear()} Golden brix Real Estate. All Rights Reserved.
 
         </div>
 

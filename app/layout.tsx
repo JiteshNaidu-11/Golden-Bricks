@@ -23,17 +23,17 @@ const playfair = Playfair_Display({
   weight: ["400","500","600","700","800","900"]
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://goldenbricks.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://goldenbrix.com';
 const baseUrl = siteUrl.replace(/\/$/, '');
 const ogImageUrl = `${baseUrl}/images/logo/logo.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
-  title: "Golden Bricks | Premium Properties in Mumbai & Navi Mumbai",
+  title: "Golden brix | Premium Properties in Mumbai & Navi Mumbai",
 
   description:
-    "Golden Bricks helps you discover premium residential and commercial properties across Mumbai and Navi Mumbai. Trusted guidance for buying, selling, and investing in real estate.",
+    "Golden brix helps you discover premium residential and commercial properties across Mumbai and Navi Mumbai. Trusted guidance for buying, selling, and investing in real estate.",
 
   icons: {
     icon: "/images/logo/favicon.png",
@@ -41,13 +41,13 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Golden Bricks | Premium Properties in Mumbai & Navi Mumbai",
+    title: "Golden brix | Premium Properties in Mumbai & Navi Mumbai",
 
     description:
-      "Find your dream property with Golden Bricks. Explore luxury homes, apartments, and investment opportunities across Mumbai and Navi Mumbai.",
+      "Find your dream property with Golden brix. Explore luxury homes, apartments, and investment opportunities across Mumbai and Navi Mumbai.",
 
     url: baseUrl,
-    siteName: "Golden Bricks ",
+    siteName: "Golden brix ",
     locale: "en_IN",
     type: "website",
 
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
         url: ogImageUrl,
         width: 1200,
         height: 630,
-        alt: "Golden Bricks - Premium Real Estate",
+        alt: "Golden brix - Premium Real Estate",
         type: "image/png",
       },
     ],
@@ -64,9 +64,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Golden Bricks | Premium Properties in Mumbai & Navi Mumbai",
+    title: "Golden brix | Premium Properties in Mumbai & Navi Mumbai",
     description:
-      "Discover luxury homes, apartments, and investment opportunities in Mumbai & Navi Mumbai with Golden Bricks .",
+      "Discover luxury homes, apartments, and investment opportunities in Mumbai & Navi Mumbai with Golden brix .",
     images: [ogImageUrl],
   },
 };
