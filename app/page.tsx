@@ -646,8 +646,8 @@ Read Article →
 
       </section> */}
 
-      {/* Final CTA */}
-<section className="py-28 px-6 lg:px-20 bg-[#F7F7F7] text-center">
+      {/* Final CTA / Contact & Careers */}
+<section id="careers" className="py-28 px-6 lg:px-20 bg-[#F7F7F7] text-center">
   <div id="contact" className="max-w-4xl mx-auto">
     <h2
       className="text-4xl lg:text-5xl font-bold mb-6 text-[#1A1A1B]"
