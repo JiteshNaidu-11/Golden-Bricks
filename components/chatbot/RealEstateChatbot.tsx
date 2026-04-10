@@ -130,6 +130,11 @@ export default function RealEstateChatbot({ onClose }: { onClose: () => void }) 
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messageIdRef = useRef(0);
+  const nextMessageId = () => {
+    messageIdRef.current += 1;
+    return `m-${messageIdRef.current}`;
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -145,7 +150,7 @@ export default function RealEstateChatbot({ onClose }: { onClose: () => void }) 
     if (!trimmed) return;
 
     const userMsg: Message = {
-      id: Date.now().toString(),
+      id: nextMessageId(),
       text: trimmed,
       isBot: false,
       timestamp: new Date(),
@@ -166,7 +171,7 @@ export default function RealEstateChatbot({ onClose }: { onClose: () => void }) 
       setMessages((prev) => [
         ...prev,
         {
-          id: (Date.now() + 1).toString(),
+          id: nextMessageId(),
           text: botText,
           isBot: true,
           timestamp: new Date(),

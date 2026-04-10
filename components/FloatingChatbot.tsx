@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { MessageCircle } from 'lucide-react';
+import { createPortal } from 'react-dom';
+import { Headset } from 'lucide-react';
 import BotFlow from '@/components/chatbot/BotFlow';
 import RealEstateChatbot from '@/components/chatbot/RealEstateChatbot';
 
@@ -34,31 +35,39 @@ export default function FloatingChatbot() {
       {/* FAB - gold chatbot button (above WhatsApp in the stack) */}
       <button
         onClick={() => setIsOpen(true)}
-        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-2xl transition-all duration-300 flex items-center justify-center group hover:scale-110 border-2 border-[#C5A24A]/40 hover:border-[#C5A24A] gold-gradient text-[#001F3F] hover:shadow-[#C5A24A]/40 flex-shrink-0"
-        aria-label="Open property assistant chat"
-        title="Chat with TrueStar Assistant"
+        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-[#C5A24A]/40 gold-gradient text-[#001F3F] shadow-md transition-all duration-300 hover:scale-105 hover:border-[#C5A24A] hover:shadow-lg group"
+        aria-label="Open property advisor assistant"
+        title="Speak with Golden Brix"
       >
-        <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8 group-hover:scale-110 transition-transform" />
+        <Headset
+          className="h-6 w-6 transition-transform group-hover:scale-105"
+          strokeWidth={2}
+          aria-hidden
+        />
       </button>
 
-      {/* Modal */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-[#001F3F]/60 backdrop-blur-sm"
-          onClick={(e) => e.target === e.currentTarget && handleClose()}
-        >
+      {/* Modal — portaled to body so it stacks above the fixed header (z-60); parent FAB wrapper is only z-50 */}
+      {isOpen &&
+        typeof document !== 'undefined' &&
+        createPortal(
           <div
-            className="w-full max-w-lg h-[85vh] max-h-[700px] bg-white rounded-3xl shadow-2xl border border-[#C5A24A]/20 overflow-hidden flex flex-col"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-[200] flex items-center justify-center p-4 pt-[max(1rem,env(safe-area-inset-top))] bg-[#001F3F]/60 backdrop-blur-sm"
+            onClick={(e) => e.target === e.currentTarget && handleClose()}
+            role="presentation"
           >
-            {showChat ? (
-              <RealEstateChatbot onClose={handleClose} />
-            ) : (
-              <BotFlow onStartChat={handleStartChat} onClose={handleClose} />
-            )}
-          </div>
-        </div>
-      )}
+            <div
+              className="w-full max-w-lg h-[85vh] max-h-[700px] bg-white rounded-3xl shadow-2xl border border-[#C5A24A]/20 overflow-hidden flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {showChat ? (
+                <RealEstateChatbot onClose={handleClose} />
+              ) : (
+                <BotFlow onStartChat={handleStartChat} onClose={handleClose} />
+              )}
+            </div>
+          </div>,
+          document.body
+        )}
     </>
   );
 }

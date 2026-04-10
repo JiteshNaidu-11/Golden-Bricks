@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins, Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -26,6 +26,12 @@ const playfair = Playfair_Display({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://goldenbrix.com';
 const baseUrl = siteUrl.replace(/\/$/, '');
 const ogImageUrl = `${baseUrl}/images/logo/logo.png`;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#001F3F",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -84,7 +90,7 @@ export default function RootLayout({
       >
         {children}
 
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 items-center">
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2.5">
           <ScrollToTop />
           <FloatingChatbot />
           <FloatingWhatsApp />

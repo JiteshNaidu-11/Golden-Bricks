@@ -86,6 +86,10 @@ export default function Header() {
 
   const hashHref = (link: string) => (link.startsWith('#') ? `/${link}` : link);
 
+  /** Full catalog off-homepage; on home, #projects still scrolls to featured strip. */
+  const navItemHref = (link: string) =>
+    link === '#projects' && pathname !== '/' ? '/properties' : hashHref(link);
+
   // Source of truth for header navigation order + items.
   const navItems: Array<{ label: string; link: string; dropdown?: boolean }> = [
     { label: 'Home', link: '#home' },
@@ -93,24 +97,22 @@ export default function Header() {
     { label: 'Projects', link: '#projects' },
     { label: 'Testimonials', link: '#testimonials' },
     { label: 'Services', link: '#services', dropdown: true },
+    { label: 'EMI Calculator', link: '/emi-calculator' },
     { label: 'Blogs', link: '#blogs' },
     { label: 'Careers', link: '#careers' },
     { label: 'Contact Us', link: '#contact' },
   ];
-
-  // EMI Calculator removed but NOT deleted
-  // { href: '/mortgage-calculator', label: 'Mortgage Calculator' },
 
   // Determine if we should show white text (only on home page when not scrolled)
   const shouldShowWhiteText = isHomePage && !isScrolled;
   const shouldShowGlassEffect = isScrolled || !isHomePage;
 
   return (
-    <header className={`fixed top-3 md:top-4 left-0 right-0 z-60 transition-all duration-300 ${
+    <header className={`fixed top-0 left-0 right-0 z-60 pt-3 md:pt-4 transition-all duration-300 ${
       shouldShowGlassEffect
         ? 'md:bg-white/60 md:backdrop-blur-xl md:border md:border-[#C5A24A]/20 md:shadow-sm md:mx-4 md:mt-4 md:rounded-2xl' 
         : ''
-    } ${isMenuOpen ? 'bg-white' : isHomePage && !isScrolled ? 'bg-transparent' : 'bg-white'} ${
+    } ${isMenuOpen ? 'bg-white shadow-sm' : isHomePage && !isScrolled ? 'bg-transparent' : 'bg-white shadow-sm'} ${
       isMenuOpen
         ? 'max-md:inset-0 max-md:top-0 max-md:left-0 max-md:right-0 max-md:bottom-0 max-md:min-h-screen max-md:h-screen max-md:overflow-hidden max-md:flex max-md:flex-col max-md:rounded-none max-md:m-0 max-md:border-0'
         : ''
@@ -176,7 +178,7 @@ export default function Header() {
     return (
       <Link
         key={item.label}
-        href={hashHref(item.link)}
+        href={navItemHref(item.link)}
         className={`relative font-medium transition-colors group whitespace-nowrap ${
           shouldShowGlassEffect ? 'text-[#001F3F] hover:text-[#C5A24A]' : 'text-white/90 hover:text-[#EBD181]'
         }`}
@@ -266,7 +268,7 @@ export default function Header() {
             return (
               <Link
                 key={item.label}
-                href={hashHref(item.link)}
+                href={navItemHref(item.link)}
                 onClick={() => {
                   setIsMenuOpen(false);
                   setOpenDropdown(null);

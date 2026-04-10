@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Instagram, Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
+import SocialLinks from '@/components/SocialLinks';
 
 export default function Footer() {
   return (
@@ -32,7 +33,7 @@ export default function Footer() {
               Mumbai and Navi Mumbai.
             </p>
 
-            
+            <SocialLinks variant="footer" label="Connect with us" />
 
           </div>
 
@@ -74,7 +75,7 @@ export default function Footer() {
     </li>
 
     <li>
-      <Link href="/blogs" className="text-white/70 hover:text-[#EBD181]">
+      <Link href="/#blogs" className="text-white/70 hover:text-[#EBD181]">
         Blogs
       </Link>
     </li>
@@ -169,7 +170,7 @@ export default function Footer() {
     <div className="flex items-center gap-3">
       <Mail className="w-5 h-5 text-[#C5A24A]" />
       <a
-        href="mailto:goldenbrix@gmail.com.com"
+        href="mailto:goldenbrix@gmail.com"
         className="text-white/70 hover:text-[#EBD181] transition"
       >
         goldenbrix@gmail.com

@@ -2,8 +2,9 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SocialLinks from '@/components/SocialLinks';
 import { useState, useEffect } from 'react';
-import { Globe, Mail, Phone, MapPin, Instagram, Send, Loader2, Linkedin, Clock } from 'lucide-react';
+import { Globe, Mail, Phone, MapPin, Send, Loader2, Clock } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 export default function Contact() {
@@ -152,38 +153,11 @@ export default function Contact() {
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
-                    <Instagram className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Instagram</h3>
-                    <a 
-                      href="https://www.instagram.com/truestar_real_estate?igsh=aTV0ajFoYW5zYXE3&utm_source=qr" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-[#001F3F]/70 hover:text-[#C5A24A] transition-colors"
-                    >
-                      @TRUESTAR_REAL_ESTATE
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
-                    <Linkedin className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">LinkedIn</h3>
-                    <a 
-                      href="https://www.linkedin.com/company/true-star-real-estate/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-[#001F3F]/70 hover:text-[#C5A24A] transition-colors"
-                    >
-                      TrueStar Real Estate
-                    </a>
-                  </div>
+                <div className="flex flex-col gap-3 pt-2">
+                  <h3 className="font-semibold text-lg text-[#001F3F]">
+                    Social media
+                  </h3>
+                  <SocialLinks variant="sectionLight" label="" />
                 </div>
                 
                 <div className="flex items-start gap-4">

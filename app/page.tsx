@@ -7,6 +7,10 @@ import DevelopersGrid from '@/components/DevelopersGrid';
 import { Star, CheckCircle, Home as HomeIcon, Building2, TrendingUp, Quote } from 'lucide-react';
 import { openWhatsApp } from '@/lib/whatsapp';
 import Link from "next/link";
+import { PROPERTIES_CATALOG } from "@/lib/propertiesCatalog";
+import PropertyListingCard from "@/components/PropertyListingCard";
+
+const FEATURED_PROPERTIES_ON_HOME = 6;
 
 export default function Home() {
 
@@ -26,72 +30,6 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, []);
-
- const properties = [
-{
-name: "Harbour View Residences",
-location: "Seawoods, Navi Mumbai",
-price: "₹ 82L – ₹ 1.9 Cr",
-bhk: "1 BHK, 2 BHK, 3 BHK",
-image: "/images/properties/p1.jpg"
-},
-{
-name: "Urban Crest Towers",
-location: "Kharghar, Navi Mumbai",
-price: "₹ 74L – ₹ 1.6 Cr",
-bhk: "2 BHK, 3 BHK",
-image: "/images/properties/p2.jpg"
-},
-{
-name: "Crystal Bay Heights",
-location: "Ulwe, Navi Mumbai",
-price: "₹ 68L – ₹ 1.3 Cr",
-bhk: "1 BHK, 2 BHK",
-image: "/images/properties/p3.jpg"
-},
-{
-name: "Skyline Prime Residences",
-location: "Panvel, Navi Mumbai",
-price: "₹ 79L – ₹ 1.7 Cr",
-bhk: "2 BHK, 3 BHK",
-image: "/images/properties/p4.jpg"
-},
-{
-name: "Palm Grove Apartments",
-location: "Nerul, Navi Mumbai",
-price: "₹ 72L – ₹ 1.5 Cr",
-bhk: "1 BHK, 2 BHK",
-image: "/images/properties/p5.jpg"
-},
-{
-name: "Blue Horizon Towers",
-location: "Belapur, Navi Mumbai",
-price: "₹ 1.1 Cr – ₹ 2.4 Cr",
-bhk: "2 BHK, 3 BHK",
-image: "/images/properties/p6.jpg"
-},
-{
-name: "West Bay Residences",
-location: "Andheri West, Mumbai",
-price: "₹ 1.8 Cr – ₹ 3.6 Cr",
-bhk: "2 BHK, 3 BHK",
-image: "/images/properties/p7.jpg"
-},
-{
-name: "Aurora Heights",
-location: "Powai, Mumbai",
-price: "₹ 2.2 Cr – ₹ 4.8 Cr",
-bhk: "3 BHK, 4 BHK",
-image: "/images/properties/p8.jpg"
-},
-{
-name: "Lakeview Signature Homes",
-location: "Thane West, Mumbai",
-price: "₹ 95L – ₹ 2.2 Cr",
-bhk: "2 BHK, 3 BHK",
-image: "/images/properties/p9.jpg"
-}
-];
 
   // const developers = [
   //   { name: "LODHA", description: "" },
@@ -271,75 +209,47 @@ image: "/images/properties/p9.jpg"
   </div>
 </section>
 
-{/* Projects section */}
-<section id="projects" className="py-24 px-6 lg:px-20 bg-[#f6f4ef]">
+{/* Projects section — featured subset; full catalog at /properties */}
+<section id="projects" className="py-20 sm:py-24 bg-[#f6f4ef]">
+<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-<div className="max-w-7xl mx-auto text-center mb-16">
+<div className="text-center mb-12 sm:mb-14">
 
 <p className="text-[#C5A24A] uppercase text-sm tracking-widest">
 Our Portfolio
 </p>
 
 <h2
-className="text-4xl font-bold"
+className="text-3xl sm:text-4xl font-bold text-[#0c1b2a]"
 style={{ fontFamily: "var(--font-playfair), serif" }}
 >
-Featured Properties
+Featured properties
 </h2>
 
-</div>
-
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-
-{properties.map((property, i) => (
-
-<div
-key={i}
-className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition group"
->
-
-<div className="relative overflow-hidden">
-
-<img
-src={property.image}
-className="h-56 w-full object-cover group-hover:scale-110 transition duration-500"
-/>
-
-<span className="absolute top-3 left-3 bg-[#C5A24A] text-white text-xs px-3 py-1 rounded">
-{property.bhk}
-</span>
-
-</div>
-
-<div className="p-6">
-
-<h3 className="font-semibold text-lg mb-1">
-{property.name}
-</h3>
-
-<p className="text-sm text-gray-500 mb-3">
-📍 {property.location}
+<p className="mt-4 text-[#0c1b2a]/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+  A curated selection of our latest listings. Explore the full portfolio anytime.
 </p>
 
-<p className="text-[#C5A24A] font-semibold mb-4">
-{property.price}
-</p>
-
-<Link
-href={`/property/${property.name.toLowerCase().replace(/\s+/g, '-')}`}
-className="block text-center w-full bg-[#C5A24A] text-white py-2 rounded hover:opacity-90 transition"
->
-View Details
-</Link>
-
 </div>
 
-</div>
-
+<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 list-none p-0 m-0">
+{PROPERTIES_CATALOG.slice(0, FEATURED_PROPERTIES_ON_HOME).map((property) => (
+  <li key={property.slug} className="min-w-0">
+    <PropertyListingCard property={property} />
+  </li>
 ))}
+</ul>
 
+<div className="flex justify-center mt-12 sm:mt-14">
+  <Link
+    href="/properties"
+    className="inline-flex items-center justify-center min-h-[48px] px-8 sm:px-10 py-3 sm:py-3.5 rounded-xl text-base font-semibold gold-gradient text-[#001F3F] shadow-md hover:shadow-lg hover:brightness-105 active:scale-[0.98] transition-all duration-300"
+  >
+    Explore All Properties
+  </Link>
 </div>
 
+</div>
 </section>
 
       {/* About Section */}

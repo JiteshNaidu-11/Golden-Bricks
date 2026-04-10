@@ -1,12 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Search, MapPin, Download, Phone } from 'lucide-react';
+import { Search, MapPin, Download, Phone, Loader2 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+
+const FORMSUBMIT_AJAX = 'https://formsubmit.co/ajax/sunitaestate@gmail.com';
 
 export default function HeroSection() {
   const [activeTab, setActiveTab] = useState<'buy' | 'rent'>('buy');
   const [currentImage, setCurrentImage] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const heroImages = [
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
@@ -24,6 +28,37 @@ export default function HeroSection() {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleLeadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(FORMSUBMIT_AJAX, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      const data = (await res.json().catch(() => null)) as {
+        success?: boolean;
+        message?: string;
+      } | null;
+      if (res.ok && data?.success !== false) {
+        alert('Thank you! We will contact you shortly.');
+        form.reset();
+        setActiveTab('buy');
+      } else {
+        alert(
+          data?.message?.trim() ||
+            'Something went wrong. Please try again in a moment.',
+        );
+      }
+    } catch {
+      alert('Something went wrong. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -48,11 +83,11 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/20 via-transparent to-transparent"></div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-16 pt-32 pb-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-32 pb-20 lg:px-12">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-10">
 
-          {/* Left Content */}
-          <div className="space-y-8">
+          {/* Left — text capped so lines don’t stretch on ultra-wide viewports */}
+          <div className="mx-auto w-full max-w-xl space-y-8 lg:mx-0">
 
             <div className="space-y-4">
               <h1
@@ -110,78 +145,161 @@ export default function HeroSection() {
 
           </div>
 
-          {/* Search Form */}
-          <div className="glass rounded-2xl p-8 shadow-2xl backdrop-blur-xl">
+          {/* Search form — capped width, anchored toward center/right without hugging the far edge */}
+          <div className="mx-auto w-full max-w-lg lg:mx-0 lg:justify-self-end">
+            <div className="glass rounded-2xl p-6 shadow-2xl backdrop-blur-xl sm:p-8">
 
-            <div className="flex gap-2 mb-6 bg-[#1a1a1a]/50 rounded-lg p-1">
+            <form onSubmit={handleLeadSubmit} className="space-y-4">
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_subject" value="New Lead from Website" />
 
-              <button
-                onClick={() => setActiveTab('buy')}
-                className={`flex-1 py-3 px-4 rounded-md font-semibold transition-all ${
-                  activeTab === 'buy'
-                    ? 'gold-gradient text-[#1a1a1a]'
-                    : 'text-white/70 hover:text-white'
-                }`}
-              >
-                Buy
-              </button>
+              <div className="mb-2 flex gap-2 rounded-lg bg-[#1a1a1a]/50 p-1">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('buy')}
+                  className={`flex-1 py-3 px-4 rounded-md font-semibold transition-all ${
+                    activeTab === 'buy'
+                      ? 'gold-gradient text-[#1a1a1a]'
+                      : 'text-white/70 hover:text-white'
+                  }`}
+                >
+                  Buy
+                </button>
 
-              <button
-                onClick={() => setActiveTab('rent')}
-                className={`flex-1 py-3 px-4 rounded-md font-semibold transition-all ${
-                  activeTab === 'rent'
-                    ? 'gold-gradient text-[#1a1a1a]'
-                    : 'text-white/70 hover:text-white'
-                }`}
-              >
-                Rent
-              </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('rent')}
+                  className={`flex-1 py-3 px-4 rounded-md font-semibold transition-all ${
+                    activeTab === 'rent'
+                      ? 'gold-gradient text-[#1a1a1a]'
+                      : 'text-white/70 hover:text-white'
+                  }`}
+                >
+                  Rent
+                </button>
+              </div>
 
-            </div>
-
-            <div className="space-y-4">
+              <input type="hidden" name="intent" value={activeTab} />
 
               <div>
-                <label className="block text-white/80 mb-2 text-sm font-medium">
-                  Property Type
+                <label htmlFor="hero-name" className="block text-white/80 mb-2 text-sm font-medium">
+                  Name
                 </label>
-                <select className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#D4AF37]">
-                  <option>All Properties</option>
-                  <option>Apartments</option>
-                  <option>Villas</option>
-                  <option>Townhouses</option>
-                  <option>Penthouses</option>
-                </select>
+                <input
+                  id="hero-name"
+                  name="name"
+                  type="text"
+                  required
+                  autoComplete="name"
+                  placeholder="Your full name"
+                  className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37]"
+                />
               </div>
 
               <div>
-                <label className="block text-white/80 mb-2 text-sm font-medium">
+                <label htmlFor="hero-email" className="block text-white/80 mb-2 text-sm font-medium">
+                  Email
+                </label>
+                <input
+                  id="hero-email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  placeholder="you@example.com"
+                  className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37]"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="hero-phone" className="block text-white/80 mb-2 text-sm font-medium">
+                  Phone
+                </label>
+                <input
+                  id="hero-phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  autoComplete="tel"
+                  placeholder="+91 …"
+                  className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37]"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="hero-budget" className="block text-white/80 mb-2 text-sm font-medium">
+                  Budget
+                </label>
+                <input
+                  id="hero-budget"
+                  name="budget"
+                  type="text"
+                  required
+                  placeholder="e.g. 1 Cr – 2 Cr"
+                  className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37]"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="hero-location" className="block text-white/80 mb-2 text-sm font-medium">
                   Location
                 </label>
-
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50" />
-
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none" />
                   <input
+                    id="hero-location"
+                    name="location"
                     type="text"
-                    placeholder="Search location"
+                    required
+                    placeholder="Preferred area or community"
                     className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg pl-10 pr-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37]"
                   />
                 </div>
               </div>
 
-              <button className="w-full py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:shadow-lg hover:shadow-[#D4AF37]/50 transition-all flex items-center justify-center gap-2">
-                <Search className="w-5 h-5" />
-                Search Properties
+              <div>
+                <label htmlFor="hero-property-type" className="block text-white/80 mb-2 text-sm font-medium">
+                  Property type
+                </label>
+                <select
+                  id="hero-property-type"
+                  name="property_type"
+                  className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#D4AF37]"
+                >
+                  <option value="All Properties">All Properties</option>
+                  <option value="Apartments">Apartments</option>
+                  <option value="Villas">Villas</option>
+                  <option value="Townhouses">Townhouses</option>
+                  <option value="Penthouses">Penthouses</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:shadow-lg hover:shadow-[#D4AF37]/50 transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Sending…
+                  </>
+                ) : (
+                  <>
+                    <Search className="w-5 h-5" />
+                    Search Properties
+                  </>
+                )}
               </button>
 
-              <a
-                href="#"
-                className="block text-center text-white/70 hover:text-[#D4AF37] transition-colors text-sm mt-4"
+              <Link
+                href="/properties/"
+                className="block text-center text-white/70 hover:text-[#D4AF37] transition-colors text-sm mt-2"
               >
                 View All Properties
-              </a>
-
+              </Link>
+            </form>
             </div>
           </div>
 

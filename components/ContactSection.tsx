@@ -2,6 +2,7 @@
 
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useState } from 'react';
+import SocialLinks from '@/components/SocialLinks';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -88,6 +89,12 @@ export default function ContactSection() {
                   </p>
                 </div>
               </div>
+
+              <SocialLinks
+                variant="sectionDark"
+                label="Connect with us"
+                className="pt-2"
+              />
             </div>
           </div>
 
