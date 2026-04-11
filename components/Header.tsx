@@ -99,7 +99,6 @@ export default function Header() {
     { label: 'Services', link: '#services', dropdown: true },
     { label: 'EMI Calculator', link: '/emi-calculator' },
     { label: 'Blogs', link: '#blogs' },
-    { label: 'Careers', link: '#careers' },
     { label: 'Contact Us', link: '#contact' },
   ];
 

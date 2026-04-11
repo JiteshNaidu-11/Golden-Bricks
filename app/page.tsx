@@ -5,14 +5,16 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DevelopersGrid from '@/components/DevelopersGrid';
 import { Star, CheckCircle, Home as HomeIcon, Building2, TrendingUp, Quote } from 'lucide-react';
-import { openWhatsApp } from '@/lib/whatsapp';
 import Link from "next/link";
 import { PROPERTIES_CATALOG } from "@/lib/propertiesCatalog";
 import PropertyListingCard from "@/components/PropertyListingCard";
 
 const FEATURED_PROPERTIES_ON_HOME = 6;
 
+const FORMSUBMIT_AJAX = "https://formsubmit.co/ajax/sunitaestate@gmail.com";
+
 export default function Home() {
+  const [guideSubmitting, setGuideSubmitting] = useState(false);
 
   const heroImages = [
     "/images/Hero/1.jpg",
@@ -30,6 +32,75 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, []);
+
+  const handleGuideSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    setGuideSubmitting(true);
+    try {
+      const res = await fetch(FORMSUBMIT_AJAX, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      const data = (await res.json().catch(() => null)) as {
+        success?: boolean;
+        message?: string;
+      } | null;
+      if (res.ok && data?.success !== false) {
+        alert("Thank you! We will contact you shortly.");
+        form.reset();
+      } else {
+        alert(
+          data?.message?.trim() ||
+            "Something went wrong. Please try again in a moment.",
+        );
+      }
+    } catch {
+      alert("Something went wrong. Please check your connection and try again.");
+    } finally {
+      setGuideSubmitting(false);
+    }
+  };
+
+  /* Hidden: Download Investment Guide CTA — uncomment to restore
+  const handleDownloadInvestmentGuide = async () => {
+    try {
+      const res = await fetch("/guides/investment-guide.pdf");
+      if (res.ok) {
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "Golden-Brix-Investment-Guide.pdf";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        return;
+      }
+    } catch {
+    }
+    const text = [
+      "Golden Brix Properties — Investment Guide",
+      "",
+      "Mumbai & Navi Mumbai — introductory overview",
+      "",
+      "Add public/guides/investment-guide.pdf to your site to offer a full branded PDF.",
+      "",
+      "Contact: sunitaestate@gmail.com",
+    ].join("\n");
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "Golden-Brix-Investment-Guide.txt";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  };
+  */
 
   // const developers = [
   //   { name: "LODHA", description: "" },
@@ -101,16 +172,22 @@ export default function Home() {
         {/* CTA Buttons */}
         <div className="flex flex-wrap gap-4 mt-8">
 
-          <button
-            onClick={() => openWhatsApp()}
-            className="px-7 py-3 gold-gradient text-white font-semibold rounded-lg hover:scale-105 transition-all"
+          <a
+            href="#contact"
+            className="px-7 py-3 gold-gradient text-white font-semibold rounded-lg hover:scale-105 transition-all inline-block text-center"
           >
             Book Consultation
-          </button>
+          </a>
 
-          <button className="px-7 py-3 border border-[#C5A24A] text-white rounded-lg hover:bg-[#C5A24A] hover:text-black transition-all">
+          {/* Download Investment Guide — hidden; uncomment block + handler above to restore
+          <button
+            type="button"
+            onClick={handleDownloadInvestmentGuide}
+            className="px-7 py-3 border border-[#C5A24A] text-white rounded-lg hover:bg-[#C5A24A] hover:text-black transition-all"
+          >
             Download Investment Guide
           </button>
+          */}
 
         </div>
 
@@ -137,7 +214,14 @@ export default function Home() {
       </div>
 
      {/* RIGHT SIDE LEAD MAGNET */}
-<div className="bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl shadow-2xl max-w-sm w-full ml-auto">
+<form
+  onSubmit={handleGuideSubmit}
+  className="bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl shadow-2xl max-w-sm w-full ml-auto"
+>
+
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_subject" value="Free Property Investment Guide — Home" />
 
   <h3 className="text-white text-base font-semibold mb-2">
     Get Free Property Investment Guide
@@ -152,49 +236,63 @@ export default function Home() {
   <div className="space-y-3">
 
     <input
+      name="name"
       type="text"
+      required
+      autoComplete="name"
       placeholder="Your Name"
-      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none text-sm"
+      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none text-sm border border-transparent focus:border-[#C5A24A]"
     />
 
     <input
+      name="email"
       type="email"
+      required
+      autoComplete="email"
       placeholder="Email Address"
-      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none text-sm"
+      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none text-sm border border-transparent focus:border-[#C5A24A]"
     />
 
     <input
+      name="phone"
       type="tel"
+      required
+      autoComplete="tel"
       placeholder="Phone Number"
-      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none text-sm"
+      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none text-sm border border-transparent focus:border-[#C5A24A]"
     />
 
     <select
+      name="budget"
+      required
       defaultValue="₹50L - ₹1Cr"
-      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white outline-none text-sm"
+      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white outline-none text-sm border border-transparent focus:border-[#C5A24A]"
     >
-      <option className="text-black">₹50L - ₹1Cr</option>
-      <option className="text-black">₹1Cr - ₹2Cr</option>
-      <option className="text-black">₹2Cr - ₹5Cr</option>
-      <option className="text-black">₹5Cr+</option>
+      <option className="text-black" value="₹50L - ₹1Cr">₹50L - ₹1Cr</option>
+      <option className="text-black" value="₹1Cr - ₹2Cr">₹1Cr - ₹2Cr</option>
+      <option className="text-black" value="₹2Cr - ₹5Cr">₹2Cr - ₹5Cr</option>
+      <option className="text-black" value="₹5Cr+">₹5Cr+</option>
     </select>
 
     <select
+      name="location"
+      required
       defaultValue="Navi Mumbai"
-      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white outline-none text-sm"
+      className="w-full px-3 py-2 rounded-lg bg-white/20 text-white outline-none text-sm border border-transparent focus:border-[#C5A24A]"
     >
-      <option className="text-black">Navi Mumbai</option>
-      <option className="text-black">Thane</option>
-      <option className="text-black">Powai</option>
-      <option className="text-black">Andheri</option>
-      <option className="text-black">Open to suggestions</option>
+      <option className="text-black" value="Navi Mumbai">Navi Mumbai</option>
+      <option className="text-black" value="Thane">Thane</option>
+      <option className="text-black" value="Powai">Powai</option>
+      <option className="text-black" value="Andheri">Andheri</option>
+      <option className="text-black" value="Open to suggestions">Open to suggestions</option>
     </select>
 
     <button
-      onClick={() => openWhatsApp()}
-      className="w-full gold-gradient py-2.5 rounded-lg font-semibold text-white text-sm"
+      type="submit"
+      disabled={guideSubmitting}
+      className="w-full gold-gradient py-2.5 rounded-lg font-semibold text-white text-sm disabled:opacity-60 disabled:cursor-not-allowed"
     >
-      Get Free Guide
+      {guideSubmitting ? "Sending…" : "Get Free Guide"}
     </button>
 
   </div>
@@ -203,7 +301,7 @@ export default function Home() {
     No spam. Your information is safe with us.
   </p>
 
-</div>
+</form>
     </div>
 
   </div>
