@@ -3,8 +3,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Who We Are | TrueStar Real Estate",
-  description: "Learn about TrueStar Real Estate's mission, vision, and commitment to excellence in Dubai's real estate market.",
+  title: "Who We Are | Golden Brix Properties",
+  description:
+    "Learn about Golden Brix Properties—our mission, vision, and premium-first approach to real estate across Mumbai and Navi Mumbai.",
 };
 
 export default function WhoWeAre() {
@@ -26,10 +27,8 @@ export default function WhoWeAre() {
           
           <div className="space-y-6 sm:space-y-8 mb-10 sm:mb-12 md:mb-16">
             <p className="text-base sm:text-lg text-[#1a1a1a]/80 leading-relaxed">
-              TrueStar Real Estate was founded in Dubai in 2025 by Aajay Sagar, a seasoned real estate professional with 18 years of 
-              experience in the Dubai market. Born from a vision to redefine real estate advisory through trust, transparency, and 
-              exceptional service, TrueStar has quickly established itself as a trusted partner for property buyers, sellers, and 
-              investors across Dubai.
+              Golden Brix Properties is a premium real estate advisory focused on curated residential opportunities across Mumbai and
+              Navi Mumbai. Built on trust, transparency, and a calm, structured process, we help buyers and investors move forward with clarity.
             </p>
             
             <p className="text-base sm:text-lg text-[#1a1a1a]/80 leading-relaxed">
@@ -59,8 +58,8 @@ export default function WhoWeAre() {
                 </h2>
               </div>
               <p className="text-[#1a1a1a]/80 leading-relaxed text-base sm:text-lg">
-                To be Dubai's most trusted real estate partner by delivering exceptional service, transparent advisory, and 
-                strategic solutions that help our clients achieve their property goals and build lasting wealth.
+                To be Mumbai & Navi Mumbai’s most trusted real estate partner by delivering exceptional service, transparent advisory,
+                and structured solutions that help our clients achieve their goals and build long-term value.
               </p>
             </div>
             
@@ -76,8 +75,8 @@ export default function WhoWeAre() {
                 </h2>
               </div>
               <p className="text-[#1a1a1a]/80 leading-relaxed text-base sm:text-lg">
-                To transform how people experience real estate in Dubai by setting new standards for trust, clarity, and 
-                performance, making property investment accessible, transparent, and rewarding for everyone.
+                To raise the standard for premium real estate advisory in Mumbai and Navi Mumbai—making property decisions clearer,
+                calmer, and more rewarding for end-users and investors.
               </p>
             </div>
           </div>

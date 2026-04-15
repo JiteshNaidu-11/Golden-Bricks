@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { MapPin, Bed, Bath, Square } from 'lucide-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
-import { getPropertyImage, dubaiImages } from '@/lib/images';
+import { getPropertyImage } from '@/lib/images';
 
 interface Property {
   id: number;
@@ -22,9 +22,9 @@ interface Property {
 const properties: Property[] = [
   {
     id: 1,
-    name: "The Address Residences",
-    location: "Downtown Dubai",
-    price: "AED 2.5M",
+    name: "Seawoods Signature Residences",
+    location: "Seawoods, Navi Mumbai",
+    price: "₹2.2 Cr",
     bedrooms: 3,
     bathrooms: 2,
     area: "2,500 sqft",
@@ -34,9 +34,9 @@ const properties: Property[] = [
   },
   {
     id: 2,
-    name: "Palm Jumeirah Villa",
-    location: "Palm Jumeirah",
-    price: "AED 8.5M",
+    name: "Powai Lakeview Villa",
+    location: "Powai, Mumbai",
+    price: "₹8.5 Cr",
     bedrooms: 5,
     bathrooms: 4,
     area: "5,200 sqft",
@@ -46,9 +46,9 @@ const properties: Property[] = [
   },
   {
     id: 3,
-    name: "Dubai Marina Penthouse",
-    location: "Dubai Marina",
-    price: "AED 4.2M",
+    name: "Bandra Sky Penthouse",
+    location: "Bandra, Mumbai",
+    price: "₹12.5 Cr",
     bedrooms: 4,
     bathrooms: 3,
     area: "3,800 sqft",
@@ -58,9 +58,9 @@ const properties: Property[] = [
   },
   {
     id: 4,
-    name: "Business Bay Apartment",
-    location: "Business Bay",
-    price: "AED 1.8M",
+    name: "Thane Central Apartment",
+    location: "Thane",
+    price: "₹1.8 Cr",
     bedrooms: 2,
     bathrooms: 2,
     area: "1,500 sqft",
@@ -70,9 +70,9 @@ const properties: Property[] = [
   },
   {
     id: 5,
-    name: "Jumeirah Village Circle",
-    location: "JVC",
-    price: "AED 1.2M",
+    name: "Kharghar Family Homes",
+    location: "Kharghar, Navi Mumbai",
+    price: "₹1.2 Cr",
     bedrooms: 3,
     bathrooms: 2,
     area: "2,000 sqft",
@@ -82,9 +82,9 @@ const properties: Property[] = [
   },
   {
     id: 6,
-    name: "Dubai Hills Estate",
-    location: "Dubai Hills",
-    price: "AED 3.5M",
+    name: "Nerul Premium Greens",
+    location: "Nerul, Navi Mumbai",
+    price: "₹3.5 Cr",
     bedrooms: 4,
     bathrooms: 3,
     area: "3,200 sqft",
@@ -117,7 +117,7 @@ export default function FeaturedProperties() {
               Featured Properties
             </h2>
             <p className="text-white/70 text-lg">
-              Discover the finest selection of luxury properties in Dubai
+              Discover a premium selection across Mumbai and Navi Mumbai
             </p>
           </div>
           <div className="hidden md:flex gap-4">

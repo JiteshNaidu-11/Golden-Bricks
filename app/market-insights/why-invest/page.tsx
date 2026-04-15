@@ -5,51 +5,60 @@ import { Shield, TrendingUp, Award, Globe, Home, DollarSign } from 'lucide-react
 import { dubaiImages } from '@/lib/images';
 
 export const metadata: Metadata = {
-  title: "Why Invest in Dubai | TrueStar Real Estate",
-  description: "Discover why Dubai is a premier destination for property investment: freehold ownership, no tax, Golden Visa, high yields, and more.",
+  title: "Why Invest in Mumbai & Navi Mumbai | Golden Brix Properties",
+  description:
+    "Discover why Mumbai and Navi Mumbai remain premium investment destinations: end-user depth, infra catalysts, rental demand, and long-term resale strength.",
 };
 
 export default function WhyInvest() {
   const advantages = [
     {
       icon: Home,
-      title: "Freehold Ownership",
-      description: "100% freehold ownership rights for international investors in designated areas, providing complete property ownership.",
+      title: "End-user depth",
+      description:
+        "Mumbai and Navi Mumbai have strong end-user demand that supports long-term liquidity and resale strength in quality projects.",
     },
     {
       icon: DollarSign,
-      title: "No Tax",
-      description: "Zero income tax, capital gains tax, and property tax. Keep 100% of your rental income and capital appreciation.",
+      title: "Rental demand",
+      description:
+        "Tenant demand in key micro-markets creates predictable rental ranges—especially near business hubs and transit corridors.",
     },
     {
       icon: Award,
-      title: "Golden Visa",
-      description: "Property investment of AED 2M+ qualifies for 10-year Golden Visa, offering residency benefits for you and your family.",
+      title: "Infrastructure catalysts",
+      description:
+        "Metro links, road upgrades, and new business nodes can unlock appreciation—timelines and access matter most.",
     },
     {
       icon: TrendingUp,
       title: "High Yields",
-      description: "Attractive rental yields of 6-8% in prime locations, significantly higher than many global markets.",
+      description:
+        "Yields vary by pocket and configuration—focus on tenant profile, rent range, and total ownership costs.",
     },
     {
       icon: Globe,
-      title: "Strategic Location",
-      description: "Dubai's position as a global business hub connects Asia, Europe, and Africa, ensuring sustained demand.",
+      title: "Micro-market clarity",
+      description:
+        "The best outcomes come from choosing the right micro-market: connectivity, neighborhood depth, and future supply.",
     },
     {
       icon: Shield,
       title: "Stable Economy",
-      description: "Diversified economy, strong regulatory framework, and government support for real estate sector growth.",
+      description:
+        "Regulatory frameworks and documentation checks reduce risk—prioritize clarity, approvals, and credible delivery.",
     },
     {
       icon: TrendingUp,
       title: "Capital Appreciation",
-      description: "Strong historical performance with consistent property value growth driven by infrastructure and development.",
+      description:
+        "Appreciation is strongest where demand, access, and supply discipline align—compare with nearby resale comps.",
     },
     {
       icon: Globe,
       title: "World-Class Infrastructure",
-      description: "Modern amenities, excellent connectivity, and ongoing infrastructure investments enhance property values.",
+      description:
+        "Connectivity plus social infrastructure (schools, healthcare, retail) tends to protect desirability over time.",
     },
   ];
 
@@ -77,11 +86,12 @@ export default function WhyInvest() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 gold-gradient-text"
               style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
             >
-              Why Invest in Dubai
+              Why Invest in Mumbai & Navi Mumbai
             </h1>
             <div className="w-24 h-1 gold-gradient mx-auto mb-4"></div>
             <p className="text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto">
-              Discover the compelling reasons why Dubai is a premier destination for property investment
+              A premium-first lens on why Mumbai and Navi Mumbai remain strong
+              choices for end-users and long-term investors.
             </p>
           </div>
           
@@ -104,12 +114,12 @@ export default function WhyInvest() {
             })}
           </div>
           
-          {/* Dubai Skyline Showcase */}
+          {/* Market showcase */}
           <div className="mb-16">
             <div className="rounded-2xl overflow-hidden shadow-2xl">
               <img 
                 src={dubaiImages.general.dubaiSkyline}
-                alt="Dubai Skyline - Investment Destination"
+                alt="City skyline - investment destination"
                 className="w-full h-96 object-cover"
               />
             </div>
@@ -121,54 +131,54 @@ export default function WhyInvest() {
               className="text-3xl md:text-4xl font-bold text-[#001F3F] leading-relaxed"
               style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
             >
-              "Dubai isn't just a property market — it is a long-term wealth platform."
+              "Mumbai isn’t just a property market — it’s a long-term wealth platform when you buy right."
             </p>
           </div>
 
           {/* Investment Locations */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-8 text-center" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
-              Prime Investment Locations
+              Premium micro-markets to watch
             </h2>
             <div className="grid md:grid-cols-4 gap-6">
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img 
                   src={dubaiImages.communities.downtown}
-                  alt="Downtown Dubai"
+                  alt="Central business district"
                   className="w-full h-40 object-cover"
                 />
                 <div className="p-3 bg-white text-center">
-                  <h3 className="font-bold gold-gradient-text">Downtown</h3>
+                  <h3 className="font-bold gold-gradient-text">South Mumbai</h3>
                 </div>
               </div>
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img 
                   src={dubaiImages.communities.dubaiMarina}
-                  alt="Dubai Marina"
+                  alt="Waterfront district"
                   className="w-full h-40 object-cover"
                 />
                 <div className="p-3 bg-white text-center">
-                  <h3 className="font-bold gold-gradient-text">Marina</h3>
+                  <h3 className="font-bold gold-gradient-text">BKC & Bandra</h3>
                 </div>
               </div>
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img 
                   src={dubaiImages.communities.palmJumeirah}
-                  alt="Palm Jumeirah"
+                  alt="Premium residential pocket"
                   className="w-full h-40 object-cover"
                 />
                 <div className="p-3 bg-white text-center">
-                  <h3 className="font-bold gold-gradient-text">Palm Jumeirah</h3>
+                  <h3 className="font-bold gold-gradient-text">Powai</h3>
                 </div>
               </div>
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img 
                   src={dubaiImages.communities.dubaiHills}
-                  alt="Dubai Hills"
+                  alt="Growth corridor"
                   className="w-full h-40 object-cover"
                 />
                 <div className="p-3 bg-white text-center">
-                  <h3 className="font-bold gold-gradient-text">Dubai Hills</h3>
+                  <h3 className="font-bold gold-gradient-text">Navi Mumbai</h3>
                 </div>
               </div>
             </div>
@@ -184,19 +194,19 @@ export default function WhyInvest() {
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="p-6 rounded-lg border border-[#C5A24A]/20 text-center">
-                <div className="text-4xl font-bold gold-gradient-text mb-2">100%</div>
-                <div className="text-lg font-semibold text-[#1a1a1a] mb-2">Freehold Ownership</div>
-                <div className="text-sm text-[#1a1a1a]/70">Complete ownership rights for international investors</div>
+                <div className="text-4xl font-bold gold-gradient-text mb-2">3–4</div>
+                <div className="text-lg font-semibold text-[#1a1a1a] mb-2">Key checks</div>
+                <div className="text-sm text-[#1a1a1a]/70">Demand, liquidity, documentation, and access</div>
               </div>
               <div className="p-6 rounded-lg border border-[#C5A24A]/20 text-center">
-                <div className="text-4xl font-bold gold-gradient-text mb-2">0%</div>
-                <div className="text-lg font-semibold text-[#1a1a1a] mb-2">Tax Rate</div>
-                <div className="text-sm text-[#1a1a1a]/70">No income, capital gains, or property tax</div>
+                <div className="text-4xl font-bold gold-gradient-text mb-2">6–8%</div>
+                <div className="text-lg font-semibold text-[#1a1a1a] mb-2">Typical yield band</div>
+                <div className="text-sm text-[#1a1a1a]/70">Varies by pocket and configuration</div>
               </div>
               <div className="p-6 rounded-lg border border-[#C5A24A]/20 text-center">
-                <div className="text-4xl font-bold gold-gradient-text mb-2">10 Years</div>
-                <div className="text-lg font-semibold text-[#1a1a1a] mb-2">Golden Visa</div>
-                <div className="text-sm text-[#1a1a1a]/70">Residency benefits with AED 2M+ investment</div>
+                <div className="text-4xl font-bold gold-gradient-text mb-2">5–7</div>
+                <div className="text-lg font-semibold text-[#1a1a1a] mb-2">Years horizon</div>
+                <div className="text-sm text-[#1a1a1a]/70">Best results with a long-term lens</div>
               </div>
             </div>
           </div>

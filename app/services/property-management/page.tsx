@@ -15,13 +15,13 @@ export default function PropertyManagement() {
     },
     {
       icon: Zap,
-      title: "DEWA Setup",
-      description: "Complete utility connection and account setup for electricity and water services.",
+      title: "Utilities Setup",
+      description: "Guidance for electricity/water connections and account setup support as needed.",
     },
     {
       icon: FileText,
-      title: "Ejari Registration",
-      description: "Handling all Ejari documentation and registration requirements.",
+      title: "Documentation Support",
+      description: "Assistance with rental/ownership documentation and coordination with relevant parties.",
     },
     {
       icon: DollarSign,
@@ -35,8 +35,8 @@ export default function PropertyManagement() {
     },
     {
       icon: Globe,
-      title: "Ideal for Overseas Investors",
-      description: "Complete peace of mind for international property owners with full management support.",
+      title: "Ideal for busy owners",
+      description: "Peace of mind for owners who want end-to-end management and timely updates.",
     },
   ];
 
@@ -68,7 +68,7 @@ export default function PropertyManagement() {
             </h1>
             <div className="w-24 h-1 gold-gradient mx-auto mb-4"></div>
             <p className="text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto">
-              Complete property management solutions for owners, especially ideal for overseas investors
+              Complete property management solutions for owners across Mumbai and Navi Mumbai
             </p>
           </div>
           
@@ -121,7 +121,7 @@ export default function PropertyManagement() {
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full gold-gradient mt-2 flex-shrink-0"></div>
-                    <p className="text-[#1a1a1a]/80">Compliance with Dubai regulations and requirements</p>
+                    <p className="text-[#1a1a1a]/80">Compliance with documentation requirements and best practices</p>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full gold-gradient mt-2 flex-shrink-0"></div>

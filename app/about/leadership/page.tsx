@@ -4,18 +4,19 @@ import Footer from '@/components/Footer';
 import { Shield, Eye, TrendingUp, Target } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: "Leadership & Expertise | TrueStar Real Estate",
-  description: "Learn about TrueStar Real Estate's leadership team and our core pillars: Trust, Clarity, Performance, and Long-term Value.",
+  title: "Leadership & Expertise | Golden Brix Properties",
+  description:
+    "Learn about Golden Brix Properties’ leadership approach and our core pillars: Trust, Clarity, Performance, and Long-term Value.",
 };
 
 export default function Leadership() {
   const leadershipPoints = [
-    "18 years of combined Dubai real estate experience",
-    "Direct relationships with top developers (Emaar, Nakheel, Sobha, Damac)",
+    "15+ years of combined Mumbai & Navi Mumbai real estate experience",
+    "Relationships with reputed developers and verified resale inventory",
     "Expertise in luxury, off-plan, and investment properties",
     "Proven track record in portfolio management and advisory",
-    "Deep understanding of Dubai market trends and regulations",
-    "Multilingual team serving international clientele",
+    "Deep understanding of local micro-markets, pricing, and documentation",
+    "Client-first advisory built for end-users and investors",
     "Comprehensive after-sales support and property management",
     "Transparent, client-first approach to every transaction",
   ];
@@ -58,7 +59,7 @@ export default function Leadership() {
             </h1>
             <div className="w-20 sm:w-24 h-1 gold-gradient mx-auto mb-3 sm:mb-4"></div>
             <p className="text-base sm:text-lg md:text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto px-4">
-              Our team brings decades of experience and a commitment to excellence in every aspect of Dubai real estate.
+              Our team brings deep local experience and a commitment to excellence across Mumbai and Navi Mumbai real estate.
             </p>
           </div>
           

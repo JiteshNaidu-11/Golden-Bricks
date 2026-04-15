@@ -24,9 +24,16 @@ export async function POST(request: NextRequest) {
     }
 
     // Get email configuration from environment variables
-    const emailUser = process.env.EMAIL_USER || 'your-email@gmail.com';
-    const emailPassword = process.env.EMAIL_APP_PASSWORD || 'your-app-password';
-    const recipientEmail = process.env.RECIPIENT_EMAIL || 'Inquiry@truestar.ae';
+    const emailUser = process.env.EMAIL_USER || "";
+    const emailPassword = process.env.EMAIL_APP_PASSWORD || "";
+    const recipientEmail = process.env.RECIPIENT_EMAIL || "";
+
+    if (!emailUser || !emailPassword || !recipientEmail) {
+      return NextResponse.json(
+        { error: "Email service is not configured." },
+        { status: 500 },
+      );
+    }
 
     // Create transporter
     const transporter = nodemailer.createTransport({
@@ -41,7 +48,7 @@ export async function POST(request: NextRequest) {
     const mailOptions = {
       from: emailUser,
       to: recipientEmail,
-      subject: `New Contact Form Inquiry - ${inquiryType} | TrueStar Real Estate`,
+      subject: `New Contact Form Inquiry - ${inquiryType} | Golden Brix Properties`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -97,7 +104,7 @@ export async function POST(request: NextRequest) {
             <div class="container">
               <div class="header">
                 <h2>New Contact Form Inquiry</h2>
-                <p>TrueStar Real Estate</p>
+                <p>Golden Brix Properties</p>
               </div>
               <div class="content">
                 <div class="field">
@@ -118,7 +125,7 @@ export async function POST(request: NextRequest) {
                 </div>
               </div>
               <div class="footer">
-                <p>This email was sent from the TrueStar Real Estate contact form.</p>
+                <p>This email was sent from the Golden Brix Properties contact form.</p>
                 <p>Reply directly to: ${email}</p>
               </div>
             </div>
@@ -135,8 +142,7 @@ export async function POST(request: NextRequest) {
       { message: 'Email sent successfully' },
       { status: 200 }
     );
-  } catch (error) {
-    console.error('Error sending email:', error);
+  } catch {
     return NextResponse.json(
       { error: 'Failed to send email. Please try again later.' },
       { status: 500 }

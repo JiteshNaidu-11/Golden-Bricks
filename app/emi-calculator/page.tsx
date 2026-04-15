@@ -29,7 +29,7 @@ export default function EmiCalculatorPage() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/Hero/3.jpg"
+              src="/properties/westwoods-platinum.jpg"
               alt=""
               className="hero-image h-full w-full object-cover opacity-18"
             />

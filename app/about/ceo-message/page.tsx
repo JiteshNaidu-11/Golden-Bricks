@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: "CEO's Message | TrueStar Real Estate",
-  description: "A message from Aajay Sagar, Founder & CEO of TrueStar Real Estate, sharing our vision and commitment to trust in real estate.",
+  title: "CEO's Message | Golden Brix Properties",
+  description:
+    "A message from our leadership team sharing our vision and commitment to trust in real estate.",
 };
 
 export default function CEOMessage() {
@@ -28,14 +28,14 @@ export default function CEOMessage() {
           <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-start">
             {/* Portrait Image */}
             <div className="relative">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-[#C5A24A]/20 hover:border-[#C5A24A]/50 transition-all duration-300 ">
+              <div className="relative aspect-3/4 rounded-2xl overflow-hidden shadow-2xl border-4 border-[#C5A24A]/20 hover:border-[#C5A24A]/50 transition-all duration-300 ">
                 <img
                   src="/ajaysagar.png"
-                  alt="Aajay Sagar - Founder & CEO of TrueStar Real Estate"
+                  alt="CEO message portrait"
                   className="absolute inset-0 w-full h-full object-cover object-top"
                 />
                 {/* Gold gradient overlay on bottom */}
-                {/* <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#001F3F]/80 to-transparent pointer-events-none"></div> */}
+                {/* <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-[#001F3F]/80 to-transparent pointer-events-none"></div> */}
                 {/* Name badge */}
                 {/* <div className="absolute bottom-6 left-6 right-6 z-10">
                   <div className=" rounded-lg p-4 shadow-xl">
@@ -46,7 +46,7 @@ export default function CEOMessage() {
                       Founder & CEO
                     </p>
                     <p className="text-xs text-[#001F3F]/60 mt-1">
-                      18 Years of Dubai Real Estate Experience
+                      15+ years of premium advisory experience
                     </p>
                   </div>
                 </div> */}
@@ -56,21 +56,27 @@ export default function CEOMessage() {
             {/* Message Content */}
             <div className="space-y-4 sm:space-y-5 md:space-y-6 text-base sm:text-lg leading-relaxed">
               <p className="text-[#1a1a1a]/80">
-                Welcome to TrueStar Real Estate, where <span className="font-semibold gold-gradient-text">trust is the real currency of real estate</span>. 
-                In a market as dynamic and competitive as Dubai's, we understand that your property journey is not just about transactions—it's about 
-                building lasting relationships and securing your future.
+                Welcome to Golden Brix Properties, where{" "}
+                <span className="font-semibold gold-gradient-text">
+                  trust is the real currency of real estate
+                </span>
+                . We understand that your property journey is not just about
+                transactions—it's about building lasting relationships and
+                securing your future.
               </p>
               
               <p className="text-[#1a1a1a]/80">
-                With 18 years of experience in Dubai's real estate landscape, I've witnessed the transformation of this city into a global investment 
-                hub. From the early days of development to today's sophisticated market, one thing has remained constant: the need for transparency, 
-                expertise, and genuine care.
+                With years of experience across Mumbai and Navi Mumbai, we’ve
+                seen how much the right advice matters. One thing remains
+                constant: the need for transparency, expertise, and genuine
+                care.
               </p>
               
               <p className="text-[#1a1a1a]/80">
-                At TrueStar, we don't just sell properties—we craft solutions. Whether you're a first-time buyer, a seasoned investor, or looking to 
-                expand your portfolio, our team brings unparalleled market knowledge, direct developer relationships, and a commitment to your success 
-                that goes beyond the closing.
+                At Golden Brix, we don’t just sell properties—we craft solutions.
+                Whether you’re a first-time buyer or a seasoned investor, our
+                team brings deep market knowledge and a commitment that goes
+                beyond the closing.
               </p>
               
               <p className="text-[#1a1a1a]/80">
@@ -80,8 +86,9 @@ export default function CEOMessage() {
               </p>
               
               <p className="text-[#1a1a1a]/80">
-                Dubai isn't just a property market—it's a long-term wealth platform. And at TrueStar, we're here to help you navigate it with confidence, 
-                clarity, and the assurance that your investment is in the right hands.
+                Mumbai and Navi Mumbai aren’t just property markets—they’re
+                long-term wealth platforms. We’re here to help you navigate
+                decisions with confidence, clarity, and calm execution.
               </p>
               
               <div className="pt-6 sm:pt-8 border-t border-[#C5A24A]/20">
@@ -89,7 +96,7 @@ export default function CEOMessage() {
                   — <span className="font-semibold gold-gradient-text">Aajay Sagar</span>
                 </p>
                 <p className="text-right text-[#1a1a1a]/70 text-sm sm:text-base">
-                  Founder & CEO, TrueStar Real Estate
+                  Golden Brix Properties
                 </p>
               </div>
             </div>

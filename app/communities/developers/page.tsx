@@ -4,34 +4,35 @@ import Footer from '@/components/Footer';
 import DevelopersGrid from '@/components/DevelopersGrid';
 
 export const metadata: Metadata = {
-  title: "Developer Partners | TrueStar Real Estate",
-  description: "TrueStar works directly with top developers including Emaar, Meraas, Nakheel, Sobha, and Damac for priority access and exclusive inventory.",
+  title: "Developer Partners | Golden Brix Properties",
+  description:
+    "Golden Brix Properties works with reputed developers across Mumbai and Navi Mumbai for verified inventory and priority access to premium opportunities.",
 };
 
 export default function Developers() {
   const developers = [
-    { name: "EMAAR", description: "Dubai's leading developer, creator of iconic projects" },
-    { name: "MERAAS", description: "Innovative developer behind City Walk and Bluewaters" },
-    { name: "NAKHEEL", description: "Developer of Palm Jumeirah and landmark projects" },
-    { name: "DAMAC", description: "Luxury developer with international presence" },
+    { name: "EMAAR", description: "Reputed developer known for landmark, master-planned communities" },
+    { name: "MERAAS", description: "Design-led developments focused on lifestyle and placemaking" },
+    { name: "NAKHEEL", description: "Large-scale community developer with iconic waterfront projects" },
+    { name: "DAMAC", description: "Luxury-focused developer with a strong premium portfolio" },
     { name: "SOBHA REALTY", description: "Premium developer known for quality craftsmanship" },
     { name: "OMNIYAT", description: "Ultra-luxury bespoke developments" },
-    { name: "ALDAR", description: "Abu Dhabi's leading developer" },
-    { name: "ELLINGTON", description: "Boutique lifestyle properties with unique design" },
-    { name: "NSHAMA", description: "Developer of Town Square and family-focused communities" },
+    { name: "ALDAR", description: "Institutional-grade developer with diversified assets" },
+    { name: "ELLINGTON", description: "Boutique lifestyle properties with thoughtful design" },
+    { name: "NSHAMA", description: "Family-focused communities with strong value positioning" },
     { name: "ARADA", description: "Award-winning developer creating vibrant communities" },
     { name: "BINGHATTI", description: "Contemporary architecture and design excellence" },
-    { name: "AZIZI", description: "Leading developer with diverse portfolio" },
-    { name: "SAMANA", description: "Contemporary living spaces and hotels" },
-    { name: "DEYAAR", description: "Innovative urban living solutions" },
+    { name: "AZIZI", description: "Developer with a diverse residential portfolio" },
+    { name: "SAMANA", description: "Contemporary living spaces and hospitality-led projects" },
+    { name: "DEYAAR", description: "Urban living solutions across key micro-markets" },
     { name: "DANUBE PROPERTIES", description: "Affordable luxury developments" },
     { name: "SELECT GROUP", description: "Boutique luxury developments" },
     { name: "AL HABTOOR", description: "Diversified real estate conglomerate" },
     // { name: "AL FUTTAIM", description: "Iconic developments and master communities" },
     { name: "MAJID AL FUTTAIM", description: "Master developer of mixed-use communities" },
-    { name: "UNION PROPERTIES", description: "Developer of Motor City and MotorSports City" },
-    { name: "DUBAI PROPERTIES", description: "Diverse property portfolio developer" },
-    { name: "WASL", description: "Developer focused on community-centric projects" },
+    { name: "UNION PROPERTIES", description: "Mixed-use developer with established communities" },
+    { name: "DB PROPERTIES", description: "Developer with a diverse residential and commercial portfolio" },
+    { name: "WASL", description: "Community-centric projects with strong delivery track record" },
     { name: "BNW", description: "Emerging developer with innovative projects" },
     { name: "OBJECT 1", description: "Premium waterfront developments" },
     { name: "IMAN", description: "Innovative luxury real estate developer" },
@@ -52,7 +53,8 @@ export default function Developers() {
             </h1>
             <div className="w-24 h-1 gold-gradient mx-auto mb-4"></div>
             <p className="text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto">
-              We work directly with top developers to secure priority access and exclusive inventory
+              We work closely with developer teams to secure priority access and verified inventory
+              across Mumbai and Navi Mumbai.
             </p>
           </div>
           
@@ -117,7 +119,7 @@ export default function Developers() {
               href="/contact"
               className="inline-block px-8 py-4 gold-gradient text-white font-semibold rounded-lg hover:shadow-xl hover:shadow-[#C5A24A]/50 transition-all"
             >
-              Access Exclusive Developer Inventory
+              Access verified developer inventory
             </a>
           </div>
         </div>

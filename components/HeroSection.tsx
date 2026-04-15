@@ -86,9 +86,9 @@ export default function HeroSection() {
                 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
                 style={{ fontFamily: 'var(--font-playfair), serif' }}
               >
-                Invest In Dubai Real Estate
+                Invest In Mumbai Real Estate
                 <span className="block gold-gradient-text mt-2">
-                  With Golden Bricks
+                  With Golden Brix Properties
                 </span>
               </h1>
 
@@ -98,7 +98,7 @@ export default function HeroSection() {
 
               <p className="text-lg text-white/70 max-w-xl">
                 Discover premium apartments, villas and investment
-                opportunities in Dubai's most prestigious communities.
+                opportunities across Mumbai and Navi Mumbai’s best micro-markets.
               </p>
             </div>
 
@@ -107,7 +107,7 @@ export default function HeroSection() {
 
               <button className="flex items-center gap-2 px-7 py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:scale-105 transition-all">
                 <Download className="w-5 h-5" />
-                Dubai Investment Guide
+                Mumbai Investment Guide
               </button>
 
               <button className="flex items-center gap-2 px-7 py-4 border border-[#D4AF37] text-white font-semibold rounded-lg hover:bg-[#D4AF37] hover:text-black transition-all">

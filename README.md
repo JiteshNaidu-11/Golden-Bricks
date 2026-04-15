@@ -1,12 +1,12 @@
-# Truestar - Premium Real Estate Company
+# Golden Brix Properties - Premium Real Estate Advisory
 
-A luxury real estate website for Truestar, a premium real estate company based in Dubai. Built with modern design principles, featuring a golden gradient theme that conveys elegance and sophistication.
+A luxury real estate website for Golden Brix Properties, a premium real estate advisory based in Mumbai & Navi Mumbai. Built with modern design principles, featuring a golden gradient theme that conveys elegance and sophistication.
 
 ## 🏢 About
 
-**Truestar** - Where Dubai's Vision Meets Timeless Luxury
+**Golden Brix Properties** — Premium decisions, made calm.
 
-Truestar is a premium real estate company specializing in luxury properties, exclusive developments, and exceptional investment opportunities in Dubai. This website showcases our portfolio of properties, projects, and communities while providing an elegant, high-end user experience.
+Golden Brix Properties is a premium real estate advisory specializing in curated residential opportunities and investment insights across Mumbai and Navi Mumbai. This website showcases properties, projects, and insights while providing an elegant, high-end user experience.
 
 ## ✨ Features
 
@@ -72,7 +72,7 @@ npm start
 ## 📁 Project Structure
 
 ```
-truestar/
+golden-brix/
 ├── app/
 │   ├── layout.tsx          # Root layout with metadata
 │   ├── page.tsx            # Main page component
@@ -120,7 +120,7 @@ truestar/
 1. **Hero Section** - Main banner with property search form
 2. **Featured Properties** - Grid of luxury properties
 3. **Top Projects** - Premium off-plan developments
-4. **Communities** - Prime Dubai locations
+4. **Communities** - Prime Mumbai / Navi Mumbai micro-markets
 5. **Developers** - Partner developer showcase
 6. **Why Choose Us** - Company features and stats
 7. **Testimonials** - Client reviews and ratings
@@ -157,9 +157,9 @@ This project is private and proprietary.
 
 ## 🤝 Support
 
-For support, email info@truestar.ae or visit our office in Business Bay, Dubai.
+For support, email goldenbrix@gmail.com or visit our office in Seawoods, Navi Mumbai.
 
 ---
 
-**Truestar** - Where Dubai's Vision Meets Timeless Luxury
+**Golden Brix Properties** — Premium decisions, made calm.
 

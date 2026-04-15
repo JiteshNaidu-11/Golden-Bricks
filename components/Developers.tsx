@@ -20,7 +20,7 @@ export default function Developers() {
             Developers We Work With
           </h2>
           <p className="text-white/70 text-lg">
-            Exclusive partnerships with Dubai's leading real estate developers
+            Partnerships with reputed developers across Mumbai and Navi Mumbai
           </p>
         </div>
 

@@ -13,14 +13,6 @@ type Message = {
 
 const CONTACT_NUMBER = '+91 77383 84100';
 
-const QUICK_REPLIES = [
-  'View properties',
-  'Areas we cover',
-  'Contact / WhatsApp',
-  'Investment advice',
-  'New vs resale property',
-];
-
 const IMPORTANT_QUESTIONS: { label: string; prompt: string }[] = [
   { label: 'What is your contact number?', prompt: 'contact number' },
   { label: 'How can I view properties?', prompt: 'view properties' },
@@ -41,7 +33,7 @@ function getBotResponse(userText: string): string {
     lower.includes('view') ||
     lower.includes('listing')
   ) {
-    return "Golden Bricks offers premium apartments and investment properties across Mumbai and Navi Mumbai. You can browse our featured listings on the homepage or ask us for recommendations based on your budget and preferred location.";
+    return "Golden Brix offers premium apartments and investment properties across Mumbai and Navi Mumbai. You can browse our featured listings on the homepage or ask us for recommendations based on your budget and preferred location.";
   }
 
   if (
@@ -53,7 +45,7 @@ function getBotResponse(userText: string): string {
   }
 
   if (lower.includes('open whatsapp')) {
-    return "Opening WhatsApp for you. Our Golden Bricks team will respond shortly.";
+    return "Opening WhatsApp for you. Our Golden Brix team will respond shortly.";
   }
 
   if (
@@ -62,7 +54,7 @@ function getBotResponse(userText: string): string {
     lower.includes('call') ||
     lower.includes('number')
   ) {
-    return `You can reach Golden Bricks anytime.
+    return `You can reach Golden Brix anytime.
 
 📞 Phone / WhatsApp: ${CONTACT_NUMBER}
 
@@ -106,7 +98,7 @@ You are welcome to visit us or schedule a meeting.`;
   }
 
   if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) {
-    return "Hello! Welcome to Golden Bricks. I can help you find properties in Mumbai and Navi Mumbai, provide investment advice, or connect you with our team.";
+    return "Hello! Welcome to Golden Brix. I can help you find properties in Mumbai and Navi Mumbai, provide investment advice, or connect you with our team.";
   }
 
   if (lower.includes('thank')) {
@@ -121,7 +113,7 @@ export default function RealEstateChatbot({ onClose }: { onClose: () => void }) 
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '0',
-      text: "Hi! I'm the Golden Bricks assistant. Ask me about properties in Mumbai or Navi Mumbai, investment opportunities, or how to contact our team.",
+      text: "Hi! I'm the Golden Brix assistant. Ask me about properties in Mumbai or Navi Mumbai, investment opportunities, or how to contact our team.",
       isBot: true,
       timestamp: new Date(),
     },
@@ -191,7 +183,7 @@ export default function RealEstateChatbot({ onClose }: { onClose: () => void }) 
 
   return (
 
-    <div className="flex flex-col h-full bg-gradient-to-b from-[#001F3F]/5 to-[#003366]/5">
+    <div className="flex flex-col h-full bg-linear-to-b from-[#001F3F]/5 to-[#003366]/5">
 
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-[#C5A24A]/20 bg-white/80">
@@ -204,7 +196,7 @@ export default function RealEstateChatbot({ onClose }: { onClose: () => void }) 
 
           <div>
             <h3 className="font-semibold text-[#001F3F]">
-              Golden Bricks Assistant
+              Golden Brix Assistant
             </h3>
             <p className="text-xs text-[#001F3F]/70">
               Mumbai Real Estate

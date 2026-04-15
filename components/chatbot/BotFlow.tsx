@@ -5,10 +5,7 @@ import {
   ArrowRight,
   ArrowLeft,
   MessageCircle,
-  Home,
   TrendingUp,
-  Key,
-  Globe,
   Compass,
   Shield,
   FileCheck,
@@ -29,12 +26,6 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
   const [view, setView] = useState<View>('title');
   const [audience, setAudience] = useState<Audience>(null);
   const [step, setStep] = useState(0);
-
-  const handleAudienceSelect = (a: Audience) => {
-    setAudience(a);
-    setView('content');
-    setStep(0);
-  };
 
   /* ---------------- FIRST TIME BUYER ---------------- */
 
@@ -74,12 +65,12 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
       ),
     },
     {
-      title: 'How Golden Bricks Helps',
+      title: 'How Golden Brix Helps',
       content: (
         <div className="space-y-4">
 
           <p className="leading-relaxed">
-            At Golden Bricks we help you from property search to final
+            At Golden Brix we help you from property search to final
             possession. Our experts shortlist the best projects based on
             your budget, preferred location, and lifestyle requirements.
           </p>
@@ -124,7 +115,7 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
         <div className="space-y-4">
 
           <p className="leading-relaxed">
-            Golden Bricks provides market insights, project comparisons,
+            Golden Brix provides market insights, project comparisons,
             and ROI guidance to help investors choose the right property.
           </p>
 
@@ -150,7 +141,7 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
         <div className="space-y-4">
 
           <p className="leading-relaxed">
-            Golden Bricks lists quality apartments and villas for rent
+            Golden Brix lists quality apartments and villas for rent
             across Mumbai and Navi Mumbai.
           </p>
 
@@ -203,7 +194,7 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
 
           <p className="leading-relaxed">
             Whether you’re buying, investing, or just exploring,
-            Golden Bricks provides expert guidance on the best
+            Golden Brix provides expert guidance on the best
             projects and locations.
           </p>
 
@@ -283,7 +274,7 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
           </div>
 
           <h2 className="text-2xl font-bold text-[#001F3F] mb-2">
-            Golden Bricks Property Assistant
+            Golden Brix Property Assistant
           </h2>
 
           <p className="text-[#001F3F]/80 mb-6 max-w-sm">
@@ -310,7 +301,7 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
   if (view === 'summary') {
 
     return (
-      <div className="flex flex-col h-full bg-gradient-to-b from-[#001F3F]/5 to-[#003366]/10">
+      <div className="flex flex-col h-full bg-linear-to-b from-[#001F3F]/5 to-[#003366]/10">
 
         <div className="flex justify-end p-3">
           <button onClick={onClose} className="w-9 h-9 rounded-full bg-white border flex items-center justify-center">×</button>
@@ -321,7 +312,7 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
           <FileCheck className="w-14 h-14 text-[#C5A24A] mb-4" />
 
           <h3 className="text-xl font-bold text-[#001F3F] mb-2">
-            Contact Golden Bricks
+            Contact Golden Brix
           </h3>
 
           <p className="text-sm text-[#001F3F]/80 mb-6">

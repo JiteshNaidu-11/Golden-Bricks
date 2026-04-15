@@ -19,47 +19,47 @@ interface Community {
 const communities: Community[] = [
   {
     id: 1,
-    name: "Dubai Marina",
-    location: "Dubai Marina, Dubai",
-    priceRange: "AED 1.2M - 8M",
-    image: getCommunityImage("Dubai Marina"),
+    name: "Seawoods",
+    location: "Seawoods, Navi Mumbai",
+    priceRange: "₹1.5 Cr - ₹4.5 Cr",
+    image: getCommunityImage("Marina"),
     type: "Apartments",
     projects: 45
   },
   {
     id: 2,
-    name: "Palm Jumeirah",
-    location: "Palm Jumeirah, Dubai",
-    priceRange: "AED 2.5M - 25M",
-    image: getCommunityImage("Palm Jumeirah"),
-    type: "Villas & Apartments",
+    name: "Kharghar",
+    location: "Kharghar, Navi Mumbai",
+    priceRange: "₹1.2 Cr - ₹3.8 Cr",
+    image: getCommunityImage("Palm"),
+    type: "Apartments",
     projects: 32
   },
   {
     id: 3,
-    name: "Downtown Dubai",
-    location: "Downtown Dubai",
-    priceRange: "AED 1.5M - 12M",
-    image: getCommunityImage("Downtown Dubai"),
+    name: "Powai",
+    location: "Powai, Mumbai",
+    priceRange: "₹2.2 Cr - ₹6.5 Cr",
+    image: getCommunityImage("Downtown"),
     type: "Apartments",
     projects: 28
   },
   {
     id: 4,
-    name: "Business Bay",
-    location: "Business Bay, Dubai",
-    priceRange: "AED 1.1M - 6M",
-    image: getCommunityImage("Business Bay"),
+    name: "Bandra",
+    location: "Bandra, Mumbai",
+    priceRange: "₹3.0 Cr - ₹9.0 Cr",
+    image: getCommunityImage("Business"),
     type: "Apartments",
     projects: 38
   },
   {
     id: 5,
-    name: "Dubai Hills Estate",
-    location: "Dubai Hills",
-    priceRange: "AED 2.5M - 15M",
-    image: getCommunityImage("Dubai Hills"),
-    type: "Villas & Townhouses",
+    name: "Thane",
+    location: "Thane (select pockets)",
+    priceRange: "₹1.0 Cr - ₹3.5 Cr",
+    image: getCommunityImage("Hills"),
+    type: "Apartments",
     projects: 25
   },
 ];
@@ -87,7 +87,7 @@ export default function Communities() {
               Explore Prime Locations
             </h2>
             <p className="text-white/70 text-lg">
-              Discover Dubai's most sought-after communities
+              Discover Mumbai and Navi Mumbai’s most sought-after micro-markets
             </p>
           </div>
           <div className="hidden md:flex gap-4">

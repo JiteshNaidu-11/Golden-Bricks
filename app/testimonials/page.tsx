@@ -81,7 +81,7 @@ export default async function TestimonialsPage() {
           <div className="pointer-events-none absolute inset-0" aria-hidden>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/Hero/4.jpg"
+              src="/properties/9pbr-palm-beachroad.jpg"
               alt=""
               className="hero-image h-full w-full object-cover opacity-18"
             />

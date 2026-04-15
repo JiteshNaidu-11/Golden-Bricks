@@ -4,8 +4,9 @@ import Footer from '@/components/Footer';
 import { MessageCircle, Search, Handshake, FileText, Headphones } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: "What We Do | TrueStar Real Estate",
-  description: "Discover TrueStar Real Estate's comprehensive process from consultation to after-sales support in Dubai property transactions.",
+  title: "What We Do | Golden Brix Properties",
+  description:
+    "Discover Golden Brix Properties’ structured process—from consultation to after-sales support for Mumbai and Navi Mumbai real estate.",
 };
 
 export default function WhatWeDo() {
@@ -33,7 +34,8 @@ export default function WhatWeDo() {
     {
       icon: Headphones,
       title: "After-Sales",
-      description: "Our relationship doesn't end at closing. We provide ongoing support including property management, market updates, resale advisory, and assistance with Golden Visa applications.",
+      description:
+        "Our relationship doesn't end at closing. We provide ongoing support including property management, market updates, resale advisory, and handover coordination.",
     },
   ];
 
@@ -52,7 +54,7 @@ export default function WhatWeDo() {
             </h1>
             <div className="w-20 sm:w-24 h-1 gold-gradient mx-auto mb-3 sm:mb-4"></div>
             <p className="text-base sm:text-lg md:text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto px-4">
-              A comprehensive, step-by-step approach to your property journey in Dubai
+              A comprehensive, step-by-step approach to your property journey in Mumbai and Navi Mumbai
             </p>
           </div>
           

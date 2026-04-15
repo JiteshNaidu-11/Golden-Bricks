@@ -7,44 +7,44 @@ import { getCommunityImage } from '@/lib/images';
 export default function KeyCommunities() {
   const communities = [
     {
-      name: "Jumeirah",
-      description: "Iconic beachfront community with luxury villas and apartments",
-      image: getCommunityImage("Jumeirah"),
+      name: "Seawoods",
+      description: "Premium Navi Mumbai pocket with strong connectivity and lifestyle infrastructure",
+      image: getCommunityImage("Seawoods"),
     },
     {
-      name: "Palm Jumeirah",
-      description: "World-famous man-made island with exclusive waterfront properties",
-      image: getCommunityImage("Palm Jumeirah"),
+      name: "Kharghar",
+      description: "A fast-growing micro-market known for planned sectors and end-user demand",
+      image: getCommunityImage("Palm"),
     },
     {
-      name: "Dubai Marina",
-      description: "Vibrant waterfront district with high-rise towers and marina views",
-      image: getCommunityImage("Dubai Marina"),
+      name: "Powai",
+      description: "Established Mumbai neighborhood with premium housing and corporate catchments",
+      image: getCommunityImage("Marina"),
     },
     {
-      name: "Downtown Dubai",
-      description: "Home to Burj Khalifa and Dubai Mall, the heart of the city",
-      image: getCommunityImage("Downtown Dubai"),
+      name: "Bandra",
+      description: "A prime Mumbai location with strong lifestyle depth and long-term desirability",
+      image: getCommunityImage("Downtown"),
     },
     {
-      name: "Business Bay",
-      description: "Modern business district with luxury apartments and commercial spaces",
-      image: getCommunityImage("Business Bay"),
+      name: "BKC",
+      description: "Key business district with premium residential demand and strong rental pockets",
+      image: getCommunityImage("Business"),
     },
     {
-      name: "Dubai Hills",
-      description: "Master-planned community with golf course and family-friendly amenities",
-      image: getCommunityImage("Dubai Hills"),
+      name: "Thane (select pockets)",
+      description: "Growing premium end-user market with improving connectivity and amenities",
+      image: getCommunityImage("Hills"),
     },
     {
-      name: "Emirates Hills",
-      description: "Exclusive gated community with luxury villas and mansions",
-      image: getCommunityImage("Emirates Hills"),
+      name: "Nerul",
+      description: "Well-connected Navi Mumbai node with steady end-user and rental demand",
+      image: getCommunityImage("Nerul"),
     },
     {
-      name: "Arabian Ranches",
-      description: "Family-oriented community with villas and townhouses",
-      image: getCommunityImage("Arabian Ranches"),
+      name: "Ulwe",
+      description: "An emerging growth corridor watched for connectivity and long-term upside",
+      image: getCommunityImage("Ulwe"),
     },
   ];
 
@@ -63,7 +63,7 @@ export default function KeyCommunities() {
             </h1>
             <div className="w-24 h-1 gold-gradient mx-auto mb-4"></div>
             <p className="text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto">
-              Explore Dubai's most prestigious and sought-after communities
+              Explore Mumbai and Navi Mumbai’s most sought-after micro-markets
             </p>
           </div>
           

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import SocialLinks from '@/components/SocialLinks';
+import { SERVICE_NAV_LINKS } from '@/lib/navServices';
 
 export default function Footer() {
   return (
@@ -20,7 +21,7 @@ export default function Footer() {
               <div className="relative h-14 w-48">
                 <Image
                   src="/images/logo/truestarLogonew.png"
-                  alt="Golden brix"
+                  alt="Golden Brix"
                   fill
                   className="object-contain"
                 />
@@ -28,7 +29,7 @@ export default function Footer() {
             </Link>
 
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              Golden brix is a trusted real estate advisory specializing
+              Golden Brix is a trusted real estate advisory specializing
               in premium residential and investment opportunities across
               Mumbai and Navi Mumbai.
             </p>
@@ -45,50 +46,72 @@ export default function Footer() {
   <ul className="space-y-3 text-sm">
 
     <li>
-      <Link href="/#home" className="text-white/70 hover:text-[#EBD181]">
+      <Link href="/" className="text-white/70 hover:text-[#EBD181]">
         Home
       </Link>
     </li>
 
     <li>
-      <Link href="/#about" className="text-white/70 hover:text-[#EBD181]">
+      <Link href="/about" className="text-white/70 hover:text-[#EBD181]">
         About Us
       </Link>
     </li>
 
     <li>
-      <Link href="/#projects" className="text-white/70 hover:text-[#EBD181]">
+      <Link href="/properties" className="text-white/70 hover:text-[#EBD181]">
+        Properties
+      </Link>
+    </li>
+
+    <li>
+      <Link href="/projects" className="text-white/70 hover:text-[#EBD181]">
         Projects
       </Link>
     </li>
 
     <li>
-      <Link href="/#testimonials" className="text-white/70 hover:text-[#EBD181]">
+      <Link href="/testimonials" className="text-white/70 hover:text-[#EBD181]">
         Testimonials
       </Link>
     </li>
 
     <li>
-      <Link href="/#services" className="text-white/70 hover:text-[#EBD181]">
+      <Link href="/services" className="text-white/70 hover:text-[#EBD181]">
         Services
       </Link>
     </li>
 
     <li>
-      <Link href="/#blogs" className="text-white/70 hover:text-[#EBD181]">
+      <Link href="/blogs" className="text-white/70 hover:text-[#EBD181]">
         Blogs
       </Link>
     </li>
 
+    {/*
     <li>
-      <Link href="/#careers" className="text-white/70 hover:text-[#EBD181]">
+      <Link href="/careers" className="text-white/70 hover:text-[#EBD181]">
         Careers
       </Link>
     </li>
+    */}
 
     <li>
-      <Link href="/#contact" className="text-white/70 hover:text-[#EBD181]">
+      <Link href="/contact" className="text-white/70 hover:text-[#EBD181]">
         Contact Us
+      </Link>
+    </li>
+
+    {/*
+    <li>
+      <Link href="/list-your-property" className="text-white/70 hover:text-[#EBD181]">
+        List Your Property
+      </Link>
+    </li>
+    */}
+
+    <li>
+      <Link href="/emi-calculator" className="text-white/70 hover:text-[#EBD181]">
+        EMI Calculator
       </Link>
     </li>
 
@@ -102,40 +125,13 @@ export default function Footer() {
             <h4 className="font-semibold text-white mb-5">Services</h4>
 
             <ul className="space-y-3 text-sm">
-
-              <li>
-                <Link href="/#services" className="text-white/70 hover:text-[#EBD181]">
-                  Buying Property
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/#services" className="text-white/70 hover:text-[#EBD181]">
-                  Selling Property
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/#services" className="text-white/70 hover:text-[#EBD181]">
-                  Rental Services
-                </Link>
-              </li>
-
-              <li>
-                <Link href="/#services" className="text-white/70 hover:text-[#EBD181]">
-                  Investment Advisory
-                </Link>
-              </li>
-
-              {/* Mortgage calculator removed but kept for later */}
-              {/*
-              <li>
-                <Link href="/mortgage-calculator" className="text-white/70 hover:text-[#EBD181]">
-                  Mortgage Calculator
-                </Link>
-              </li>
-              */}
-
+              {SERVICE_NAV_LINKS.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-white/70 hover:text-[#EBD181]">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
 
           </div>
@@ -186,7 +182,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/10 mt-12 pt-6 text-center text-sm text-white/60">
 
-          © {new Date().getFullYear()} Golden brix Real Estate. All Rights Reserved.
+          © {new Date().getFullYear()} Golden Brix Real Estate. All Rights Reserved.
 
         </div>
 

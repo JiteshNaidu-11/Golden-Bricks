@@ -53,7 +53,7 @@ The contact form now uses EmailJS instead of a server-side API. Follow these ste
      NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
      NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
      NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
-     NEXT_PUBLIC_RECIPIENT_EMAIL=Inquiry@truestar.ae
+     NEXT_PUBLIC_RECIPIENT_EMAIL=goldenbrix@gmail.com
      ```
 
 ### 3. Build for Production
@@ -74,7 +74,7 @@ This will create a `out` folder with all static files ready for deployment.
 
 Here's an example template you can use in EmailJS:
 
-**Subject**: New Contact Form Inquiry - {{inquiry_type}} | TrueStar Real Estate
+**Subject**: New Contact Form Inquiry - {{inquiry_type}} | Golden Brix Properties
 
 **Content** (HTML):
 ```html
@@ -86,7 +86,7 @@ Here's an example template you can use in EmailJS:
 <p><strong>Message:</strong></p>
 <p>{{message}}</p>
 <p>---</p>
-<p>This email was sent from the TrueStar Real Estate contact form.</p>
+<p>This email was sent from the Golden Brix Properties contact form.</p>
 <p>Reply directly to: {{from_email}}</p>
 ```
 

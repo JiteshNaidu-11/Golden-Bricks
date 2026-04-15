@@ -37,14 +37,15 @@ export default function Careers() {
       id: "real-estate-agent",
       title: "Real Estate Agent",
       type: "Full-time",
-      location: "Dubai, UAE",
-      shortDescription: "Join TrueStar Real Estate and build a rewarding career in Dubai's dynamic property market. We're looking for motivated individuals with excellent customer service skills.",
+      location: "Mumbai / Navi Mumbai, India",
+      shortDescription:
+        "Join Golden Brix Properties and build a rewarding career in Mumbai and Navi Mumbai’s premium real estate market. We’re looking for motivated individuals with strong customer service skills.",
     },
     // {
     //   id: "property-consultant",
     //   title: "Property Consultant",
     //   type: "Full-time",
-    //   location: "Dubai, UAE",
+    //   location: "Mumbai / Navi Mumbai, India",
     //   shortDescription: "Seeking experienced consultants with excellent communication skills to guide clients through property investments and deliver exceptional service.",
     // }
   ];
@@ -65,13 +66,14 @@ export default function Careers() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
             style={{ fontFamily: 'var(--font-playfair), serif' }}
           >
-            Build Your Career with <span className="gold-gradient-text">TrueStar</span>
+            Build Your Career with{" "}
+            <span className="gold-gradient-text">Golden Brix Properties</span>
           </h1>
           <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
-            Join Dubai's leading real estate team and unlock unlimited earning potential in one of the world's most dynamic property markets.
+            Join a premium real estate team and unlock strong earning potential in one of India’s most dynamic property markets.
           </p>
           <a
-            href="mailto:inquiry@truestar.ae"
+            href="mailto:goldenbrix@gmail.com"
             className="inline-block px-8 py-4 gold-gradient text-white font-bold rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 text-lg hover:scale-105 transform"
           >
             Get in Touch About Opportunities
@@ -87,7 +89,7 @@ export default function Careers() {
               className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gold-gradient-text"
               style={{ fontFamily: 'var(--font-playfair), serif' }}
             >
-              Why Join TrueStar?
+              Why Join Golden Brix Properties?
             </h2>
             <p className="text-lg text-[#001F3F]/70 max-w-2xl mx-auto">
               We invest in our people and create an environment where talent thrives
@@ -174,7 +176,7 @@ export default function Careers() {
                       View Details
                     </button>
                     <a
-                      href="mailto:info@truestar.ae?subject=Application for Real Estate Position&body=Dear TrueStar Team,%0D%0A%0D%0AI am interested in applying for the position. Please find my details below:%0D%0A%0D%0A"
+                      href="mailto:goldenbrix@gmail.com?subject=Application for Real Estate Position&body=Dear Golden Brix Properties Team,%0D%0A%0D%0AI am interested in applying for the position. Please find my details below:%0D%0A%0D%0A"
                       className="px-6 py-3 gold-gradient text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap hover:scale-105 transform text-center"
                     >
                       Apply Now
@@ -203,18 +205,18 @@ export default function Careers() {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
               <a 
-                href="tel:+971556169396"
+                href="tel:+917738384100"
                 className="flex items-center gap-2 text-[#EBD181] hover:text-white transition-colors"
               >
                 <Phone className="w-5 h-5" />
-                <span className="font-medium">+971 55 616 9396</span>
+                <span className="font-medium">+91 77383 84100</span>
               </a>
               <a 
-                href="mailto:info@truestar.ae"
+                href="mailto:goldenbrix@gmail.com"
                 className="flex items-center gap-2 text-[#EBD181] hover:text-white transition-colors"
               >
                 <Mail className="w-5 h-5" />
-                <span className="font-medium">info@truestar.ae</span>
+                <span className="font-medium">goldenbrix@gmail.com</span>
               </a>
             </div>
 
@@ -255,7 +257,7 @@ export default function Careers() {
                 About Us:
               </h3>
               <p className="text-[#001F3F]/80 leading-relaxed">
-                TrueStar Real Estate is a promising real estate company located in Dubai. As a registered partner of leading developers such as Emaar, Damac, Azizi, Majid Al Futtaim, and Dubai Properties, we offer a wide range of real estate solutions. Our team is dedicated to providing exceptional customer service and helping clients find their dream properties.
+                Golden Brix Properties is a premium real estate advisory based in Mumbai and Navi Mumbai. We work with reputed developers and verified resale inventory to offer a wide range of real estate solutions. Our team is dedicated to providing exceptional customer service and helping clients find their dream home or investment.
               </p>
             </div>
 
@@ -268,10 +270,10 @@ export default function Careers() {
                 Role Description:
               </h3>
               <p className="text-[#001F3F]/80 leading-relaxed mb-4">
-                This is a full-time on-site role for a {selectedJob === 'real-estate-agent' ? 'Real Estate Agent' : 'Property Consultant'} at TrueStar Real Estate in Dubai. As a {selectedJob === 'real-estate-agent' ? 'Real Estate Agent' : 'Property Consultant'}, your day-to-day tasks will include assisting clients in buying, selling, and renting properties, conducting property viewings, negotiating deals, and providing excellent customer service. You will also be responsible for maintaining a strong knowledge of the real estate market and staying updated on industry trends.
+                This is a full-time on-site role for a {selectedJob === 'real-estate-agent' ? 'Real Estate Agent' : 'Property Consultant'} at Golden Brix Properties in Mumbai / Navi Mumbai. Your day-to-day tasks will include assisting clients in buying, selling, and renting properties, conducting site visits, negotiating deals, and providing excellent customer service. You will also be responsible for maintaining strong knowledge of local micro-markets and staying updated on industry trends.
               </p>
               <p className="text-[#001F3F]/80 leading-relaxed">
-                Are you ready to elevate your career in a dynamic and supportive environment? Join TrueStar Real Estate and leverage our expertise and resources to further your career in real estate. We are committed to fostering a collaborative and growth-oriented workplace where your success is our priority.
+                Are you ready to elevate your career in a dynamic and supportive environment? Join Golden Brix Properties and leverage our expertise and resources to further your career in real estate. We are committed to fostering a collaborative and growth-oriented workplace where your success is our priority.
               </p>
             </div>
 
@@ -334,7 +336,7 @@ export default function Careers() {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-[#C5A24A] rounded-full mt-2 flex-shrink-0"></span>
-                  <span>Minimum 6 months of experience in real estate (preferably Dubai)</span>
+                  <span>Minimum 6 months of experience in real estate (Mumbai / Navi Mumbai preferred)</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-2 h-2 bg-[#C5A24A] rounded-full mt-2 flex-shrink-0"></span>
@@ -378,7 +380,7 @@ export default function Careers() {
             {/* Apply Button */}
             <div className="flex justify-center mt-8 pt-6 border-t border-[#C5A24A]/20">
               <a
-                href="mailto:info@truestar.ae?subject=Application for Real Estate Position&body=Dear TrueStar Team,%0D%0A%0D%0AI am interested in applying for the position. Please find my details below:%0D%0A%0D%0A"
+                href="mailto:goldenbrix@gmail.com?subject=Application for Real Estate Position&body=Dear Golden Brix Properties Team,%0D%0A%0D%0AI am interested in applying for the position. Please find my details below:%0D%0A%0D%0A"
                 className="px-8 py-4 gold-gradient text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform"
               >
                 Apply Now via Email

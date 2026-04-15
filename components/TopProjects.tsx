@@ -20,43 +20,43 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    name: "Palm Jebel Ali",
-    location: "Palm Jebel Ali, Dubai",
-    priceRange: "AED 1.5M - 10M",
+    name: "Seawoods Premium Tower",
+    location: "Seawoods, Navi Mumbai",
+    priceRange: "₹1.8 Cr - ₹4.5 Cr",
     developer: "Nakheel",
     image: dubaiImages.communities.palmJumeirah,
-    type: "Villas & Townhouses",
-    roi: "10%"
+    type: "Apartments",
+    roi: "8%"
   },
   {
     id: 2,
-    name: "Solana at La Mer",
-    location: "La Mer, Dubai",
-    priceRange: "AED 2.2M - 8M",
+    name: "BKC Lifestyle Residences",
+    location: "Bandra Kurla Complex, Mumbai",
+    priceRange: "₹3.5 Cr - ₹9.5 Cr",
     developer: "Meraas",
     image: dubaiImages.properties.apartment,
     type: "Apartments",
-    roi: "12%"
+    roi: "7%"
   },
   {
     id: 3,
-    name: "Burj Binghatti Residences",
-    location: "Business Bay, Dubai",
-    priceRange: "AED 3M - 15M",
+    name: "Powai Lakefront Homes",
+    location: "Powai, Mumbai",
+    priceRange: "₹2.4 Cr - ₹6.8 Cr",
     developer: "Binghatti",
     image: dubaiImages.communities.businessBay,
-    type: "Apartments & Penthouses",
-    roi: "11%"
+    type: "Apartments",
+    roi: "7%"
   },
   {
     id: 4,
-    name: "Emaar Creek Vistas",
-    location: "Dubai Creek Harbour",
-    priceRange: "AED 1.3M - 5M",
+    name: "Thane Growth Corridor",
+    location: "Thane (select pockets)",
+    priceRange: "₹1.2 Cr - ₹3.2 Cr",
     developer: "Emaar",
     image: dubaiImages.properties.luxuryApartment,
     type: "Apartments",
-    roi: "9%"
+    roi: "8%"
   },
 ];
 
@@ -83,7 +83,7 @@ export default function TopProjects() {
               Premium Luxury Developments
             </h2>
             <p className="text-white/70 text-lg">
-              Exclusive off-plan and ready properties from Dubai's leading developers
+              Curated opportunities across Mumbai and Navi Mumbai—built for end-users and long-term investors
             </p>
           </div>
           <div className="hidden md:flex gap-4">

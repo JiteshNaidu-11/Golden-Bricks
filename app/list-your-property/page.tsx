@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Home, Megaphone, Search, Tag, User, Mail, Phone, MapPin, Building, Bed, Ruler, Hash, DollarSign, Send, Loader2 } from 'lucide-react';
+import { Home, Megaphone, Search, Tag, User, Mail, Phone, MapPin, Building, Bed, Ruler, Hash, Send, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import { countryCodes } from '@/lib/countryCodes';
@@ -154,7 +154,7 @@ export default function ListYourProperty() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 md:px-12 lg:px-20 bg-gradient-to-b from-[#001F3F] to-[#003366] text-white overflow-hidden">
+      <section className="relative pt-32 pb-20 px-4 sm:px-6 md:px-12 lg:px-20 bg-linear-to-b from-[#001F3F] to-[#003366] text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#EBD181] rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#C5A24A] rounded-full blur-3xl"></div>
@@ -165,7 +165,8 @@ export default function ListYourProperty() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
             style={{ fontFamily: 'var(--font-playfair), serif' }}
           >
-            LIST YOUR PROPERTY IN <span className="gold-gradient-text">DUBAI</span>
+            LIST YOUR PROPERTY IN{" "}
+            <span className="gold-gradient-text">MUMBAI / NAVI MUMBAI</span>
           </h1>
           <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Maximize your property's potential with our comprehensive listing services and expert support
@@ -182,7 +183,7 @@ export default function ListYourProperty() {
               return (
                 <div 
                   key={index}
-                  className="bg-gradient-to-br from-white to-[#C5A24A]/5 rounded-2xl p-8 border-2 border-[#C5A24A]/20 hover:border-[#C5A24A] transition-all duration-300 hover:shadow-xl hover:scale-105 transform text-center"
+                  className="bg-linear-to-br from-white to-[#C5A24A]/5 rounded-2xl p-8 border-2 border-[#C5A24A]/20 hover:border-[#C5A24A] transition-all duration-300 hover:shadow-xl hover:scale-105 transform text-center"
                 >
                   <div className="w-16 h-16 gold-gradient rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                     <Icon className="w-8 h-8 text-white" />
@@ -204,7 +205,7 @@ export default function ListYourProperty() {
       </section>
 
       {/* Form Section */}
-      <section className="py-20 px-4 sm:px-6 md:px-12 lg:px-20 bg-gradient-to-b from-white to-[#C5A24A]/5">
+      <section className="py-20 px-4 sm:px-6 md:px-12 lg:px-20 bg-linear-to-b from-white to-[#C5A24A]/5">
         <div className="container mx-auto max-w-6xl">
           <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 sm:p-12 shadow-lg border border-gray-200">
             {/* Tell Us About Yourself */}
@@ -412,7 +413,7 @@ export default function ListYourProperty() {
                   <div className="absolute bg-black left-4 top-1/2 transform -translate-y-1/2 z-10">
                     <Image
                       src="/images/dhirumsign.jpeg"
-                      alt="AED"
+                      alt="INR"
                       width={20}
                       height={24}
                       className="object-contain"

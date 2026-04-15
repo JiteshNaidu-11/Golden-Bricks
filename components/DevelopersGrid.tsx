@@ -45,7 +45,7 @@ export default function DevelopersGrid({ developers, compact = false }: Develope
     'UNION': 'union.jpeg',
     'UNION PROPERTIES': 'union.jpeg',
     'BNW': 'bnw.jpeg',
-    'DUBAI PROPERTIES': 'dubai_properties.jpeg',
+    'DB PROPERTIES': 'dubai_properties.jpeg',
     'MAJID AL FUTTAIM': 'majidal.jpeg',
     'AL FUTTAIM': 'al-futtaim.jpeg',
     'WASL': 'wasl.jpeg',

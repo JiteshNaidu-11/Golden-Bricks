@@ -30,6 +30,21 @@ const ICONS = {
   management: Settings,
 } as const;
 
+const SERVICE_ROUTES: Record<(typeof SERVICES_COPY)[number]["key"], string> = {
+  buying: "/services/buying-selling",
+  investment: "/services/investor-advisory",
+  loan: "/contact",
+  management: "/services/property-management",
+};
+
+const SERVICE_IMAGES: Partial<Record<(typeof SERVICES_COPY)[number]["key"], string>> =
+  {
+    buying: "/properties/one-platinum.jpg",
+    investment: "/properties/codename-growth.jpeg",
+    loan: "/properties/sai-world-one.jpg",
+    management: "/properties/goodwill-wisteria.jpeg",
+  };
+
 export default function ServicesPage() {
   return (
     <>
@@ -40,11 +55,12 @@ export default function ServicesPage() {
           <div className="pointer-events-none absolute inset-0" aria-hidden>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/Hero/2.jpg"
+              src="/properties/one-platinum.jpg"
               alt=""
               className="hero-image h-full w-full object-cover opacity-18"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0c1b2a]/80 via-[#0c1b2a]/65 to-[#0c1b2a]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0c1b2a]/85 via-[#0c1b2a]/70 to-[#0c1b2a]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(197,162,74,0.22),transparent_55%)]" />
           </div>
 
           {/* Floating accents */}
@@ -101,6 +117,21 @@ export default function ServicesPage() {
                   Talk to an advisor
                 </Link>
               </div>
+
+              <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-white/70">
+                {[
+                  { k: "Verified inventory", v: "Only shortlist-worthy projects" },
+                  { k: "Negotiation support", v: "Better pricing + terms" },
+                  { k: "Documentation help", v: "Less stress, fewer misses" },
+                ].map((x) => (
+                  <div key={x.k} className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-[#EBD181]" />
+                    <span className="font-semibold text-white/85">{x.k}</span>
+                    <span className="hidden sm:inline">—</span>
+                    <span className="hidden sm:inline">{x.v}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -151,44 +182,84 @@ export default function ServicesPage() {
           <section className="grid gap-6 lg:grid-cols-2 lg:gap-8">
             {SERVICES_COPY.map((s, idx) => {
               const Icon = ICONS[s.key as keyof typeof ICONS] ?? Handshake;
+              const href = SERVICE_ROUTES[s.key as keyof typeof SERVICE_ROUTES] ?? "/services";
+              const cover = SERVICE_IMAGES[s.key as keyof typeof SERVICE_IMAGES] ?? "/properties/one-platinum.jpg";
               return (
                 <Reveal
                   key={s.key}
                   delay={0.03 * idx}
-                  className="group relative overflow-hidden rounded-3xl border border-[#C5A24A]/15 bg-white p-8 shadow-md transition hover:-translate-y-1 hover:border-[#C5A24A]/30 hover:shadow-xl sm:p-10"
+                  className="group relative overflow-hidden rounded-3xl border border-[#C5A24A]/15 bg-white shadow-md transition hover:-translate-y-1 hover:border-[#C5A24A]/30 hover:shadow-xl"
                 >
                   <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#C5A24A]/6 transition group-hover:bg-[#C5A24A]/10" />
-                  <div className="relative flex items-start gap-4">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#C5A24A]/22 bg-[#0c1b2a] text-[#EBD181] shadow-sm">
-                      <Icon className="h-6 w-6" aria-hidden />
-                    </div>
-                    <div className="min-w-0">
-                      <h2
-                        className="text-2xl font-bold text-[#0c1b2a]"
-                        style={{ fontFamily: "var(--font-playfair), serif" }}
-                      >
-                        {s.title}
-                      </h2>
-                      <div className="mt-3 h-px w-16 bg-gradient-to-r from-[#C5A24A] to-transparent" />
-                      <p className="mt-4 text-[#0c1b2a]/70 leading-relaxed">
-                        {s.description}
-                      </p>
-                    </div>
-                  </div>
 
-                  <div className="relative mt-7 grid gap-3 sm:grid-cols-3">
-                    {s.benefits.map((b) => (
-                      <div
-                        key={b}
-                        className="flex items-start gap-2 rounded-2xl border border-[#0c1b2a]/10 bg-[#faf8f3] px-4 py-3 text-sm text-[#0c1b2a]/75"
-                      >
-                        <CheckCircle2
-                          className="mt-0.5 h-4 w-4 shrink-0 text-[#C5A24A]"
-                          aria-hidden
-                        />
-                        {b}
+                  <div className="relative grid gap-7 p-8 sm:p-10">
+                    <div className="grid gap-6 sm:grid-cols-[1.1fr_0.9fr] sm:items-start">
+                      <div className="min-w-0">
+                        <div className="flex items-start gap-4">
+                          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[#C5A24A]/22 bg-[#0c1b2a] text-[#EBD181] shadow-sm">
+                            <Icon className="h-6 w-6" aria-hidden />
+                          </div>
+                          <div className="min-w-0">
+                            <h2
+                              className="text-2xl font-bold text-[#0c1b2a]"
+                              style={{ fontFamily: "var(--font-playfair), serif" }}
+                            >
+                              {s.title}
+                            </h2>
+                            <div className="mt-3 h-px w-16 bg-gradient-to-r from-[#C5A24A] to-transparent" />
+                          </div>
+                        </div>
+                        <p className="mt-4 text-[#0c1b2a]/70 leading-relaxed">
+                          {s.description}
+                        </p>
+
+                        <div className="mt-6 flex flex-wrap items-center gap-3">
+                          <Link
+                            href={href}
+                            className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-[#0c1b2a] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-110"
+                          >
+                            Explore details
+                          </Link>
+                          <Link
+                            href="/contact"
+                            className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-[#0c1b2a]/15 bg-white px-5 py-2.5 text-sm font-semibold text-[#0c1b2a] shadow-sm transition hover:border-[#C5A24A]/40 hover:bg-[#faf8f3]"
+                          >
+                            Talk to us
+                          </Link>
+                        </div>
                       </div>
-                    ))}
+
+                      <div className="relative overflow-hidden rounded-2xl border border-[#0c1b2a]/10 bg-[#0c1b2a] shadow-sm">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={cover}
+                          alt=""
+                          className="h-48 w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.04]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0c1b2a]/60 via-transparent to-transparent" />
+                        <div className="absolute bottom-3 left-3 right-3">
+                          <div className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/10 px-3 py-2 text-xs text-white/85 backdrop-blur-md">
+                            <span className="font-semibold">What you get</span>
+                            <span className="text-white/70">3 key benefits</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid gap-3 sm:grid-cols-3">
+                      {s.benefits.map((b) => (
+                        <div
+                          key={b}
+                          className="flex items-start gap-2 rounded-2xl border border-[#0c1b2a]/10 bg-[#faf8f3] px-4 py-3 text-sm text-[#0c1b2a]/75 transition group-hover:bg-white"
+                        >
+                          <CheckCircle2
+                            className="mt-0.5 h-4 w-4 shrink-0 text-[#C5A24A]"
+                            aria-hidden
+                          />
+                          {b}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </Reveal>
               );

@@ -63,14 +63,14 @@ export default async function BlogsPage() {
   const items: BlogCard[] =
     blogs.length > 0
       ? blogs.map((b) => ({
-          slug: b.slug,
+          slug: String(b.slug).trim(),
           title: b.title,
           excerpt: b.excerpt ?? "",
           cover_image: b.cover_image ?? "",
           published_at: b.published_at,
         }))
       : BLOGS_FALLBACK.map((b) => ({
-          slug: b.slug,
+          slug: String(b.slug).trim(),
           title: b.title,
           excerpt: b.excerpt,
           cover_image: b.coverImage,
@@ -87,11 +87,11 @@ export default async function BlogsPage() {
           <div className="pointer-events-none absolute inset-0" aria-hidden>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/Hero/3.jpg"
+              src="/properties/westwoods-platinum.jpg"
               alt=""
               className="hero-image h-full w-full object-cover opacity-18"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0c1b2a]/80 via-[#0c1b2a]/65 to-[#0c1b2a]" />
+            <div className="absolute inset-0 bg-linear-to-b from-[#0c1b2a]/80 via-[#0c1b2a]/65 to-[#0c1b2a]" />
           </div>
 
           <div
@@ -160,13 +160,13 @@ export default async function BlogsPage() {
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={
-                            featured.cover_image || "/images/Hero/3.jpg"
+                            featured.cover_image || "/properties/westwoods-platinum.jpg"
                           }
                           alt={featured.title}
                           className="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105"
                           loading="eager"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0c1b2a]/90 via-[#0c1b2a]/20 to-transparent lg:bg-gradient-to-r" />
+                        <div className="absolute inset-0 bg-linear-to-t from-[#0c1b2a]/90 via-[#0c1b2a]/20 to-transparent lg:bg-linear-to-r" />
                         <span className="absolute left-5 top-5 rounded-full bg-white/15 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-white backdrop-blur-md">
                           Featured
                         </span>
@@ -208,12 +208,12 @@ export default async function BlogsPage() {
                           <div className="relative h-52 w-full overflow-hidden bg-[#0c1b2a]/5">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
-                              src={b.cover_image || "/images/Hero/3.jpg"}
+                              src={b.cover_image || "/properties/westwoods-platinum.jpg"}
                               alt={b.title}
                               className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                               loading="lazy"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-60 transition group-hover:opacity-80" />
+                            <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent opacity-60 transition group-hover:opacity-80" />
                           </div>
                           <div className="flex flex-1 flex-col p-6 sm:p-7">
                             <time className="text-xs font-semibold uppercase tracking-[0.18em] text-[#C5A24A]">

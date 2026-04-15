@@ -10,15 +10,19 @@ import {
 import Link from "next/link";
 import { PROPERTIES_CATALOG } from "@/lib/propertiesCatalog";
 import PropertyListingCard from "@/components/PropertyListingCard";
-import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 import { useSupabaseQuery } from "@/hooks/useSupabaseQuery";
 import Reveal from "@/components/motion/Reveal";
 import { BLOGS_FALLBACK, TESTIMONIALS_FALLBACK } from "@/lib/content/innerPagesContent";
 
 const FEATURED_PROPERTIES_ON_HOME = 6;
+const FORMSUBMIT_EMAIL = "goldenbrix@gmail.com";
 
 export default function Home() {
-  const guideLead = useLeadSubmit();
+  const [guideSubmitting, setGuideSubmitting] = useState(false);
+  const [guideStatus, setGuideStatus] = useState<"idle" | "success" | "error">(
+    "idle",
+  );
+  const [guideError, setGuideError] = useState("");
 
   const { data: testimonialsData } = useSupabaseQuery(
     "testimonials:home",
@@ -90,7 +94,7 @@ export default function Home() {
     "/images/Hero/1.jpg",
     "/images/Hero/2.jpg",
     "/images/Hero/3.jpg",
-    "/images/Hero/4.jpg"
+    "/images/Hero/4.jpg",
   ];
 
   const [currentImage, setCurrentImage] = useState(0);
@@ -107,21 +111,37 @@ export default function Home() {
     e.preventDefault();
     const form = e.currentTarget;
     try {
+      if (guideSubmitting) return;
+      setGuideStatus("idle");
+      setGuideError("");
+      setGuideSubmitting(true);
       const fd = new FormData(form);
-      await guideLead.submit({
-        source: "home_guide",
-        page: "/",
-        name: String(fd.get("name") ?? ""),
-        email: String(fd.get("email") ?? ""),
-        phone: String(fd.get("phone") ?? ""),
-        budget: String(fd.get("budget") ?? ""),
-        location: String(fd.get("location") ?? ""),
-        message: "Requested free property investment guide",
+      const endpoint = `https://formsubmit.co/ajax/${encodeURIComponent(FORMSUBMIT_EMAIL)}`;
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: String(fd.get("name") ?? ""),
+          email: String(fd.get("email") ?? ""),
+          phone: String(fd.get("phone") ?? ""),
+          budget: String(fd.get("budget") ?? ""),
+          location: String(fd.get("location") ?? ""),
+          source: "home_guide",
+          page: "/",
+          message: "Requested free property investment guide",
+          _subject: "New lead — Investment Guide",
+          _template: "table",
+          _captcha: "false",
+        }),
       });
-      alert("Thank you! We will contact you shortly.");
+      if (!res.ok) throw new Error("Failed to submit. Please try again.");
+      setGuideStatus("success");
       form.reset();
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Something went wrong.");
+      setGuideStatus("error");
+      setGuideError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setGuideSubmitting(false);
     }
   };
 
@@ -194,7 +214,7 @@ export default function Home() {
         key={index}
         src={img}
         alt="Luxury Property"
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ${
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-2000 ${
           index === currentImage ? "opacity-100" : "opacity-0"
         }`}
       />
@@ -317,6 +337,9 @@ export default function Home() {
       name="phone"
       type="tel"
       required
+      inputMode="tel"
+      pattern="^[0-9+()\\s-]{8,18}$"
+      title="Please enter a valid phone number."
       autoComplete="tel"
       placeholder="Phone Number"
       className="w-full px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 outline-none text-sm border border-transparent focus:border-[#C5A24A]"
@@ -349,13 +372,29 @@ export default function Home() {
 
     <button
       type="submit"
-      disabled={guideLead.loading}
+      disabled={guideSubmitting}
       className="w-full gold-gradient py-2.5 rounded-lg font-semibold text-white text-sm disabled:opacity-60 disabled:cursor-not-allowed"
     >
-      {guideLead.loading ? "Sending…" : "Get Free Guide"}
+      {guideSubmitting ? "Sending…" : "Get Free Guide"}
     </button>
 
   </div>
+
+  {guideStatus === "success" ? (
+    <div className="mt-4 rounded-xl border border-emerald-200/40 bg-emerald-50/10 px-3.5 py-3 text-xs text-emerald-100">
+      <p className="font-semibold text-emerald-100">Request received.</p>
+      <p className="mt-1 text-emerald-100/80">
+        We&apos;ll share the guide and contact you shortly.
+      </p>
+    </div>
+  ) : null}
+
+  {guideStatus === "error" ? (
+    <div className="mt-4 rounded-xl border border-red-200/30 bg-red-50/10 px-3.5 py-3 text-xs text-red-100">
+      <p className="font-semibold text-red-100">Couldn&apos;t submit.</p>
+      <p className="mt-1 text-red-100/80">{guideError || "Please try again."}</p>
+    </div>
+  ) : null}
 
   <p className="text-xs text-white/50 mt-3">
     No spam. Your information is safe with us.
@@ -411,7 +450,7 @@ Featured properties
 </section>
 
       {/* About Section */}
-<section id="about" className="py-24 px-4 sm:px-8 lg:px-12 bg-gradient-to-b from-[#faf8f3] via-[#f3efe6] to-[#ece6da] relative overflow-hidden">
+<section id="about" className="py-24 px-4 sm:px-8 lg:px-12 bg-linear-to-b from-[#faf8f3] via-[#f3efe6] to-[#ece6da] relative overflow-hidden">
 
   {/* Background accents */}
   <div className="absolute top-0 left-0 w-96 h-96 bg-[#C5A24A]/10 rounded-full blur-[120px]"></div>
@@ -562,7 +601,7 @@ Featured properties
 </section>
 
       {/*Enhanced TESTIMONIALS */}
-      <section id="testimonials" className="relative overflow-hidden py-24 px-6 lg:px-20 bg-gradient-to-b from-[#f6f4ef] via-[#faf8f3] to-[#f0ebe0]">
+      <section id="testimonials" className="relative overflow-hidden py-24 px-6 lg:px-20 bg-linear-to-b from-[#f6f4ef] via-[#faf8f3] to-[#f0ebe0]">
         <div
           className="pointer-events-none absolute -right-24 top-20 h-72 w-72 rounded-full bg-[#C5A24A]/10 blur-[90px]"
           aria-hidden
@@ -578,7 +617,7 @@ Featured properties
             >
               What our clients say
             </h2>
-            <div className="mx-auto mt-5 h-px w-24 bg-gradient-to-r from-transparent via-[#C5A24A] to-transparent" />
+            <div className="mx-auto mt-5 h-px w-24 bg-linear-to-r from-transparent via-[#C5A24A] to-transparent" />
             <p className="mt-5 text-[#0c1b2a]/65 leading-relaxed">
               Real feedback from buyers and investors across Mumbai and Navi Mumbai.
             </p>

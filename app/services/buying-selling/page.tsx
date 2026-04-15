@@ -2,7 +2,7 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Home, Building2, MapPin, FileCheck, Link as LinkIcon } from 'lucide-react';
+import { Home, Building2, MapPin, FileCheck } from 'lucide-react';
 import { openWhatsApp } from '@/lib/whatsapp';
 import { dubaiImages } from '@/lib/images';
 
@@ -34,10 +34,15 @@ export default function BuyingSelling() {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url("${dubaiImages.properties.luxuryApartment}")`,
+              // Softer, less “stripy” image + premium grading
+              backgroundImage: `url("${dubaiImages.properties.propertySales}")`,
+              transform: "scale(1.06)",
+              filter: "blur(2px) saturate(1.05) contrast(1.04)",
             }}
           ></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/80 to-white/90"></div>
+          {/* Contrast + luxury tone overlays */}
+          <div className="absolute inset-0 bg-linear-to-b from-white/92 via-white/86 to-white/94" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(197,162,74,0.20),transparent_55%)]" />
         </div>
         
         <div className="relative z-10">
@@ -51,7 +56,7 @@ export default function BuyingSelling() {
             </h1>
             <div className="w-24 h-1 gold-gradient mx-auto mb-4"></div>
             <p className="text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto">
-              End-to-end assistance for buying and selling villas, townhouses, luxury apartments, and plots in Dubai
+              End-to-end assistance for buying and selling premium homes and investment-ready properties across Mumbai and Navi Mumbai.
             </p>
           </div>
           
@@ -66,7 +71,7 @@ export default function BuyingSelling() {
                 return (
                   <div 
                     key={index}
-                    className="p-6 rounded-lg border-2 border-[#C5A24A]/20 hover:border-[#C5A24A]/40 transition-all hover:shadow-lg bg-gradient-to-br from-white to-[#C5A24A]/5 text-center"
+                    className="p-6 rounded-lg border-2 border-[#C5A24A]/20 hover:border-[#C5A24A]/40 transition-all hover:shadow-lg bg-linear-to-br from-white to-[#C5A24A]/5 text-center"
                   >
                     <div className="w-16 h-16 rounded-lg gold-gradient flex items-center justify-center mx-auto mb-4">
                       <Icon className="w-8 h-8 text-white" />
@@ -88,9 +93,9 @@ export default function BuyingSelling() {
               {services.map((service, index) => (
                 <div 
                   key={index}
-                  className="flex items-start gap-4 p-6 rounded-lg border border-[#C5A24A]/20 bg-gradient-to-br from-white to-[#C5A24A]/5"
+                  className="flex items-start gap-4 p-6 rounded-lg border border-[#C5A24A]/20 bg-linear-to-br from-white to-[#C5A24A]/5"
                 >
-                  <FileCheck className="w-6 h-6 text-[#C5A24A] flex-shrink-0 mt-1" />
+                  <FileCheck className="w-6 h-6 text-[#C5A24A] shrink-0 mt-1" />
                   <p className="text-lg text-[#1a1a1a]/80">{service}</p>
                 </div>
               ))}
@@ -98,7 +103,7 @@ export default function BuyingSelling() {
           </div>
           
           {/* Key Features */}
-          <div className="bg-gradient-to-br from-[#C5A24A]/10 to-[#EBD181]/10 p-8 rounded-lg mb-16">
+          <div className="bg-linear-to-br from-[#C5A24A]/10 to-[#EBD181]/10 p-8 rounded-lg mb-16">
             <h2 className="text-3xl font-bold mb-6 text-center" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
               Why Choose Us
             </h2>
@@ -127,7 +132,7 @@ export default function BuyingSelling() {
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <img 
                   src={dubaiImages.properties.townhouse}
-                  alt="Luxury Villa in Dubai"
+                  alt="Luxury villa"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-4 bg-white">
@@ -138,7 +143,7 @@ export default function BuyingSelling() {
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <img 
                   src={dubaiImages.properties.luxuryApartment}
-                  alt="Luxury Apartment in Dubai"
+                  alt="Luxury apartment"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-4 bg-white">

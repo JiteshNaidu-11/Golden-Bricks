@@ -134,7 +134,7 @@ export default function Contact() {
           <div className="pointer-events-none absolute inset-0" aria-hidden>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/Hero/1.jpg"
+              src="/properties/sai-world-one.jpg"
               alt=""
               className="hero-image h-full w-full object-cover opacity-18"
             />

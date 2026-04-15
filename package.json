@@ -1,5 +1,5 @@
 {
-  "name": "truestar",
+  "name": "golden-brix-properties",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -21,7 +21,9 @@
     "nodemailer": "^7.0.10",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-phone-number-input": "^3.4.14"
+    "react-markdown": "^10.1.0",
+    "react-phone-number-input": "^3.4.14",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

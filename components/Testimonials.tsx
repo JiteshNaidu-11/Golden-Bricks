@@ -2,7 +2,6 @@
 
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import Image from 'next/image';
 import { useSupabaseQuery } from '@/hooks/useSupabaseQuery';
 
 interface Testimonial {
@@ -46,7 +45,7 @@ export default function Testimonials() {
   const visibleTestimonials = testimonials.slice(currentIndex, currentIndex + itemsPerPage);
 
   return (
-    <section className="py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f]">
+    <section className="py-20 bg-linear-to-b from-[#1a1a1a] to-[#0f0f0f]">
       <div className="container mx-auto px-6 md:px-12 lg:px-16">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'var(--font-playfair), serif' }}>
@@ -91,7 +90,7 @@ export default function Testimonials() {
                 "{testimonial.text}"
               </p>
               <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#ffed4e] flex items-center justify-center text-[#1a1a1a] font-bold">
+                <div className="w-12 h-12 rounded-full bg-linear-to-br from-[#D4AF37] to-[#ffed4e] flex items-center justify-center text-[#1a1a1a] font-bold">
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>

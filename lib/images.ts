@@ -1,76 +1,76 @@
 /**
- * Dubai Real Estate Images
- * Using local images from public/images folder
+ * Real estate images.
+ * Using local images from public/images / public/properties folders.
  */
 
 export const dubaiImages = {
-  // Hero & Background Images - Dubai Skyline & Landmarks
+  // Hero & background images
   hero: {
-    skyline: '/images/properties/homepageherobg-Picsart.jpeg',
-    dubaiMarina: '/images/properties/marina.jpeg',
-    dubaiMarinaOffplan: '/images/properties/luxuryvilaaoffplan.jpeg',
-    burjKhalifa: '/images/properties/homepageherobg-Picsart.jpeg',
-    downtown: '/images/properties/downtown.jpeg',
-    palmJumeirah: '/images/properties/palmjumeirah.jpeg',
-    businessBay: '/images/communities/businessday_communities.jpeg',
-    dubaiCreek: '/images/properties/dubaicreekharbor.jpeg',
+    skyline: '/properties/sai-world-one.jpg',
+    dubaiMarina: '/properties/one-platinum.jpg',
+    dubaiMarinaOffplan: '/properties/birla-estate-airoli.webp',
+    burjKhalifa: '/properties/cyber-square.jpeg',
+    downtown: '/properties/cadbury-junction-thane-west.jpg',
+    palmJumeirah: '/properties/9pbr-palm-beachroad.jpg',
+    businessBay: '/properties/codename-growth.jpeg',
+    dubaiCreek: '/properties/codename-panoramic-cbd-belapur.jpg',
   },
 
-  // Community Images - Specific Dubai Communities
+  // Community images
   communities: {
-    jumeirah: '/images/communities/jumeirah_communitiespage.jpeg',
-    palmJumeirah: '/images/communities/palmjumeirah_communities.jpeg',
-    dubaiMarina: '/images/communities/dubaimarina_communities.jpeg',
-    downtown: '/images/communities/downtown_communities.jpeg',
-    businessBay: '/images/communities/businessday_communities.jpeg',
-    dubaiHills: '/images/communities/dubaihills_communities.jpeg',
-    emiratesHills: '/images/communities/emirateshills_communities.jpeg',
-    arabianRanches: '/images/communities/arabianhills_communities.jpeg',
-    jvc: '/images/communities/dubaihills_communities.jpeg',
-    dubaiCreek: '/images/properties/dubaicreekharbor.jpeg',
-    laMer: '/images/communities/jumeirah_communitiespage.jpeg',
+    jumeirah: '/properties/aatman-balaji-palm-beach.jpeg',
+    palmJumeirah: '/properties/9pbr-adani-realty.jpg',
+    dubaiMarina: '/properties/westwoods-platinum.jpg',
+    downtown: '/properties/oakwoods-platinum.jpg',
+    businessBay: '/properties/esquire-platinum.jpg',
+    dubaiHills: '/properties/platinum-the-reserve.jpeg',
+    emiratesHills: '/properties/elysium-platinum.jpg',
+    arabianRanches: '/properties/k-raheja-corp-homes.jpg',
+    jvc: '/properties/praksyde-platinum.jpeg',
+    dubaiCreek: '/properties/codename-panoramic-cbd-belapur.jpg',
+    laMer: '/properties/goodwill-wisteria.jpeg',
   },
 
-  // Property Images - Luxury Real Estate
+  // Property images
   properties: {
-    luxuryApartment: '/images/properties/luxuryapartments.jpeg',
-    villa: '/images/properties/luxuryapratments_buysellingnew.jpeg',
-    penthouse: '/images/properties/propertyleasing.jpeg',
-    townhouse: '/images/properties/luxuryapratments_buyselling.jpeg',
-    apartment: '/images/properties/modernapartments.jpeg',
-    modernVilla: '/images/properties/luxuryapratments_buyselling.jpeg',
-    luxuryInterior: '/images/properties/luxuryapartments.jpeg',
-    waterfront: '/images/properties/marina.jpeg',
-    modernApartment: '/images/properties/modernapartments.jpeg',
-    luxuryVilla: '/images/properties/luxuryapratments_buyselling.jpeg',
-    penthouseView: '/images/properties/propertyleasing.jpeg',
-    beachfront: '/images/properties/palmjumeirah.jpeg',
+    luxuryApartment: '/properties/one-platinum.jpg',
+    villa: '/properties/sai-world-one.jpg',
+    penthouse: '/properties/elysium-platinum.jpg',
+    townhouse: '/properties/westwoods-platinum.jpg',
+    apartment: '/properties/one-platinum.jpg',
+    modernVilla: '/properties/sai-world-one.jpg',
+    luxuryInterior: '/properties/esquire-platinum.jpg',
+    waterfront: '/properties/9pbr-palm-beachroad.jpg',
+    modernApartment: '/properties/one-platinum.jpg',
+    luxuryVilla: '/properties/sai-world-one.jpg',
+    penthouseView: '/properties/elysium-platinum.jpg',
+    beachfront: '/properties/9pbr-palm-beachroad.jpg',
     // Off-plan specific
-    palmJebelAli: '/images/properties/damacisland.jpeg',
-    dubaiCreekHarbor: '/images/properties/dubaicreekharbor.jpeg',
+    palmJebelAli: '/properties/platinum-juinagar-new-launch.webp',
+    dubaiCreekHarbor: '/properties/code-name-green-gold.webp',
     // Service specific
-    propertySales: '/images/properties/propertysales.jpeg',
-    propertyLeasing: '/images/properties/propertyleasing.jpeg',
-    offPlanLeasing: '/images/properties/offplanleasing.jpeg',
+    propertySales: '/properties/codename-growth.jpeg',
+    propertyLeasing: '/properties/goodwill-wisteria.jpeg',
+    offPlanLeasing: '/properties/birla-estate-airoli.webp',
   },
 
-  // General Dubai Real Estate Images
+  // General real estate images
   general: {
-    dubaiSkyline: '/images/properties/homepageherobg-Picsart.jpeg',
-    modernBuilding: '/images/properties/downtown.jpeg',
-    luxuryInterior: '/images/properties/luxuryapartments.jpeg',
-    waterfront: '/images/properties/marina.jpeg',
-    dubaiNight: '/images/properties/homepageherobg.jpeg',
-    cityscape: '/images/properties/homepageherobg.jpeg',
-    whyChooseDubai: '/images/properties/whychoosedubai.jpeg',
-    whyInvestDubai: '/images/properties/whyinvestindubai.jpeg',
+    dubaiSkyline: '/properties/cyber-square.jpeg',
+    modernBuilding: '/properties/cadbury-junction-thane-west.jpg',
+    luxuryInterior: '/properties/esquire-platinum.jpg',
+    waterfront: '/properties/9pbr-palm-beachroad.jpg',
+    dubaiNight: '/properties/westwoods-platinum.jpg',
+    cityscape: '/properties/oakwoods-platinum.jpg',
+    whyChooseDubai: '/properties/platinum-the-reserve.jpeg',
+    whyInvestDubai: '/properties/codename-growth.jpeg',
   },
 
-  // About Page Images
+  // About page images
   about: {
-    team: '/images/properties/homepageherobg.jpeg',
-    office: '/images/properties/downtown.jpeg',
-    dubaiView: '/images/properties/homepageherobg.jpeg',
+    team: '/properties/sai-world-one.jpg',
+    office: '/properties/cyber-square.jpeg',
+    dubaiView: '/properties/9pbr-palm-beachroad.jpg',
   },
 };
 

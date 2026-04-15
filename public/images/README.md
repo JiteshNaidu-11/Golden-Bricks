@@ -1,6 +1,6 @@
-# Dubai Real Estate Images
+# Real Estate Images
 
-This directory is organized for storing Dubai real estate images.
+This directory is organized for storing real estate images.
 
 ## Directory Structure
 
@@ -18,7 +18,7 @@ All images are currently configured in `lib/images.ts` using Unsplash URLs.
 
 To use local images:
 1. Add your images to the appropriate subdirectory
-2. Update `lib/images.ts` to reference local paths (e.g., `/images/hero/dubai-skyline.jpg`)
+2. Update `lib/images.ts` to reference local paths (e.g., `/images/hero/city-skyline.jpg`)
 
 ## Recommended Image Specifications
 
@@ -30,5 +30,5 @@ To use local images:
 
 ## Current Image Sources
 
-Images are currently sourced from Unsplash and can be replaced with your own Dubai real estate photography.
+Images are currently sourced from Unsplash and can be replaced with your own real estate photography.
 

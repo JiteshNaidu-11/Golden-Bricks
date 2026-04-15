@@ -125,7 +125,7 @@ export default function OffPlan() {
           {/* Featured Projects with Images */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-8 text-center" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
-              Featured Off-Plan Projects
+              Featured launch opportunities
             </h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="rounded-xl overflow-hidden shadow-lg border-2 border-[#C5A24A]/20">
@@ -136,8 +136,8 @@ export default function OffPlan() {
                 />
                 <div className="p-4 bg-white">
                   <h3 className="text-lg font-bold gold-gradient-text mb-2">Damac island 2</h3>
-                  <p className="text-sm text-[#1a1a1a]/70 mb-2">Waterfront luxury villas</p>
-                  <p className="text-xs text-[#C5A24A] font-semibold">From AED 2.25M</p>
+                  <p className="text-sm text-[#1a1a1a]/70 mb-2">Premium residences with strong lifestyle appeal</p>
+                  <p className="text-xs text-[#C5A24A] font-semibold">From ₹2.25 Cr</p>
                 </div>
               </div>
               <div className="rounded-xl overflow-hidden shadow-lg border-2 border-[#C5A24A]/20">
@@ -147,11 +147,11 @@ export default function OffPlan() {
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-4 bg-white">
-                  <h3 className="text-lg font-bold gold-gradient-text mb-2">Dubai creek harbor 
+                  <h3 className="text-lg font-bold gold-gradient-text mb-2">New launch opportunities
                   </h3>
                   <p className="text-sm text-[#1a1a1a]/70 mb-2">Luxury community apartments 
                   </p>
-                  <p className="text-xs text-[#C5A24A] font-semibold">From AED 1.8M</p>
+                  <p className="text-xs text-[#C5A24A] font-semibold">From ₹1.8 Cr</p>
                 </div>
               </div>
               <div className="rounded-xl overflow-hidden shadow-lg border-2 border-[#C5A24A]/20">
@@ -162,8 +162,8 @@ export default function OffPlan() {
                 />
                 <div className="p-4 bg-white">
                   <h3 className="text-lg font-bold gold-gradient-text mb-2">Luxury  apartments</h3>
-                  <p className="text-sm text-[#1a1a1a]/70 mb-2">Luxury apartments in JVC district</p>
-                  <p className="text-xs text-[#C5A24A] font-semibold">From AED 800k</p>
+                  <p className="text-sm text-[#1a1a1a]/70 mb-2">Premium apartments in high-demand pockets</p>
+                  <p className="text-xs text-[#C5A24A] font-semibold">From ₹80L</p>
                 </div>
               </div>
             </div>

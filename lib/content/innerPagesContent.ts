@@ -166,7 +166,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "best-areas-to-invest-mumbai-2025",
     title: "Best Areas to Invest in Mumbai (2025): A Premium Buyer’s Shortlist",
     dateLabel: "Apr 2026",
-    coverImage: "/images/Hero/3.jpg",
+    coverImage: "/properties/westwoods-platinum.jpg",
     excerpt:
       "A practical, premium-first shortlist of Mumbai micro-markets based on connectivity, end-user demand, and long-term appreciation catalysts.",
     content: [
@@ -192,7 +192,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "luxury-living-trends-2026",
     title: "Luxury Living Trends: What Premium Buyers Expect in 2026",
     dateLabel: "Mar 2026",
-    coverImage: "/images/Hero/4.jpg",
+    coverImage: "/properties/9pbr-palm-beachroad.jpg",
     excerpt:
       "From wellness-led amenities to quieter layouts—here’s what defines premium homes today and why it matters for resale.",
     content: [
@@ -210,7 +210,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "roi-real-estate-simple-framework",
     title: "ROI in Real Estate: A Simple Framework for Smart Decisions",
     dateLabel: "Feb 2026",
-    coverImage: "/images/Hero/2.jpg",
+    coverImage: "/properties/one-platinum.jpg",
     excerpt:
       "A clean, practical framework to evaluate ROI: rental yield, appreciation catalysts, liquidity, and risk checks.",
     content: [
@@ -228,7 +228,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "documents-checklist-property-buying",
     title: "Property Buying Documents Checklist (Mumbai/Navi Mumbai): What to Verify",
     dateLabel: "Jan 2026",
-    coverImage: "/images/Hero/1.jpg",
+    coverImage: "/properties/sai-world-one.jpg",
     excerpt:
       "A practical checklist to reduce risk: approvals, title checks, payment schedules, and handover documentation—explained clearly.",
     content: [
@@ -249,7 +249,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "ready-to-move-vs-under-construction",
     title: "Ready-to-Move vs Under Construction: Which is Better for You?",
     dateLabel: "Dec 2025",
-    coverImage: "/images/Hero/4.jpg",
+    coverImage: "/properties/9pbr-palm-beachroad.jpg",
     excerpt:
       "A calm decision framework based on possession timeline, budget flexibility, risk appetite, and rental plans.",
     content: [
@@ -270,7 +270,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "site-visit-checklist-premium-buyers",
     title: "Site Visit Checklist for Premium Buyers: What to Look for in 30 Minutes",
     dateLabel: "Nov 2025",
-    coverImage: "/images/Hero/3.jpg",
+    coverImage: "/properties/westwoods-platinum.jpg",
     excerpt:
       "A quick on-site checklist: approach roads, building arrival, daylight, layout efficiency, and long-term livability cues.",
     content: [
@@ -288,7 +288,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "navi-mumbai-growth-corridors",
     title: "Navi Mumbai Growth Corridors: Where Premium Demand is Moving",
     dateLabel: "Oct 2025",
-    coverImage: "/images/Hero/2.jpg",
+    coverImage: "/properties/one-platinum.jpg",
     excerpt:
       "A premium-focused view of connectivity, business nodes, and livability—without hype. How to pick micro-markets with real demand.",
     content: [

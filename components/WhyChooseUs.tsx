@@ -8,17 +8,20 @@ const features = [
   {
     icon: Award,
     title: "Award-Winning Service",
-    description: "Recognized as Dubai's leading real estate agency with multiple industry awards and accolades."
+    description:
+      "Trusted advisory with a premium-first process—clear comparisons, transparent guidance, and calm execution."
   },
   {
     icon: Users,
     title: "Expert Team",
-    description: "Our team of 200+ professionals brings decades of combined experience in Dubai real estate."
+    description:
+      "Local expertise across Mumbai and Navi Mumbai—micro-markets, pricing, builder track records, and resale strength."
   },
   {
     icon: TrendingUp,
     title: "Proven Track Record",
-    description: "AED 3B+ in properties sold, with 5,000+ happy clients and 17+ years of excellence."
+    description:
+      "A structured, research-led approach that helps buyers and investors make confident decisions."
   },
   {
     icon: Shield,
@@ -33,15 +36,16 @@ const features = [
   {
     icon: Building2,
     title: "Exclusive Partnerships",
-    description: "Direct partnerships with top developers including Emaar, Damac, Sobha, and more."
+    description:
+      "Access to verified inventory across reputed developers and trusted resale opportunities."
   },
 ];
 
 const stats = [
-  { value: "AED 3B+", label: "Properties Sold" },
-  { value: "200+", label: "Professionals" },
-  { value: "17+", label: "Years Experience" },
-  { value: "5,000+", label: "Happy Clients" },
+  { value: "500+", label: "Happy families" },
+  { value: "120+", label: "Homes transacted" },
+  { value: "15+", label: "Years experience" },
+  { value: "25+", label: "Developer partners" },
 ];
 
 export default function WhyChooseUs() {
@@ -74,14 +78,13 @@ export default function WhyChooseUs() {
               Real Estate Specialists
             </h2>
             <p className="text-lg text-white/80 mb-6 leading-relaxed">
-              At Truestar, we combine deep market expertise with a client-centric approach to deliver exceptional 
-              real estate solutions. Our team understands the nuances of Dubai's luxury property market and is 
-              committed to helping you find the perfect investment or home.
+              At Golden Brix Properties, we combine deep market expertise with a client-centric approach to deliver
+              premium real estate advisory. Our team understands Mumbai and Navi Mumbai micro-markets and is committed
+              to helping you find the right home or investment—without noise.
             </p>
             <p className="text-lg text-white/80 mb-8 leading-relaxed">
-              With over 17 years of experience and partnerships with Dubai's leading developers, we offer 
-              exclusive access to premium properties and off-plan developments that represent the best investment 
-              opportunities in the region.
+              With years of on-ground experience and developer relationships, we offer curated access to verified
+              opportunities and a clear process—from shortlist to negotiation to documentation.
             </p>
             <button className="px-8 py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:shadow-2xl hover:shadow-[#D4AF37]/50 transition-all">
               Learn More
@@ -106,7 +109,7 @@ export default function WhyChooseUs() {
         {/* Features Grid */}
         <div>
           <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center" style={{ fontFamily: 'var(--font-playfair), serif' }}>
-            Why Choose Truestar?
+            Why Choose Golden Brix Properties?
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => {
