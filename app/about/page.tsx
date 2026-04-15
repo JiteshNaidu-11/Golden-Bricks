@@ -96,15 +96,24 @@ export default function AboutPage() {
               </div>
 
               <div className="lg:col-span-5">
-                <div className="relative rounded-2xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl backdrop-blur-md sm:p-8">
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-6 shadow-2xl backdrop-blur-md sm:p-8">
+                  <div className="pointer-events-none absolute inset-0" aria-hidden>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/photo.jpeg"
+                      alt=""
+                      className="hero-image h-full w-full object-cover opacity-35"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#0c1b2a]/50 via-[#0c1b2a]/55 to-[#0c1b2a]/85" />
+                  </div>
                   <div
                     className="absolute left-0 top-8 h-24 w-1 rounded-full bg-gradient-to-b from-[#C5A24A] to-[#EBD181]"
                     aria-hidden
                   />
-                  <p className="pl-5 text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
+                  <p className="relative pl-5 text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
                     At a glance
                   </p>
-                  <ul className="mt-6 space-y-5 pl-5">
+                  <ul className="relative mt-6 space-y-5 pl-5">
                     {ABOUT_COPY.stats.map((s) => (
                       <li
                         key={s.label}

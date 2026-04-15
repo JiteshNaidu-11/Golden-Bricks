@@ -482,9 +482,9 @@ Featured properties
     <div className="relative group">
 
       <img
-        src="/images/Hero/1.jpg"
-        alt="Luxury property"
-        className="rounded-xl shadow-2xl w-full h-[420px] object-cover transition-transform duration-500 group-hover:scale-105"
+        src="/images/photo.jpeg"
+        alt="Golden Brix advisor"
+        className="rounded-xl shadow-2xl w-full h-[420px] object-cover object-[50%_20%] transition-transform duration-500 group-hover:scale-105"
       />
 
       {/* Experience badge */}
