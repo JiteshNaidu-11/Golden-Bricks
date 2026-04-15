@@ -3,6 +3,7 @@
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useState } from 'react';
 import SocialLinks from '@/components/SocialLinks';
+import { useLeadSubmit } from '@/hooks/useLeadSubmit';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -11,11 +12,26 @@ export default function ContactSection() {
     phone: '',
     message: ''
   });
+  const lead = useLeadSubmit();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    (async () => {
+      try {
+        await lead.submit({
+          source: 'contact_section',
+          page: '/',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        });
+        alert('Thank you! We will contact you shortly.');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } catch (err) {
+        alert(err instanceof Error ? err.message : 'Something went wrong.');
+      }
+    })();
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -58,8 +74,9 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-semibold text-white mb-1">Address</h4>
                   <p className="text-white/70">
-                    Business Bay, Dubai, UAE<br />
-                    Office 101, 1st Floor, Opal Tower
+                    Shop No. 5, Madhushree CHS<br />
+                    Plot No. 33, Sector 40<br />
+                    Seawoods, Navi Mumbai 400706
                   </p>
                 </div>
               </div>
@@ -70,10 +87,12 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-white mb-1">Phone</h4>
-                  <p className="text-white/70">
-                    +971 4 XXX XXXX<br />
-                    +971 50 XXX XXXX
-                  </p>
+                  <a
+                    href="tel:+917738384100"
+                    className="text-white/70 hover:text-[#EBD181] transition"
+                  >
+                    +91 77383 84100
+                  </a>
                 </div>
               </div>
 
@@ -83,10 +102,12 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-white mb-1">Email</h4>
-                  <p className="text-white/70">
-                    info@truestar.ae<br />
-                    sales@truestar.ae
-                  </p>
+                  <a
+                    href="mailto:goldenbrix@gmail.com"
+                    className="text-white/70 hover:text-[#EBD181] transition"
+                  >
+                    goldenbrix@gmail.com
+                  </a>
                 </div>
               </div>
 
@@ -145,7 +166,7 @@ export default function ContactSection() {
                   onChange={handleChange}
                   required
                   className="w-full bg-[#1a1a1a]/70 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-[#D4AF37] transition-colors"
-                  placeholder="+971 XX XXX XXXX"
+                  placeholder="+91 …"
                 />
               </div>
 

@@ -3,18 +3,88 @@
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import DevelopersGrid from '@/components/DevelopersGrid';
-import { Star, CheckCircle, Home as HomeIcon, Building2, TrendingUp, Quote } from 'lucide-react';
+import {
+  Star,
+  Quote,
+} from "lucide-react";
 import Link from "next/link";
 import { PROPERTIES_CATALOG } from "@/lib/propertiesCatalog";
 import PropertyListingCard from "@/components/PropertyListingCard";
+import { useLeadSubmit } from "@/hooks/useLeadSubmit";
+import { useSupabaseQuery } from "@/hooks/useSupabaseQuery";
+import Reveal from "@/components/motion/Reveal";
+import { BLOGS_FALLBACK, TESTIMONIALS_FALLBACK } from "@/lib/content/innerPagesContent";
 
 const FEATURED_PROPERTIES_ON_HOME = 6;
 
-const FORMSUBMIT_AJAX = "https://formsubmit.co/ajax/sunitaestate@gmail.com";
-
 export default function Home() {
-  const [guideSubmitting, setGuideSubmitting] = useState(false);
+  const guideLead = useLeadSubmit();
+
+  const { data: testimonialsData } = useSupabaseQuery(
+    "testimonials:home",
+    async (supabase) => {
+      const { data, error } = await supabase
+        .from("testimonials")
+        .select("id,name,quote,role,rating,created_at")
+        .order("created_at", { ascending: false })
+        .limit(6);
+      if (error) throw error;
+      return (data ?? []).map((t) => ({
+        id: String(t.id),
+        name: t.name as string,
+        text: (t.quote as string) ?? "",
+        role: (t.role as string) ?? "",
+        rating: typeof t.rating === "number" ? t.rating : 5,
+      }));
+    },
+  );
+
+  const { data: blogsData } = useSupabaseQuery("blogs:home", async (supabase) => {
+    const { data, error } = await supabase
+      .from("blogs")
+      .select("slug,title,excerpt,cover_image,published_at")
+      .order("published_at", { ascending: false })
+      .limit(6);
+    if (error) throw error;
+    return (data ?? []).map((b) => ({
+      slug: b.slug as string,
+      title: b.title as string,
+      excerpt: (b.excerpt as string) ?? "",
+      image: (b.cover_image as string) ?? "",
+      date: b.published_at
+        ? new Date(String(b.published_at)).toLocaleDateString("en-IN", {
+            month: "short",
+            year: "numeric",
+          })
+        : "",
+    }));
+  });
+
+  const homeBlogs =
+    (blogsData ?? []).length > 0
+      ? (blogsData ?? [])
+      : BLOGS_FALLBACK.map((b) => ({
+          slug: b.slug,
+          title: b.title,
+          excerpt: b.excerpt,
+          image: b.coverImage,
+          date: b.dateLabel,
+        }));
+
+  const homeTestimonials =
+    (testimonialsData ?? []).length > 0
+      ? (testimonialsData ?? []).map((t) => ({
+          ...t,
+          rating:
+            typeof t.rating === "number" && t.rating > 0 ? t.rating : 5,
+        }))
+      : TESTIMONIALS_FALLBACK.slice(0, 6).map((t, idx) => ({
+          id: `fallback-${idx}-${t.name}`,
+          name: t.name,
+          text: t.text,
+          role: t.location,
+          rating: t.rating,
+        }));
 
   const heroImages = [
     "/images/Hero/1.jpg",
@@ -31,35 +101,27 @@ export default function Home() {
     }, 7000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [heroImages.length]);
 
   const handleGuideSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    setGuideSubmitting(true);
     try {
-      const res = await fetch(FORMSUBMIT_AJAX, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
+      const fd = new FormData(form);
+      await guideLead.submit({
+        source: "home_guide",
+        page: "/",
+        name: String(fd.get("name") ?? ""),
+        email: String(fd.get("email") ?? ""),
+        phone: String(fd.get("phone") ?? ""),
+        budget: String(fd.get("budget") ?? ""),
+        location: String(fd.get("location") ?? ""),
+        message: "Requested free property investment guide",
       });
-      const data = (await res.json().catch(() => null)) as {
-        success?: boolean;
-        message?: string;
-      } | null;
-      if (res.ok && data?.success !== false) {
-        alert("Thank you! We will contact you shortly.");
-        form.reset();
-      } else {
-        alert(
-          data?.message?.trim() ||
-            "Something went wrong. Please try again in a moment.",
-        );
-      }
-    } catch {
-      alert("Something went wrong. Please check your connection and try again.");
-    } finally {
-      setGuideSubmitting(false);
+      alert("Thank you! We will contact you shortly.");
+      form.reset();
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Something went wrong.");
     }
   };
 
@@ -219,9 +281,7 @@ export default function Home() {
   className="bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl shadow-2xl max-w-sm w-full ml-auto"
 >
 
-  <input type="hidden" name="_captcha" value="false" />
-  <input type="hidden" name="_template" value="table" />
-  <input type="hidden" name="_subject" value="Free Property Investment Guide — Home" />
+  {/* Stored in Supabase `leads` */}
 
   <h3 className="text-white text-base font-semibold mb-2">
     Get Free Property Investment Guide
@@ -289,10 +349,10 @@ export default function Home() {
 
     <button
       type="submit"
-      disabled={guideSubmitting}
+      disabled={guideLead.loading}
       className="w-full gold-gradient py-2.5 rounded-lg font-semibold text-white text-sm disabled:opacity-60 disabled:cursor-not-allowed"
     >
-      {guideSubmitting ? "Sending…" : "Get Free Guide"}
+      {guideLead.loading ? "Sending…" : "Get Free Guide"}
     </button>
 
   </div>
@@ -409,9 +469,12 @@ Featured properties
 
       </div>
 
-      <button className="mt-10 px-8 py-4 bg-[#C5A24A] text-white rounded-lg font-semibold hover:scale-105 transition shadow-lg">
+      <Link
+        href="/about"
+        className="mt-10 inline-flex items-center justify-center px-8 py-4 bg-[#C5A24A] text-white rounded-lg font-semibold hover:scale-105 transition shadow-lg"
+      >
         Learn More About Us
-      </button>
+      </Link>
 
     </div>
 
@@ -441,7 +504,7 @@ Featured properties
       {/*Services */}
       <section id="services" className="py-24 px-6 lg:px-20 bg-[#0c1b2a] text-white">
 
-  <div className="max-w-7xl mx-auto text-center mb-16">
+  <Reveal className="max-w-7xl mx-auto text-center mb-16">
 
     <p className="text-[#C5A24A] tracking-widest text-sm uppercase">
       What We Offer
@@ -454,7 +517,7 @@ Featured properties
       Our Services
     </h2>
 
-  </div>
+  </Reveal>
 
   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
 
@@ -499,65 +562,99 @@ Featured properties
 </section>
 
       {/*Enhanced TESTIMONIALS */}
-      <section id="testimonials" className="py-24 px-6 lg:px-20 bg-[#f6f4ef]">
+      <section id="testimonials" className="relative overflow-hidden py-24 px-6 lg:px-20 bg-gradient-to-b from-[#f6f4ef] via-[#faf8f3] to-[#f0ebe0]">
+        <div
+          className="pointer-events-none absolute -right-24 top-20 h-72 w-72 rounded-full bg-[#C5A24A]/10 blur-[90px]"
+          aria-hidden
+        />
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <Reveal className="mx-auto mb-14 max-w-2xl text-center sm:mb-16">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C5A24A]">
+              Testimonials
+            </p>
+            <h2
+              className="mt-4 text-4xl font-bold text-[#0c1b2a] sm:text-5xl"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
+              What our clients say
+            </h2>
+            <div className="mx-auto mt-5 h-px w-24 bg-gradient-to-r from-transparent via-[#C5A24A] to-transparent" />
+            <p className="mt-5 text-[#0c1b2a]/65 leading-relaxed">
+              Real feedback from buyers and investors across Mumbai and Navi Mumbai.
+            </p>
+          </Reveal>
 
-  <div className="max-w-7xl mx-auto text-center mb-16">
+          <div className="grid max-w-7xl gap-6 md:grid-cols-3 md:gap-8">
+            {homeTestimonials.length ? (
+              homeTestimonials.slice(0, 3).map((t, idx) => (
+                <Reveal key={t.id} delay={0.04 * idx}>
+                  <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#C5A24A]/15 bg-white p-7 shadow-md transition hover:-translate-y-1 hover:border-[#C5A24A]/30 hover:shadow-xl sm:p-8">
+                    <div className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-[#C5A24A]/6 transition group-hover:bg-[#C5A24A]/10" />
+                    <Quote className="relative mb-4 h-9 w-9 text-[#C5A24A]/30" aria-hidden />
+                    <div className="relative mb-5 flex gap-0.5">
+                      {Array.from({
+                        length: Math.min(
+                          5,
+                          Math.max(1, Math.round(Number(t.rating) || 5)),
+                        ),
+                      }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-4 w-4 fill-[#C5A24A] text-[#C5A24A]"
+                          aria-hidden
+                        />
+                      ))}
+                    </div>
+                    <p
+                      className="relative flex-1 text-[#0c1b2a]/78 leading-relaxed"
+                      style={{ fontFamily: "var(--font-playfair), serif" }}
+                    >
+                      “{t.text}”
+                    </p>
+                    <div className="relative mt-8 flex items-center gap-4 border-t border-[#0c1b2a]/8 pt-6">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#0c1b2a] text-xs font-bold text-[#EBD181] ring-2 ring-[#C5A24A]/25">
+                        {t.name
+                          .split(" ")
+                          .map((p) => p[0])
+                          .slice(0, 2)
+                          .join("")}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="truncate font-semibold text-[#0c1b2a]">
+                          {t.name}
+                        </p>
+                        {t.role ? (
+                          <p className="truncate text-sm text-[#0c1b2a]/55">
+                            {t.role}
+                          </p>
+                        ) : null}
+                      </div>
+                    </div>
+                  </article>
+                </Reveal>
+              ))
+            ) : (
+              <div className="md:col-span-3 rounded-2xl border border-[#C5A24A]/15 bg-white p-10 text-center text-[#0c1b2a]/55 shadow-sm">
+                Testimonials will appear here once published.
+              </div>
+            )}
+          </div>
 
-    <p className="text-[#C5A24A] uppercase text-sm tracking-widest">
-      Testimonials
-    </p>
-
-    <h2
-      className="text-4xl font-bold"
-      style={{ fontFamily: 'var(--font-playfair), serif' }}
-    >
-      What Our Clients Say
-    </h2>
-
-  </div>
-
-  <div className="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto">
-
-    {[
-      {
-        name: "Amit Kulkarni",
-        text: "Golden Brix  Properties helped us find a perfect 2BHK in Kharghar. Their team was very responsive and explained every step of the buying process clearly."
-      },
-      {
-        name: "Sneha Patil",
-        text: "We were looking for an investment property in Navi Mumbai and the team suggested great options. Very professional and transparent service."
-      },
-      {
-        name: "Rahul Nair",
-        text: "Great experience working with Golden Brix Properties. They helped us finalize our apartment in Seawoods and handled the paperwork smoothly."
-      }
-    ].map((t, i) => (
-
-      <div
-        key={i}
-        className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition"
-      >
-
-        <p className="text-gray-600 mb-6 leading-relaxed">
-          "{t.text}"
-        </p>
-
-        <p className="font-semibold">
-          {t.name}
-        </p>
-
-      </div>
-
-    ))}
-
-  </div>
-
-</section>
+          <div className="mt-12 flex justify-center">
+            <Link
+              href="/testimonials"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-[#C5A24A]/35 bg-white px-8 py-3 text-sm font-semibold text-[#001F3F] shadow-sm transition hover:border-[#C5A24A] hover:bg-[#faf8f3]"
+            >
+              View all testimonials
+            </Link>
+          </div>
+        </div>
+      </section>
 
 {/* BLOGS */}
 <section id="blogs" className="py-24 px-6 lg:px-20 bg-white">
 
-<div className="max-w-7xl mx-auto text-center mb-16">
+<Reveal className="max-w-7xl mx-auto text-center mb-16">
 
 <p className="text-[#C5A24A] uppercase text-sm tracking-widest">
 Insights & Guides
@@ -575,58 +672,48 @@ Expert insights, property trends, and investment tips for Mumbai
 and Navi Mumbai real estate buyers.
 </p>
 
-</div>
+</Reveal>
 
 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
 
-{[
-{
-title: "Top 5 Areas To Invest In Navi Mumbai In 2025",
-image: "/images/properties/p1.jpg",
-date: "March 2026"
-},
-{
-title: "Things To Check Before Buying A Property",
-image: "/images/properties/p5.jpg",
-date: "February 2026"
-},
-{
-title: "Why Navi Mumbai Is A Real Estate Hotspot",
-image: "/images/Hero/3.jpg",
-date: "January 2026"
-}
-].map((blog,i)=> (
+{homeBlogs.length ? (
+  homeBlogs.slice(0, 3).map((blog, idx)=> (
 
-<div
-key={i}
-className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group"
+<Reveal key={blog.slug} delay={0.03 * idx}>
+<Link
+href={`/blogs/${blog.slug}`}
+className="group block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
 >
 
 <img
-src={blog.image}
+src={blog.image || "/images/Hero/3.jpg"}
+alt={blog.title}
 className="h-52 w-full object-cover group-hover:scale-105 transition duration-500"
 />
 
 <div className="p-6">
 
-<p className="text-xs text-[#C5A24A] mb-2">{blog.date}</p>
+<p className="text-xs text-[#C5A24A] mb-2">{blog.date || "—"}</p>
 
 <h3 className="font-semibold text-lg mb-4 leading-snug">
 {blog.title}
 </h3>
 
-<Link
-href="/#blogs"
-className="text-[#C5A24A] font-medium text-sm hover:underline"
->
+<span className="text-[#C5A24A] font-medium text-sm hover:underline">
 Read Article →
+</span>
+
+</div>
+
 </Link>
+</Reveal>
 
-</div>
-
-</div>
-
-))}
+  ))
+) : (
+  <div className="md:col-span-2 lg:col-span-3 rounded-2xl border border-[#C5A24A]/15 bg-[#faf8f3] p-10 text-center text-gray-600">
+    No blog posts published yet.
+  </div>
+)}
 
 </div>
 

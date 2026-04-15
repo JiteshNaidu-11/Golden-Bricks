@@ -7,6 +7,8 @@ type Props = {
 };
 
 export default function PropertyListingCard({ property }: Props) {
+  const fallbackSrc = "/properties/sai-world-one.jpg";
+
   return (
     <Link
       href={`/property/${property.slug}`}
@@ -18,9 +20,16 @@ export default function PropertyListingCard({ property }: Props) {
         {/* Image */}
         <div className="relative h-[220px] w-full shrink-0 overflow-hidden sm:h-[260px]">
           <img
-            src={property.image}
+            src={property.image || fallbackSrc}
             alt={property.name}
             className="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+            loading="lazy"
+            onError={(e) => {
+              const img = e.currentTarget;
+              if (img.dataset.fallbackApplied === "1") return;
+              img.dataset.fallbackApplied = "1";
+              img.src = fallbackSrc;
+            }}
           />
           <div
             className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"

@@ -4,8 +4,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ChevronDown, Phone } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { openWhatsApp } from '@/lib/whatsapp';
+import { PROPERTIES_CATALOG } from '@/lib/propertiesCatalog';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -77,33 +78,39 @@ export default function Header() {
   // About Us is now a single page, no dropdown needed
 
   const servicesItems = [
-    { href: '#services', label: 'Property Buying Assistance' },
-    { href: '#services', label: 'Property Selling Services' },
-    { href: '#services', label: 'Rental & Leasing Services' },
-    { href: '#services', label: 'Real Estate Investment Advisory' },
-    { href: '#services', label: 'Property Management' },
+    { href: '/services', label: 'Property Buying Assistance' },
+    { href: '/services', label: 'Investment Advisory' },
+    { href: '/services', label: 'Home Loan Assistance' },
+    { href: '/services', label: 'Property Management' },
   ];
 
-  const hashHref = (link: string) => (link.startsWith('#') ? `/${link}` : link);
+  const propertiesItems = PROPERTIES_CATALOG.map((p) => ({
+    href: `/property/${p.slug}`,
+    label: p.name,
+    sub: p.location,
+  }));
 
-  /** Full catalog off-homepage; on home, #projects still scrolls to featured strip. */
-  const navItemHref = (link: string) =>
-    link === '#projects' && pathname !== '/' ? '/properties' : hashHref(link);
+  const navItemHref = (link: string) => link;
+
+  const isActive = (link: string) => {
+    if (link === '/') return pathname === '/';
+    return pathname === link || pathname.startsWith(`${link}/`);
+  };
 
   // Source of truth for header navigation order + items.
   const navItems: Array<{ label: string; link: string; dropdown?: boolean }> = [
-    { label: 'Home', link: '#home' },
-    { label: 'About Us', link: '#about' },
-    { label: 'Projects', link: '#projects' },
-    { label: 'Testimonials', link: '#testimonials' },
-    { label: 'Services', link: '#services', dropdown: true },
+    { label: 'Home', link: '/' },
+    { label: 'About Us', link: '/about' },
+    { label: 'Projects', link: '/projects' },
+    { label: 'Properties', link: '/properties', dropdown: true },
+    { label: 'Testimonials', link: '/testimonials' },
+    { label: 'Services', link: '/services', dropdown: true },
     { label: 'EMI Calculator', link: '/emi-calculator' },
-    { label: 'Blogs', link: '#blogs' },
-    { label: 'Contact Us', link: '#contact' },
+    { label: 'Blogs', link: '/blogs' },
+    { label: 'Contact Us', link: '/contact' },
   ];
 
   // Determine if we should show white text (only on home page when not scrolled)
-  const shouldShowWhiteText = isHomePage && !isScrolled;
   const shouldShowGlassEffect = isScrolled || !isHomePage;
 
   return (
@@ -133,7 +140,7 @@ export default function Header() {
           {/* Desktop Navigation */}
 <nav className="hidden md:flex items-center space-x-6">
   {navItems.map((item) => {
-    if (item.dropdown) {
+    if (item.dropdown && item.link === '/services') {
       return (
         <div
           key={item.label}
@@ -158,7 +165,7 @@ export default function Header() {
               {servicesItems.map((serviceItem) => (
                 <Link
                   key={serviceItem.label}
-                  href={hashHref(serviceItem.href)}
+                  href={serviceItem.href}
                   className={`block px-4 py-2 transition-colors ${
                     shouldShowGlassEffect
                       ? 'text-[#001F3F] hover:bg-[#C5A24A]/10 hover:text-[#C5A24A]'
@@ -168,6 +175,69 @@ export default function Header() {
                   {serviceItem.label}
                 </Link>
               ))}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    if (item.dropdown && item.link === '/properties') {
+      return (
+        <div
+          key={item.label}
+          className="relative"
+          onMouseEnter={() => handleMouseEnter('properties')}
+          onMouseLeave={handleMouseLeave}
+        >
+          <button className={`relative font-medium flex items-center gap-1 transition-colors group whitespace-nowrap ${
+            shouldShowGlassEffect ? 'text-gray-700 hover:text-[#C5A24A]' : 'text-white/90 hover:text-[#EBD181]'
+          }`}>
+            Properties
+            <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'properties' ? 'rotate-180' : ''}`} />
+            <span className="absolute inset-x-0 bottom-0 h-0.5 gold-gradient transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+          </button>
+
+          {openDropdown === 'properties' && (
+            <div className={`absolute top-full left-0 mt-2 w-[22rem] rounded-lg shadow-xl border py-2 backdrop-blur-xl ${
+              shouldShowGlassEffect
+                ? 'bg-white/95 border-[#C5A24A]/20'
+                : 'bg-[#001F3F]/85 border-[#C5A24A]/30'
+            }`}>
+              <div className={`px-4 pb-2 text-xs font-semibold uppercase tracking-wider ${
+                shouldShowGlassEffect ? 'text-[#001F3F]/60' : 'text-white/60'
+              }`}>
+                All Properties
+              </div>
+              <div className="max-h-[22rem] overflow-auto">
+                {propertiesItems.map((p) => (
+                  <Link
+                    key={p.href}
+                    href={p.href}
+                    className={`block px-4 py-2 transition-colors ${
+                      shouldShowGlassEffect
+                        ? 'text-[#001F3F] hover:bg-[#C5A24A]/10 hover:text-[#C5A24A]'
+                        : 'text-white/90 hover:bg-[#C5A24A]/20 hover:text-[#EBD181]'
+                    }`}
+                  >
+                    <div className="text-sm font-medium leading-snug line-clamp-1">{p.label}</div>
+                    <div className={`text-xs mt-0.5 line-clamp-1 ${
+                      shouldShowGlassEffect ? 'text-[#001F3F]/55' : 'text-white/55'
+                    }`}>{p.sub}</div>
+                  </Link>
+                ))}
+              </div>
+              <div className="px-4 pt-2">
+                <Link
+                  href="/properties"
+                  className={`inline-flex w-full items-center justify-center rounded-md px-3 py-2 text-sm font-semibold transition ${
+                    shouldShowGlassEffect
+                      ? 'bg-[#C5A24A]/10 text-[#001F3F] hover:bg-[#C5A24A]/15'
+                      : 'bg-white/10 text-white hover:bg-white/15'
+                  }`}
+                >
+                  View all properties
+                </Link>
+              </div>
             </div>
           )}
         </div>
@@ -184,6 +254,9 @@ export default function Header() {
       >
         {item.label}
         <span className="absolute inset-x-0 bottom-0 h-0.5 gold-gradient transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+        {isActive(item.link) ? (
+          <span className="absolute inset-x-0 -bottom-1 h-0.5 gold-gradient" />
+        ) : null}
       </Link>
     );
   })}
@@ -232,7 +305,7 @@ export default function Header() {
       {isMenuOpen && (
         <nav className="md:hidden flex-1 min-h-0 overflow-y-auto overflow-x-hidden py-4 space-y-4 bg-white border-t border-gray-100 mt-2">
           {navItems.map((item) => {
-            if (item.dropdown) {
+            if (item.dropdown && item.link === '/services') {
               return (
                 <div key={item.label}>
                   <button
@@ -248,7 +321,7 @@ export default function Header() {
                       {servicesItems.map((serviceItem) => (
                         <Link
                           key={serviceItem.label}
-                          href={hashHref(serviceItem.href)}
+                          href={serviceItem.href}
                           className="block px-4 py-2 text-[#001F3F]/80 hover:text-[#C5A24A] hover:bg-white/50 font-medium transition-all"
                           onClick={() => {
                             setIsMenuOpen(false);
@@ -258,6 +331,55 @@ export default function Header() {
                           {serviceItem.label}
                         </Link>
                       ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (item.dropdown && item.link === '/properties') {
+              return (
+                <div key={item.label}>
+                  <button
+                    className="w-full text-left px-4 py-2 text-[#001F3F] hover:text-[#C5A24A] hover:bg-white/50 font-medium transition-all flex items-center justify-between"
+                    onClick={() =>
+                      setOpenDropdown(
+                        openDropdown === 'properties-mobile' ? null : 'properties-mobile'
+                      )
+                    }
+                  >
+                    Properties
+                    <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'properties-mobile' ? 'rotate-180' : ''}`} />
+                  </button>
+
+                  {openDropdown === 'properties-mobile' && (
+                    <div className="pl-4 mt-2">
+                      <div className="max-h-64 overflow-auto rounded-lg border border-[#C5A24A]/15 bg-white/70">
+                        {propertiesItems.map((p) => (
+                          <Link
+                            key={p.href}
+                            href={p.href}
+                            className="block px-4 py-2 border-b border-[#0c1b2a]/5 last:border-0 text-[#001F3F]/90 hover:text-[#C5A24A] hover:bg-white/60 transition-all"
+                            onClick={() => {
+                              setIsMenuOpen(false);
+                              setOpenDropdown(null);
+                            }}
+                          >
+                            <div className="text-sm font-medium leading-snug line-clamp-1">{p.label}</div>
+                            <div className="text-xs text-[#001F3F]/55 mt-0.5 line-clamp-1">{p.sub}</div>
+                          </Link>
+                        ))}
+                      </div>
+                      <Link
+                        href="/properties"
+                        className="mt-3 block px-4 py-2 text-[#001F3F] hover:text-[#C5A24A] hover:bg-white/50 font-medium transition-all"
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setOpenDropdown(null);
+                        }}
+                      >
+                        View all properties
+                      </Link>
                     </div>
                   )}
                 </div>

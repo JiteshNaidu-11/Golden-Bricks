@@ -7,10 +7,12 @@
     "build": "next build",
     "export": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed:supabase:properties": "tsx scripts/seedSupabaseProperties.ts"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@supabase/supabase-js": "^2.103.0",
     "@types/nodemailer": "^7.0.3",
     "country-flag-emoji-polyfill": "^0.1.8",
     "framer-motion": "^12.35.2",
@@ -29,6 +31,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

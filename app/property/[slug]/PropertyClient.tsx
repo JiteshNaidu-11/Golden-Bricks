@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
 import {
   MapPin,
   Bath,
@@ -13,8 +14,10 @@ import {
   Sparkles,
 } from "lucide-react";
 import { openWhatsApp } from "@/lib/whatsapp";
+import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 
 type Property = {
+  slug?: string;
   name: string;
   location: string;
   price: string;
@@ -41,6 +44,12 @@ function statLine(value: string | undefined, fallback: string): string {
 export default function PropertyClient({ property }: { property: Property }) {
   const galleryImages =
     property.images?.filter((src) => src !== property.image) ?? [];
+
+  const lead = useLeadSubmit();
+  const [leadName, setLeadName] = useState("");
+  const [leadEmail, setLeadEmail] = useState("");
+  const [leadPhone, setLeadPhone] = useState("");
+  const [leadMessage, setLeadMessage] = useState("");
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#faf8f3] via-[#f5f2eb] to-[#ece8df] text-[#0c1b2a]">
@@ -266,27 +275,74 @@ export default function PropertyClient({ property }: { property: Property }) {
                     .
                   </p>
 
-                  <div className="space-y-3">
+                  <form
+                    className="space-y-3"
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+                      try {
+                        await lead.submit({
+                          source: "property_sidebar",
+                          page: typeof window !== "undefined" ? window.location.pathname : undefined,
+                          name: leadName,
+                          email: leadEmail,
+                          phone: leadPhone,
+                          location: property.location,
+                          property_slug: property.slug ?? undefined,
+                          message:
+                            leadMessage ||
+                            `Interested in ${property.name} (${property.location})`,
+                        });
+                        alert("Thank you! We will contact you shortly.");
+                        setLeadName("");
+                        setLeadEmail("");
+                        setLeadPhone("");
+                        setLeadMessage("");
+                      } catch (err) {
+                        alert(err instanceof Error ? err.message : "Something went wrong.");
+                      }
+                    }}
+                  >
                     <input
                       type="text"
                       placeholder="Full name"
+                      value={leadName}
+                      onChange={(e) => setLeadName(e.target.value)}
+                      required
+                      autoComplete="name"
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#C5A24A]/40 focus:border-[#C5A24A]"
                     />
                     <input
                       type="email"
                       placeholder="Email"
+                      value={leadEmail}
+                      onChange={(e) => setLeadEmail(e.target.value)}
+                      required
+                      autoComplete="email"
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#C5A24A]/40 focus:border-[#C5A24A]"
                     />
                     <input
                       type="tel"
                       placeholder="Phone number"
+                      value={leadPhone}
+                      onChange={(e) => setLeadPhone(e.target.value)}
+                      required
+                      autoComplete="tel"
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#C5A24A]/40 focus:border-[#C5A24A]"
                     />
                     <textarea
                       placeholder="Your message"
                       rows={4}
+                      value={leadMessage}
+                      onChange={(e) => setLeadMessage(e.target.value)}
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#C5A24A]/40 focus:border-[#C5A24A] resize-y min-h-[100px]"
                     />
+                    <button
+                      type="submit"
+                      disabled={lead.loading}
+                      className="w-full text-center gold-gradient text-[#001F3F] py-3.5 rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-shadow disabled:opacity-60 disabled:cursor-not-allowed"
+                    >
+                      {lead.loading ? "Sending…" : "Submit enquiry"}
+                    </button>
                     <button
                       type="button"
                       onClick={() =>
@@ -295,11 +351,11 @@ export default function PropertyClient({ property }: { property: Property }) {
                           `Hi, I'd like more information about ${property.name} (${property.location}).`,
                         )
                       }
-                      className="w-full text-center gold-gradient text-[#001F3F] py-3.5 rounded-xl font-semibold text-sm shadow-md hover:shadow-lg transition-shadow"
+                      className="w-full text-center rounded-xl border border-[#C5A24A]/35 py-3 text-sm font-semibold text-[#0c1b2a] transition hover:bg-[#C5A24A]/10"
                     >
                       Chat on WhatsApp
                     </button>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>

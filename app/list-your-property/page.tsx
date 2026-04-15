@@ -5,9 +5,9 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Home, Megaphone, Search, Tag, User, Mail, Phone, MapPin, Building, Bed, Ruler, Hash, DollarSign, Send, Loader2 } from 'lucide-react';
 import Image from 'next/image';
-import emailjs from '@emailjs/browser';
 import { useEffect } from 'react';
 import { countryCodes } from '@/lib/countryCodes';
+import { useLeadSubmit } from '@/hooks/useLeadSubmit';
 
 export default function ListYourProperty() {
   const [formData, setFormData] = useState({
@@ -28,13 +28,9 @@ export default function ListYourProperty() {
   const [errorMessage, setErrorMessage] = useState('');
   const [countrySearch, setCountrySearch] = useState('');
   const [isCountryDropdownOpen, setIsCountryDropdownOpen] = useState(false);
+  const lead = useLeadSubmit();
 
-  useEffect(() => {
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
-    if (publicKey) {
-      emailjs.init(publicKey);
-    }
-  }, []);
+  // EmailJS removed; submissions go to Supabase `leads`.
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -61,33 +57,28 @@ export default function ListYourProperty() {
     setErrorMessage('');
 
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID_TRUESTAR || '';
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_TRUESTAR || '';
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY_TRUESTAR || '';
+      const fullPhone = formData.phone
+        ? `${formData.countryCode} ${formData.phone}`
+        : '';
 
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error('EmailJS configuration is missing. Please check your environment variables.');
-      }
-
-      const fullPhone = formData.phone ? `${formData.countryCode} ${formData.phone}` : 'Not provided';
-      
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
+      await lead.submit({
+        source: 'list_your_property',
+        page: '/list-your-property',
+        name: formData.name,
+        email: formData.email,
         phone: fullPhone,
-        country_code: formData.countryCode,
-        property_for: formData.propertyFor,
-        location: formData.location || 'Not provided',
-        property_type: formData.propertyType || 'Not provided',
-        bed: formData.bed || 'Not provided',
-        size_sqft: formData.sizeSqft || 'Not provided',
-        unit_no: formData.unitNo || 'Not provided',
-        price: formData.price || 'Not provided',
-        message: `Property Listing Request:\n\nProperty For: ${formData.propertyFor}\nLocation: ${formData.location}\nProperty Type: ${formData.propertyType}\nBedrooms: ${formData.bed}\nSize (SQFT): ${formData.sizeSqft}\nUnit No.: ${formData.unitNo}\nPrice: ${formData.price}`,
-        to_email: 'info@truestar.ae',
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+        location: formData.location,
+        message: [
+          'Property Listing Request',
+          `Property For: ${formData.propertyFor}`,
+          `Location: ${formData.location || '—'}`,
+          `Property Type: ${formData.propertyType || '—'}`,
+          `Bedrooms: ${formData.bed || '—'}`,
+          `Size (SQFT): ${formData.sizeSqft || '—'}`,
+          `Unit No.: ${formData.unitNo || '—'}`,
+          `Expected Price: ${formData.price || '—'}`,
+        ].join('\n'),
+      });
 
       setSubmitStatus('success');
       setFormData({
@@ -318,6 +309,7 @@ export default function ListYourProperty() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
+                      required
                       placeholder="PHONE NUMBER"
                       className="w-full pl-4 pr-4 py-3 rounded-lg border border-gray-300 focus:border-[#C5A24A] focus:outline-none transition-colors bg-white text-[#001F3F]"
                     />

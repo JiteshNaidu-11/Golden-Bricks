@@ -116,6 +116,43 @@ html {
   }
 }
 
+.hero-image {
+  transform: scale(1.06);
+  filter: saturate(1.05) contrast(1.05);
+}
+
+@keyframes float-slow {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes float-slow-2 {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 12px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+.animate-float-slow-2 {
+  animation: float-slow-2 10s ease-in-out infinite;
+}
+
 .shimmer {
   animation: shimmer 3s infinite;
   background: linear-gradient(

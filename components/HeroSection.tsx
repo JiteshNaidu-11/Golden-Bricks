@@ -4,13 +4,12 @@ import { useState, useEffect } from 'react';
 import { Search, MapPin, Download, Phone, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-const FORMSUBMIT_AJAX = 'https://formsubmit.co/ajax/sunitaestate@gmail.com';
+import { useLeadSubmit } from '@/hooks/useLeadSubmit';
 
 export default function HeroSection() {
   const [activeTab, setActiveTab] = useState<'buy' | 'rent'>('buy');
   const [currentImage, setCurrentImage] = useState(0);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const lead = useLeadSubmit();
 
   const heroImages = [
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
@@ -27,36 +26,29 @@ export default function HeroSection() {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [heroImages.length]);
 
   const handleLeadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    setIsSubmitting(true);
     try {
-      const res = await fetch(FORMSUBMIT_AJAX, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
+      const fd = new FormData(form);
+      await lead.submit({
+        source: "hero",
+        page: "/",
+        name: String(fd.get("name") ?? ""),
+        email: String(fd.get("email") ?? ""),
+        phone: String(fd.get("phone") ?? ""),
+        budget: String(fd.get("budget") ?? ""),
+        location: String(fd.get("location") ?? ""),
+        message: `Intent: ${String(fd.get("intent") ?? activeTab)} · Property type: ${String(fd.get("property_type") ?? "")}`.trim(),
       });
-      const data = (await res.json().catch(() => null)) as {
-        success?: boolean;
-        message?: string;
-      } | null;
-      if (res.ok && data?.success !== false) {
-        alert('Thank you! We will contact you shortly.');
-        form.reset();
-        setActiveTab('buy');
-      } else {
-        alert(
-          data?.message?.trim() ||
-            'Something went wrong. Please try again in a moment.',
-        );
-      }
-    } catch {
-      alert('Something went wrong. Please check your connection and try again.');
-    } finally {
-      setIsSubmitting(false);
+
+      alert("Thank you! We will contact you shortly.");
+      form.reset();
+      setActiveTab("buy");
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Something went wrong.");
     }
   };
 
@@ -150,9 +142,7 @@ export default function HeroSection() {
             <div className="glass rounded-2xl p-6 shadow-2xl backdrop-blur-xl sm:p-8">
 
             <form onSubmit={handleLeadSubmit} className="space-y-4">
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_subject" value="New Lead from Website" />
+              {/* Stored in Supabase `leads` */}
 
               <div className="mb-2 flex gap-2 rounded-lg bg-[#1a1a1a]/50 p-1">
                 <button
@@ -277,10 +267,10 @@ export default function HeroSection() {
 
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={lead.loading}
                 className="w-full py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:shadow-lg hover:shadow-[#D4AF37]/50 transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? (
+                {lead.loading ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" />
                     Sending…

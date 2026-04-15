@@ -1,51 +1,39 @@
 'use client';
 
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Image from 'next/image';
+import { useSupabaseQuery } from '@/hooks/useSupabaseQuery';
 
 interface Testimonial {
-  id: number;
+  id: string;
   name: string;
   rating: number;
   text: string;
   location?: string;
 }
 
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Sarah Al-Mansoori",
-    rating: 5,
-    text: "Truestar made our dream of owning a property in Dubai a reality. Their team was professional, knowledgeable, and always available to answer our questions. Highly recommended!",
-    location: "Dubai"
-  },
-  {
-    id: 2,
-    name: "James Mitchell",
-    rating: 5,
-    text: "Exceptional service from start to finish. The team at Truestar helped us find the perfect investment property in Palm Jumeirah. Their expertise in the Dubai market is unmatched.",
-    location: "London"
-  },
-  {
-    id: 3,
-    name: "Priya Sharma",
-    rating: 5,
-    text: "Working with Truestar was a seamless experience. They understood our requirements perfectly and showed us properties that matched our vision. Thank you for making the process so smooth!",
-    location: "Mumbai"
-  },
-  {
-    id: 4,
-    name: "Ahmed Hassan",
-    rating: 5,
-    text: "The best real estate agency in Dubai. Their knowledge of off-plan properties and investment opportunities is outstanding. We've made multiple investments through them.",
-    location: "Dubai"
-  },
-];
-
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerPage = 3;
+
+  const { data } = useSupabaseQuery("testimonials:component", async (supabase) => {
+    const { data, error } = await supabase
+      .from("testimonials")
+      .select("id,name,quote,role,rating,created_at")
+      .order("created_at", { ascending: false })
+      .limit(12);
+    if (error) throw error;
+    return (data ?? []).map((t) => ({
+      id: String(t.id),
+      name: t.name as string,
+      rating: typeof t.rating === "number" ? t.rating : 5,
+      text: (t.quote as string) ?? "",
+      location: (t.role as string) ?? undefined,
+    })) as Testimonial[];
+  });
+
+  const testimonials = useMemo(() => data ?? [], [data]);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + itemsPerPage >= testimonials.length ? 0 : prev + itemsPerPage));
@@ -88,7 +76,8 @@ export default function Testimonials() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {visibleTestimonials.map((testimonial) => (
+          {visibleTestimonials.length ? (
+            visibleTestimonials.map((testimonial) => (
             <div
               key={testimonial.id}
               className="glass rounded-2xl p-8 hover:border-[#D4AF37]/50 transition-all"
@@ -113,7 +102,12 @@ export default function Testimonials() {
                 </div>
               </div>
             </div>
-          ))}
+            ))
+          ) : (
+            <div className="md:col-span-2 lg:col-span-3 rounded-2xl border border-white/10 bg-white/5 p-10 text-center text-white/70">
+              No testimonials published yet.
+            </div>
+          )}
         </div>
 
         <div className="flex justify-center mt-12">

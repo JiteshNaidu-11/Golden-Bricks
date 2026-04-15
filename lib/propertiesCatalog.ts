@@ -32,7 +32,37 @@ const MAYURESH_PLANET_GALLERY = Array.from(
   (_, i) => `/Mayuresh/${i + 1}.jpeg`,
 );
 
-export const PROPERTIES_CATALOG: CatalogProperty[] = [
+const LOCAL_CARD_IMAGE_BY_SLUG: Record<string, string> = {
+  "aatman-balaji-corporation": "/properties/aatman-balaji-palm-beach.jpeg",
+  "cadbury-junction-thane-west": "/properties/cadbury-junction-thane-west.jpg",
+  "codename-panoramic-mayuresh-group": "/properties/codename-panoramic-cbd-belapur.jpg",
+  "mayuresh-planet-cbd-belapur": "/properties/mayuresh-planet-cbd-belapur.jpeg",
+  "9pbr-adani-realty": "/properties/9pbr-adani-realty.jpg",
+  "elysium-platinum": "/properties/elysium-platinum.jpg",
+  "sai-world-one": "/properties/sai-world-one.jpg",
+  "dream-ikon": "/properties/dream-ikon.jpg",
+  "oakwoods-platinum": "/properties/oakwoods-platinum.jpg",
+  "platinum-juinagar-midc": "/properties/platinum-juinagar-midc.jpg",
+  "codename-growth": "/properties/codename-growth.jpeg",
+  "platinum-the-reserve": "/properties/platinum-the-reserve.jpeg",
+  "cyber-square": "/properties/cyber-square.jpeg",
+  "mensionz-platinum": "/properties/mensionz-platinum.jpg",
+  "k-raheja-corp-homes": "/properties/k-raheja-corp-homes.jpg",
+  "one-platinum": "/properties/one-platinum.jpg",
+  "praksyde-platinum": "/properties/praksyde-platinum.jpeg",
+  "westwoods-platinum": "/properties/westwoods-platinum.jpg",
+  "goodwill-wisteria": "/properties/goodwill-wisteria.jpeg",
+  "esquire-platinum": "/properties/esquire-platinum.jpg",
+  "code-name-green-gold": "/properties/code-name-green-gold.webp",
+  "platinum-juinagar-new-launch": "/properties/platinum-juinagar-new-launch.webp",
+  "9pbr-palm-beachroad": "/properties/9pbr-palm-beachroad.jpg",
+  "emperia-c2-turbhe": "/properties/emperia-c2-turbhe.jpg",
+  "birla-estate-airoli": "/properties/birla-estate-airoli.webp",
+};
+
+const DEFAULT_PROPERTY_CARD_IMAGE = "/properties/sai-world-one.jpg";
+
+const RAW_PROPERTIES_CATALOG: CatalogProperty[] = [
   {
     slug: "aatman-balaji-corporation",
     name: "Aatman by Balaji Corporation",
@@ -832,6 +862,16 @@ Connect with Golden Brix for layouts, availability, and investment options.`,
     ],
   },
 ];
+
+export const PROPERTIES_CATALOG: CatalogProperty[] = RAW_PROPERTIES_CATALOG.map(
+  (p) => {
+    const local = LOCAL_CARD_IMAGE_BY_SLUG[p.slug];
+    const image = local ?? p.image ?? DEFAULT_PROPERTY_CARD_IMAGE;
+    const images =
+      p.images && p.images.length > 0 ? p.images : image ? [image] : [];
+    return { ...p, image, images };
+  },
+);
 
 /** Digits from BHK / "bed" style configuration lines, sorted unique. */
 function extractBhkBedTokens(bhk: string): string[] | null {

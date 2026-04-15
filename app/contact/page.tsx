@@ -1,76 +1,124 @@
-'use client';
+"use client";
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import SocialLinks from '@/components/SocialLinks';
-import { useState, useEffect } from 'react';
-import { Globe, Mail, Phone, MapPin, Send, Loader2, Clock } from 'lucide-react';
-import emailjs from '@emailjs/browser';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import SocialLinks from "@/components/SocialLinks";
+import { useState } from "react";
+import Link from "next/link";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Loader2,
+  Clock,
+  MessageCircle,
+  ArrowUpRight,
+} from "lucide-react";
+import { openWhatsApp } from "@/lib/whatsapp";
+
+const CONTACT = {
+  tagline: "Premium real estate advisory — Mumbai & Navi Mumbai",
+  addressLines: [
+    "Shop No. 5, Madhushree CHS",
+    "Plot No. 33, Sector 40",
+    "Seawoods, Navi Mumbai",
+    "Maharashtra 400706",
+  ],
+  phoneDisplay: "+91 77383 84100",
+  phoneTel: "+917738384100",
+  email: "goldenbrix@gmail.com",
+  hours: "Monday – Saturday: 9:00 AM – 7:00 PM",
+  hoursNote: "Sunday: by appointment",
+  mapsEmbedQuery:
+    "Shop+No+5,+Madhushree+CHS,+Plot+33,+Sector+40,+Seawoods,+Navi+Mumbai+400706",
+  mapsOpenUrl:
+    "https://www.google.com/maps/search/?api=1&query=Shop+No+5+Madhushree+CHS+Sector+40+Seawoods+Navi+Mumbai",
+} as const;
+
+const siteDisplay = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://goldenbrix.com")
+  .replace(/^https?:\/\//, "")
+  .replace(/\/$/, "");
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    message: '',
-    inquiryType: 'Sales',
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+    inquiryType: "Buying / selling",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  useEffect(() => {
-    // Initialize EmailJS with your public key
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
-    if (publicKey) {
-      emailjs.init(publicKey);
-    }
-  }, []);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
+    "idle",
+  );
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitStatus("idle");
+    setErrorMessage("");
+    if (isSubmitting) return;
     setIsSubmitting(true);
-    setSubmitStatus('idle');
-    setErrorMessage('');
 
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        inquiryType: formData.inquiryType,
+        message: formData.message,
+        source: "contact_page",
+        page: "/contact",
+        _subject: `New lead — Contact page (${formData.inquiryType})`,
+        _template: "table",
+        _captcha: "false",
+      } as const;
 
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error('EmailJS configuration is missing. Please check your environment variables.');
+      const endpoint = `https://formsubmit.co/ajax/${encodeURIComponent(CONTACT.email)}`;
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          ...payload,
+          message: `Inquiry type: ${formData.inquiryType}\n\n${formData.message}`.trim(),
+        }),
+      });
+
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        throw new Error(
+          text?.trim()
+            ? `Failed to send message. ${text}`
+            : "Failed to send message. Please try again.",
+        );
       }
 
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone || 'Not provided',
-        inquiry_type: formData.inquiryType,
-        message: formData.message,
-        to_email: 'Inquiry@truestar.ae',
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
-
-      setSubmitStatus('success');
-      // Reset form
+      setSubmitStatus("success");
       setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        message: '',
-        inquiryType: 'Sales',
+        name: "",
+        phone: "",
+        email: "",
+        message: "",
+        inquiryType: "Buying / selling",
       });
     } catch (error) {
-      setSubmitStatus('error');
-      setErrorMessage(error instanceof Error ? error.message : 'An error occurred. Please try again.');
+      setSubmitStatus("error");
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "An error occurred. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -78,288 +126,422 @@ export default function Contact() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-[#001F3F]">
+    <>
       <Header />
-      
-      <section className="pt-32 pb-20 px-6 md:px-12 lg:px-16">
-        <div className="container mx-auto max-w-6xl">
-          <div className="mb-16 text-center">
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 gold-gradient-text"
-              style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
-            >
-              Contact Us
-            </h1>
-            <div className="w-24 h-1 gold-gradient mx-auto mb-4"></div>
-            <p className="text-xl text-[#001F3F]/70 max-w-3xl mx-auto">
-              Get in touch with our team for personalized real estate advisory
-            </p>
+      <main className="min-h-screen bg-[#f6f4ef] text-[#0c1b2a] pt-28 sm:pt-32 pb-0">
+        {/* Hero */}
+        <section className="relative overflow-hidden bg-[#0c1b2a] text-white">
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/Hero/1.jpg"
+              alt=""
+              className="hero-image h-full w-full object-cover opacity-18"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0c1b2a]/80 via-[#0c1b2a]/60 to-[#0c1b2a]" />
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-12 mb-16">
-            {/* Contact Information */}
-            <div>
-              <h2 
-                className="text-3xl font-bold mb-8"
-                style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
+
+          <div
+            className="pointer-events-none absolute -left-24 top-0 h-[380px] w-[380px] rounded-full bg-[#C5A24A]/12 blur-[100px]"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute -right-20 bottom-0 h-[320px] w-[320px] rounded-full bg-[#003366]/50 blur-[90px]"
+            aria-hidden
+          />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-20 pt-10 sm:pb-24 sm:pt-14">
+            <div className="relative z-10">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#EBD181]">
+                Contact
+              </p>
+              <h1
+                className="mt-4 max-w-3xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-6xl"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
               >
-                Get in Touch
-              </h2>
-              
-              <div className="space-y-6 mb-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
-                    <Globe className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Website</h3>
-                    <a href="https://www.truestar.ae" className="text-[#001F3F]/70 hover:text-[#C5A24A] transition-colors">
-                      www.truestar.ae
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Email</h3>
-                    <a href="mailto:info@truestar.ae" className="text-[#001F3F]/70 hover:text-[#C5A24A] transition-colors">
-                      info@truestar.ae
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Phone</h3>
-                    <a href="tel:+971556169396" className="text-[#001F3F]/70 hover:text-[#C5A24A] transition-colors">
-                      +971 55 616 9396
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Address</h3>
-                    <p className="text-[#001F3F]/70">Aspin Commercial Tower - Office No. 2003 - Sheikh Zayed Rd - Trade Center First - Dubai UAE</p>
-                  </div>
-                </div>
-                
-                <div className="flex flex-col gap-3 pt-2">
-                  <h3 className="font-semibold text-lg text-[#001F3F]">
-                    Social media
-                  </h3>
-                  <SocialLinks variant="sectionLight" label="" />
-                </div>
-                
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Business Hours</h3>
-                    <p className="text-[#001F3F]/70">Monday to Saturday: 9:00am to 6:00pm</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Contact Form */}
-            <div>
-              <h2 
-                className="text-3xl font-bold mb-8"
-                style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
-              >
-                Send Us a Message
-              </h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-semibold mb-2 text-[#001F3F]">
-                    Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-[#C5A24A]/20 focus:border-[#C5A24A] focus:outline-none transition-colors bg-white"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold mb-2 text-[#1a1a1a]">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-[#C5A24A]/20 focus:border-[#C5A24A] focus:outline-none transition-colors bg-white"
-                    // placeholder="Enter your phone number"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold mb-2 text-[#1a1a1a]">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-[#C5A24A]/20 focus:border-[#C5A24A] focus:outline-none transition-colors bg-white"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="inquiryType" className="block text-sm font-semibold mb-2 text-[#1a1a1a]">
-                    Type of Inquiry *
-                  </label>
-                  <select
-                    id="inquiryType"
-                    name="inquiryType"
-                    required
-                    value={formData.inquiryType}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-[#C5A24A]/20 focus:border-[#C5A24A] focus:outline-none transition-colors bg-white"
-                  >
-                    <option value="Sales">Sales</option>
-                    <option value="Rentals">Rentals</option>
-                    <option value="Investment">Investment</option>
-                    <option value="Advisory">Advisory</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-semibold mb-2 text-[#1a1a1a]">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={6}
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-[#C5A24A]/20 focus:border-[#C5A24A] focus:outline-none transition-colors bg-white resize-none"
-                  />
-                </div>
-                
-                {submitStatus === 'success' && (
-                  <div className="p-4 rounded-lg bg-green-50 border-2 border-green-200 text-green-800">
-                    <p className="font-semibold">Thank you for your inquiry!</p>
-                    <p className="text-sm mt-1">We have received your message and will contact you soon.</p>
-                  </div>
-                )}
-
-                {submitStatus === 'error' && (
-                  <div className="p-4 rounded-lg bg-red-50 border-2 border-red-200 text-red-800">
-                    <p className="font-semibold">Error sending message</p>
-                    <p className="text-sm mt-1">{errorMessage}</p>
-                  </div>
-                )}
-
+                Let&apos;s plan your
+                <span className="mt-1 block bg-gradient-to-r from-[#EBD181] via-[#C5A24A] to-[#EBD181] bg-clip-text text-transparent">
+                  next move
+                </span>
+              </h1>
+              <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
+                Curated listings, transparent advice, and end-to-end support across
+                Mumbai and Navi Mumbai. Share your requirement—we&apos;ll respond
+                promptly.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
                 <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full px-8 py-4 gold-gradient text-white font-semibold rounded-lg hover:shadow-xl hover:shadow-[#C5A24A]/50 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  type="button"
+                  onClick={() =>
+                    openWhatsApp(
+                      "917738384100",
+                      "Hi Golden Brix, I would like to speak about a property requirement.",
+                    )
+                  }
+                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-[#25D366]/50 hover:bg-white/15"
                 >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      Book a Consultation
-                    </>
-                  )}
+                  <MessageCircle className="h-4 w-4 text-[#25D366]" aria-hidden />
+                  WhatsApp
                 </button>
-              </form>
-            </div>
-          </div>
-          
-
-    {/* Google Map */}
-<div className="mb-16">
-  <h2 
-    className="text-3xl font-bold mb-8 text-center"
-    style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
-  >
-    Find Us
-  </h2>
-
-  <div className="rounded-lg overflow-hidden border-2 border-[#C5A24A]/20 h-96">
-    <iframe
-      src="https://www.google.com/maps?q=Aspin+Commercial+Tower,+Office+2003,+Sheikh+Zayed+Road,+Dubai,+UAE&z=16&output=embed"
-      className="w-full h-full"
-      style={{ border: 0 }}
-      loading="lazy"
-      allowFullScreen
-      referrerPolicy="no-referrer-when-downgrade"
-      title="TrueStar Real Estate Location"
-    />
-  </div>
-</div>
-        </div>
-      </section>
-
-      {/* Google Review CTA Section */}
-      <section className="py-16 px-4 sm:px-6 md:px-12 lg:px-20 bg-gradient-to-br from-[#C5A24A]/10 to-[#EBD181]/10">
-        <div className="container mx-auto max-w-4xl text-center">
-          <div className="bg-white rounded-2xl p-8 sm:p-12 shadow-xl border-2 border-[#C5A24A]/20">
-            <div className="flex justify-center mb-6">
-              <div className="flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-4xl sm:text-5xl">⭐</span>
-                ))}
+                <a
+                  href={`tel:${CONTACT.phoneTel}`}
+                  className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#C5A24A] to-[#EBD181] px-6 py-3 text-sm font-bold text-[#001F3F] shadow-lg transition hover:brightness-105"
+                >
+                  <Phone className="h-4 w-4" aria-hidden />
+                  Call now
+                </a>
               </div>
             </div>
-            <h2 
-              className="text-3xl sm:text-4xl font-bold mb-4 gold-gradient-text"
-              style={{ fontFamily: 'var(--font-playfair), serif' }}
-            >
-              Love Our Service?
-            </h2>
-            <p className="text-lg text-[#001F3F]/80 mb-8 max-w-2xl mx-auto">
-              Your feedback helps us improve and helps others discover our services. Share your experience with us on Google!
-            </p>
-            <a
-              href="https://maps.app.goo.gl/SFhgoiLBRYb7zynd6?g_st=iwb"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 gold-gradient text-white font-bold rounded-lg hover:shadow-2xl hover:shadow-[#C5A24A]/50 transition-all transform hover:scale-105 text-lg"
-              style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
-            >
-              <span className="text-2xl">⭐</span>
-              Leave a Google Review
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
+          </div>
+        </section>
+
+        <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-12 pb-16 sm:-mt-16 sm:pb-20">
+          <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
+            {/* Contact details column */}
+            <aside className="lg:col-span-5">
+              <div className="sticky top-32 space-y-6">
+                <div className="rounded-3xl border border-[#C5A24A]/20 bg-white p-7 shadow-[0_24px_70px_-20px_rgba(12,27,42,0.15)] sm:p-8">
+                  <h2
+                    className="text-xl font-bold text-[#0c1b2a] sm:text-2xl"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
+                    Visit & connect
+                  </h2>
+                  <div className="mt-3 h-px w-14 bg-gradient-to-r from-[#C5A24A] to-transparent" />
+                  <p className="mt-4 text-sm leading-relaxed text-[#0c1b2a]/65">
+                    {CONTACT.tagline}
+                  </p>
+
+                  <ul className="mt-8 space-y-6">
+                    <li className="flex gap-4">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#0c1b2a] text-[#EBD181]">
+                        <MapPin className="h-5 w-5" aria-hidden />
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#C5A24A]">
+                          Office
+                        </p>
+                        <p className="mt-1 text-sm leading-relaxed text-[#0c1b2a]/80">
+                          {CONTACT.addressLines.map((line) => (
+                            <span key={line} className="block">
+                              {line}
+                            </span>
+                          ))}
+                        </p>
+                        <a
+                          href={CONTACT.mapsOpenUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-[#C5A24A] hover:underline"
+                        >
+                          Open in Maps
+                          <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                        </a>
+                      </div>
+                    </li>
+
+                    <li className="flex gap-4">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#C5A24A]/25 bg-[#faf8f3] text-[#C5A24A]">
+                        <Phone className="h-5 w-5" aria-hidden />
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#C5A24A]">
+                          Phone
+                        </p>
+                        <a
+                          href={`tel:${CONTACT.phoneTel}`}
+                          className="mt-1 block text-lg font-semibold text-[#0c1b2a] transition hover:text-[#C5A24A]"
+                        >
+                          {CONTACT.phoneDisplay}
+                        </a>
+                      </div>
+                    </li>
+
+                    <li className="flex gap-4">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#C5A24A]/25 bg-[#faf8f3] text-[#C5A24A]">
+                        <Mail className="h-5 w-5" aria-hidden />
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#C5A24A]">
+                          Email
+                        </p>
+                        <a
+                          href={`mailto:${CONTACT.email}`}
+                          className="mt-1 block break-all text-sm font-semibold text-[#0c1b2a] underline-offset-2 transition hover:text-[#C5A24A] hover:underline"
+                        >
+                          {CONTACT.email}
+                        </a>
+                      </div>
+                    </li>
+
+                    <li className="flex gap-4">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#C5A24A]/25 bg-[#faf8f3] text-[#C5A24A]">
+                        <Clock className="h-5 w-5" aria-hidden />
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wider text-[#C5A24A]">
+                          Hours
+                        </p>
+                        <p className="mt-1 text-sm text-[#0c1b2a]/75">
+                          {CONTACT.hours}
+                        </p>
+                        <p className="mt-1 text-sm text-[#0c1b2a]/55">
+                          {CONTACT.hoursNote}
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <div className="mt-8 rounded-2xl border border-[#C5A24A]/15 bg-[#faf8f3] px-4 py-4">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-[#0c1b2a]/45">
+                      Website
+                    </p>
+                    <p className="mt-1 text-sm font-medium text-[#0c1b2a]/80">
+                      {siteDisplay}
+                    </p>
+                  </div>
+
+                  <div className="mt-8 border-t border-[#0c1b2a]/8 pt-6">
+                    <SocialLinks variant="sectionLight" label="Connect with us" />
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-[#C5A24A]/15 bg-gradient-to-br from-[#001F3F] to-[#0c1b2a] p-6 text-white shadow-lg">
+                  <p className="text-sm font-semibold text-[#EBD181]">
+                    Prefer a call-back?
+                  </p>
+                  <p className="mt-2 text-sm text-white/70">
+                    Submit the form and our team will reach out at a time that
+                    suits you.
+                  </p>
+                  <Link
+                    href="/properties"
+                    className="mt-4 inline-flex text-sm font-semibold text-white underline-offset-2 hover:text-[#EBD181] hover:underline"
+                  >
+                    Browse properties →
+                  </Link>
+                </div>
+              </div>
+            </aside>
+
+            {/* Form */}
+            <div className="lg:col-span-7">
+              <div className="rounded-3xl border border-[#C5A24A]/15 bg-white p-7 shadow-[0_28px_80px_-24px_rgba(12,27,42,0.18)] sm:p-9 lg:p-10">
+                <h2
+                  className="text-xl font-bold text-[#0c1b2a] sm:text-2xl"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
+                >
+                  Send a message
+                </h2>
+                <p className="mt-2 text-sm text-[#0c1b2a]/65">
+                  Fields marked * are required. We respect your privacy and never
+                  share your details.
+                </p>
+
+                <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#0c1b2a]/55"
+                      >
+                        Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        autoComplete="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="w-full rounded-xl border border-[#0c1b2a]/12 bg-[#faf8f3]/50 px-4 py-3 text-[#0c1b2a] outline-none transition focus:border-[#C5A24A] focus:bg-white focus:ring-2 focus:ring-[#C5A24A]/20"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#0c1b2a]/55"
+                      >
+                        Phone *
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        autoComplete="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+91 …"
+                        className="w-full rounded-xl border border-[#0c1b2a]/12 bg-[#faf8f3]/50 px-4 py-3 text-[#0c1b2a] outline-none transition focus:border-[#C5A24A] focus:bg-white focus:ring-2 focus:ring-[#C5A24A]/20"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#0c1b2a]/55"
+                    >
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      autoComplete="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-[#0c1b2a]/12 bg-[#faf8f3]/50 px-4 py-3 text-[#0c1b2a] outline-none transition focus:border-[#C5A24A] focus:bg-white focus:ring-2 focus:ring-[#C5A24A]/20"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="inquiryType"
+                      className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#0c1b2a]/55"
+                    >
+                      Inquiry type *
+                    </label>
+                    <select
+                      id="inquiryType"
+                      name="inquiryType"
+                      required
+                      value={formData.inquiryType}
+                      onChange={handleChange}
+                      className="w-full rounded-xl border border-[#0c1b2a]/12 bg-[#faf8f3]/50 px-4 py-3 text-[#0c1b2a] outline-none transition focus:border-[#C5A24A] focus:bg-white focus:ring-2 focus:ring-[#C5A24A]/20"
+                    >
+                      <option value="Buying / selling">Buying / selling</option>
+                      <option value="Investment advisory">Investment advisory</option>
+                      <option value="Home loan / documentation">Home loan / documentation</option>
+                      <option value="Site visit / shortlist">Site visit / shortlist</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#0c1b2a]/55"
+                    >
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Budget, preferred locations, timeline…"
+                      className="w-full resize-none rounded-xl border border-[#0c1b2a]/12 bg-[#faf8f3]/50 px-4 py-3 text-[#0c1b2a] outline-none transition focus:border-[#C5A24A] focus:bg-white focus:ring-2 focus:ring-[#C5A24A]/20"
+                    />
+                  </div>
+
+                  {submitStatus === "success" ? (
+                    <div className="rounded-xl border border-emerald-200/80 bg-emerald-50/90 px-4 py-4 text-emerald-900">
+                      <p className="font-semibold">Thank you for your message.</p>
+                      <p className="mt-1 text-sm text-emerald-800/90">
+                        Our team will contact you shortly.
+                      </p>
+                    </div>
+                  ) : null}
+
+                  {submitStatus === "error" ? (
+                    <div className="rounded-xl border border-red-200/80 bg-red-50/90 px-4 py-4 text-red-900">
+                      <p className="font-semibold">Something went wrong</p>
+                      <p className="mt-1 text-sm">{errorMessage}</p>
+                    </div>
+                  ) : null}
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="flex w-full min-h-[52px] items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#C5A24A] to-[#EBD181] px-8 py-3.5 text-base font-bold text-[#001F3F] shadow-lg transition hover:brightness-105 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-55"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="h-5 w-5 animate-spin" aria-hidden />
+                        Sending…
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-5 w-5" aria-hidden />
+                        Request a consultation
+                      </>
+                    )}
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-      
+
+        {/* Map */}
+        <section className="border-t border-[#C5A24A]/10 bg-[#0c1b2a] py-10 sm:py-12">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-6 text-center sm:mb-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#EBD181]">
+                Location
+              </p>
+              <h2
+                className="mt-3 text-3xl font-bold text-white sm:text-4xl"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
+              >
+                Find us in Seawoods
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-sm text-white/65">
+                Convenient access from Seawoods Darave station and Palm Beach
+                Road.
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-3xl border border-white/10 shadow-2xl ring-1 ring-[#C5A24A]/20">
+              <iframe
+                src={`https://www.google.com/maps?q=${CONTACT.mapsEmbedQuery}&z=16&output=embed`}
+                className="h-[220px] w-full sm:h-[280px] lg:h-[320px]"
+                style={{ border: 0 }}
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Golden Brix Properties — Seawoods, Navi Mumbai"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Reviews CTA */}
+        <section className="bg-gradient-to-b from-[#f6f4ef] to-[#ece6da] py-16 sm:py-20">
+          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+            <div className="rounded-3xl border border-[#C5A24A]/20 bg-white p-10 shadow-xl sm:p-12">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#C5A24A]">
+                Feedback
+              </p>
+              <h2
+                className="mt-4 text-2xl font-bold text-[#0c1b2a] sm:text-3xl"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
+              >
+                Loved working with us?
+              </h2>
+              <p className="mt-4 text-[#0c1b2a]/70 leading-relaxed">
+                Reviews help more families discover trustworthy advisory. If you
+                visited our office or closed a deal with us, consider leaving a
+                note on Google Maps.
+              </p>
+              <a
+                href={CONTACT.mapsOpenUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#C5A24A] to-[#EBD181] px-8 py-3.5 text-sm font-bold text-[#001F3F] shadow-md transition hover:brightness-105"
+              >
+                View on Google Maps
+                <ArrowUpRight className="h-4 w-4" aria-hidden />
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
-
