@@ -68,45 +68,53 @@ export const SERVICES_COPY = [
     key: "buying",
     title: "Property Buying Assistance",
     description:
-      "From requirement mapping to a curated shortlist, site visits, price negotiation, and paperwork coordination—everything is handled with clarity and speed.",
+      "A curated, end-to-end buying journey—from requirement mapping and shortlist creation to site visits, negotiation strategy, and documentation coordination. Clear steps, calm execution.",
     benefits: [
-      "Curated listings matched to budget and lifestyle",
-      "Builder / resale comparisons with pros & cons",
-      "Offer strategy and negotiation support",
+      "Curated shortlist matched to budget, lifestyle, and timeline",
+      "Builder vs resale comparisons with clear trade-offs",
+      "Negotiation guidance for pricing, inclusions, and terms",
+      "Documentation coordination so timelines stay tight",
     ],
+    why: "Move faster with clarity—without missing critical checks.",
   },
   {
     key: "investment",
     title: "Investment Advisory",
     description:
-      "A research-led approach to building a property portfolio—focused on rental demand, infrastructure catalysts, and risk-managed exit options.",
+      "Research-led recommendations built around rental demand, infrastructure catalysts, and realistic upside—so every decision has a clear thesis and an exit plan.",
     benefits: [
-      "ROI + cashflow scenario planning",
-      "Micro-market and infra growth analysis",
-      "Shortlist based on liquidity and resale potential",
+      "ROI + cashflow scenarios (yield, vacancy, upside)",
+      "Micro-market intelligence + infrastructure timeline lens",
+      "Shortlist built on liquidity, comparables, and resale strength",
+      "Risk checks: price bands, delivery track record, demand depth",
     ],
+    why: "Invest with a clear thesis, not hype—protect your downside.",
   },
   {
     key: "loan",
     title: "Home Loan Assistance",
     description:
-      "We help you choose the right lender, align documentation, and keep timelines tight—so your booking and disbursal stay stress-free.",
+      "A white-glove loan journey—lender shortlisting, eligibility planning, and documentation alignment—so booking and disbursal stay predictable and stress-free.",
     benefits: [
-      "Rate comparison and eligibility planning",
-      "Documentation checklist and coordination",
-      "Disbursal support aligned with builder milestones",
+      "Rate comparison and eligibility strategy before you commit",
+      "Documentation checklist + coordination across stakeholders",
+      "Disbursal planning aligned with builder milestones",
+      "Fast resolution support for clarifications and follow-ups",
     ],
+    why: "Remove friction—keep approvals and disbursals on schedule.",
   },
   {
     key: "management",
     title: "Property Management",
     description:
-      "Premium post-sale support—tenant placement, agreements, maintenance coordination, and periodic reporting so your asset remains protected.",
+      "Premium post-sale care—tenant placement, agreements, maintenance, and periodic updates—so your asset stays protected, presentable, and rental-ready.",
     benefits: [
-      "Tenant screening and onboarding",
-      "Maintenance coordination and vendor network",
-      "Rent collection support and periodic updates",
+      "Tenant screening, onboarding, and agreement coordination",
+      "Maintenance coordination with a reliable vendor network",
+      "Rent collection support + periodic reporting",
+      "Asset readiness checks before leasing or resale planning",
     ],
+    why: "Protect long-term value with consistent, premium upkeep.",
   },
 ] as const;
 

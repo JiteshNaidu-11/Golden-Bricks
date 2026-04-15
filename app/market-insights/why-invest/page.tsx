@@ -73,10 +73,10 @@ export default function WhyInvest() {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url("${dubaiImages.general.dubaiSkyline}")`,
+              backgroundImage: `url("${dubaiImages.general.skyline}")`,
             }}
           ></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/80 to-white/90"></div>
+          <div className="absolute inset-0 bg-linear-to-b from-white/85 via-white/80 to-white/90"></div>
         </div>
         
         <div className="relative z-10">
@@ -102,7 +102,7 @@ export default function WhyInvest() {
               return (
                 <div 
                   key={index}
-                  className="p-6 rounded-lg border-2 border-[#C5A24A]/20 hover:border-[#C5A24A]/40 transition-all hover:shadow-xl bg-gradient-to-br from-white to-[#C5A24A]/5"
+                  className="p-6 rounded-lg border-2 border-[#C5A24A]/20 hover:border-[#C5A24A]/40 transition-all hover:shadow-xl bg-linear-to-br from-white to-[#C5A24A]/5"
                 >
                   <div className="w-16 h-16 rounded-lg gold-gradient flex items-center justify-center mb-4">
                     <Icon className="w-8 h-8 text-white" />
@@ -118,7 +118,7 @@ export default function WhyInvest() {
           <div className="mb-16">
             <div className="rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src={dubaiImages.general.dubaiSkyline}
+                src={dubaiImages.general.skyline}
                 alt="City skyline - investment destination"
                 className="w-full h-96 object-cover"
               />
@@ -126,7 +126,7 @@ export default function WhyInvest() {
           </div>
 
           {/* Tagline Section */}
-          <div className="bg-gradient-to-br from-[#C5A24A]/20 to-[#EBD181]/20 p-12 rounded-lg text-center mb-16">
+          <div className="bg-linear-to-br from-[#C5A24A]/20 to-[#EBD181]/20 p-12 rounded-lg text-center mb-16">
             <p 
               className="text-3xl md:text-4xl font-bold text-[#001F3F] leading-relaxed"
               style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}

@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import { countryCodes } from '@/lib/countryCodes';
 import { useLeadSubmit } from '@/hooks/useLeadSubmit';
+import ServicesShowcase from '@/components/services/ServicesShowcase';
 
 export default function ListYourProperty() {
   const [formData, setFormData] = useState({
@@ -113,22 +114,50 @@ export default function ListYourProperty() {
     {
       icon: Home,
       title: 'HOME VISIT',
-      description: 'You can schedule a complimentary home visit, and we\'ll handle the photography and floor plans on your behalf.',
+      description:
+        "Schedule a complimentary visit and we’ll coordinate photography, layout details, and presentation—so your listing feels premium from day one.",
+      benefits: [
+        "Professional photography coordination and key highlights",
+        "Layout + unit details organized for buyers/tenants",
+        "Premium-first presentation guidance",
+      ],
+      why: "First impressions sell—make the listing feel premium instantly.",
     },
     {
       icon: Megaphone,
       title: 'MARKETING',
-      description: 'To maximise the exposure of your property, we will list it on prominent websites and portals including Property Finder, Bayut and Dubizzle.',
+      description:
+        "We amplify your property across high-intent channels and our network—ensuring the right visibility without making it feel ‘mass market’.",
+      benefits: [
+        "High-quality listing copy + media placement",
+        "Targeted outreach to serious prospects",
+        "Lead screening to reduce time-wasters",
+      ],
+      why: "Visibility with filtering—attract serious buyers, not noise.",
     },
     {
       icon: Search,
       title: 'VIEWING',
-      description: 'Highlight the property’s best features. Showcase the skyline views, bright mornings, and garden spaces to help the broker present it in the strongest way for a successful sale/rent.',
+      description:
+        "Viewings curated like a premium walkthrough—highlighting layout flow, light, ventilation, and the ‘arrival experience’ that drives stronger offers.",
+      benefits: [
+        "Curated walkthrough flow and talking points",
+        "Highlighting light, views, and liveability cues",
+        "Feedback captured for quick iteration",
+      ],
+      why: "A better viewing experience leads to faster closures.",
     },
     {
       icon: Tag,
       title: 'SELL / RENT',
-      description: 'Once a client is confirmed, our support team will handle the entire process on your behalf, ensuring everything is managed smoothly and professionally.',
+      description:
+        "From offer alignment to documentation coordination, we manage the closure with structure—so timelines stay tight and expectations stay clear.",
+      benefits: [
+        "Offer alignment + negotiation support",
+        "Documentation coordination and timeline tracking",
+        "Handover support for a smooth finish",
+      ],
+      why: "Smooth execution protects value—and avoids last-minute surprises.",
     },
   ];
 
@@ -177,30 +206,37 @@ export default function ListYourProperty() {
       {/* Services Section */}
       <section className="py-20 px-4 sm:px-6 md:px-12 lg:px-20 bg-white">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <div 
-                  key={index}
-                  className="bg-linear-to-br from-white to-[#C5A24A]/5 rounded-2xl p-8 border-2 border-[#C5A24A]/20 hover:border-[#C5A24A] transition-all duration-300 hover:shadow-xl hover:scale-105 transform text-center"
-                >
-                  <div className="w-16 h-16 gold-gradient rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 
-                    className="text-xl font-bold mb-3 text-[#001F3F]"
-                    style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
-                  >
-                    {service.title}
-                  </h3>
-                  <p className="text-[#001F3F]/70 leading-relaxed text-sm">
-                    {service.description}
-                  </p>
-                </div>
-              );
+          <ServicesShowcase
+            eyebrow="Listing services"
+            heading="A premium listing experience"
+            subheading="A structured approach to presentation, marketing, and closure—built to protect your time and maximize outcomes."
+            embedded
+            variant="light"
+            items={services.map((s, idx) => {
+              const imageSrc =
+                idx % 2 === 0
+                  ? "/properties/westwoods-platinum.jpg"
+                  : "/properties/one-platinum.jpg";
+              const iconKey =
+                s.title === "HOME VISIT"
+                  ? ("home" as const)
+                  : s.title === "MARKETING"
+                    ? ("megaphone" as const)
+                    : s.title === "VIEWING"
+                      ? ("search" as const)
+                      : ("tag" as const);
+              return {
+                key: String(s.title),
+                title: s.title,
+                description: s.description,
+                benefits: s.benefits,
+                why: s.why,
+                href: "/contact",
+                imageSrc,
+                iconKey,
+              };
             })}
-          </div>
+          />
         </div>
       </section>
 

@@ -56,21 +56,21 @@ export const dubaiImages = {
 
   // General real estate images
   general: {
-    dubaiSkyline: '/properties/cyber-square.jpeg',
+    skyline: '/properties/cyber-square.jpeg',
     modernBuilding: '/properties/cadbury-junction-thane-west.jpg',
     luxuryInterior: '/properties/esquire-platinum.jpg',
     waterfront: '/properties/9pbr-palm-beachroad.jpg',
-    dubaiNight: '/properties/westwoods-platinum.jpg',
+    nightCity: '/properties/westwoods-platinum.jpg',
     cityscape: '/properties/oakwoods-platinum.jpg',
-    whyChooseDubai: '/properties/platinum-the-reserve.jpeg',
-    whyInvestDubai: '/properties/codename-growth.jpeg',
+    whyChooseUs: '/properties/platinum-the-reserve.jpeg',
+    whyInvest: '/properties/codename-growth.jpeg',
   },
 
   // About page images
   about: {
     team: '/properties/sai-world-one.jpg',
     office: '/properties/cyber-square.jpeg',
-    dubaiView: '/properties/9pbr-palm-beachroad.jpg',
+    skylineView: '/properties/9pbr-palm-beachroad.jpg',
   },
 };
 

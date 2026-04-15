@@ -38,12 +38,11 @@ async function main() {
   });
 
   if (error) throw error;
-
-  console.log(`Upserted ${rows.length} properties into Supabase.`);
+  process.stdout.write(`Upserted ${rows.length} properties into Supabase.\n`);
 }
 
 main().catch((err) => {
-  console.error(err);
+  process.stderr.write(`${err instanceof Error ? err.message : String(err)}\n`);
   process.exit(1);
 });
 

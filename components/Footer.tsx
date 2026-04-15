@@ -20,7 +20,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center mb-6">
               <div className="relative h-14 w-48">
                 <Image
-                  src="/images/logo/truestarLogonew.png"
+                  src="/images/logo/goldenbrix-logo.png"
                   alt="Golden Brix"
                   fill
                   className="object-contain"

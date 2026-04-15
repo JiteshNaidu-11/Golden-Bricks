@@ -12,12 +12,19 @@ export default function ContactSection() {
     phone: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const lead = useLeadSubmit();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     (async () => {
       try {
+        if (isSubmitting) return;
+        setSubmitStatus('idle');
+        setErrorMessage('');
+        setIsSubmitting(true);
         await lead.submit({
           source: 'contact_section',
           page: '/',
@@ -26,10 +33,13 @@ export default function ContactSection() {
           phone: formData.phone,
           message: formData.message,
         });
-        alert('Thank you! We will contact you shortly.');
+        setSubmitStatus('success');
         setFormData({ name: '', email: '', phone: '', message: '' });
       } catch (err) {
-        alert(err instanceof Error ? err.message : 'Something went wrong.');
+        setSubmitStatus('error');
+        setErrorMessage(err instanceof Error ? err.message : 'Something went wrong.');
+      } finally {
+        setIsSubmitting(false);
       }
     })();
   };
@@ -68,7 +78,7 @@ export default function ContactSection() {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center shrink-0">
                   <MapPin className="w-6 h-6 text-[#1a1a1a]" />
                 </div>
                 <div>
@@ -82,7 +92,7 @@ export default function ContactSection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center shrink-0">
                   <Phone className="w-6 h-6 text-[#1a1a1a]" />
                 </div>
                 <div>
@@ -97,7 +107,7 @@ export default function ContactSection() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
+                <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center shrink-0">
                   <Mail className="w-6 h-6 text-[#1a1a1a]" />
                 </div>
                 <div>
@@ -122,6 +132,20 @@ export default function ContactSection() {
           {/* Contact Form */}
           <div className="glass rounded-2xl p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
+              {submitStatus !== 'idle' ? (
+                <div
+                  className={`rounded-xl border px-4 py-3 text-sm ${
+                    submitStatus === 'success'
+                      ? 'border-[#25D366]/30 bg-[#25D366]/10 text-white'
+                      : 'border-red-500/30 bg-red-500/10 text-white'
+                  }`}
+                  role="status"
+                >
+                  {submitStatus === 'success'
+                    ? 'Thank you. Our team will contact you shortly.'
+                    : errorMessage || 'Something went wrong. Please try again.'}
+                </div>
+              ) : null}
               <div>
                 <label htmlFor="name" className="block text-white/80 mb-2 font-medium">
                   Name
@@ -187,10 +211,11 @@ export default function ContactSection() {
 
               <button
                 type="submit"
-                className="w-full py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:shadow-2xl hover:shadow-[#D4AF37]/50 transition-all flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className="w-full py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:shadow-2xl hover:shadow-[#D4AF37]/50 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <Send className="w-5 h-5" />
-                Send Message
+                {isSubmitting ? 'Sending…' : 'Send Message'}
               </button>
             </form>
           </div>

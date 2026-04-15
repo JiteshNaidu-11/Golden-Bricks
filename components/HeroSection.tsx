@@ -5,10 +5,15 @@ import { Search, MapPin, Download, Phone, Loader2 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLeadSubmit } from '@/hooks/useLeadSubmit';
+import { openWhatsApp } from '@/lib/whatsapp';
 
 export default function HeroSection() {
   const [activeTab, setActiveTab] = useState<'buy' | 'rent'>('buy');
   const [currentImage, setCurrentImage] = useState(0);
+  const [leadStatus, setLeadStatus] = useState<'idle' | 'success' | 'error'>(
+    'idle',
+  );
+  const [leadError, setLeadError] = useState('');
   const lead = useLeadSubmit();
 
   const heroImages = [
@@ -32,6 +37,9 @@ export default function HeroSection() {
     e.preventDefault();
     const form = e.currentTarget;
     try {
+      if (lead.loading) return;
+      setLeadStatus('idle');
+      setLeadError('');
       const fd = new FormData(form);
       await lead.submit({
         source: "hero",
@@ -44,11 +52,12 @@ export default function HeroSection() {
         message: `Intent: ${String(fd.get("intent") ?? activeTab)} · Property type: ${String(fd.get("property_type") ?? "")}`.trim(),
       });
 
-      alert("Thank you! We will contact you shortly.");
+      setLeadStatus('success');
       form.reset();
       setActiveTab("buy");
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Something went wrong.");
+      setLeadStatus('error');
+      setLeadError(err instanceof Error ? err.message : 'Something went wrong.');
     }
   };
 
@@ -64,15 +73,15 @@ export default function HeroSection() {
             alt="Luxury Real Estate"
             fill
             priority
-            className={`object-cover transition-opacity duration-[2000ms] ${
+              className={`object-cover transition-opacity duration-2000 ${
               index === currentImage ? "opacity-100" : "opacity-0"
             }`}
           />
         ))}
 
         {/* Luxury overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/90"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#D4AF37]/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/60 to-black/90"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-[#D4AF37]/20 via-transparent to-transparent"></div>
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-32 pb-20 lg:px-12">
@@ -105,12 +114,24 @@ export default function HeroSection() {
             {/* Lead Magnets */}
             <div className="flex flex-wrap gap-4">
 
-              <button className="flex items-center gap-2 px-7 py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:scale-105 transition-all">
+              <Link
+                href="/contact"
+                className="flex items-center gap-2 px-7 py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:scale-105 transition-all"
+              >
                 <Download className="w-5 h-5" />
                 Mumbai Investment Guide
-              </button>
+              </Link>
 
-              <button className="flex items-center gap-2 px-7 py-4 border border-[#D4AF37] text-white font-semibold rounded-lg hover:bg-[#D4AF37] hover:text-black transition-all">
+              <button
+                type="button"
+                onClick={() =>
+                  openWhatsApp(
+                    "917738384100",
+                    "Hi Golden Brix, I’d like a free consultation for a property requirement.",
+                  )
+                }
+                className="flex items-center gap-2 px-7 py-4 border border-[#D4AF37] text-white font-semibold rounded-lg hover:bg-[#D4AF37] hover:text-black transition-all"
+              >
                 <Phone className="w-5 h-5" />
                 Free Consultation
               </button>
@@ -142,6 +163,20 @@ export default function HeroSection() {
             <div className="glass rounded-2xl p-6 shadow-2xl backdrop-blur-xl sm:p-8">
 
             <form onSubmit={handleLeadSubmit} className="space-y-4">
+              {leadStatus !== 'idle' ? (
+                <div
+                  className={`rounded-xl border px-4 py-3 text-sm ${
+                    leadStatus === 'success'
+                      ? 'border-[#25D366]/30 bg-[#25D366]/10 text-white'
+                      : 'border-red-500/30 bg-red-500/10 text-white'
+                  }`}
+                  role="status"
+                >
+                  {leadStatus === 'success'
+                    ? 'Thank you. Our team will contact you shortly.'
+                    : leadError || 'Something went wrong. Please try again.'}
+                </div>
+              ) : null}
               {/* Stored in Supabase `leads` */}
 
               <div className="mb-2 flex gap-2 rounded-lg bg-[#1a1a1a]/50 p-1">
@@ -278,7 +313,7 @@ export default function HeroSection() {
                 ) : (
                   <>
                     <Search className="w-5 h-5" />
-                    Search Properties
+                    Submit requirement
                   </>
                 )}
               </button>

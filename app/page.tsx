@@ -12,7 +12,12 @@ import { PROPERTIES_CATALOG } from "@/lib/propertiesCatalog";
 import PropertyListingCard from "@/components/PropertyListingCard";
 import { useSupabaseQuery } from "@/hooks/useSupabaseQuery";
 import Reveal from "@/components/motion/Reveal";
-import { BLOGS_FALLBACK, TESTIMONIALS_FALLBACK } from "@/lib/content/innerPagesContent";
+import {
+  BLOGS_FALLBACK,
+  SERVICES_COPY,
+  TESTIMONIALS_FALLBACK,
+} from "@/lib/content/innerPagesContent";
+import ServicesShowcase from "@/components/services/ServicesShowcase";
 
 const FEATURED_PROPERTIES_ON_HOME = 6;
 const FORMSUBMIT_EMAIL = "goldenbrix@gmail.com";
@@ -541,64 +546,52 @@ Featured properties
 </section>
 
       {/*Services */}
-      <section id="services" className="py-24 px-6 lg:px-20 bg-[#0c1b2a] text-white">
+      <section id="services">
+        <ServicesShowcase
+          eyebrow="What we offer"
+          heading="Services that feel premium"
+          subheading="Less noise, more certainty. We combine verified options, calm comparisons, and execution support—so you move with confidence."
+          variant="dark"
+          items={SERVICES_COPY.map((s) => {
+            const iconKey =
+              s.key === "buying"
+                ? ("handshake" as const)
+                : s.key === "investment"
+                  ? ("trendingUp" as const)
+                  : s.key === "loan"
+                    ? ("badgePercent" as const)
+                    : ("settings" as const);
+            const href =
+              s.key === "buying"
+                ? "/services/buying-selling"
+                : s.key === "investment"
+                  ? "/services/investor-advisory"
+                  : s.key === "loan"
+                    ? "/contact"
+                    : "/services/property-management";
 
-  <Reveal className="max-w-7xl mx-auto text-center mb-16">
+            const imageSrc =
+              s.key === "buying"
+                ? "/properties/one-platinum.jpg"
+                : s.key === "investment"
+                  ? "/properties/codename-growth.jpeg"
+                  : s.key === "loan"
+                    ? "/properties/sai-world-one.jpg"
+                    : "/properties/goodwill-wisteria.jpeg";
 
-    <p className="text-[#C5A24A] tracking-widest text-sm uppercase">
-      What We Offer
-    </p>
-
-    <h2
-      className="text-4xl lg:text-5xl font-bold mt-4"
-      style={{ fontFamily: 'var(--font-playfair), serif' }}
-    >
-      Our Services
-    </h2>
-
-  </Reveal>
-
-  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-
-    {[
-      {
-        title: "Buy / Sell / Rent",
-        desc: "Complete end-to-end support for buying, selling, or renting residential properties."
-      },
-      {
-        title: "Residential Properties",
-        desc: "Discover luxury apartments, villas, and premium residences in top locations."
-      },
-      {
-        title: "Commercial Properties",
-        desc: "Find the perfect office, retail space, or investment property."
-      },
-      {
-        title: "Investment Advisory",
-        desc: "Data-driven property investment strategies to maximize ROI."
-      }
-    ].map((service, i) => (
-
-      <div
-        key={i}
-        className="bg-white/5 border border-white/10 rounded-xl p-8 hover:border-[#C5A24A] hover:-translate-y-2 transition-all"
-      >
-
-        <h3 className="text-xl font-semibold mb-4">
-          {service.title}
-        </h3>
-
-        <p className="text-white/70 text-sm leading-relaxed">
-          {service.desc}
-        </p>
-
-      </div>
-
-    ))}
-
-  </div>
-
-</section>
+            return {
+              key: s.key,
+              title: s.title,
+              description: s.description,
+              benefits: [...s.benefits],
+              why: "why" in s ? (s as unknown as { why?: string }).why ?? "" : "",
+              href,
+              imageSrc,
+              iconKey,
+            };
+          })}
+        />
+      </section>
 
       {/*Enhanced TESTIMONIALS */}
       <section id="testimonials" className="relative overflow-hidden py-24 px-6 lg:px-20 bg-linear-to-b from-[#f6f4ef] via-[#faf8f3] to-[#f0ebe0]">

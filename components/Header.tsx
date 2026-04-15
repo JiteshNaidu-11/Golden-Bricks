@@ -77,7 +77,10 @@ export default function Header() {
 
   // About Us is now a single page, no dropdown needed
 
-  const servicesItems = SERVICE_NAV_LINKS;
+  const servicesItems = [
+    { href: "/services", label: "All Services (Overview)" },
+    ...SERVICE_NAV_LINKS,
+  ];
 
   // Note: Properties dropdown removed; keep catalog usage elsewhere if needed.
 
@@ -119,7 +122,7 @@ export default function Header() {
           <Link href="/" className="flex items-center group">
   <div className="relative h-16 w-52 sm:h-20 sm:w-64">
     <Image
-      src="/images/logo/truestarLogonew.png"
+      src="/images/logo/goldenbrix-logo.png"
       alt="Golden Brix"
       fill
       className="object-contain"
@@ -139,13 +142,32 @@ export default function Header() {
           onMouseEnter={() => handleMouseEnter('services')}
           onMouseLeave={handleMouseLeave}
         >
-          <button className={`relative font-medium flex items-center gap-1 transition-colors group whitespace-nowrap ${
-            shouldShowGlassEffect ? 'text-gray-700 hover:text-[#C5A24A]' : 'text-white/90 hover:text-[#EBD181]'
-          }`}>
-            Services
-            <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'services' ? 'rotate-180' : ''}`} />
-            <span className="absolute inset-x-0 bottom-0 h-0.5 gold-gradient transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-          </button>
+          <div
+            className={`relative font-medium flex items-center gap-1 transition-colors group whitespace-nowrap ${
+              shouldShowGlassEffect ? 'text-gray-700 hover:text-[#C5A24A]' : 'text-white/90 hover:text-[#EBD181]'
+            }`}
+          >
+            <Link
+              href="/services"
+              className="relative"
+              onClick={() => setOpenDropdown(null)}
+            >
+              Services
+              <span className="absolute inset-x-0 bottom-0 h-0.5 gold-gradient transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+            </Link>
+            <button
+              type="button"
+              aria-label="Open services menu"
+              className="p-1"
+              onClick={() =>
+                setOpenDropdown(openDropdown === "services" ? null : "services")
+              }
+            >
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${openDropdown === 'services' ? 'rotate-180' : ''}`}
+              />
+            </button>
+          </div>
 
           {openDropdown === 'services' && (
             <div className={`absolute top-full left-0 mt-2 w-72 rounded-lg shadow-xl border py-2 backdrop-blur-xl ${

@@ -1,163 +1,163 @@
-'use client';
+"use client";
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { Calendar, Home, FileText } from 'lucide-react';
-import { openWhatsApp } from '@/lib/whatsapp';
-import { dubaiImages } from '@/lib/images';
+import PremiumServiceSubpage from "@/components/services/PremiumServiceSubpage";
+import { dubaiImages } from "@/lib/images";
+import {
+  Calendar,
+  ClipboardList,
+  Home,
+  KeyRound,
+  ShieldCheck,
+  Wrench,
+} from "lucide-react";
 
 export default function Rentals() {
-  const rentalTypes = [
-    {
-      icon: Calendar,
-      title: "Long-Term Rentals",
-      description: "Annual leases for families and professionals seeking stability and comfort.",
-    },
-    {
-      icon: Calendar,
-      title: "Short-Term Rentals",
-      description: "Flexible monthly or quarterly leases for temporary stays.",
-    },
-    {
-      icon: Home,
-      title: "Holiday Homes",
-      description: "Premium short-stay options in sought-after Mumbai and Navi Mumbai pockets.",
-    },
-  ];
-
-  const services = [
-    "Property search and matching based on your requirements",
-    "Tenant screening and background verification",
-    "Contract preparation and negotiation",
-    "Documentation checklist and coordination",
-    "Rent collection and management",
-    "Lease renewals and contract updates",
-    "Property viewings and inspections",
-    "Maintenance coordination",
-  ];
-
   return (
-    <main className="min-h-screen bg-white text-[#1a1a1a]">
-      <Header />
-      
-      {/* Hero Section with Background */}
-      <section className="relative pt-32 pb-20 px-6 md:px-12 lg:px-16 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url("${dubaiImages.properties.apartment}")`,
-            }}
-          ></div>
-          <div className="absolute inset-0 bg-linear-to-b from-white/85 via-white/80 to-white/90"></div>
-        </div>
-        
-        <div className="relative z-10">
-        <div className="container mx-auto max-w-6xl">
-          <div className="mb-16 text-center">
-            <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 gold-gradient-text"
-              style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
-            >
-              Rentals & Leasing
-            </h1>
-            <div className="w-24 h-1 gold-gradient mx-auto mb-4"></div>
-            <p className="text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto">
-              Comprehensive rental services for tenants and property owners across Mumbai and Navi Mumbai
-            </p>
-          </div>
-          
-          {/* Rental Types */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-center" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
-              Rental Types
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              {rentalTypes.map((type, index) => {
-                const Icon = type.icon;
-                return (
-                  <div 
-                    key={index}
-                    className="p-8 rounded-lg border-2 border-[#C5A24A]/20 hover:border-[#C5A24A]/40 transition-all hover:shadow-xl bg-linear-to-br from-white to-[#C5A24A]/5"
-                  >
-                    <div className="w-16 h-16 rounded-lg gold-gradient flex items-center justify-center mb-6 mx-auto">
-                      <Icon className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4 text-center gold-gradient-text">{type.title}</h3>
-                    <p className="text-[#1a1a1a]/80 text-center leading-relaxed">{type.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          
-          {/* Services */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-center" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
-              Our Services
-            </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {services.map((service, index) => (
-                <div 
-                  key={index}
-                  className="flex items-start gap-4 p-6 rounded-lg border border-[#C5A24A]/20 bg-linear-to-br from-white to-[#C5A24A]/5"
-                >
-                  <FileText className="w-6 h-6 text-[#C5A24A] shrink-0 mt-1" />
-                  <p className="text-lg text-[#1a1a1a]/80">{service}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          {/* Rental Properties Showcase */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-center" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
-              Available Rental Properties
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="rounded-xl overflow-hidden shadow-lg border-2 border-[#C5A24A]/20">
-                <img 
-                  src={dubaiImages.properties.apartment}
-                  alt="Rental Apartment"
-                  className="w-full h-56 object-cover"
-                />
-                <div className="p-6 bg-white">
-                  <h3 className="text-xl font-bold gold-gradient-text mb-2">Modern Apartments</h3>
-                  <p className="text-[#1a1a1a]/70 mb-3">Furnished apartments in prime locations</p>
-                  <p className="text-sm text-[#C5A24A] font-semibold">From ₹50,000/month</p>
-                </div>
-              </div>
-              <div className="rounded-xl overflow-hidden shadow-lg border-2 border-[#C5A24A]/20">
-                <img 
-                  src={dubaiImages.properties.villa}
-                  alt="Rental Villa"
-                  className="w-full h-56 object-cover"
-                />
-                <div className="p-6 bg-white">
-                  <h3 className="text-xl font-bold gold-gradient-text mb-2">Family Villas</h3>
-                  <p className="text-[#1a1a1a]/70 mb-3">Spacious villas in family communities</p>
-                  <p className="text-sm text-[#C5A24A] font-semibold">From ₹1.5L/month</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="text-center">
-            <button
-              onClick={() => openWhatsApp()}
-              className="inline-block px-8 py-4 gold-gradient text-white font-semibold rounded-lg hover:shadow-xl hover:shadow-[#C5A24A]/50 transition-all"
-            >
-              Talk to an Advisor
-            </button>
-          </div>
-        </div>
-        </div>
-      </section>
-      
-      <Footer />
-    </main>
+    <PremiumServiceSubpage
+      eyebrow="Rentals & leasing"
+      heroTitle={
+        <>
+          Rentals &{" "}
+          <span className="bg-linear-to-r from-[#EBD181] via-[#C5A24A] to-[#EBD181] bg-clip-text text-transparent">
+            leasing
+          </span>
+        </>
+      }
+      heroSubtitle="Premium leasing support for tenants and owners—curated options, verified documentation, and calm execution across Mumbai and Navi Mumbai."
+      heroImageSrc={dubaiImages.properties.apartment}
+      topCardsTitle="Rental types"
+      topCards={[
+        {
+          key: "long",
+          Icon: Calendar,
+          title: "Long-term rentals",
+          description:
+            "Annual leases for families and professionals who value stability and premium upkeep.",
+        },
+        {
+          key: "short",
+          Icon: Calendar,
+          title: "Short-term rentals",
+          description:
+            "Flexible monthly or quarterly stays—ideal for transitions and executive mobility.",
+        },
+        {
+          key: "holiday",
+          Icon: Home,
+          title: "Premium short stays",
+          description:
+            "Curated short-stay options in high-demand pockets with quality-first presentation.",
+        },
+      ]}
+      splitBlocks={[
+        {
+          key: "search",
+          Icon: KeyRound,
+          title: "Curated search & matching",
+          description:
+            "We translate your brief into a tight shortlist—budget, commute, building quality, and lifestyle fit—so you spend time only on serious options.",
+          bullets: [
+            "Requirement mapping with non-negotiables captured upfront",
+            "Neighborhood + building quality checks beyond brochure photos",
+            "Viewing routes planned for efficient decision-making",
+            "Offer support for competitive pockets without overpaying",
+          ] as const,
+          why: "Less browsing, more precision—premium leasing starts with filtering.",
+          imageSrc: dubaiImages.properties.apartment,
+        },
+        {
+          key: "screening",
+          Icon: ShieldCheck,
+          title: "Tenant screening & agreements",
+          description:
+            "For owners: structured screening, documentation discipline, and agreements that protect your asset and rental income.",
+          bullets: [
+            "Background and reference checks aligned to owner risk appetite",
+            "Contract drafting support with clear renewal and exit clauses",
+            "Security deposit and handover documentation coordination",
+            "Move-in readiness checklist for a premium first impression",
+          ] as const,
+          why: "The right tenant is an asset decision—not a rushed listing decision.",
+          imageSrc: dubaiImages.properties.villa,
+        },
+        {
+          key: "ops",
+          Icon: ClipboardList,
+          title: "Rent, renewals & compliance",
+          description:
+            "Operational continuity that keeps leases healthy—renewals, updates, and timely coordination so small issues never become expensive problems.",
+          bullets: [
+            "Rent collection rhythm and escalation protocols",
+            "Lease renewals with market-aligned benchmarking",
+            "Documentation updates and compliance reminders",
+            "Owner reporting that stays concise and actionable",
+          ] as const,
+          why: "Premium ownership is predictable cashflow plus clean records.",
+          imageSrc: dubaiImages.properties.modernVilla,
+        },
+        {
+          key: "maintenance",
+          Icon: Wrench,
+          title: "Maintenance & inspections",
+          description:
+            "Coordinated upkeep with trusted vendors—so the property stays presentable, tenant-friendly, and long-term value protected.",
+          bullets: [
+            "Preventive maintenance planning and vendor coordination",
+            "Periodic inspections with photo-backed updates",
+            "Emergency triage with sensible escalation",
+            "Move-out assessments aligned to deposit fairness",
+          ] as const,
+          why: "Well-maintained homes lease faster—and retain stronger yields.",
+          imageSrc: dubaiImages.properties.luxuryApartment,
+        },
+      ]}
+      whyTitle="Why our leasing experience feels premium"
+      whySubtitle="We combine discretion, verification, and structured communication—so both sides move with confidence."
+      whyColumns={[
+        {
+          key: "match",
+          Icon: KeyRound,
+          title: "Curated matching",
+          text: "Shortlists built on real livability—not generic portal filters.",
+        },
+        {
+          key: "trust",
+          Icon: ShieldCheck,
+          title: "Trust-first process",
+          text: "Documentation discipline and transparent checkpoints reduce surprises.",
+        },
+        {
+          key: "speed",
+          Icon: Calendar,
+          title: "Faster clarity",
+          text: "Tight coordination keeps timelines moving without compromising checks.",
+        },
+        {
+          key: "care",
+          Icon: Wrench,
+          title: "Asset care",
+          text: "Maintenance handled like a premium product—responsive and accountable.",
+        },
+      ]}
+      showcaseTitle="Available rental formats"
+      showcaseItems={[
+        {
+          key: "apt",
+          imageSrc: dubaiImages.properties.apartment,
+          title: "Modern apartments",
+          description: "Furnished and semi-furnished options in prime catchments.",
+          meta: "Indicative: from ₹50,000/month",
+        },
+        {
+          key: "villa",
+          imageSrc: dubaiImages.properties.villa,
+          title: "Family villas",
+          description: "Spacious layouts for families prioritizing privacy and lifestyle.",
+          meta: "Indicative: from ₹1.5L/month",
+        },
+      ]}
+      ctaHeadline="Ready to find your perfect property?"
+      ctaSubline="Get a free consultation—share your budget, commute, and timeline for a curated leasing plan."
+    />
   );
 }
-
