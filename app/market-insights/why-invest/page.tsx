@@ -67,7 +67,7 @@ export default function WhyInvest() {
       <Header />
       
       {/* Hero Section with Background */}
-      <section className="relative pt-32 pb-20 px-6 md:px-12 lg:px-16 overflow-hidden">
+      <section className="relative overflow-hidden px-4 pt-28 pb-16 sm:px-6 sm:pt-32 sm:pb-20 md:px-12 lg:px-16">
         {/* Background Image */}
         <div className="absolute inset-0">
           <div 
@@ -83,31 +83,31 @@ export default function WhyInvest() {
         <div className="container mx-auto max-w-6xl">
           <div className="mb-16 text-center">
             <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 gold-gradient-text"
+              className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gold-gradient-text"
               style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
             >
               Why Invest in Mumbai & Navi Mumbai
             </h1>
             <div className="w-24 h-1 gold-gradient mx-auto mb-4"></div>
-            <p className="text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto">
+            <p className="mx-auto max-w-3xl text-base text-[#1a1a1a]/70 sm:text-xl">
               A premium-first lens on why Mumbai and Navi Mumbai remain strong
               choices for end-users and long-term investors.
             </p>
           </div>
           
           {/* Advantages Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="mb-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {advantages.map((advantage, index) => {
               const Icon = advantage.icon;
               return (
                 <div 
                   key={index}
-                  className="p-6 rounded-lg border-2 border-[#C5A24A]/20 hover:border-[#C5A24A]/40 transition-all hover:shadow-xl bg-linear-to-br from-white to-[#C5A24A]/5"
+                  className="rounded-lg border-2 border-[#C5A24A]/20 bg-linear-to-br from-white to-[#C5A24A]/5 p-5 transition-all hover:border-[#C5A24A]/40 hover:shadow-xl sm:p-6"
                 >
                   <div className="w-16 h-16 rounded-lg gold-gradient flex items-center justify-center mb-4">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3 gold-gradient-text">{advantage.title}</h3>
+                  <h3 className="mb-3 text-lg sm:text-xl font-bold gold-gradient-text">{advantage.title}</h3>
                   <p className="text-[#1a1a1a]/80 leading-relaxed text-sm">{advantage.description}</p>
                 </div>
               );
@@ -120,15 +120,15 @@ export default function WhyInvest() {
               <img 
                 src={dubaiImages.general.skyline}
                 alt="City skyline - investment destination"
-                className="w-full h-96 object-cover"
+                className="h-64 w-full object-cover sm:h-96"
               />
             </div>
           </div>
 
           {/* Tagline Section */}
-          <div className="bg-linear-to-br from-[#C5A24A]/20 to-[#EBD181]/20 p-12 rounded-lg text-center mb-16">
+          <div className="mb-16 rounded-lg bg-linear-to-br from-[#C5A24A]/20 to-[#EBD181]/20 p-6 text-center sm:p-12">
             <p 
-              className="text-3xl md:text-4xl font-bold text-[#001F3F] leading-relaxed"
+              className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#001F3F] leading-relaxed"
               style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
             >
               "Mumbai isn’t just a property market — it’s a long-term wealth platform when you buy right."
@@ -137,10 +137,10 @@ export default function WhyInvest() {
 
           {/* Investment Locations */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-center" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
+            <h2 className="mb-8 text-center text-2xl sm:text-3xl font-bold" style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}>
               Premium micro-markets to watch
             </h2>
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
               <div className="rounded-lg overflow-hidden shadow-lg">
                 <img 
                   src={dubaiImages.communities.downtown}
@@ -187,25 +187,25 @@ export default function WhyInvest() {
           {/* Investment Highlights */}
           <div className="mb-16">
             <h2 
-              className="text-3xl font-bold mb-8 text-center"
+              className="mb-8 text-center text-2xl sm:text-3xl font-bold"
               style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
             >
               Investment Highlights
             </h2>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid gap-6 md:grid-cols-3">
               <div className="p-6 rounded-lg border border-[#C5A24A]/20 text-center">
-                <div className="text-4xl font-bold gold-gradient-text mb-2">3–4</div>
-                <div className="text-lg font-semibold text-[#1a1a1a] mb-2">Key checks</div>
+                <div className="mb-2 text-3xl sm:text-4xl font-bold gold-gradient-text">3–4</div>
+                <div className="mb-2 text-base sm:text-lg font-semibold text-[#1a1a1a]">Key checks</div>
                 <div className="text-sm text-[#1a1a1a]/70">Demand, liquidity, documentation, and access</div>
               </div>
               <div className="p-6 rounded-lg border border-[#C5A24A]/20 text-center">
-                <div className="text-4xl font-bold gold-gradient-text mb-2">6–8%</div>
-                <div className="text-lg font-semibold text-[#1a1a1a] mb-2">Typical yield band</div>
+                <div className="mb-2 text-3xl sm:text-4xl font-bold gold-gradient-text">6–8%</div>
+                <div className="mb-2 text-base sm:text-lg font-semibold text-[#1a1a1a]">Typical yield band</div>
                 <div className="text-sm text-[#1a1a1a]/70">Varies by pocket and configuration</div>
               </div>
               <div className="p-6 rounded-lg border border-[#C5A24A]/20 text-center">
-                <div className="text-4xl font-bold gold-gradient-text mb-2">5–7</div>
-                <div className="text-lg font-semibold text-[#1a1a1a] mb-2">Years horizon</div>
+                <div className="mb-2 text-3xl sm:text-4xl font-bold gold-gradient-text">5–7</div>
+                <div className="mb-2 text-base sm:text-lg font-semibold text-[#1a1a1a]">Years horizon</div>
                 <div className="text-sm text-[#1a1a1a]/70">Best results with a long-term lens</div>
               </div>
             </div>
@@ -215,7 +215,7 @@ export default function WhyInvest() {
           <div className="text-center">
             <a
               href="/contact"
-              className="inline-block px-8 py-4 gold-gradient text-white font-semibold rounded-lg hover:shadow-xl hover:shadow-[#C5A24A]/50 transition-all"
+              className="inline-flex min-h-[48px] w-full items-center justify-center rounded-lg gold-gradient px-8 py-3.5 font-semibold text-white transition-all hover:shadow-xl hover:shadow-[#C5A24A]/50 sm:w-auto sm:py-4"
             >
               Start Your Investment Journey
             </a>
@@ -228,4 +228,5 @@ export default function WhyInvest() {
     </main>
   );
 }
+
 

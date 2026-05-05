@@ -21,7 +21,7 @@ export async function generateStaticParams() {
   return Array.from(map.values());
 }
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 type BlogRow = {
   slug: string;

@@ -19,6 +19,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   letter-spacing: -0.01em;
+  min-height: 100%;
+  overflow-x: clip;
 }
 
 @layer utilities {
@@ -50,10 +52,155 @@ body {
   }
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling + anchor offset under fixed header (tighter on small screens) */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 5.5rem;
+  overflow-x: clip;
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 6.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 7.5rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+main,
+section,
+header,
+footer {
+  max-width: 100%;
+}
+
+/* Prevent horizontal overflow from flex/grid children (common responsive fix) */
+main {
+  min-width: 0;
+}
+
+/*
+ * Home hero: fixed header (z-60) overlays this section — padding must live in plain CSS
+ * so it always applies (Tailwind arbitrary `max()` / `env()` can fail to emit in some setups).
+ */
+#home.home-hero {
+  padding-top: max(10.5rem, calc(env(safe-area-inset-top, 0px) + 8.5rem));
+}
+
+@media (min-width: 768px) {
+  #home.home-hero {
+    padding-top: 8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  #home.home-hero {
+    padding-top: 9rem;
+  }
+}
+
+/*
+ * Home hero background: fixed-height media layer (not tied to section content height).
+ * Mobile: min 85vh / 85svh. Desktop: 100vh. Slides use object-fit cover + slight scale.
+ * Overrides global `img { height: auto }` for these slides only.
+ */
+#home.home-hero .home-hero__media {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 0;
+  /* At least 85vh; prefer svh on mobile so browser chrome does not squash the hero */
+  height: max(85vh, 85svh);
+  max-height: max(85vh, 85svh);
+  overflow: hidden;
+  background-color: #0c1b2a;
+}
+
+@media (min-width: 768px) {
+  #home.home-hero .home-hero__media {
+    height: 100vh;
+    max-height: 100vh;
+  }
+}
+
+#home.home-hero .home-hero__media-frame {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Mobile: 3 / 4 crop window (centered) so portrait vs landscape sources read similarly */
+@media (max-width: 767.98px) {
+  #home.home-hero .home-hero__media-frame {
+    inset: auto;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 100%;
+    width: auto;
+    aspect-ratio: 3 / 4;
+    max-width: 100%;
+  }
+}
+
+/* Desktop: full-bleed frame (100vh × 100% width) — 16 / 9 feel via object-fit cover, no letterboxing */
+@media (min-width: 768px) {
+  #home.home-hero .home-hero__media-frame {
+    inset: 0;
+    transform: none;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: unset;
+    max-width: none;
+  }
+}
+
+#home.home-hero img.hero-bg-slide {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.05);
+  transform-origin: center center;
+  opacity: 0;
+  transition: opacity 2s ease;
+  pointer-events: none;
+}
+
+#home.home-hero img.hero-bg-slide.hero-bg-slide--visible {
+  opacity: 1;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: anywhere;
 }
 
 /* Custom scrollbar with gold theme */
@@ -190,9 +337,62 @@ section {
   padding: 6rem 0;
 }
 
+@media (max-width: 1024px) {
+  html {
+    scroll-padding-top: 90px;
+  }
+
+  section {
+    padding: 5rem 0;
+  }
+}
+
 @media (max-width: 768px) {
+  html {
+    scroll-padding-top: 82px;
+  }
+
   section {
     padding: 4rem 0;
+  }
+
+  .hero-image {
+    transform: none;
+    filter: saturate(1.02) contrast(1.02);
+  }
+
+  .animate-float-slow,
+  .animate-float-slow-2 {
+    animation: none;
+  }
+
+  .premium-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 3rem 0;
+  }
+
+  body {
+    letter-spacing: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }
 
@@ -284,4 +484,3 @@ a.gold-gradient:hover::before {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;  /* Chrome, Safari and Opera */
 }
-

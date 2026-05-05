@@ -32,27 +32,70 @@ const MAYURESH_PLANET_GALLERY = Array.from(
   (_, i) => `/Mayuresh/${i + 1}.jpeg`,
 );
 
+const PE = "/Platinum%20Elysium";
+const PLATINUM_ELYSIUM_GALLERY = [
+  `${PE}/01.jpg`, `${PE}/01%20(1).jpg`, `${PE}/02.jpg`, `${PE}/02.png`,
+  `${PE}/03.jpg`, `${PE}/04.jpg`, `${PE}/05.jpg`, `${PE}/06.jpg`,
+];
+
+const PEQ = "/Platinum%20Esquire";
+const PLATINUM_ESQUIRE_GALLERY = [
+  `${PEQ}/01.jpg`, `${PEQ}/02.jpg`, `${PEQ}/02.png`,
+  `${PEQ}/03.jpg`, `${PEQ}/07.jpg`, `${PEQ}/08.jpg`, `${PEQ}/09.jpg`,
+];
+
+const PM = "/Platinum%20Mansionz";
+const PLATINUM_MANSIONZ_GALLERY = [
+  `${PM}/01.jpg`, `${PM}/01%20(1).jpg`, `${PM}/02.jpg`, `${PM}/02.png`,
+  `${PM}/03.jpg`, `${PM}/04.jpg`, `${PM}/07.jpg`, `${PM}/08.jpg`, `${PM}/09.jpg`,
+];
+
+const POK = "/Platinum%20Oakwoods";
+const PLATINUM_OAKWOODS_GALLERY = [
+  `${POK}/01.jpg`, `${POK}/02.png`,
+  `${POK}/09.jpg`, `${POK}/10.jpg`, `${POK}/11.jpg`, `${POK}/12.jpg`,
+];
+
+const PPK = "/Platinum%20Parksyde";
+const PLATINUM_PARKSYDE_GALLERY = [
+  `${PPK}/01.jpg`, `${PPK}/01%20(1).jpg`, `${PPK}/02.jpg`, `${PPK}/02.png`,
+  `${PPK}/03.jpg`, `${PPK}/04.jpg`, `${PPK}/05.jpg`, `${PPK}/06.jpg`, `${PPK}/07.jpg`,
+];
+
+const PTR = "/Platinum%20The%20Reserve";
+const PLATINUM_THE_RESERVE_GALLERY = [
+  `${PTR}/01.jpg`, `${PTR}/01%20(1).jpg`, `${PTR}/02.jpg`, `${PTR}/02.png`,
+  `${PTR}/03.jpg`, `${PTR}/04.jpg`, `${PTR}/05.jpg`, `${PTR}/06.jpg`,
+  `${PTR}/07.jpg`, `${PTR}/08.jpg`,
+];
+
+const PW = "/Platinum%20Westwoods";
+const PLATINUM_WESTWOODS_GALLERY = [
+  `${PW}/01.jpg`, `${PW}/01%20(1).jpg`, `${PW}/02.jpg`, `${PW}/02.png`,
+  `${PW}/03.jpg`, `${PW}/04.jpg`, `${PW}/05.jpg`, `${PW}/06.jpg`,
+];
+
 const LOCAL_CARD_IMAGE_BY_SLUG: Record<string, string> = {
   "aatman-balaji-corporation": "/properties/aatman-balaji-palm-beach.jpeg",
   "cadbury-junction-thane-west": "/properties/cadbury-junction-thane-west.jpg",
   "codename-panoramic-mayuresh-group": "/properties/codename-panoramic-cbd-belapur.jpg",
   "mayuresh-planet-cbd-belapur": "/properties/mayuresh-planet-cbd-belapur.jpeg",
   "9pbr-adani-realty": "/properties/9pbr-adani-realty.jpg",
-  "elysium-platinum": "/properties/elysium-platinum.jpg",
+  "elysium-platinum": "/Platinum%20Elysium/01.jpg",
   "sai-world-one": "/properties/sai-world-one.jpg",
   "dream-ikon": "/properties/dream-ikon.jpg",
-  "oakwoods-platinum": "/properties/oakwoods-platinum.jpg",
+  "oakwoods-platinum": "/Platinum%20Oakwoods/01.jpg",
   "platinum-juinagar-midc": "/properties/platinum-juinagar-midc.jpg",
   "codename-growth": "/properties/codename-growth.jpeg",
-  "platinum-the-reserve": "/properties/platinum-the-reserve.jpeg",
+  "platinum-the-reserve": "/Platinum%20The%20Reserve/01.jpg",
   "cyber-square": "/properties/cyber-square.jpeg",
-  "mensionz-platinum": "/properties/mensionz-platinum.jpg",
+  "mensionz-platinum": "/Platinum%20Mansionz/01.jpg",
   "k-raheja-corp-homes": "/properties/k-raheja-corp-homes.jpg",
   "one-platinum": "/properties/one-platinum.jpg",
-  "praksyde-platinum": "/properties/praksyde-platinum.jpeg",
-  "westwoods-platinum": "/properties/westwoods-platinum.jpg",
+  "praksyde-platinum": "/Platinum%20Parksyde/01.jpg",
+  "westwoods-platinum": "/Platinum%20Westwoods/01.jpg",
   "goodwill-wisteria": "/properties/goodwill-wisteria.jpeg",
-  "esquire-platinum": "/properties/esquire-platinum.jpg",
+  "esquire-platinum": "/Platinum%20Esquire/01.jpg",
   "code-name-green-gold": "/properties/code-name-green-gold.webp",
   "platinum-juinagar-new-launch": "/properties/platinum-juinagar-new-launch.webp",
   "9pbr-palm-beachroad": "/properties/9pbr-palm-beachroad.jpg",
@@ -271,7 +314,8 @@ Connect with Golden Brix for layouts, availability, and investment options.`,
     location: "Nerul, Navi Mumbai",
     price: "Price on Request",
     bhk: "2 and 3 BHK Residences",
-    image: "https://theplatinumgroup.co.in/assets/img/ongoing/01.jpg",
+    image: "/Platinum%20Elysium/01.jpg",
+    images: PLATINUM_ELYSIUM_GALLERY,
     builder: "Platinum Group",
     propertyType: "Residential",
     possession: "Under Construction",
@@ -367,7 +411,8 @@ Connect with Golden Brix for layouts, availability, and investment options.`,
     location: "Nerul, Navi Mumbai",
     price: "Price on Request",
     bhk: "Premium Residences",
-    image: "https://theplatinumgroup.co.in/assets/img/ongoing/07.jpg",
+    image: "/Platinum%20Oakwoods/01.jpg",
+    images: PLATINUM_OAKWOODS_GALLERY,
     builder: "Platinum Group",
     propertyType: "Residential",
     possession: "Under Construction",
@@ -461,7 +506,8 @@ Connect with Golden Brix for layouts, availability, and investment options.`,
     location: "Kharghar, Navi Mumbai",
     price: "Price on Request",
     bhk: "Luxury Residences",
-    image: "https://theplatinumgroup.co.in/assets/img/ongoing/04.jpg",
+    image: "/Platinum%20The%20Reserve/01.jpg",
+    images: PLATINUM_THE_RESERVE_GALLERY,
     builder: "Platinum Group",
     propertyType: "Residential",
     possession: "Under Construction",
@@ -518,7 +564,8 @@ Connect with Golden Brix for layouts, availability, and investment options.`,
     location: "Seawoods, Navi Mumbai",
     price: "Price on Request",
     bhk: "Premium Residences",
-    image: "https://theplatinumgroup.co.in/assets/img/ongoing/06.jpg",
+    image: "/Platinum%20Mansionz/01.jpg",
+    images: PLATINUM_MANSIONZ_GALLERY,
     builder: "Platinum Group",
     propertyType: "Residential",
     possession: "Under Construction",
@@ -598,7 +645,8 @@ Connect with Golden Brix for layouts, availability, and investment options.`,
     location: "Kharghar, Navi Mumbai",
     price: "Price on Request",
     bhk: "Premium Residences",
-    image: "https://theplatinumgroup.co.in/assets/img/ongoing/03.jpg",
+    image: "/Platinum%20Parksyde/01.jpg",
+    images: PLATINUM_PARKSYDE_GALLERY,
     builder: "Platinum Group",
     propertyType: "Residential",
     possession: "Under Construction",
@@ -633,7 +681,8 @@ Connect with Golden Brix for layouts, availability, and investment options.`,
     location: "Seawoods, Navi Mumbai",
     price: "Price on Request",
     bhk: "Luxury Residences",
-    image: "https://theplatinumgroup.co.in/assets/img/ongoing/05.jpg",
+    image: "/Platinum%20Westwoods/01.jpg",
+    images: PLATINUM_WESTWOODS_GALLERY,
     builder: "Platinum Group",
     propertyType: "Residential",
     possession: "Under Construction",
@@ -691,7 +740,8 @@ Connect with Golden Brix for layouts, availability, and investment options.`,
     location: "Nerul, Navi Mumbai",
     price: "Price on Request",
     bhk: "Premium Residences",
-    image: "https://theplatinumgroup.co.in/assets/img/ongoing/02.jpg",
+    image: "/Platinum%20Esquire/01.jpg",
+    images: PLATINUM_ESQUIRE_GALLERY,
     builder: "Platinum Group",
     propertyType: "Residential",
     possession: "Under Construction",

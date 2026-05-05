@@ -15,7 +15,7 @@ import {
   MessageCircle,
   ArrowUpRight,
 } from "lucide-react";
-import { openWhatsApp } from "@/lib/whatsapp";
+import { getWhatsAppUrl, openWhatsApp } from "@/lib/whatsapp";
 
 const CONTACT = {
   tagline: "Premium real estate advisory — Mumbai & Navi Mumbai",
@@ -54,64 +54,24 @@ export default function Contact() {
   );
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitStatus("idle");
     setErrorMessage("");
     if (isSubmitting) return;
     setIsSubmitting(true);
-
-    try {
-      const payload = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        inquiryType: formData.inquiryType,
-        message: formData.message,
-        source: "contact_page",
-        page: "/contact",
-        _subject: `New lead — Contact page (${formData.inquiryType})`,
-        _template: "table",
-        _captcha: "false",
-      } as const;
-
-      const endpoint = `https://formsubmit.co/ajax/${encodeURIComponent(CONTACT.email)}`;
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          ...payload,
-          message: `Inquiry type: ${formData.inquiryType}\n\n${formData.message}`.trim(),
-        }),
-      });
-
-      if (!res.ok) {
-        const text = await res.text().catch(() => "");
-        throw new Error(
-          text?.trim()
-            ? `Failed to send message. ${text}`
-            : "Failed to send message. Please try again.",
-        );
-      }
-
-      setSubmitStatus("success");
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        message: "",
-        inquiryType: "Buying / selling",
-      });
-    } catch (error) {
-      setSubmitStatus("error");
-      setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "An error occurred. Please try again.",
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Compose WhatsApp message
+    const msg = [
+      "Hi, I'm interested in property consultation.",
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone}`,
+      `Inquiry type: ${formData.inquiryType}`,
+      formData.message ? `Message: ${formData.message}` : null
+    ].filter(Boolean).join('\n');
+    const url = getWhatsAppUrl(msg);
+    window.open(url, '_blank');
+    setIsSubmitting(false);
   };
 
   const handleChange = (
@@ -173,8 +133,8 @@ export default function Contact() {
                   type="button"
                   onClick={() =>
                     openWhatsApp(
-                      "917738384100",
                       "Hi Golden Brix, I would like to speak about a property requirement.",
+                      "917738384100",
                     )
                   }
                   className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-[#25D366]/50 hover:bg-white/15"

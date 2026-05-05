@@ -52,33 +52,33 @@ export default function MarketTrends() {
     <main className="min-h-screen bg-white text-[#1a1a1a]">
       <Header />
       
-      <section className="pt-32 pb-20 px-6 md:px-12 lg:px-16">
+      <section className="px-4 pt-28 pb-16 sm:px-6 sm:pt-32 sm:pb-20 md:px-12 lg:px-16">
         <div className="container mx-auto max-w-6xl">
           <div className="mb-16 text-center">
             <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 gold-gradient-text"
+              className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gold-gradient-text"
               style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
             >
               Mumbai Real Estate Market Trends
             </h1>
-            <p className="text-2xl text-[#1a1a1a]/70 mb-2">2024–2025</p>
+            <p className="mb-2 text-lg text-[#1a1a1a]/70 sm:text-2xl">2024–2025</p>
             <div className="w-24 h-1 gold-gradient mx-auto"></div>
           </div>
           
           {/* Statistics Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="mb-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {statistics.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <div 
                   key={index}
-                  className="p-6 rounded-lg border-2 border-[#C5A24A]/20 bg-gradient-to-br from-white to-[#C5A24A]/5 text-center hover:shadow-lg transition-all"
+                  className="rounded-lg border-2 border-[#C5A24A]/20 bg-gradient-to-br from-white to-[#C5A24A]/5 p-5 text-center transition-all hover:shadow-lg sm:p-6"
                 >
                   <div className="w-16 h-16 rounded-lg gold-gradient flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <div className="text-3xl font-bold gold-gradient-text mb-2">{stat.value}</div>
-                  <div className="text-lg font-semibold text-[#1a1a1a] mb-2">{stat.label}</div>
+                  <div className="mb-2 text-2xl sm:text-3xl font-bold gold-gradient-text">{stat.value}</div>
+                  <div className="mb-2 text-base sm:text-lg font-semibold text-[#1a1a1a]">{stat.label}</div>
                   <div className="text-sm text-[#1a1a1a]/70">{stat.description}</div>
                 </div>
               );
@@ -86,14 +86,14 @@ export default function MarketTrends() {
           </div>
           
           {/* 2025 Outlook */}
-          <div className="bg-gradient-to-br from-[#C5A24A]/10 to-[#EBD181]/10 p-8 rounded-lg mb-16">
+          <div className="mb-16 rounded-lg bg-gradient-to-br from-[#C5A24A]/10 to-[#EBD181]/10 p-5 sm:p-8">
             <h2 
-              className="text-3xl font-bold mb-8 text-center"
+              className="mb-8 text-center text-2xl sm:text-3xl font-bold"
               style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
             >
               2025 Market Outlook
             </h2>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid gap-4 md:grid-cols-2">
               {outlook2025.map((point, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full gold-gradient mt-2 flex-shrink-0"></div>
@@ -106,12 +106,12 @@ export default function MarketTrends() {
           {/* Key Insights */}
           <div className="mb-16">
             <h2 
-              className="text-3xl font-bold mb-8 text-center"
+              className="mb-8 text-center text-2xl sm:text-3xl font-bold"
               style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
             >
               Key Market Insights
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid gap-6 md:grid-cols-2 md:gap-8">
               <div className="p-6 rounded-lg border border-[#C5A24A]/20">
                 <h3 className="text-xl font-bold mb-4 gold-gradient-text">Residential Sector</h3>
                 <p className="text-[#1a1a1a]/80 leading-relaxed mb-4">
@@ -141,7 +141,7 @@ export default function MarketTrends() {
           <div className="text-center">
             <a
               href="/contact"
-              className="inline-block px-8 py-4 gold-gradient text-white font-semibold rounded-lg hover:shadow-xl hover:shadow-[#C5A24A]/50 transition-all"
+              className="inline-flex min-h-[48px] w-full items-center justify-center rounded-lg gold-gradient px-8 py-3.5 font-semibold text-white transition-all hover:shadow-xl hover:shadow-[#C5A24A]/50 sm:w-auto sm:py-4"
             >
               Get Market Analysis
             </a>
@@ -153,4 +153,7 @@ export default function MarketTrends() {
     </main>
   );
 }
+
+
+
 

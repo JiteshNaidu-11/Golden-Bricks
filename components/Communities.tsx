@@ -79,14 +79,14 @@ export default function Communities() {
   const visibleCommunities = communities.slice(currentIndex, currentIndex + itemsPerPage);
 
   return (
-    <section id="communities" className="py-20 bg-[#1a1a1a]">
-      <div className="container mx-auto px-6 md:px-12 lg:px-16">
-        <div className="flex items-center justify-between mb-12">
+    <section id="communities" className="bg-[#1a1a1a] py-16 sm:py-20">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+        <div className="mb-10 flex flex-col gap-6 sm:mb-12 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'var(--font-playfair), serif' }}>
+            <h2 className="mb-4 text-3xl sm:text-4xl md:text-5xl font-bold" style={{ fontFamily: 'var(--font-playfair), serif' }}>
               Explore Prime Locations
             </h2>
-            <p className="text-white/70 text-lg">
+            <p className="text-base sm:text-lg text-white/70">
               Discover Mumbai and Navi Mumbai’s most sought-after micro-markets
             </p>
           </div>
@@ -106,11 +106,11 @@ export default function Communities() {
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {visibleCommunities.map((community) => (
             <div
               key={community.id}
-              className="group relative h-96 rounded-2xl overflow-hidden cursor-pointer"
+              className="group relative h-80 sm:h-96 rounded-2xl overflow-hidden cursor-pointer"
             >
               <Image
                 src={community.image}
@@ -122,7 +122,7 @@ export default function Communities() {
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#D4AF37]/20 group-hover:to-[#D4AF37]/40 transition-all"></div>
               
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-[#D4AF37] transition-colors">
+                <h3 className="mb-2 text-xl sm:text-2xl font-bold text-white transition-colors group-hover:text-[#D4AF37]">
                   {community.name}
                 </h3>
                 <div className="flex items-center gap-2 text-white/80 mb-2">
@@ -140,8 +140,8 @@ export default function Communities() {
           ))}
         </div>
 
-        <div className="flex justify-center mt-12">
-          <button className="px-8 py-3 border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#1a1a1a] rounded-lg font-semibold transition-all">
+        <div className="mt-10 flex justify-center sm:mt-12">
+          <button className="min-h-[48px] w-full rounded-lg border-2 border-[#D4AF37] px-8 py-3 font-semibold text-[#D4AF37] transition-all hover:bg-[#D4AF37] hover:text-[#1a1a1a] sm:w-auto">
             View All Locations
           </button>
         </div>
@@ -149,4 +149,5 @@ export default function Communities() {
     </section>
   );
 }
+
 

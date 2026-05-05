@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { SERVICES_COPY } from "@/lib/content/innerPagesContent";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 import Reveal from "@/components/motion/Reveal";
 import {
   BadgeCheck,
@@ -124,18 +125,22 @@ export default function ServicesPage() {
               </p>
 
               <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-                <Link
-                  href="/projects"
+                <a
+                  href={getWhatsAppUrl("Hi, I want to view projects. Page: Services")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-linear-to-r from-[#C5A24A] to-[#EBD181] px-8 py-3.5 text-sm font-bold text-[#001F3F] shadow-lg transition hover:brightness-105 active:scale-[0.98]"
                 >
                   View projects
-                </Link>
-                <Link
-                  href="/contact"
+                </a>
+                <a
+                  href={getWhatsAppUrl("Hi, I want to talk to an advisor. Page: Services")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/25 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-[#C5A24A]/50 hover:bg-white/10"
                 >
                   Talk to advisor
-                </Link>
+                </a>
               </div>
 
               <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-white/70">
@@ -314,18 +319,22 @@ export default function ServicesPage() {
                         </div>
 
                         <div className="mt-8 flex flex-wrap items-center gap-3">
-                          <Link
-                            href="/contact"
+                          <a
+                            href={getWhatsAppUrl("Hi, I want to talk to an advisor. Page: Services")}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex min-h-[46px] items-center justify-center rounded-xl bg-[#0c1b2a] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 active:scale-[0.98]"
                           >
                             Talk to Advisor
-                          </Link>
-                          <Link
-                            href="/projects"
+                          </a>
+                          <a
+                            href={getWhatsAppUrl("Hi, I want to view projects. Page: Services")}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex min-h-[46px] items-center justify-center rounded-xl border border-[#0c1b2a]/15 bg-white px-6 py-3 text-sm font-semibold text-[#0c1b2a] shadow-sm transition hover:border-[#C5A24A]/40 hover:bg-[#faf8f3] active:scale-[0.98]"
                           >
                             View Projects
-                          </Link>
+                          </a>
                           <Link
                             href={s.detailHref}
                             className="inline-flex min-h-[46px] items-center justify-center text-sm font-semibold text-[#0c1b2a]/65 underline-offset-4 hover:text-[#C5A24A] hover:underline"

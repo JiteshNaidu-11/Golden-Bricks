@@ -1,11 +1,16 @@
 /**
+ * WhatsApp number constant for easy switching
+ */
+export const WHATSAPP_NUMBER = '917738384100';
+
+/**
  * Opens WhatsApp with a pre-filled message to the specified phone number
- * @param phone - Phone number in international format (e.g., 917738384100)
+ * @param phone - Phone number in international format (default: WHATSAPP_NUMBER)
  * @param message - Default message to send
  */
 export const openWhatsApp = (
-  phone: string = '917738384100',
-  message: string = 'Hi, I am interested in your real estate properties and would like more information.'
+  message: string = '',
+  phone: string = WHATSAPP_NUMBER
 ) => {
   const encodedMessage = encodeURIComponent(message);
   const whatsappUrl = `https://wa.me/${phone}?text=${encodedMessage}`;
@@ -14,12 +19,12 @@ export const openWhatsApp = (
 
 /**
  * Returns the WhatsApp URL with pre-filled message
- * @param phone - Phone number in international format
+ * @param phone - Phone number in international format (default: WHATSAPP_NUMBER)
  * @param message - Default message to send
  */
 export const getWhatsAppUrl = (
-  phone: string = '917738384100',
-  message: string = 'Hi, I am interested in your real estate properties and would like more information.'
+  message: string,
+  phone: string = WHATSAPP_NUMBER
 ) => {
   const encodedMessage = encodeURIComponent(message);
   return `https://wa.me/${phone}?text=${encodedMessage}`;

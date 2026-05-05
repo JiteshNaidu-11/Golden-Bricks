@@ -108,19 +108,20 @@ export default function Header() {
   const shouldShowGlassEffect = isScrolled || !isHomePage;
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-60 pt-3 md:pt-4 transition-all duration-300 ${
+    <header
+      className={`home-header fixed top-0 left-0 right-0 z-60 pt-[max(0.75rem,env(safe-area-inset-top,0px))] sm:pt-3 lg:pt-4 transition-all duration-300 ${
       shouldShowGlassEffect
-        ? 'md:bg-white/60 md:backdrop-blur-xl md:border md:border-[#C5A24A]/20 md:shadow-sm md:mx-4 md:mt-4 md:rounded-2xl' 
+        ? 'lg:bg-white/60 lg:backdrop-blur-xl lg:border lg:border-[#C5A24A]/20 lg:shadow-sm lg:mx-4 lg:mt-4 lg:rounded-2xl'
         : ''
     } ${isMenuOpen ? 'bg-white shadow-sm' : isHomePage && !isScrolled ? 'bg-transparent' : 'bg-white shadow-sm'} ${
       isMenuOpen
-        ? 'max-md:inset-0 max-md:top-0 max-md:left-0 max-md:right-0 max-md:bottom-0 max-md:min-h-screen max-md:h-screen max-md:overflow-hidden max-md:flex max-md:flex-col max-md:rounded-none max-md:m-0 max-md:border-0'
+        ? 'max-lg:inset-0 max-lg:top-0 max-lg:left-0 max-lg:right-0 max-lg:bottom-0 max-lg:min-h-screen max-lg:h-screen max-lg:overflow-hidden max-lg:flex max-lg:flex-col max-lg:rounded-none max-lg:m-0 max-lg:border-0'
         : ''
     }`}>
-      <div className="container mx-auto px-4 md:px-6 shrink-0">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center group">
-  <div className="relative h-16 w-52 sm:h-20 sm:w-64">
+      <div className="container mx-auto px-4 sm:px-5 lg:px-6 shrink-0">
+        <div className="flex min-w-0 items-center justify-between gap-2 h-14 sm:h-16">
+          <Link href="/" className="flex min-w-0 shrink items-center group">
+  <div className="relative h-12 w-36 min-[400px]:h-14 min-[400px]:w-44 sm:h-16 sm:w-52">
     <Image
       src="/images/logo/goldenbrix-logo.png"
       alt="Golden Brix"
@@ -132,7 +133,7 @@ export default function Header() {
 </Link>
           
           {/* Desktop Navigation */}
-<nav className="hidden md:flex items-center space-x-6">
+<nav className="hidden lg:flex items-center lg:gap-4 xl:gap-6">
   {navItems.map((item) => {
     if (item.dropdown && item.link === '/services') {
       return (
@@ -236,8 +237,8 @@ export default function Header() {
 </nav>
 
           {/* Mobile Menu Button */}
-        <button 
-            className={`md:hidden p-2 focus:outline-none transition-colors ${
+        <button
+            className={`lg:hidden inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2.5 focus:outline-none transition-colors ${
               isMenuOpen 
                 ? 'text-gray-700' 
                 : shouldShowGlassEffect 
@@ -253,13 +254,13 @@ export default function Header() {
 
       {/* Mobile Menu - full viewport overlay panel, scrollable */}
       {isMenuOpen && (
-        <nav className="md:hidden flex-1 min-h-0 overflow-y-auto overflow-x-hidden py-4 space-y-4 bg-white border-t border-gray-100 mt-2">
+        <nav className="lg:hidden flex-1 min-h-0 overflow-y-auto overflow-x-hidden py-4 space-y-4 bg-white border-t border-gray-100 mt-2">
           {navItems.map((item) => {
             if (item.dropdown && item.link === '/services') {
               return (
                 <div key={item.label}>
                   <button
-                    className="w-full text-left px-4 py-2 text-[#001F3F] hover:text-[#C5A24A] hover:bg-white/50 font-medium transition-all flex items-center justify-between"
+                    className="w-full text-left px-4 py-3 text-[#001F3F] hover:text-[#C5A24A] hover:bg-white/50 font-medium transition-all flex items-center justify-between"
                     onClick={() => setOpenDropdown(openDropdown === 'services-mobile' ? null : 'services-mobile')}
                   >
                     Services
@@ -267,12 +268,12 @@ export default function Header() {
                   </button>
 
                   {openDropdown === 'services-mobile' && (
-                    <div className="pl-8 mt-2 space-y-2">
+                    <div className="pl-8 pr-2 mt-2 space-y-2">
                       {servicesItems.map((serviceItem) => (
                         <Link
                           key={serviceItem.href}
                           href={serviceItem.href}
-                          className="block px-4 py-2 text-[#001F3F]/80 hover:text-[#C5A24A] hover:bg-white/50 font-medium transition-all"
+                          className="block px-4 py-2.5 text-[#001F3F]/80 hover:text-[#C5A24A] hover:bg-white/50 font-medium transition-all break-words"
                           onClick={() => {
                             setIsMenuOpen(false);
                             setOpenDropdown(null);
@@ -295,7 +296,7 @@ export default function Header() {
                   setIsMenuOpen(false);
                   setOpenDropdown(null);
                 }}
-                className="block relative px-4 py-2 text-[#001F3F] hover:text-[#C5A24A] hover:bg-white/50 font-medium transition-all group"
+                className="block relative px-4 py-3 text-[#001F3F] hover:text-[#C5A24A] hover:bg-white/50 font-medium transition-all group"
               >
                 {item.label}
                 <span className="absolute inset-x-0 bottom-0 h-0.5 gold-gradient transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>

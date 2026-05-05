@@ -221,7 +221,7 @@ export default function Careers() {
             </div>
 
             <button
-              onClick={() => openWhatsApp()}
+              onClick={() => openWhatsApp('Hi, I am interested in career opportunities at Golden Brix Properties.')}
               className="px-8 py-4 bg-white text-[#001F3F] font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform"
             >
               Contact Us on WhatsApp

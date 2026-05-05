@@ -56,7 +56,7 @@ export default function FloatingChatbot() {
             role="presentation"
           >
             <div
-              className="w-full max-w-lg h-[85vh] max-h-[700px] bg-white rounded-3xl shadow-2xl border border-[#C5A24A]/20 overflow-hidden flex flex-col"
+              className="flex h-[85svh] max-h-[min(700px,calc(100dvh-2rem))] w-full max-w-lg flex-col overflow-hidden rounded-3xl border border-[#C5A24A]/20 bg-white shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               {showChat ? (

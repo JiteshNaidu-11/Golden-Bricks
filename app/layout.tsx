@@ -30,6 +30,7 @@ const ogImageUrl = `${baseUrl}/images/logo/logo.png`;
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
   themeColor: "#001F3F",
 };
 
@@ -90,7 +91,7 @@ export default function RootLayout({
       >
         {children}
 
-        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2.5">
+        <div className="fixed z-50 flex flex-col items-center gap-2 max-sm:gap-1.5 bottom-[max(1rem,env(safe-area-inset-bottom,0px))] right-[max(1rem,env(safe-area-inset-right,0px))] sm:bottom-5 sm:right-5 md:bottom-6 md:right-6 md:gap-2.5">
           <ScrollToTop />
           <FloatingChatbot />
           <FloatingWhatsApp />

@@ -45,18 +45,18 @@ export default function Testimonials() {
   const visibleTestimonials = testimonials.slice(currentIndex, currentIndex + itemsPerPage);
 
   return (
-    <section className="py-20 bg-linear-to-b from-[#1a1a1a] to-[#0f0f0f]">
-      <div className="container mx-auto px-6 md:px-12 lg:px-16">
+    <section className="bg-linear-to-b from-[#1a1a1a] to-[#0f0f0f] py-16 sm:py-20">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'var(--font-playfair), serif' }}>
+          <h2 className="mb-4 text-3xl sm:text-4xl md:text-5xl font-bold" style={{ fontFamily: 'var(--font-playfair), serif' }}>
             Client Reviews
           </h2>
-          <p className="text-white/70 text-lg">
+          <p className="text-base sm:text-lg text-white/70">
             What our clients say about us
           </p>
         </div>
 
-        <div className="flex items-center justify-between mb-8">
+        <div className="mb-8 flex items-center justify-between">
           <div className="hidden md:block"></div>
           <div className="flex gap-4">
             <button
@@ -74,12 +74,12 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {visibleTestimonials.length ? (
             visibleTestimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="glass rounded-2xl p-8 hover:border-[#D4AF37]/50 transition-all"
+              className="glass rounded-2xl p-5 sm:p-8 hover:border-[#D4AF37]/50 transition-all"
             >
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
@@ -110,7 +110,7 @@ export default function Testimonials() {
         </div>
 
         <div className="flex justify-center mt-12">
-          <button className="px-8 py-3 border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#1a1a1a] rounded-lg font-semibold transition-all">
+          <button className="min-h-[48px] w-full rounded-lg border-2 border-[#D4AF37] px-8 py-3 font-semibold text-[#D4AF37] transition-all hover:bg-[#D4AF37] hover:text-[#1a1a1a] sm:w-auto">
             View All Reviews
           </button>
         </div>
@@ -118,4 +118,5 @@ export default function Testimonials() {
     </section>
   );
 }
+
 

@@ -203,37 +203,36 @@ export default function Home() {
   // ];
 
   return (
-    <main className="min-h-screen bg-white text-[#001F3F]">
+    <main className="min-h-screen min-w-0 w-full overflow-x-clip bg-white text-[#001F3F]">
 
       <Header />
 
       {/* HERO */}
 <section
   id="home"
-  className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16"
+  className="home-hero relative flex items-start justify-center overflow-x-hidden overflow-y-visible bg-[#0c1b2a] pb-16 sm:pb-18 md:items-center md:pb-16"
 >
-  {/* Background Slider */}
-  <div className="absolute inset-0">
-    {heroImages.map((img, index) => (
-      <img
-        key={index}
-        src={img}
-        alt="Luxury Property"
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-2000 ${
-          index === currentImage ? "opacity-100" : "opacity-0"
-        }`}
-      />
-    ))}
-
-    <div className="absolute inset-0 bg-black/55"></div>
+  {/* Background: fixed viewport slice — height never follows stacked content (global img { height:auto } otherwise breaks cover) */}
+  <div className="home-hero__media pointer-events-none" aria-hidden>
+    <div className="home-hero__media-frame">
+      {heroImages.map((img, index) => (
+        <img
+          key={index}
+          src={img}
+          alt=""
+          className={`hero-bg-slide ${index === currentImage ? "hero-bg-slide--visible" : ""}`}
+        />
+      ))}
+    </div>
+    <div className="home-hero__media-gradient absolute inset-0 bg-linear-to-b from-black/60 via-black/45 to-black/30" />
   </div>
 
-  <div className="relative z-10 container mx-auto px-6 lg:px-20">
+  <div className="relative z-10 container mx-auto min-w-0 px-4 sm:px-5 md:px-6 lg:px-12 xl:px-20">
 
-    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <div className="grid min-w-0 items-center gap-8 sm:gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16">
 
       {/* LEFT CONTENT */}
-      <div>
+      <div className="w-full min-w-0 max-w-[37.5rem]">
 
         {/* Brand Label */}
         <p className="text-[#C5A24A] uppercase tracking-widest text-sm mb-4">
@@ -241,7 +240,7 @@ export default function Home() {
         </p>
 
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white"
           style={{ fontFamily: "var(--font-playfair), serif" }}
         >
           Luxury Living
@@ -250,21 +249,25 @@ export default function Home() {
           </span>
         </h1>
 
-        <p className="text-white/80 mt-6 text-base md:text-lg max-w-xl">
+        <p className="mt-5 max-w-xl text-sm sm:text-base md:text-lg text-white/85 leading-relaxed">
           Discover exclusive residences, premium investment opportunities,
           and high-end properties across Mumbai and Navi Mumbai with
           <span className="font-semibold text-white"> Golden Brix Properties.</span>
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-wrap gap-4 mt-8">
+        <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
 
-          <a
-            href="#contact"
-            className="px-7 py-3 gold-gradient text-white font-semibold rounded-lg hover:scale-105 transition-all inline-block text-center"
+          <button
+            type="button"
+            onClick={() => {
+              const msg = "Hi, I'm interested in a property consultation. Page: Home";
+              window.open(require('@/lib/whatsapp').getWhatsAppUrl(msg), '_blank');
+            }}
+            className="inline-flex min-h-[48px] w-full items-center justify-center rounded-lg gold-gradient px-6 py-3 font-semibold text-white text-center transition-all hover:scale-105 sm:w-auto sm:px-7"
           >
             Book Consultation
-          </a>
+          </button>
 
           {/* Download Investment Guide — hidden; uncomment block + handler above to restore
           <button
@@ -279,21 +282,21 @@ export default function Home() {
         </div>
 
         {/* Trust Stats */}
-        <div className="flex flex-wrap gap-8 mt-10 text-white">
+        <div className="mt-8 grid grid-cols-3 gap-2 text-white sm:mt-10 sm:flex sm:flex-wrap sm:gap-8 md:gap-8">
 
-          <div>
-            <p className="text-2xl md:text-3xl font-bold gold-gradient-text">120+</p>
-            <p className="text-white/70 text-sm">Properties Sold</p>
+          <div className="min-w-0 text-center sm:text-left">
+            <p className="text-xl font-bold gold-gradient-text sm:text-2xl md:text-3xl">120+</p>
+            <p className="text-[0.7rem] leading-snug text-white/70 sm:text-sm">Properties Sold</p>
           </div>
 
-          <div>
-            <p className="text-2xl md:text-3xl font-bold gold-gradient-text">25+</p>
-            <p className="text-white/70 text-sm">Developers</p>
+          <div className="min-w-0 text-center sm:text-left">
+            <p className="text-xl font-bold gold-gradient-text sm:text-2xl md:text-3xl">25+</p>
+            <p className="text-[0.7rem] leading-snug text-white/70 sm:text-sm">Developers</p>
           </div>
 
-          <div>
-            <p className="text-2xl md:text-3xl font-bold gold-gradient-text">10+</p>
-            <p className="text-white/70 text-sm">Years Experience</p>
+          <div className="min-w-0 text-center sm:text-left">
+            <p className="text-xl font-bold gold-gradient-text sm:text-2xl md:text-3xl">10+</p>
+            <p className="text-[0.7rem] leading-snug text-white/70 sm:text-sm">Years Experience</p>
           </div>
 
         </div>
@@ -303,7 +306,7 @@ export default function Home() {
      {/* RIGHT SIDE LEAD MAGNET */}
 <form
   onSubmit={handleGuideSubmit}
-  className="bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-2xl shadow-2xl max-w-sm w-full ml-auto"
+  className="w-full min-w-0 max-w-md rounded-2xl border border-white/20 bg-white/10 p-4 shadow-2xl backdrop-blur-xl sm:p-5 lg:ml-auto lg:max-w-sm"
 >
 
   {/* Stored in Supabase `leads` */}
@@ -376,11 +379,14 @@ export default function Home() {
     </select>
 
     <button
-      type="submit"
-      disabled={guideSubmitting}
+      type="button"
+      onClick={() => {
+        const msg = "Hi, I would like to get the free investment guide. Page: Home";
+        window.open(require('@/lib/whatsapp').getWhatsAppUrl(msg), '_blank');
+      }}
       className="w-full gold-gradient py-2.5 rounded-lg font-semibold text-white text-sm disabled:opacity-60 disabled:cursor-not-allowed"
     >
-      {guideSubmitting ? "Sending…" : "Get Free Guide"}
+      Get Free Guide
     </button>
 
   </div>
@@ -412,8 +418,8 @@ export default function Home() {
 </section>
 
 {/* Projects section — featured subset; full catalog at /properties */}
-<section id="projects" className="py-20 sm:py-24 bg-[#f6f4ef]">
-<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<section id="projects" className="bg-[#f6f4ef] py-16 sm:py-20 md:py-24">
+<div className="mx-auto max-w-7xl min-w-0 px-4 sm:px-6 lg:px-8">
 
 <div className="text-center mb-12 sm:mb-14">
 
@@ -455,23 +461,23 @@ Featured properties
 </section>
 
       {/* About Section */}
-<section id="about" className="py-24 px-4 sm:px-8 lg:px-12 bg-linear-to-b from-[#faf8f3] via-[#f3efe6] to-[#ece6da] relative overflow-hidden">
+<section id="about" className="relative overflow-x-clip bg-linear-to-b from-[#faf8f3] via-[#f3efe6] to-[#ece6da] py-16 px-4 sm:py-24 sm:px-8 lg:px-12">
 
   {/* Background accents */}
   <div className="absolute top-0 left-0 w-96 h-96 bg-[#C5A24A]/10 rounded-full blur-[120px]"></div>
   <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#001F3F]/10 rounded-full blur-[120px]"></div>
 
-  <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+  <div className="relative z-10 mx-auto grid max-w-6xl min-w-0 items-center gap-10 px-4 sm:gap-12 sm:px-8 lg:grid-cols-2 lg:gap-16 lg:px-12">
 
     {/* LEFT CONTENT */}
-    <div>
+    <div className="min-w-0">
 
       <p className="text-[#C5A24A] uppercase tracking-[0.25em] text-xs mb-4">
         About Golden Brix Properties 
       </p>
 
       <h2
-        className="text-4xl lg:text-5xl font-bold leading-tight mb-6 text-[#0c1b2a]"
+        className="mb-6 text-3xl font-bold leading-tight text-[#0c1b2a] sm:text-4xl lg:text-5xl"
         style={{ fontFamily: "var(--font-playfair), serif" }}
       >
         Your Trusted Partner in
@@ -523,19 +529,19 @@ Featured properties
     </div>
 
     {/* IMAGE */}
-    <div className="relative group">
+    <div className="relative group min-w-0">
 
       <img
         src="/images/photo.jpeg"
         alt="Golden Brix advisor"
-        className="rounded-xl shadow-2xl w-full h-[420px] object-cover object-[50%_20%] transition-transform duration-500 group-hover:scale-105"
+        className="h-[min(22rem,55svh)] w-full rounded-xl object-cover object-[50%_20%] shadow-2xl transition-transform duration-500 sm:h-96 lg:h-[26.25rem] group-hover:scale-105"
       />
 
       {/* Experience badge */}
-      <div className="absolute -bottom-8 -left-8 bg-[#C5A24A] text-white px-10 py-6 rounded-xl shadow-xl">
+      <div className="absolute bottom-3 left-3 rounded-xl bg-[#C5A24A] px-6 py-4 text-white shadow-xl sm:-bottom-8 sm:-left-8 sm:px-10 sm:py-6">
 
-        <p className="text-3xl font-bold">15+</p>
-        <p className="text-sm opacity-90">Years Experience</p>
+        <p className="text-2xl font-bold sm:text-3xl">15+</p>
+        <p className="text-xs opacity-90 sm:text-sm">Years Experience</p>
 
       </div>
 
@@ -594,18 +600,18 @@ Featured properties
       </section>
 
       {/*Enhanced TESTIMONIALS */}
-      <section id="testimonials" className="relative overflow-hidden py-24 px-6 lg:px-20 bg-linear-to-b from-[#f6f4ef] via-[#faf8f3] to-[#f0ebe0]">
+      <section id="testimonials" className="relative overflow-x-clip bg-linear-to-b from-[#f6f4ef] via-[#faf8f3] to-[#f0ebe0] py-16 px-4 sm:py-24 sm:px-6 lg:px-20">
         <div
           className="pointer-events-none absolute -right-24 top-20 h-72 w-72 rounded-full bg-[#C5A24A]/10 blur-[90px]"
           aria-hidden
         />
-        <div className="relative z-10 mx-auto max-w-7xl">
+        <div className="relative z-10 mx-auto max-w-7xl min-w-0">
           <Reveal className="mx-auto mb-14 max-w-2xl text-center sm:mb-16">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#C5A24A]">
               Testimonials
             </p>
             <h2
-              className="mt-4 text-4xl font-bold text-[#0c1b2a] sm:text-5xl"
+              className="mt-4 text-3xl font-bold text-[#0c1b2a] sm:text-4xl md:text-5xl"
               style={{ fontFamily: "var(--font-playfair), serif" }}
             >
               What our clients say
@@ -616,11 +622,11 @@ Featured properties
             </p>
           </Reveal>
 
-          <div className="grid max-w-7xl gap-6 md:grid-cols-3 md:gap-8">
+          <div className="grid max-w-7xl min-w-0 gap-6 md:grid-cols-3 md:gap-8">
             {homeTestimonials.length ? (
               homeTestimonials.slice(0, 3).map((t, idx) => (
                 <Reveal key={t.id} delay={0.04 * idx}>
-                  <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#C5A24A]/15 bg-white p-7 shadow-md transition hover:-translate-y-1 hover:border-[#C5A24A]/30 hover:shadow-xl sm:p-8">
+                  <article className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-[#C5A24A]/15 bg-white p-5 shadow-md transition hover:-translate-y-1 hover:border-[#C5A24A]/30 hover:shadow-xl sm:p-7 md:p-8">
                     <div className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-[#C5A24A]/6 transition group-hover:bg-[#C5A24A]/10" />
                     <Quote className="relative mb-4 h-9 w-9 text-[#C5A24A]/30" aria-hidden />
                     <div className="relative mb-5 flex gap-0.5">
@@ -684,7 +690,7 @@ Featured properties
       </section>
 
 {/* BLOGS */}
-<section id="blogs" className="py-24 px-6 lg:px-20 bg-white">
+<section id="blogs" className="bg-white py-16 px-4 sm:py-24 sm:px-6 lg:px-20">
 
 <Reveal className="max-w-7xl mx-auto text-center mb-16">
 
@@ -693,7 +699,7 @@ Insights & Guides
 </p>
 
 <h2
-className="text-4xl font-bold"
+className="text-3xl font-bold sm:text-4xl"
 style={{ fontFamily: "var(--font-playfair), serif" }}
 >
 Latest Real Estate Blogs
@@ -706,7 +712,7 @@ and Navi Mumbai real estate buyers.
 
 </Reveal>
 
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+<div className="mx-auto grid max-w-7xl min-w-0 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3">
 
 {homeBlogs.length ? (
   homeBlogs.slice(0, 3).map((blog, idx)=> (
@@ -774,36 +780,37 @@ Read Article →
       </section> */}
 
       {/* Final CTA / Contact & Careers */}
-<section id="careers" className="py-28 px-6 lg:px-20 bg-[#F7F7F7] text-center">
-  <div id="contact" className="max-w-4xl mx-auto">
+<section id="careers" className="bg-[#F7F7F7] px-4 py-20 text-center sm:px-6 sm:py-28 lg:px-20">
+  <div id="contact" className="mx-auto max-w-4xl min-w-0">
     <h2
-      className="text-4xl lg:text-5xl font-bold mb-6 text-[#1A1A1B]"
+      className="mb-6 text-3xl font-bold text-[#1A1A1B] sm:text-4xl lg:text-5xl"
       style={{ fontFamily: 'var(--font-playfair), serif' }}
     >
       Find Your Dream Home Today
     </h2>
 
-    <p className="max-w-2xl mx-auto mb-10 text-[#4A4A4A] text-lg">
+    <p className="mx-auto mb-10 max-w-2xl text-base text-[#4A4A4A] sm:text-lg">
       Let our experts help you discover the perfect property in Mumbai or
       Navi Mumbai. Start your real estate journey with Golden Brix Properties today.
     </p>
 
-    <div className="flex justify-center gap-4 flex-wrap">
+    <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
       {/* WHATSAPP BUTTON */}
   <a
     href="https://wa.me/917738384100?text=Hello%20I%20am%20interested%20in%20properties"
     target="_blank"
     rel="noopener noreferrer"
-    className="px-10 py-4 bg-[#C5A059] text-white rounded-lg font-semibold hover:bg-[#B38F4D] transition-all shadow-lg hover:shadow-xl"
+    className="inline-flex min-h-[48px] items-center justify-center rounded-lg bg-[#C5A059] px-6 py-3.5 text-center text-base font-semibold text-white shadow-lg transition-all hover:bg-[#B38F4D] hover:shadow-xl sm:px-10 sm:py-4"
   >
     Contact Us Now
   </a>
 
   {/* VIEW PROPERTIES BUTTON */}
-  <Link href="/#projects">
-    <button className="px-10 py-4 border-2 border-[#C5A059] text-[#C5A059] rounded-lg font-semibold hover:bg-[#C5A059] hover:text-white transition-all">
-      View Properties
-    </button>
+  <Link
+    href="/#projects"
+    className="inline-flex min-h-[48px] w-full items-center justify-center rounded-lg border-2 border-[#C5A059] px-6 py-3.5 text-center text-base font-semibold text-[#C5A059] transition-all hover:bg-[#C5A059] hover:text-white sm:w-auto sm:px-10 sm:py-4"
+  >
+    View Properties
   </Link>
     </div>
   </div>

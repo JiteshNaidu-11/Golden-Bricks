@@ -10,12 +10,12 @@ export default function Footer() {
   return (
     <footer className="bg-[#001F3F] border-t border-[#C5A24A]/20 text-white">
 
-      <div className="container mx-auto px-6 lg:px-20 py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 xl:px-16 py-12 sm:py-14 lg:py-16">
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid min-w-0 gap-10 sm:gap-12 md:grid-cols-2 lg:grid-cols-4">
 
           {/* Brand */}
-          <div>
+          <div className="min-w-0">
 
             <Link href="/" className="flex items-center mb-6">
               <div className="relative h-14 w-48">
@@ -28,7 +28,7 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p className="text-white/70 text-sm leading-relaxed mb-6">
+            <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-sm">
               Golden Brix is a trusted real estate advisory specializing
               in premium residential and investment opportunities across
               Mumbai and Navi Mumbai.
@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-<div>
+<div className="min-w-0">
 
   <h4 className="font-semibold text-white mb-5">Quick Links</h4>
 
@@ -120,7 +120,7 @@ export default function Footer() {
 </div>
 
           {/* Services */}
-          <div>
+          <div className="min-w-0">
 
             <h4 className="font-semibold text-white mb-5">Services</h4>
 
@@ -137,7 +137,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-<div>
+<div className="min-w-0">
 
   <h4 className="font-semibold text-white mb-5">Contact Info</h4>
 
@@ -145,7 +145,7 @@ export default function Footer() {
 
     <div className="flex items-start gap-3">
       <MapPin className="w-5 h-5 text-[#C5A24A] mt-1" />
-      <p className="text-white/70 leading-relaxed">
+      <p className="text-white/70 leading-relaxed break-words">
         Shop No - 5, Madhushree CHS <br/>
         Plot No - 33, Sector 40 <br/>
         Seawoods, Navi Mumbai <br/>
@@ -157,7 +157,7 @@ export default function Footer() {
       <Phone className="w-5 h-5 text-[#C5A24A]" />
       <a
         href="tel:+917738384100"
-        className="text-white/70 hover:text-[#EBD181] transition"
+        className="text-white/70 hover:text-[#EBD181] transition break-all"
       >
         +91 77383 84100
       </a>
@@ -167,7 +167,7 @@ export default function Footer() {
       <Mail className="w-5 h-5 text-[#C5A24A]" />
       <a
         href="mailto:goldenbrix@gmail.com"
-        className="text-white/70 hover:text-[#EBD181] transition"
+        className="text-white/70 hover:text-[#EBD181] transition break-all"
       >
         goldenbrix@gmail.com
       </a>
@@ -180,9 +180,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-white/10 mt-12 pt-6 text-center text-sm text-white/60">
+        <div className="border-t border-white/10 mt-10 sm:mt-12 pt-6 text-center text-xs sm:text-sm text-white/60">
 
-          © {new Date().getFullYear()} Golden Brix Real Estate. All Rights Reserved.
+          (c) {new Date().getFullYear()} Golden Brix Real Estate. All Rights Reserved.
 
         </div>
 
@@ -191,3 +191,4 @@ export default function Footer() {
     </footer>
   );
 }
+

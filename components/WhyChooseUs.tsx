@@ -50,11 +50,11 @@ const stats = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-[#0f0f0f] to-[#1a1a1a]">
-      <div className="container mx-auto px-6 md:px-12 lg:px-16">
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+    <section id="about" className="bg-gradient-to-b from-[#0f0f0f] to-[#1a1a1a] py-16 sm:py-20">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+        <div className="mb-16 grid items-center gap-10 sm:gap-12 lg:mb-20 lg:grid-cols-2 lg:gap-16">
           <div className="relative">
-            <div className="relative h-[600px] rounded-2xl overflow-hidden">
+            <div className="relative h-[340px] overflow-hidden rounded-2xl sm:h-[520px] lg:h-[600px]">
               <Image
                 src={dubaiImages.properties.villa}
                 alt="Luxury Villa"
@@ -63,7 +63,7 @@ export default function WhyChooseUs() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent"></div>
             </div>
-            <div className="absolute -bottom-8 -right-8 w-64 h-64 rounded-2xl overflow-hidden border-4 border-[#D4AF37]/30">
+            <div className="absolute -bottom-8 -right-8 hidden h-64 w-64 overflow-hidden rounded-2xl border-4 border-[#D4AF37]/30 sm:block">
               <Image
                 src={dubaiImages.properties.modernVilla}
                 alt="Modern Building"
@@ -74,29 +74,29 @@ export default function WhyChooseUs() {
           </div>
 
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'var(--font-playfair), serif' }}>
+            <h2 className="mb-6 text-3xl sm:text-4xl md:text-5xl font-bold" style={{ fontFamily: 'var(--font-playfair), serif' }}>
               Real Estate Specialists
             </h2>
-            <p className="text-lg text-white/80 mb-6 leading-relaxed">
+            <p className="mb-6 text-base sm:text-lg leading-relaxed text-white/80">
               At Golden Brix Properties, we combine deep market expertise with a client-centric approach to deliver
               premium real estate advisory. Our team understands Mumbai and Navi Mumbai micro-markets and is committed
               to helping you find the right home or investment—without noise.
             </p>
-            <p className="text-lg text-white/80 mb-8 leading-relaxed">
+            <p className="mb-8 text-base sm:text-lg leading-relaxed text-white/80">
               With years of on-ground experience and developer relationships, we offer curated access to verified
               opportunities and a clear process—from shortlist to negotiation to documentation.
             </p>
-            <button className="px-8 py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:shadow-2xl hover:shadow-[#D4AF37]/50 transition-all">
+            <button className="min-h-[48px] w-full rounded-lg gold-gradient px-8 py-3.5 font-bold text-[#1a1a1a] transition-all hover:shadow-2xl hover:shadow-[#D4AF37]/50 sm:w-auto sm:py-4">
               Learn More
             </button>
           </div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
+        <div className="mb-16 grid grid-cols-2 gap-6 sm:gap-8 lg:mb-20 md:grid-cols-4">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-4xl md:text-5xl font-bold gold-gradient-text mb-2">
+              <div className="mb-2 text-3xl sm:text-4xl md:text-5xl font-bold gold-gradient-text">
                 {stat.value}
               </div>
               <div className="text-white/70 text-sm md:text-base">
@@ -111,7 +111,7 @@ export default function WhyChooseUs() {
           <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center" style={{ fontFamily: 'var(--font-playfair), serif' }}>
             Why Choose Golden Brix Properties?
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -137,4 +137,5 @@ export default function WhyChooseUs() {
     </section>
   );
 }
+
 

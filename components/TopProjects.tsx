@@ -75,14 +75,14 @@ export default function TopProjects() {
   const visibleProjects = projects.slice(currentIndex, currentIndex + itemsPerPage);
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f]">
-      <div className="container mx-auto px-6 md:px-12 lg:px-16">
-        <div className="flex items-center justify-between mb-12">
+    <section id="projects" className="bg-gradient-to-b from-[#1a1a1a] to-[#0f0f0f] py-16 sm:py-20">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
+        <div className="mb-10 flex flex-col gap-6 sm:mb-12 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'var(--font-playfair), serif' }}>
+            <h2 className="mb-4 text-3xl sm:text-4xl md:text-5xl font-bold" style={{ fontFamily: 'var(--font-playfair), serif' }}>
               Premium Luxury Developments
             </h2>
-            <p className="text-white/70 text-lg">
+            <p className="text-base sm:text-lg text-white/70">
               Curated opportunities across Mumbai and Navi Mumbai—built for end-users and long-term investors
             </p>
           </div>
@@ -102,7 +102,7 @@ export default function TopProjects() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
           {visibleProjects.map((project) => (
             <div
               key={project.id}
@@ -132,7 +132,7 @@ export default function TopProjects() {
               </div>
               
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-[#D4AF37] transition-colors">
+                <h3 className="mb-2 text-xl sm:text-2xl font-bold text-white transition-colors group-hover:text-[#D4AF37]">
                   {project.name}
                 </h3>
                 <p className="text-[#D4AF37] text-sm font-medium mb-2">{project.type}</p>
@@ -146,14 +146,14 @@ export default function TopProjects() {
                   <p className="text-white font-semibold">{project.developer}</p>
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                <div className="flex flex-col gap-3 border-t border-white/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p className="text-white/70 text-sm mb-1">Price Range</p>
-                    <span className="text-xl font-bold gold-gradient-text">
+                    <span className="text-lg sm:text-xl font-bold gold-gradient-text">
                       {project.priceRange}
                     </span>
                   </div>
-                  <button className="px-6 py-2 border border-[#D4AF37]/50 hover:bg-[#D4AF37] hover:text-[#1a1a1a] rounded-lg font-semibold transition-all">
+                  <button className="min-h-[44px] w-full rounded-lg border border-[#D4AF37]/50 px-6 py-2 text-center font-semibold transition-all hover:bg-[#D4AF37] hover:text-[#1a1a1a] sm:w-auto">
                     View Project
                   </button>
                 </div>
@@ -162,8 +162,8 @@ export default function TopProjects() {
           ))}
         </div>
 
-        <div className="flex justify-center mt-12">
-          <button className="px-8 py-3 border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#1a1a1a] rounded-lg font-semibold transition-all">
+        <div className="mt-10 flex justify-center sm:mt-12">
+          <button className="min-h-[48px] w-full rounded-lg border-2 border-[#D4AF37] px-8 py-3 font-semibold text-[#D4AF37] transition-all hover:bg-[#D4AF37] hover:text-[#1a1a1a] sm:w-auto">
             View All Projects
           </button>
         </div>
@@ -171,4 +171,5 @@ export default function TopProjects() {
     </section>
   );
 }
+
 

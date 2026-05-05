@@ -140,7 +140,6 @@ export default function PropertyClient({ property }: { property: Property }) {
                   type="button"
                   onClick={() =>
                     openWhatsApp(
-                      undefined,
                       `Hi, I'd like more information about ${property.name} (${property.location}).`,
                     )
                   }
@@ -347,7 +346,6 @@ export default function PropertyClient({ property }: { property: Property }) {
                       type="button"
                       onClick={() =>
                         openWhatsApp(
-                          undefined,
                           `Hi, I'd like more information about ${property.name} (${property.location}).`,
                         )
                       }

@@ -3,7 +3,7 @@
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useState } from 'react';
 import SocialLinks from '@/components/SocialLinks';
-import { useLeadSubmit } from '@/hooks/useLeadSubmit';
+import { getWhatsAppUrl } from '@/lib/whatsapp';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -15,33 +15,24 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
-  const lead = useLeadSubmit();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    (async () => {
-      try {
-        if (isSubmitting) return;
-        setSubmitStatus('idle');
-        setErrorMessage('');
-        setIsSubmitting(true);
-        await lead.submit({
-          source: 'contact_section',
-          page: '/',
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-        });
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', message: '' });
-      } catch (err) {
-        setSubmitStatus('error');
-        setErrorMessage(err instanceof Error ? err.message : 'Something went wrong.');
-      } finally {
-        setIsSubmitting(false);
-      }
-    })();
+    if (isSubmitting) return;
+    setSubmitStatus('idle');
+    setErrorMessage('');
+    setIsSubmitting(true);
+    // Compose WhatsApp message
+    const msg = [
+      "Hi, I'm interested in property consultation.",
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Phone: ${formData.phone}`,
+      formData.message ? `Message: ${formData.message}` : null
+    ].filter(Boolean).join('\n');
+    const url = getWhatsAppUrl(msg);
+    window.open(url, '_blank');
+    setIsSubmitting(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -52,20 +43,20 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-[#1a1a1a]">
-      <div className="container mx-auto px-6 md:px-12 lg:px-16">
+    <section id="contact" className="bg-[#1a1a1a] py-16 sm:py-20">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4" style={{ fontFamily: 'var(--font-playfair), serif' }}>
+          <h2 className="mb-4 text-3xl sm:text-4xl md:text-5xl font-bold" style={{ fontFamily: 'var(--font-playfair), serif' }}>
             Prompt Consultation
           </h2>
-          <p className="text-xl text-white/70">
+          <p className="text-base sm:text-xl text-white/70">
             Need help? Request a prompt consultation.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="mx-auto grid min-w-0 max-w-6xl gap-8 sm:gap-12 lg:grid-cols-2">
           {/* Contact Info */}
-          <div className="space-y-8">
+          <div className="min-w-0 space-y-8">
             <div>
               <h3 className="text-2xl font-bold mb-6 gold-gradient-text">
                 Get In Touch
@@ -130,7 +121,7 @@ export default function ContactSection() {
           </div>
 
           {/* Contact Form */}
-          <div className="glass rounded-2xl p-8">
+          <div className="min-w-0 glass rounded-2xl p-5 sm:p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               {submitStatus !== 'idle' ? (
                 <div
@@ -212,7 +203,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 gold-gradient text-[#1a1a1a] font-bold rounded-lg hover:shadow-2xl hover:shadow-[#D4AF37]/50 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="flex min-h-[48px] w-full items-center justify-center gap-2 rounded-lg gold-gradient py-3.5 font-bold text-[#1a1a1a] transition-all hover:shadow-2xl hover:shadow-[#D4AF37]/50 disabled:cursor-not-allowed disabled:opacity-70 sm:py-4"
               >
                 <Send className="w-5 h-5" />
                 {isSubmitting ? 'Sending…' : 'Send Message'}
@@ -224,4 +215,5 @@ export default function ContactSection() {
     </section>
   );
 }
+
 

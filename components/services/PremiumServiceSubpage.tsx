@@ -137,18 +137,26 @@ export default function PremiumServiceSubpage({
               {heroSubtitle}
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-              <Link
-                href="/contact"
+              <button
+                type="button"
+                onClick={() => {
+                  const msg = "Hi, I want to talk to an advisor. Page: Premium Service";
+                  window.open(require('@/lib/whatsapp').getWhatsAppUrl(msg), '_blank');
+                }}
                 className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-linear-to-r from-[#C5A24A] to-[#EBD181] px-8 py-3.5 text-sm font-bold text-[#001F3F] shadow-lg transition hover:brightness-105 active:scale-[0.98]"
               >
                 Talk to Advisor
-              </Link>
-              <Link
-                href="/projects"
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  const msg = "Hi, I want to view projects. Page: Premium Service";
+                  window.open(require('@/lib/whatsapp').getWhatsAppUrl(msg), '_blank');
+                }}
                 className="inline-flex min-h-[48px] items-center justify-center rounded-xl border border-white/25 bg-white/5 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-[#C5A24A]/50 hover:bg-white/10"
               >
                 View Projects
-              </Link>
+              </button>
               <Link
                 href="/services"
                 className="inline-flex min-h-[48px] items-center justify-center text-sm font-semibold text-white/80 underline-offset-4 hover:text-[#EBD181] hover:underline"
@@ -313,18 +321,26 @@ export default function PremiumServiceSubpage({
                     </div>
 
                     <div className="mt-8 flex flex-wrap items-center gap-3">
-                      <Link
-                        href="/contact"
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const msg = "Hi, I want to talk to an advisor. Page: Premium Service";
+                          window.open(require('@/lib/whatsapp').getWhatsAppUrl(msg), '_blank');
+                        }}
                         className="inline-flex min-h-[44px] items-center justify-center rounded-xl bg-[#0c1b2a] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:brightness-110 active:scale-[0.98]"
                       >
                         Talk to Advisor
-                      </Link>
-                      <Link
-                        href="/projects"
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const msg = "Hi, I want to view projects. Page: Premium Service";
+                          window.open(require('@/lib/whatsapp').getWhatsAppUrl(msg), '_blank');
+                        }}
                         className="inline-flex min-h-[44px] items-center justify-center rounded-xl border border-[#0c1b2a]/15 bg-white px-5 py-2.5 text-sm font-semibold text-[#0c1b2a] shadow-sm transition hover:border-[#C5A24A]/40 hover:bg-[#faf8f3] active:scale-[0.98]"
                       >
                         View Projects
-                      </Link>
+                      </button>
                     </div>
                   </SlideIn>
                 </div>
