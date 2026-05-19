@@ -25,8 +25,8 @@ const CONTACT = {
     "Seawoods, Navi Mumbai",
     "Maharashtra 400706",
   ],
-  phoneDisplay: "+91 77383 84100",
-  phoneTel: "+917738384100",
+  phoneDisplay: "+91 98198 93359",
+  phoneTel: "+919819893359",
   email: "goldenbrix@gmail.com",
   hours: "Monday – Saturday: 9:00 AM – 7:00 PM",
   hoursNote: "Sunday: by appointment",
@@ -134,7 +134,7 @@ export default function Contact() {
                   onClick={() =>
                     openWhatsApp(
                       "Hi Golden Brix, I would like to speak about a property requirement.",
-                      "917738384100",
+                      "919819893359",
                     )
                   }
                   className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-[#25D366]/50 hover:bg-white/15"

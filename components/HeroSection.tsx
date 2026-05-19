@@ -126,7 +126,7 @@ export default function HeroSection() {
                 type="button"
                 onClick={() =>
                   openWhatsApp(
-                    "917738384100",
+                    "919819893359",
                     "Hi Golden Brix, I’d like a free consultation for a property requirement.",
                   )
                 }

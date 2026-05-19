@@ -33,6 +33,7 @@ type Property = {
   description?: string;
   amenities?: string[];
   highlights?: string[];
+  projectWebsite?: string;
 };
 
 function statLine(value: string | undefined, fallback: string): string {
@@ -136,17 +137,29 @@ export default function PropertyClient({ property }: { property: Property }) {
                     {property.price}
                   </p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() =>
-                    openWhatsApp(
-                      `Hi, I'd like more information about ${property.name} (${property.location}).`,
-                    )
-                  }
-                  className="px-6 py-3 rounded-xl gold-gradient text-[#001F3F] font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all"
-                >
-                  WhatsApp us about this project
-                </button>
+                <div className="flex flex-wrap gap-3">
+                  {property.projectWebsite && (
+                    <a
+                      href={property.projectWebsite}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 rounded-xl border border-[#C5A24A] text-[#0c1b2a] font-semibold text-sm hover:bg-[#C5A24A]/10 transition-all"
+                    >
+                      Official Project Website
+                    </a>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      openWhatsApp(
+                        `Hi, I'd like more information about ${property.name} (${property.location}).`,
+                      )
+                    }
+                    className="px-6 py-3 rounded-xl gold-gradient text-[#001F3F] font-semibold text-sm shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all"
+                  >
+                    WhatsApp us about this project
+                  </button>
+                </div>
               </div>
 
               {/* Quick stats */}

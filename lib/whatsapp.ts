@@ -1,7 +1,7 @@
 /**
  * WhatsApp number constant for easy switching
  */
-export const WHATSAPP_NUMBER = '917738384100';
+export const WHATSAPP_NUMBER = '919819893359';
 
 /**
  * Opens WhatsApp with a pre-filled message to the specified phone number

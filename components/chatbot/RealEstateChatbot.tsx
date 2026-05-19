@@ -11,7 +11,7 @@ type Message = {
   timestamp: Date;
 };
 
-const CONTACT_NUMBER = '+91 77383 84100';
+const CONTACT_NUMBER = '+91 98198 93359';
 
 const IMPORTANT_QUESTIONS: { label: string; prompt: string }[] = [
   { label: 'What is your contact number?', prompt: 'contact number' },

@@ -89,7 +89,7 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-semibold text-white mb-1">Phone</h4>
                   <a
-                    href="tel:+917738384100"
+                    href="tel:+919819893359"
                     className="text-white/70 hover:text-[#EBD181] transition"
                   >
                     +91 77383 84100

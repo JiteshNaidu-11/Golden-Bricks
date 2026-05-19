@@ -205,11 +205,11 @@ export default function Careers() {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
               <a 
-                href="tel:+917738384100"
+                href="tel:+919819893359"
                 className="flex items-center gap-2 text-[#EBD181] hover:text-white transition-colors"
               >
                 <Phone className="w-5 h-5" />
-                <span className="font-medium">+91 77383 84100</span>
+                <span className="font-medium">+91 98198 93359</span>
               </a>
               <a 
                 href="mailto:goldenbrix@gmail.com"

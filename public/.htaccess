@@ -3,14 +3,18 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
-# Serve real files and directories directly
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Serve real files (images, JS, CSS, fonts) directly — no rewriting
+RewriteCond %{REQUEST_FILENAME} -f
 RewriteRule ^ - [L]
 
-# Add trailing slash for clean routes (matches Next.js trailingSlash: true)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^.]+[^/])$ /$1/ [R=301,L]
+# Add trailing slash when the path maps to a directory with an index.html
+# Fixes shared URLs like /property/birla-estate-airoli → /property/birla-estate-airoli/
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
 
 # Use Next.js 404 page for unknown routes
 ErrorDocument 404 /404.html

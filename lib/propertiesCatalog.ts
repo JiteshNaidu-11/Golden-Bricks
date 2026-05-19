@@ -20,6 +20,8 @@ export type CatalogProperty = {
   overview: string;
   highlights: string[];
   amenities: string[];
+  /** External developer/project website URL (shown as a button on the detail page). */
+  projectWebsite?: string;
 };
 
 /** Renders under /public/Palm beach/ — encode space for reliable static hosting */
@@ -69,6 +71,12 @@ const PLATINUM_THE_RESERVE_GALLERY = [
   `${PTR}/07.jpg`, `${PTR}/08.jpg`,
 ];
 
+const PJ = "/Platinum%20Juinagar";
+const PLATINUM_JUINAGAR_GALLERY = Array.from({ length: 10 }, (_, i) => `${PJ}/${i + 1}.webp`);
+
+const ADANI_9PBR = "/9PBR%20-%20Adani%20Realty";
+const ADANI_9PBR_GALLERY = Array.from({ length: 11 }, (_, i) => `${ADANI_9PBR}/${i + 1}.webp`);
+
 const PW = "/Platinum%20Westwoods";
 const PLATINUM_WESTWOODS_GALLERY = [
   `${PW}/01.jpg`, `${PW}/01%20(1).jpg`, `${PW}/02.jpg`, `${PW}/02.png`,
@@ -80,12 +88,12 @@ const LOCAL_CARD_IMAGE_BY_SLUG: Record<string, string> = {
   "cadbury-junction-thane-west": "/properties/cadbury-junction-thane-west.jpg",
   "codename-panoramic-mayuresh-group": "/properties/codename-panoramic-cbd-belapur.jpg",
   "mayuresh-planet-cbd-belapur": "/properties/mayuresh-planet-cbd-belapur.jpeg",
-  "9pbr-adani-realty": "/properties/9pbr-adani-realty.jpg",
+  "9pbr-adani-realty": "/9PBR%20-%20Adani%20Realty/1.webp",
   "elysium-platinum": "/Platinum%20Elysium/01.jpg",
   "sai-world-one": "/properties/sai-world-one.jpg",
   "dream-ikon": "/properties/dream-ikon.jpg",
   "oakwoods-platinum": "/Platinum%20Oakwoods/01.jpg",
-  "platinum-juinagar-midc": "/properties/platinum-juinagar-midc.jpg",
+  "platinum-juinagar-midc": "/Platinum%20Juinagar/1.webp",
   "codename-growth": "/properties/codename-growth.jpeg",
   "platinum-the-reserve": "/Platinum%20The%20Reserve/01.jpg",
   "cyber-square": "/properties/cyber-square.jpeg",
@@ -97,7 +105,7 @@ const LOCAL_CARD_IMAGE_BY_SLUG: Record<string, string> = {
   "goodwill-wisteria": "/properties/goodwill-wisteria.jpeg",
   "esquire-platinum": "/Platinum%20Esquire/01.jpg",
   "code-name-green-gold": "/properties/code-name-green-gold.webp",
-  "platinum-juinagar-new-launch": "/properties/platinum-juinagar-new-launch.webp",
+  "platinum-juinagar-new-launch": "/Platinum%20Juinagar/1.webp",
   "9pbr-palm-beachroad": "/properties/9pbr-palm-beachroad.jpg",
   "emperia-c2-turbhe": "/properties/emperia-c2-turbhe.jpg",
   "24-high": "/properties/24High.jpg",
@@ -205,10 +213,12 @@ const PLATINUM_PROPERTIES: CatalogProperty[] = [
     location: "Juinagar MIDC, Navi Mumbai",
     price: "Price on Request",
     bhk: "2, 3 and 4 BHK Apartments",
-    image: "/properties/platinum-juinagar-midc.jpg",
+    image: "/Platinum%20Juinagar/1.webp",
+    images: PLATINUM_JUINAGAR_GALLERY,
     builder: "Platinum Group",
     propertyType: "Residential",
     possession: "Pre-launch",
+    projectWebsite: "https://platinumjuinagarlaunch.com",
     overview: `Platinum Juinagar MIDC - Pre Launch. Introducing PLATINUM GROUP's most exclusive offering: A Luxurious Estate spanning 5 Acres in the Heart of Juinagar, MIDC with Unparalleled Amenities for work-life balance. UBER-LUXE 2, 3, & 4 BED RESIDENCES. NEXT-GEN SMART IT OFFICES.`,
     highlights: [
       "Platinum Juinagar MIDC - Pre Launch",
@@ -363,10 +373,12 @@ const PLATINUM_PROPERTIES: CatalogProperty[] = [
     location: "Juinagar, Navi Mumbai",
     price: "Price on Request",
     bhk: "2, 3 and 4 BHK Apartments",
-    image: "/properties/platinum-juinagar-new-launch.webp",
+    image: "/Platinum%20Juinagar/1.webp",
+    images: PLATINUM_JUINAGAR_GALLERY,
     builder: "Platinum Group",
     propertyType: "Residential",
     possession: "Pre-launch",
+    projectWebsite: "https://platinumjuinagarlaunch.com",
     overview: `PLATINUM NEW LAUNCH AT JUINAGAR MIDC. Platinum Juinagar is an iconic G+30 storey high-rise with premium 2, 3 and 4 BHK residences on a large MIDC Juinagar land parcel — biophilic design, 7-star lifestyle positioning, smart layouts and strong connectivity to Juinagar station, Sion-Panvel Highway, Nexus Seawoods, NMIA and Atal Setu.`,
     highlights: [
       "PLATINUM NEW LAUNCH AT JUINAGAR MIDC",
@@ -598,11 +610,12 @@ Connect with Golden Brix for layouts, availability, and investment options.`,
     location: "Palm Beach Road, Nerul, Navi Mumbai",
     price: "Price on Request",
     bhk: "3 BHK Luxury Residences",
-    image:
-      "https://sunitarealestate.com/wp-content/uploads/2025/06/Cam-2-Semi-Aerial-1-2-scaled.jpg",
+    image: "/9PBR%20-%20Adani%20Realty/1.webp",
+    images: ADANI_9PBR_GALLERY,
     builder: "Adani Realty",
     propertyType: "Residential",
     possession: "Under Construction",
+    projectWebsite: "https://9pbrpalmbeachroad.com",
     overview: `LIVE INFINITELY. NERUL, NAVI MUMBAI. WHERE YOUR HORIZON EXTENDS TO INFINITY. Palm Beach Road, Nerul. Navi Mumbai, a crown jewel among the world's largest planned cities, offers an infinite canvas of modern living. Renowned as India's fourth cleanest city, it has undergone a remarkable transformation into a sought-after destination for both residential and commercial enterprises. The Palm Beach Road, an epitome of luxury, provides an endless vista of the Arabian Sea and a lifestyle of unparalleled convenience.`,
     highlights: [
       "Double Height Lobby",
@@ -870,6 +883,7 @@ Connect with Golden Brix for layouts, availability, and investment options.`,
     builder: "Emperia Projects",
     propertyType: "Commercial",
     possession: "Under Construction",
+    projectWebsite: "https://emperiac2turbhe.com",
     overview: `Emperia C2 Turbhe is a premier commercial development beside the IKEA showroom in Turbhe, Navi Mumbai. Across a ~2.5-acre land parcel, the project delivers spacious, modern office and retail spaces with contemporary architecture designed for both sophistication and productivity.`,
     highlights: [
       "Spot booking offers, early-buy discounts & flexible payment plans (as per developer)",
@@ -926,6 +940,7 @@ Connect with Golden Brix for layouts, availability, and investment options.`,
     builder: "Birla Estates",
     propertyType: "Residential",
     possession: "Under Construction",
+    projectWebsite: "https://sunit.birlaestateairoli.in",
     overview: `Welcome to Birla Taranya—luxury living at the Thane–Airoli junction by Birla Estates. This landmark new launch spans an expansive ~14-acre integrated township that blends modern lifestyle, seamless connectivity, and long-term investment potential. Phase 1 introduces premium 2 and 3 BHK smartly designed residences across six planned towers (two launching first), with low-density planning and a dedicated ~4-acre commercial zone for everyday convenience.`,
     highlights: [
       "~14-acre integrated township | 6 premium residential towers (Phase 1: 2 towers launching)",
@@ -955,14 +970,45 @@ const RAW_PROPERTIES_CATALOG: CatalogProperty[] = [
   ...OTHER_PROPERTIES,
 ];
 
-export const PROPERTIES_CATALOG: CatalogProperty[] = RAW_PROPERTIES_CATALOG.map(
-  (p) => {
+function normalizePropertyName(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+/**
+ * Removes duplicate properties while preserving original order.
+ * Priority key order: slug -> normalized "name + location".
+ */
+export function dedupeCatalogProperties(
+  items: CatalogProperty[],
+): CatalogProperty[] {
+  const seen = new Set<string>();
+  const unique: CatalogProperty[] = [];
+
+  for (const item of items) {
+    const slugKey = `slug:${item.slug.trim().toLowerCase()}`;
+    const nameLocationKey = `name:${normalizePropertyName(item.name)}|${normalizePropertyName(item.location)}`;
+    const uniqueKey = item.slug?.trim() ? slugKey : nameLocationKey;
+
+    if (seen.has(slugKey) || seen.has(nameLocationKey) || seen.has(uniqueKey)) {
+      continue;
+    }
+
+    seen.add(slugKey);
+    seen.add(nameLocationKey);
+    unique.push(item);
+  }
+
+  return unique;
+}
+
+export const PROPERTIES_CATALOG: CatalogProperty[] = dedupeCatalogProperties(
+  RAW_PROPERTIES_CATALOG.map((p) => {
     const local = LOCAL_CARD_IMAGE_BY_SLUG[p.slug];
     const image = local ?? p.image ?? DEFAULT_PROPERTY_CARD_IMAGE;
     const images =
       p.images && p.images.length > 0 ? p.images : image ? [image] : [];
     return { ...p, image, images };
-  },
+  }),
 );
 
 /** Digits from BHK / "bed" style configuration lines, sorted unique. */
@@ -1087,6 +1133,7 @@ export function catalogToDetailRecord(
     description: string;
     amenities: string[];
     highlights: string[];
+    projectWebsite?: string;
   }
 > {
   return Object.fromEntries(
@@ -1106,6 +1153,7 @@ export function catalogToDetailRecord(
         description: p.overview,
         amenities: p.amenities,
         highlights: p.highlights,
+        ...(p.projectWebsite ? { projectWebsite: p.projectWebsite } : {}),
       },
     ]),
   );

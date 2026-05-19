@@ -3,7 +3,10 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyListingCard from "@/components/PropertyListingCard";
-import { PROPERTIES_CATALOG } from "@/lib/propertiesCatalog";
+import {
+  PROPERTIES_CATALOG,
+  dedupeCatalogProperties,
+} from "@/lib/propertiesCatalog";
 import Reveal from "@/components/motion/Reveal";
 import { useMemo, useState } from "react";
 
@@ -11,7 +14,10 @@ export default function ProjectsPage() {
   const [location, setLocation] = useState<string>("All");
   const [budget, setBudget] = useState<string>("All");
 
-  const source = PROPERTIES_CATALOG.slice(0, 10);
+  const source = useMemo(
+    () => dedupeCatalogProperties(PROPERTIES_CATALOG).slice(0, 10),
+    [],
+  );
 
   const locations = useMemo(() => {
     const set = new Set<string>();

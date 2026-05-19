@@ -3,7 +3,10 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PropertyListingCard from "@/components/PropertyListingCard";
-import { PROPERTIES_CATALOG } from "@/lib/propertiesCatalog";
+import {
+  PROPERTIES_CATALOG,
+  dedupeCatalogProperties,
+} from "@/lib/propertiesCatalog";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -44,7 +47,13 @@ export default function AllPropertiesPage() {
   );
 
   // If Supabase isn't configured yet, keep using the catalog (real data).
-  const source = supabaseProps?.length ? supabaseProps : PROPERTIES_CATALOG;
+  const source = useMemo(
+    () =>
+      dedupeCatalogProperties(
+        supabaseProps?.length ? supabaseProps : PROPERTIES_CATALOG,
+      ),
+    [supabaseProps],
+  );
 
   const locations = useMemo(() => {
     const set = new Set<string>();

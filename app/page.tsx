@@ -797,7 +797,7 @@ Read Article →
     <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
       {/* WHATSAPP BUTTON */}
   <a
-    href="https://wa.me/917738384100?text=Hello%20I%20am%20interested%20in%20properties"
+    href="https://wa.me/919819893359?text=Hello%20I%20am%20interested%20in%20properties"
     target="_blank"
     rel="noopener noreferrer"
     className="inline-flex min-h-[48px] items-center justify-center rounded-lg bg-[#C5A059] px-6 py-3.5 text-center text-base font-semibold text-white shadow-lg transition-all hover:bg-[#B38F4D] hover:shadow-xl sm:px-10 sm:py-4"
