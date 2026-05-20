@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import Header from '@/components/Header';
@@ -39,7 +39,7 @@ export default function Careers() {
       type: "Full-time",
       location: "Mumbai / Navi Mumbai, India",
       shortDescription:
-        "Join Golden Brix Properties and build a rewarding career in Mumbai and Navi Mumbai’s premium real estate market. We’re looking for motivated individuals with strong customer service skills.",
+        "Join Golden Brix Realty and build a rewarding career in Navi Mumbai’s premium real estate market. We’re looking for motivated individuals with strong customer service skills.",
     },
     // {
     //   id: "property-consultant",
@@ -67,13 +67,13 @@ export default function Careers() {
             style={{ fontFamily: 'var(--font-playfair), serif' }}
           >
             Build Your Career with{" "}
-            <span className="gold-gradient-text">Golden Brix Properties</span>
+            <span className="gold-gradient-text">Golden Brix Realty</span>
           </h1>
           <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
             Join a premium real estate team and unlock strong earning potential in one of India’s most dynamic property markets.
           </p>
           <a
-            href="mailto:goldenbrix@gmail.com"
+            href="mailto:goldenbrix05@gmail.com"
             className="inline-block px-8 py-4 gold-gradient text-white font-bold rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 text-lg hover:scale-105 transform"
           >
             Get in Touch About Opportunities
@@ -89,7 +89,7 @@ export default function Careers() {
               className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gold-gradient-text"
               style={{ fontFamily: 'var(--font-playfair), serif' }}
             >
-              Why Join Golden Brix Properties?
+              Why Join Golden Brix Realty?
             </h2>
             <p className="text-lg text-[#001F3F]/70 max-w-2xl mx-auto">
               We invest in our people and create an environment where talent thrives
@@ -176,7 +176,7 @@ export default function Careers() {
                       View Details
                     </button>
                     <a
-                      href="mailto:goldenbrix@gmail.com?subject=Application for Real Estate Position&body=Dear Golden Brix Properties Team,%0D%0A%0D%0AI am interested in applying for the position. Please find my details below:%0D%0A%0D%0A"
+                      href="mailto:goldenbrix05@gmail.com?subject=Application for Real Estate Position&body=Dear Golden Brix Realty Team,%0D%0A%0D%0AI am interested in applying for the position. Please find my details below:%0D%0A%0D%0A"
                       className="px-6 py-3 gold-gradient text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 whitespace-nowrap hover:scale-105 transform text-center"
                     >
                       Apply Now
@@ -212,16 +212,16 @@ export default function Careers() {
                 <span className="font-medium">+91 98198 93359</span>
               </a>
               <a 
-                href="mailto:goldenbrix@gmail.com"
+                href="mailto:goldenbrix05@gmail.com"
                 className="flex items-center gap-2 text-[#EBD181] hover:text-white transition-colors"
               >
                 <Mail className="w-5 h-5" />
-                <span className="font-medium">goldenbrix@gmail.com</span>
+                <span className="font-medium">goldenbrix05@gmail.com</span>
               </a>
             </div>
 
             <button
-              onClick={() => openWhatsApp('Hi, I am interested in career opportunities at Golden Brix Properties.')}
+              onClick={() => openWhatsApp('Hi, I am interested in career opportunities at Golden Brix Realty.')}
               className="px-8 py-4 bg-white text-[#001F3F] font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform"
             >
               Contact Us on WhatsApp
@@ -257,7 +257,7 @@ export default function Careers() {
                 About Us:
               </h3>
               <p className="text-[#001F3F]/80 leading-relaxed">
-                Golden Brix Properties is a premium real estate advisory based in Mumbai and Navi Mumbai. We work with reputed developers and verified resale inventory to offer a wide range of real estate solutions. Our team is dedicated to providing exceptional customer service and helping clients find their dream home or investment.
+                Golden Brix Realty is a premium real estate advisory based in Navi Mumbai. We work with reputed developers and verified resale inventory to offer a wide range of real estate solutions. Our team is dedicated to providing exceptional customer service and helping clients find their dream home or investment.
               </p>
             </div>
 
@@ -270,10 +270,10 @@ export default function Careers() {
                 Role Description:
               </h3>
               <p className="text-[#001F3F]/80 leading-relaxed mb-4">
-                This is a full-time on-site role for a {selectedJob === 'real-estate-agent' ? 'Real Estate Agent' : 'Property Consultant'} at Golden Brix Properties in Mumbai / Navi Mumbai. Your day-to-day tasks will include assisting clients in buying, selling, and renting properties, conducting site visits, negotiating deals, and providing excellent customer service. You will also be responsible for maintaining strong knowledge of local micro-markets and staying updated on industry trends.
+                This is a full-time on-site role for a {selectedJob === 'real-estate-agent' ? 'Real Estate Agent' : 'Property Consultant'} at Golden Brix Realty in Navi Mumbai / Navi Mumbai. Your day-to-day tasks will include assisting clients in buying, selling, and renting properties, conducting site visits, negotiating deals, and providing excellent customer service. You will also be responsible for maintaining strong knowledge of local micro-markets and staying updated on industry trends.
               </p>
               <p className="text-[#001F3F]/80 leading-relaxed">
-                Are you ready to elevate your career in a dynamic and supportive environment? Join Golden Brix Properties and leverage our expertise and resources to further your career in real estate. We are committed to fostering a collaborative and growth-oriented workplace where your success is our priority.
+                Are you ready to elevate your career in a dynamic and supportive environment? Join Golden Brix Realty and leverage our expertise and resources to further your career in real estate. We are committed to fostering a collaborative and growth-oriented workplace where your success is our priority.
               </p>
             </div>
 
@@ -380,7 +380,7 @@ export default function Careers() {
             {/* Apply Button */}
             <div className="flex justify-center mt-8 pt-6 border-t border-[#C5A24A]/20">
               <a
-                href="mailto:goldenbrix@gmail.com?subject=Application for Real Estate Position&body=Dear Golden Brix Properties Team,%0D%0A%0D%0AI am interested in applying for the position. Please find my details below:%0D%0A%0D%0A"
+                href="mailto:goldenbrix05@gmail.com?subject=Application for Real Estate Position&body=Dear Golden Brix Realty Team,%0D%0A%0D%0AI am interested in applying for the position. Please find my details below:%0D%0A%0D%0A"
                 className="px-8 py-4 gold-gradient text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 transform"
               >
                 Apply Now via Email

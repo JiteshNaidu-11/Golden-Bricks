@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import PremiumServiceSubpage from "@/components/services/PremiumServiceSubpage";
 import {
@@ -23,7 +23,7 @@ export default function InvestorAdvisory() {
           </span>
         </>
       }
-      heroSubtitle="Research-led portfolio strategy for Mumbai & Navi Mumbai—yield, catalysts, liquidity, and exit planning explained with calm precision."
+      heroSubtitle="Research-led portfolio strategy for Navi Mumbai—yield, catalysts, liquidity, and exit planning explained with calm precision."
       heroImageSrc="/properties/codename-growth.jpeg"
       splitBlocks={[
         {

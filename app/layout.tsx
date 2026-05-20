@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+﻿import type { Metadata, Viewport } from "next";
 import { Poppins, Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
@@ -37,10 +37,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
-  title: "Golden brix | Premium Properties in Mumbai & Navi Mumbai",
+  title: "Golden brix | Premium Properties in Navi Mumbai",
 
   description:
-    "Golden brix helps you discover premium residential and commercial properties across Mumbai and Navi Mumbai. Trusted guidance for buying, selling, and investing in real estate.",
+    "Golden brix helps you discover premium residential and commercial properties across Navi Mumbai. Trusted guidance for buying, selling, and investing in real estate.",
 
   icons: {
     icon: "/images/logo/favicon.png",
@@ -48,10 +48,10 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Golden brix | Premium Properties in Mumbai & Navi Mumbai",
+    title: "Golden brix | Premium Properties in Navi Mumbai",
 
     description:
-      "Find your dream property with Golden brix. Explore luxury homes, apartments, and investment opportunities across Mumbai and Navi Mumbai.",
+      "Find your dream property with Golden brix. Explore luxury homes, apartments, and investment opportunities across Navi Mumbai.",
 
     url: baseUrl,
     siteName: "Golden brix ",
@@ -71,9 +71,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Golden brix | Premium Properties in Mumbai & Navi Mumbai",
+    title: "Golden brix | Premium Properties in Navi Mumbai",
     description:
-      "Discover luxury homes, apartments, and investment opportunities in Mumbai & Navi Mumbai with Golden brix .",
+      "Discover luxury homes, apartments, and investment opportunities in Navi Mumbai with Golden brix .",
     images: [ogImageUrl],
   },
 };

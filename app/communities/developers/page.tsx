@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DevelopersGrid from '@/components/DevelopersGrid';
 
 export const metadata: Metadata = {
-  title: "Developer Partners | Golden Brix Properties",
+  title: "Developer Partners | Golden Brix Realty",
   description:
-    "Golden Brix Properties works with reputed developers across Mumbai and Navi Mumbai for verified inventory and priority access to premium opportunities.",
+    "Golden Brix Realty works with reputed developers across Navi Mumbai for verified inventory and priority access to premium opportunities.",
 };
 
 export default function Developers() {
@@ -54,7 +54,7 @@ export default function Developers() {
             <div className="w-24 h-1 gold-gradient mx-auto mb-4"></div>
             <p className="text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto">
               We work closely with developer teams to secure priority access and verified inventory
-              across Mumbai and Navi Mumbai.
+              across Navi Mumbai.
             </p>
           </div>
           

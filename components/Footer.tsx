@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { Phone, Mail, MapPin } from 'lucide-react';
@@ -18,20 +18,27 @@ export default function Footer() {
           <div className="min-w-0">
 
             <Link href="/" className="flex items-center mb-6">
-              <div className="relative h-14 w-48">
-                <Image
-                  src="/images/logo/goldenbrix-logo.png"
-                  alt="Golden Brix"
-                  fill
-                  className="object-contain"
-                />
+              <div className="flex flex-col items-center leading-none select-none">
+                <span
+                  className="font-bold tracking-[0.13em] text-[1.3rem] sm:text-[1.55rem] bg-gradient-to-r from-[#B8891E] via-[#EBD181] via-[55%] to-[#B8891E] bg-clip-text text-transparent"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
+                >
+                  GOLDEN BRIX
+                </span>
+                <div className="flex items-center gap-1.5 mt-[3px]">
+                  <span className="h-px w-4 sm:w-5 bg-gradient-to-r from-transparent to-[#C5A24A]/60" />
+                  <span className="text-[8px] sm:text-[9px] tracking-[0.45em] font-extrabold text-white">
+                    REALTY
+                  </span>
+                  <span className="h-px w-4 sm:w-5 bg-gradient-to-l from-transparent to-[#C5A24A]/60" />
+                </div>
               </div>
             </Link>
 
             <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-sm">
               Golden Brix is a trusted real estate advisory specializing
               in premium residential and investment opportunities across
-              Mumbai and Navi Mumbai.
+              Navi Mumbai.
             </p>
 
             <SocialLinks variant="footer" label="Connect with us" />
@@ -166,10 +173,10 @@ export default function Footer() {
     <div className="flex items-center gap-3">
       <Mail className="w-5 h-5 text-[#C5A24A]" />
       <a
-        href="mailto:goldenbrix@gmail.com"
+        href="mailto:goldenbrix05@gmail.com"
         className="text-white/70 hover:text-[#EBD181] transition break-all"
       >
-        goldenbrix@gmail.com
+        goldenbrix05@gmail.com
       </a>
     </div>
 

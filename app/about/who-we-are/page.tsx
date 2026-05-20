@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "Who We Are | Golden Brix Properties",
+  title: "Who We Are | Golden Brix Realty",
   description:
-    "Learn about Golden Brix Properties—our mission, vision, and premium-first approach to real estate across Mumbai and Navi Mumbai.",
+    "Learn about Golden Brix Realty—our mission, vision, and premium-first approach to real estate across Navi Mumbai.",
 };
 
 export default function WhoWeAre() {
@@ -27,7 +27,7 @@ export default function WhoWeAre() {
           
           <div className="space-y-6 sm:space-y-8 mb-10 sm:mb-12 md:mb-16">
             <p className="text-base sm:text-lg text-[#1a1a1a]/80 leading-relaxed">
-              Golden Brix Properties is a premium real estate advisory focused on curated residential opportunities across Mumbai and
+              Golden Brix Realty is a premium real estate advisory focused on curated residential opportunities across Navi Mumbai and
               Navi Mumbai. Built on trust, transparency, and a calm, structured process, we help buyers and investors move forward with clarity.
             </p>
             
@@ -58,7 +58,7 @@ export default function WhoWeAre() {
                 </h2>
               </div>
               <p className="text-[#1a1a1a]/80 leading-relaxed text-base sm:text-lg">
-                To be Mumbai & Navi Mumbai’s most trusted real estate partner by delivering exceptional service, transparent advisory,
+                To be Navi Mumbai’s most trusted real estate partner by delivering exceptional service, transparent advisory,
                 and structured solutions that help our clients achieve their goals and build long-term value.
               </p>
             </div>
@@ -75,7 +75,7 @@ export default function WhoWeAre() {
                 </h2>
               </div>
               <p className="text-[#1a1a1a]/80 leading-relaxed text-base sm:text-lg">
-                To raise the standard for premium real estate advisory in Mumbai and Navi Mumbai—making property decisions clearer,
+                To raise the standard for premium real estate advisory in Navi Mumbai—making property decisions clearer,
                 calmer, and more rewarding for end-users and investors.
               </p>
             </div>

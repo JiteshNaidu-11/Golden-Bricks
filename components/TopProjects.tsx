@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import { MapPin, TrendingUp } from 'lucide-react';
@@ -83,7 +83,7 @@ export default function TopProjects() {
               Premium Luxury Developments
             </h2>
             <p className="text-base sm:text-lg text-white/70">
-              Curated opportunities across Mumbai and Navi Mumbai—built for end-users and long-term investors
+              Curated opportunities across Navi Mumbai—built for end-users and long-term investors
             </p>
           </div>
           <div className="hidden md:flex gap-4">

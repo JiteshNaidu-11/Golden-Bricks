@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
               Curated premium opportunities
             </h1>
             <p className="mt-4 text-[#0c1b2a]/70 text-base sm:text-lg leading-relaxed">
-              Explore selected listings across Mumbai and Navi Mumbai. Each
+              Explore selected listings across Navi Mumbai. Each
               project opens a full detail page with gallery, amenities, and a
               site-visit CTA.
             </p>

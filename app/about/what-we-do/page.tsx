@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { MessageCircle, Search, Handshake, FileText, Headphones } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: "What We Do | Golden Brix Properties",
+  title: "What We Do | Golden Brix Realty",
   description:
-    "Discover Golden Brix Properties’ structured process—from consultation to after-sales support for Mumbai and Navi Mumbai real estate.",
+    "Discover Golden Brix Realty’ structured process—from consultation to after-sales support for Navi Mumbai real estate.",
 };
 
 export default function WhatWeDo() {
@@ -54,7 +54,7 @@ export default function WhatWeDo() {
             </h1>
             <div className="w-20 sm:w-24 h-1 gold-gradient mx-auto mb-3 sm:mb-4"></div>
             <p className="text-base sm:text-lg md:text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto px-4">
-              A comprehensive, step-by-step approach to your property journey in Mumbai and Navi Mumbai
+              A comprehensive, step-by-step approach to your property journey in Navi Mumbai
             </p>
           </div>
           

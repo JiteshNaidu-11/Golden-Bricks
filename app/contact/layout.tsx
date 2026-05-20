@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Golden Brix Properties",
+  title: "Contact Us | Golden Brix Realty",
   description:
-    "Reach Golden Brix Properties in Seawoods, Navi Mumbai. Phone, email, WhatsApp, and consultation requests for Mumbai & Navi Mumbai real estate.",
+    "Reach Golden Brix Realty in Seawoods, Navi Mumbai. Phone, email, WhatsApp, and consultation requests for Navi Mumbai real estate.",
 };
 
 export default function ContactLayout({

@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Shield, TrendingUp, Award, Globe, Home, DollarSign } from 'lucide-react';
 import { dubaiImages } from '@/lib/images';
 
 export const metadata: Metadata = {
-  title: "Why Invest in Mumbai & Navi Mumbai | Golden Brix Properties",
+  title: "Why Invest in Navi Mumbai | Golden Brix Realty",
   description:
-    "Discover why Mumbai and Navi Mumbai remain premium investment destinations: end-user depth, infra catalysts, rental demand, and long-term resale strength.",
+    "Discover why Navi Mumbai remain premium investment destinations: end-user depth, infra catalysts, rental demand, and long-term resale strength.",
 };
 
 export default function WhyInvest() {
@@ -16,7 +16,7 @@ export default function WhyInvest() {
       icon: Home,
       title: "End-user depth",
       description:
-        "Mumbai and Navi Mumbai have strong end-user demand that supports long-term liquidity and resale strength in quality projects.",
+        "Navi Mumbai have strong end-user demand that supports long-term liquidity and resale strength in quality projects.",
     },
     {
       icon: DollarSign,
@@ -86,11 +86,11 @@ export default function WhyInvest() {
               className="mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold gold-gradient-text"
               style={{ fontFamily: 'var(--font-montserrat), sans-serif' }}
             >
-              Why Invest in Mumbai & Navi Mumbai
+              Why Invest in Navi Mumbai
             </h1>
             <div className="w-24 h-1 gold-gradient mx-auto mb-4"></div>
             <p className="mx-auto max-w-3xl text-base text-[#1a1a1a]/70 sm:text-xl">
-              A premium-first lens on why Mumbai and Navi Mumbai remain strong
+              A premium-first lens on why Navi Mumbai remain strong
               choices for end-users and long-term investors.
             </p>
           </div>

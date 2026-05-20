@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import { Award, Users, TrendingUp, Shield, Clock, Building2 } from 'lucide-react';
@@ -15,7 +15,7 @@ const features = [
     icon: Users,
     title: "Expert Team",
     description:
-      "Local expertise across Mumbai and Navi Mumbai—micro-markets, pricing, builder track records, and resale strength."
+      "Local expertise across Navi Mumbai—micro-markets, pricing, builder track records, and resale strength."
   },
   {
     icon: TrendingUp,
@@ -44,7 +44,7 @@ const features = [
 const stats = [
   { value: "500+", label: "Happy families" },
   { value: "120+", label: "Homes transacted" },
-  { value: "15+", label: "Years experience" },
+  { value: "20+", label: "Years experience" },
   { value: "25+", label: "Developer partners" },
 ];
 
@@ -78,8 +78,8 @@ export default function WhyChooseUs() {
               Real Estate Specialists
             </h2>
             <p className="mb-6 text-base sm:text-lg leading-relaxed text-white/80">
-              At Golden Brix Properties, we combine deep market expertise with a client-centric approach to deliver
-              premium real estate advisory. Our team understands Mumbai and Navi Mumbai micro-markets and is committed
+              At Golden Brix Realty, we combine deep market expertise with a client-centric approach to deliver
+              premium real estate advisory. Our team understands Navi Mumbai micro-markets and is committed
               to helping you find the right home or investment—without noise.
             </p>
             <p className="mb-8 text-base sm:text-lg leading-relaxed text-white/80">
@@ -109,7 +109,7 @@ export default function WhyChooseUs() {
         {/* Features Grid */}
         <div>
           <h3 className="text-3xl md:text-4xl font-bold mb-12 text-center" style={{ fontFamily: 'var(--font-playfair), serif' }}>
-            Why Choose Golden Brix Properties?
+            Why Choose Golden Brix Realty?
           </h3>
           <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => {

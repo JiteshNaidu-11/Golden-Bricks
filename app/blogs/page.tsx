@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -8,9 +8,9 @@ import Reveal from "@/components/motion/Reveal";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blogs | Golden Brix Properties",
+  title: "Blogs | Golden Brix Realty",
   description:
-    "Expert insights, property trends, and investment tips for Mumbai and Navi Mumbai real estate.",
+    "Expert insights, property trends, and investment tips for Navi Mumbai real estate.",
 };
 
 type BlogRow = {
@@ -131,7 +131,7 @@ export default async function BlogsPage() {
                   Journal
                 </h1>
                 <p className="mt-5 max-w-xl text-base leading-relaxed text-white/72 sm:text-lg">
-                  Expert perspectives on Mumbai and Navi Mumbai markets—written
+                  Expert perspectives on Navi Mumbai markets—written
                   for buyers and investors who value clarity over noise.
                 </p>
               </div>

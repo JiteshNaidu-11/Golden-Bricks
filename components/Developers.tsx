@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 const developers = [
   { name: "Emaar", logo: "EMAAR" },
@@ -20,7 +20,7 @@ export default function Developers() {
             Developers We Work With
           </h2>
           <p className="text-base sm:text-lg text-white/70">
-            Partnerships with reputed developers across Mumbai and Navi Mumbai
+            Partnerships with reputed developers across Navi Mumbai
           </p>
         </div>
 

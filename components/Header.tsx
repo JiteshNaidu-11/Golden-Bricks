@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -121,14 +120,24 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-5 lg:px-6 shrink-0">
         <div className="flex min-w-0 items-center justify-between gap-2 h-14 sm:h-16">
           <Link href="/" className="flex min-w-0 shrink items-center group">
-  <div className="relative h-12 w-36 min-[400px]:h-14 min-[400px]:w-44 sm:h-16 sm:w-52">
-    <Image
-      src="/images/logo/goldenbrix-logo.png"
-      alt="Golden Brix"
-      fill
-      className="object-contain"
-      priority
-    />
+  <div className="flex flex-col items-center leading-none select-none">
+    <span
+      className="font-bold tracking-[0.13em] text-[1.3rem] sm:text-[1.55rem] bg-gradient-to-r from-[#B8891E] via-[#EBD181] via-[55%] to-[#B8891E] bg-clip-text text-transparent transition-all duration-300 group-hover:from-[#C5A24A] group-hover:via-[#F5E199] group-hover:to-[#C5A24A]"
+      style={{ fontFamily: "var(--font-playfair), serif" }}
+    >
+      GOLDEN BRIX
+    </span>
+    <div className="flex items-center gap-1.5 mt-[3px]">
+      <span className="h-px w-4 sm:w-5 bg-gradient-to-r from-transparent to-[#C5A24A]/60" />
+      <span
+        className={`text-[8px] sm:text-[9px] tracking-[0.45em] font-extrabold transition-colors duration-300 ${
+          shouldShowGlassEffect ? 'text-[#0c1b2a]' : 'text-white'
+        }`}
+      >
+        REALTY
+      </span>
+      <span className="h-px w-4 sm:w-5 bg-gradient-to-l from-transparent to-[#C5A24A]/60" />
+    </div>
   </div>
 </Link>
           

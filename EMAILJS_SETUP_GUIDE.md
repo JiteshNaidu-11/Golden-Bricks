@@ -1,4 +1,4 @@
-# EmailJS Setup Guide - Step by Step
+﻿# EmailJS Setup Guide - Step by Step
 
 This guide will walk you through getting your Service ID, Template ID, and Public Key from EmailJS.
 
@@ -55,7 +55,7 @@ This guide will walk you through getting your Service ID, Template ID, and Publi
 
 ### Template Settings:
    - **Template Name**: `Golden Brix Contact Form` (or any name you prefer)
-   - **Subject**: `New Contact Form Inquiry - {{inquiry_type}} | Golden Brix Properties`
+   - **Subject**: `New Contact Form Inquiry - {{inquiry_type}} | Golden Brix Realty`
 
 ### Template Content (HTML):
    Copy and paste this HTML code:
@@ -114,7 +114,7 @@ This guide will walk you through getting your Service ID, Template ID, and Publi
 <body>
   <div class="header">
     <h2>New Contact Form Inquiry</h2>
-    <p>Golden Brix Properties</p>
+    <p>Golden Brix Realty</p>
   </div>
   <div class="content">
     <div class="field">
@@ -139,7 +139,7 @@ This guide will walk you through getting your Service ID, Template ID, and Publi
     </div>
   </div>
   <div class="footer">
-    <p>This email was sent from the Golden Brix Properties contact form.</p>
+    <p>This email was sent from the Golden Brix Realty contact form.</p>
     <p>Reply directly to: {{from_email}}</p>
   </div>
 </body>
@@ -154,10 +154,10 @@ This guide will walk you through getting your Service ID, Template ID, and Publi
    - `{{inquiry_type}}` - Type of inquiry
    - `{{message}}` - Message content
 
-4. **To Email**: ⚠️ **IMPORTANT** - Set this directly to `goldenbrix@gmail.com` (NOT a variable)
+4. **To Email**: ⚠️ **IMPORTANT** - Set this directly to `goldenbrix05@gmail.com` (NOT a variable)
    - This is the email address where all contact form submissions will be sent
    - If you leave it as your Gmail address (rushimuthal8@gmail.com), emails will go there instead
-   - Make sure to type: `goldenbrix@gmail.com` exactly
+   - Make sure to type: `goldenbrix05@gmail.com` exactly
 5. **From Name**: `Golden Brix Contact Form` (or leave as `{{from_name}}`)
 6. **From Email**: `{{from_email}}` (so replies go to the sender)
 7. Click **"Save"** button
@@ -179,7 +179,7 @@ If you want to set up a separate email template for property listing submissions
 
 ### Template Settings:
    - **Template Name**: `Golden Brix Property Listing` (or any name you prefer)
-   - **Subject**: `New Property Listing Request - {{property_for}} | Golden Brix Properties`
+   - **Subject**: `New Property Listing Request - {{property_for}} | Golden Brix Realty`
 
 ### Template Content (HTML):
    Copy and paste this HTML code:
@@ -308,7 +308,7 @@ If you want to set up a separate email template for property listing submissions
   <div class="container">
     <div class="header">
       <h1>🏠 New Property Listing Request</h1>
-      <div class="subtitle">Golden Brix Properties</div>
+      <div class="subtitle">Golden Brix Realty</div>
     </div>
     <div class="gold-bar"></div>
     
@@ -369,9 +369,9 @@ If you want to set up a separate email template for property listing submissions
     </div>
 
     <div class="footer">
-      <p><strong>This email was sent from the Golden Brix Properties property listing form.</strong></p>
+      <p><strong>This email was sent from the Golden Brix Realty property listing form.</strong></p>
       <p>Reply directly to: <a href="mailto:{{from_email}}">{{from_email}}</a></p>
-      <p style="margin-top: 10px; opacity: 0.8;">© Golden Brix Properties | Mumbai, India</p>
+      <p style="margin-top: 10px; opacity: 0.8;">© Golden Brix Realty | Mumbai, India</p>
     </div>
   </div>
 </body>
@@ -392,7 +392,7 @@ If you want to set up a separate email template for property listing submissions
    - `{{unit_no}}` - Unit number
    - `{{price}}` - Asking price
 
-4. **To Email**: Set this to `goldenbrix@gmail.com`
+4. **To Email**: Set this to `goldenbrix05@gmail.com`
 5. **From Name**: `Golden Brix Property Listing` (or leave as `{{from_name}}`)
 6. **From Email**: `{{from_email}}` (so replies go to the sender)
 7. Click **"Save"** button
@@ -411,14 +411,14 @@ If you want to set up a separate email template for property listing submissions
 NEXT_PUBLIC_EMAILJS_SERVICE_ID=service_abc123
 NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=template_xyz789
 NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key_here
-NEXT_PUBLIC_RECIPIENT_EMAIL=goldenbrix@gmail.com
+NEXT_PUBLIC_RECIPIENT_EMAIL=goldenbrix05@gmail.com
 ```
 
 **Replace:**
 - `service_abc123` with your actual Service ID
 - `template_xyz789` with your actual Template ID
 - `your_public_key_here` with your actual Public Key
-- `goldenbrix@gmail.com` with your actual recipient email (if different)
+- `goldenbrix05@gmail.com` with your actual recipient email (if different)
 
 ---
 
@@ -451,8 +451,8 @@ NEXT_PUBLIC_RECIPIENT_EMAIL=goldenbrix@gmail.com
 ### Emails going to wrong address?
 - ⚠️ **This is the most common issue!**
 - Go to EmailJS Dashboard → Email Templates → Click on your template
-- Check the **"To Email"** field - it should be set to `goldenbrix@gmail.com` (NOT a variable)
-- If it's set to a different address or a variable, change it to `goldenbrix@gmail.com` directly
+- Check the **"To Email"** field - it should be set to `goldenbrix05@gmail.com` (NOT a variable)
+- If it's set to a different address or a variable, change it to `goldenbrix05@gmail.com` directly
 - Click **"Save"** and test again
 
 ### Email not sending?

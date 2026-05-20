@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -19,9 +19,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Services | Golden Brix Properties",
+  title: "Services | Golden Brix Realty",
   description:
-    "Premium real estate services across Mumbai & Navi Mumbai: buying assistance, investment advisory, home loan support, and property management.",
+    "Premium real estate services across Navi Mumbai: buying assistance, investment advisory, home loan support, and property management.",
 };
 
 const ICONS = {
@@ -107,7 +107,7 @@ export default function ServicesPage() {
           <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 pt-12 sm:pb-20 sm:pt-16">
             <Reveal className="mx-auto max-w-3xl text-center">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#EBD181]">
-                Golden Brix Properties
+                Golden Brix Realty
               </p>
               <h1
                 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
@@ -119,7 +119,7 @@ export default function ServicesPage() {
                 </span>
               </h1>
               <p className="mt-6 text-base leading-relaxed text-white/75 sm:text-lg">
-                A high-touch advisory experience for Mumbai & Navi Mumbai—built
+                A high-touch advisory experience for Navi Mumbai—built
                 around verification, calm comparisons, and execution support that
                 feels discreet and premium.
               </p>

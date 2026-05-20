@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import { MapPin, Bed, Bath, Square } from 'lucide-react';
@@ -117,7 +117,7 @@ export default function FeaturedProperties() {
               Featured Properties
             </h2>
             <p className="text-white/70 text-lg">
-              Discover a premium selection across Mumbai and Navi Mumbai
+              Discover a premium selection across Navi Mumbai
             </p>
           </div>
           <div className="hidden md:flex gap-4">

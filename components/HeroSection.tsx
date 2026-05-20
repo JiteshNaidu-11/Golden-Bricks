@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { Search, MapPin, Download, Phone, Loader2 } from 'lucide-react';
@@ -95,9 +95,9 @@ export default function HeroSection() {
                 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
                 style={{ fontFamily: 'var(--font-playfair), serif' }}
               >
-                Invest In Mumbai Real Estate
+                Invest in Navi Mumbai Real Estate
                 <span className="block gold-gradient-text mt-2">
-                  With Golden Brix Properties
+                  With Golden Brix Realty
                 </span>
               </h1>
 
@@ -107,7 +107,7 @@ export default function HeroSection() {
 
               <p className="text-lg text-white/70 max-w-xl">
                 Discover premium apartments, villas and investment
-                opportunities across Mumbai and Navi Mumbai’s best micro-markets.
+                opportunities across Navi Mumbai’s best micro-markets.
               </p>
             </div>
 
@@ -146,7 +146,7 @@ export default function HeroSection() {
               </div>
 
               <div>
-                <p className="text-2xl font-bold text-[#D4AF37]">15+</p>
+                <p className="text-2xl font-bold text-[#D4AF37]">20+</p>
                 Developers
               </div>
 

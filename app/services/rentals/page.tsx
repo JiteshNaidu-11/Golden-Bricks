@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import PremiumServiceSubpage from "@/components/services/PremiumServiceSubpage";
 import { dubaiImages } from "@/lib/images";
@@ -23,7 +23,7 @@ export default function Rentals() {
           </span>
         </>
       }
-      heroSubtitle="Premium leasing support for tenants and owners—curated options, verified documentation, and calm execution across Mumbai and Navi Mumbai."
+      heroSubtitle="Premium leasing support for tenants and owners—curated options, verified documentation, and calm execution across Navi Mumbai."
       heroImageSrc={dubaiImages.properties.apartment}
       topCardsTitle="Rental types"
       topCards={[

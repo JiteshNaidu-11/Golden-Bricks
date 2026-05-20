@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Image from 'next/image';
 import { MapPin } from 'lucide-react';
@@ -87,7 +87,7 @@ export default function Communities() {
               Explore Prime Locations
             </h2>
             <p className="text-base sm:text-lg text-white/70">
-              Discover Mumbai and Navi Mumbai’s most sought-after micro-markets
+              Discover Navi Mumbai’s most sought-after micro-markets
             </p>
           </div>
           <div className="hidden md:flex gap-4">

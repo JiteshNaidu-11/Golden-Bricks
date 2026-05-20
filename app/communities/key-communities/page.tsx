@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -63,7 +63,7 @@ export default function KeyCommunities() {
             </h1>
             <div className="w-24 h-1 gold-gradient mx-auto mb-4"></div>
             <p className="text-xl text-[#1a1a1a]/70 max-w-3xl mx-auto">
-              Explore Mumbai and Navi Mumbai’s most sought-after micro-markets
+              Explore Navi Mumbai’s most sought-after micro-markets
             </p>
           </div>
           

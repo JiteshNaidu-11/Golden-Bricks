@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import PremiumServiceSubpage from "@/components/services/PremiumServiceSubpage";
 import { dubaiImages } from "@/lib/images";
@@ -25,7 +25,7 @@ export default function PropertyManagement() {
           </span>
         </>
       }
-      heroSubtitle="Premium care for owners who want predictable upkeep, quality tenants, and reporting that respects your time—across Mumbai and Navi Mumbai."
+      heroSubtitle="Premium care for owners who want predictable upkeep, quality tenants, and reporting that respects your time—across Navi Mumbai."
       heroImageSrc={dubaiImages.properties.modernVilla}
       splitBlocks={[
         {

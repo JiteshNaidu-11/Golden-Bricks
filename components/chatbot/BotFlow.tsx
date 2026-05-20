@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import {
@@ -31,11 +31,11 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
 
   const firstTimeSteps = [
     {
-      title: 'Buying Property in Mumbai',
+      title: 'Buying Property in Navi Mumbai',
       content: (
         <div className="space-y-4">
           <p className="leading-relaxed">
-            Mumbai and Navi Mumbai offer excellent real estate opportunities
+            Navi Mumbai offer excellent real estate opportunities
             for first-time homebuyers. With strong infrastructure development,
             metro connectivity, and growing business hubs, owning property
             here is both a lifestyle upgrade and a long-term investment.
@@ -78,7 +78,7 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
           <div className="bg-[#001F3F]/5 rounded-xl p-4 border-l-4 border-[#C5A24A]">
             <p className="text-sm font-semibold">
               Tell us your budget and preferred location and we’ll suggest
-              the best projects in Mumbai or Navi Mumbai.
+              the best projects in Navi Mumbai or Navi Mumbai.
             </p>
           </div>
 
@@ -142,7 +142,7 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
 
           <p className="leading-relaxed">
             Golden Brix lists quality apartments and villas for rent
-            across Mumbai and Navi Mumbai.
+            across Navi Mumbai.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -204,7 +204,7 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
 
             <p className="text-sm">
               Browse projects, compare prices, and explore upcoming
-              developments across Mumbai and Navi Mumbai.
+              developments across Navi Mumbai.
             </p>
 
           </div>
@@ -279,7 +279,7 @@ export default function BotFlow({ onStartChat, onClose }: BotFlowProps) {
 
           <p className="text-[#001F3F]/80 mb-6 max-w-sm">
             Get quick guidance on buying, investing, or renting
-            property in Mumbai and Navi Mumbai.
+            property in Navi Mumbai.
           </p>
 
           <button

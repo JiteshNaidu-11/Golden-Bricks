@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import PremiumServiceSubpage from "@/components/services/PremiumServiceSubpage";
 import { dubaiImages } from "@/lib/images";
@@ -24,7 +24,7 @@ export default function BuyingSelling() {
           </span>
         </>
       }
-      heroSubtitle="End-to-end advisory for premium homes and investment-ready inventory across Mumbai and Navi Mumbai—structured, transparent, and discreet."
+      heroSubtitle="End-to-end advisory for premium homes and investment-ready inventory across Navi Mumbai—structured, transparent, and discreet."
       heroImageSrc={dubaiImages.properties.propertySales}
       topCardsTitle="Property types we handle"
       topCards={[
@@ -140,7 +140,7 @@ export default function BuyingSelling() {
           key: "network",
           Icon: Building2,
           title: "Verified inventory access",
-          text: "Curated introductions to credible inventory across Mumbai & Navi Mumbai micro-markets.",
+          text: "Curated introductions to credible inventory across Navi Mumbai micro-markets.",
         },
       ]}
       showcaseTitle="Property showcase"

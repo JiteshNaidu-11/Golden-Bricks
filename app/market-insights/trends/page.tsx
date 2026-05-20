@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { TrendingUp, Building2, DollarSign, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: "Mumbai Real Estate Market Trends 2024–2025 | Golden Brix Properties",
+  title: "Mumbai Real Estate Market Trends 2024–2025 | Golden Brix Realty",
   description:
-    "Premium, data-led take on Mumbai and Navi Mumbai real estate trends, key drivers, and a practical outlook for buyers and investors.",
+    "Premium, data-led take on Navi Mumbai real estate trends, key drivers, and a practical outlook for buyers and investors.",
 };
 
 export default function MarketTrends() {
@@ -116,7 +116,7 @@ export default function MarketTrends() {
                 <h3 className="text-xl font-bold mb-4 gold-gradient-text">Residential Sector</h3>
                 <p className="text-[#1a1a1a]/80 leading-relaxed mb-4">
                   The residential market continues to show strong fundamentals with sustained demand from both local and international buyers. 
-                  Premium pockets across Mumbai and Navi Mumbai remain highly sought after for connectivity and lifestyle depth.
+                  Premium pockets across Navi Mumbai remain highly sought after for connectivity and lifestyle depth.
                 </p>
                 <p className="text-[#1a1a1a]/80 leading-relaxed">
                   Under-construction projects can be attractive when timelines, developer track record, and documentation are clear—often offering
@@ -126,7 +126,7 @@ export default function MarketTrends() {
               <div className="p-6 rounded-lg border border-[#C5A24A]/20">
                 <h3 className="text-xl font-bold mb-4 gold-gradient-text">Investment Opportunities</h3>
                 <p className="text-[#1a1a1a]/80 leading-relaxed mb-4">
-                  Mumbai and Navi Mumbai offer investment opportunities backed by deep end-user demand, strong rental pockets, and
+                  Navi Mumbai offer investment opportunities backed by deep end-user demand, strong rental pockets, and
                   infrastructure-led appreciation catalysts.
                 </p>
                 <p className="text-[#1a1a1a]/80 leading-relaxed">

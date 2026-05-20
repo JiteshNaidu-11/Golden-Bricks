@@ -1,4 +1,4 @@
-export type TeamMember = {
+﻿export type TeamMember = {
   name: string;
   title: string;
   bio: string;
@@ -22,11 +22,11 @@ export type BlogPost = {
 
 export const ABOUT_COPY = {
   intro:
-    "Golden Brix Properties is a premium real estate advisory focused on curated residential opportunities across Mumbai and Navi Mumbai. We combine on-ground market intelligence with a client-first process—so every recommendation is clear, data-backed, and aligned with your lifestyle and long-term value.",
+    "Golden Brix Realty is a premium real estate advisory focused on curated residential opportunities across Navi Mumbai. We combine on-ground market intelligence with a client-first process—so every recommendation is clear, data-backed, and aligned with your lifestyle and long-term value.",
   mission:
     "To simplify home buying and investing with transparent advice, verified inventory, and a service experience that feels calm, premium, and dependable—every step of the way.",
   vision:
-    "To become the most trusted real estate partner for Mumbai & Navi Mumbai families and investors by raising the standard for research, service, and post-sale support.",
+    "To become the most trusted real estate partner for Navi Mumbai families and investors by raising the standard for research, service, and post-sale support.",
   why: [
     "Curated shortlists instead of overwhelming listings",
     "Verified project fundamentals: connectivity, neighborhood, developer track record",
@@ -35,14 +35,14 @@ export const ABOUT_COPY = {
     "After-sales support for handover, renting, and resale planning",
   ],
   stats: [
-    { label: "Years of experience", value: "15+" },
+    { label: "Years of experience", value: "20+" },
     { label: "Happy families", value: "500+" },
     { label: "Properties sold", value: "120+" },
   ],
   team: [
     {
       name: "Nitin Sonawale",
-      title: "Principal Advisor, Mumbai & Navi Mumbai",
+      title: "Principal Advisor, Navi Mumbai",
       bio: "Leads client strategy across primary and resale markets. Known for sharp negotiation, builder network depth, and a practical ROI lens for end-users and investors.",
     },
     {
@@ -244,14 +244,14 @@ export const TESTIMONIALS_FALLBACK: TestimonialItem[] = [
 export const BLOGS_FALLBACK: BlogPost[] = [
   {
     slug: "best-areas-to-invest-mumbai-2025",
-    title: "Best Areas to Invest in Mumbai (2025): A Premium Buyer’s Shortlist",
+    title: "Best Areas to Invest in Navi Mumbai (2025): A Premium Buyer’s Shortlist",
     dateLabel: "Apr 2026",
     coverImage: "/properties/westwoods-platinum.jpg",
     excerpt:
       "A practical, premium-first shortlist of Mumbai micro-markets based on connectivity, end-user demand, and long-term appreciation catalysts.",
     content: [
       "## The premium investor lens",
-      "In Mumbai, the best investment areas usually share three fundamentals: strong connectivity, consistent end-user demand, and a clear infrastructure or employment catalyst. When one of these is missing, liquidity and resale can suffer.",
+      "in Navi Mumbai, the best investment areas usually share three fundamentals: strong connectivity, consistent end-user demand, and a clear infrastructure or employment catalyst. When one of these is missing, liquidity and resale can suffer.",
       "",
       "## 1) Powai–Hiranandani belt",
       "A mature premium ecosystem with stable tenant demand, excellent amenities, and strong corporate catchments. Ideal for end-users who want lifestyle plus long-term stability.",

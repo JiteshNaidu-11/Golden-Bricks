@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useState } from 'react';
@@ -104,10 +104,10 @@ export default function ContactSection() {
                 <div>
                   <h4 className="font-semibold text-white mb-1">Email</h4>
                   <a
-                    href="mailto:goldenbrix@gmail.com"
+                    href="mailto:goldenbrix05@gmail.com"
                     className="text-white/70 hover:text-[#EBD181] transition"
                   >
-                    goldenbrix@gmail.com
+                    goldenbrix05@gmail.com
                   </a>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, Send, User } from 'lucide-react';
@@ -33,7 +33,7 @@ function getBotResponse(userText: string): string {
     lower.includes('view') ||
     lower.includes('listing')
   ) {
-    return "Golden Brix offers premium apartments and investment properties across Mumbai and Navi Mumbai. You can browse our featured listings on the homepage or ask us for recommendations based on your budget and preferred location.";
+    return "Golden Brix offers premium apartments and investment properties across Navi Mumbai. You can browse our featured listings on the homepage or ask us for recommendations based on your budget and preferred location.";
   }
 
   if (
@@ -41,7 +41,7 @@ function getBotResponse(userText: string): string {
     lower.includes('location') ||
     lower.includes('community')
   ) {
-    return "We work in major areas across Mumbai and Navi Mumbai including Seawoods, Nerul, Kharghar, Ulwe, Panvel, Belapur, Andheri, Powai, and Thane. If you tell me your budget and preference, I can suggest the best locations for you.";
+    return "We work in major areas across Navi Mumbai including Seawoods, Nerul, Kharghar, Ulwe, Panvel, Belapur, Andheri, Powai, and Thane. If you tell me your budget and preference, I can suggest the best locations for you.";
   }
 
   if (lower.includes('open whatsapp')) {
@@ -72,7 +72,7 @@ You can also click the WhatsApp button on this website to chat instantly with ou
     lower.includes('investment') ||
     lower.includes('roi')
   ) {
-    return "Mumbai and Navi Mumbai are among the best real estate markets for long-term investment. Areas like Seawoods, Kharghar, Ulwe, and Panvel have strong infrastructure growth and high appreciation potential. Our Golden Bricks advisors can help you choose the right project based on ROI and budget.";
+    return "Navi Mumbai are among the best real estate markets for long-term investment. Areas like Seawoods, Kharghar, Ulwe, and Panvel have strong infrastructure growth and high appreciation potential. Our Golden Bricks advisors can help you choose the right project based on ROI and budget.";
   }
 
   if (
@@ -98,7 +98,7 @@ You are welcome to visit us or schedule a meeting.`;
   }
 
   if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) {
-    return "Hello! Welcome to Golden Brix. I can help you find properties in Mumbai and Navi Mumbai, provide investment advice, or connect you with our team.";
+    return "Hello! Welcome to Golden Brix. I can help you find properties in Navi Mumbai, provide investment advice, or connect you with our team.";
   }
 
   if (lower.includes('thank')) {
@@ -113,7 +113,7 @@ export default function RealEstateChatbot({ onClose }: { onClose: () => void }) 
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '0',
-      text: "Hi! I'm the Golden Brix assistant. Ask me about properties in Mumbai or Navi Mumbai, investment opportunities, or how to contact our team.",
+      text: "Hi! I'm the Golden Brix assistant. Ask me about properties in Navi Mumbai or Navi Mumbai, investment opportunities, or how to contact our team.",
       isBot: true,
       timestamp: new Date(),
     },

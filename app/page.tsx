@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import Header from '@/components/Header';
@@ -20,7 +20,7 @@ import {
 import ServicesShowcase from "@/components/services/ServicesShowcase";
 
 const FEATURED_PROPERTIES_ON_HOME = 6;
-const FORMSUBMIT_EMAIL = "goldenbrix@gmail.com";
+const FORMSUBMIT_EMAIL = "goldenbrix05@gmail.com";
 
 export default function Home() {
   const [guideSubmitting, setGuideSubmitting] = useState(false);
@@ -169,9 +169,9 @@ export default function Home() {
     } catch {
     }
     const text = [
-      "Golden Brix Properties — Investment Guide",
+      "Golden Brix Realty — Investment Guide",
       "",
-      "Mumbai & Navi Mumbai — introductory overview",
+      "Navi Mumbai — introductory overview",
       "",
       "Add public/guides/investment-guide.pdf to your site to offer a full branded PDF.",
       "",
@@ -236,7 +236,7 @@ export default function Home() {
 
         {/* Brand Label */}
         <p className="text-[#C5A24A] uppercase tracking-widest text-sm mb-4">
-          Golden Brix Properties 
+          Golden Brix Realty 
         </p>
 
         <h1
@@ -245,14 +245,14 @@ export default function Home() {
         >
           Luxury Living
           <span className="block gold-gradient-text">
-            In Mumbai
+            in Navi Mumbai
           </span>
         </h1>
 
         <p className="mt-5 max-w-xl text-sm sm:text-base md:text-lg text-white/85 leading-relaxed">
           Discover exclusive residences, premium investment opportunities,
-          and high-end properties across Mumbai and Navi Mumbai with
-          <span className="font-semibold text-white"> Golden Brix Properties.</span>
+          and high-end properties across Navi Mumbai with
+          <span className="font-semibold text-white"> Golden Brix Realty.</span>
         </p>
 
         {/* CTA Buttons */}
@@ -295,7 +295,7 @@ export default function Home() {
           </div>
 
           <div className="min-w-0 text-center sm:text-left">
-            <p className="text-xl font-bold gold-gradient-text sm:text-2xl md:text-3xl">10+</p>
+            <p className="text-xl font-bold gold-gradient-text sm:text-2xl md:text-3xl">20+</p>
             <p className="text-[0.7rem] leading-snug text-white/70 sm:text-sm">Years Experience</p>
           </div>
 
@@ -316,9 +316,9 @@ export default function Home() {
   </h3>
 
   <p className="text-white/70 mb-4 text-xs leading-relaxed">
-    Discover the best areas to invest in Mumbai, price trends,
+    Discover the best areas to invest in Navi Mumbai, price trends,
     upcoming luxury projects and ROI insights curated by
-    Golden Brix Properties experts.
+    Golden Brix Realty experts.
   </p>
 
   <div className="space-y-3">
@@ -473,7 +473,7 @@ Featured properties
     <div className="min-w-0">
 
       <p className="text-[#C5A24A] uppercase tracking-[0.25em] text-xs mb-4">
-        About Golden Brix Properties 
+        About Golden Brix Realty 
       </p>
 
       <h2
@@ -487,8 +487,8 @@ Featured properties
       </h2>
 
       <p className="text-gray-600 mb-8 leading-relaxed max-w-xl">
-        Golden Brix Properties is a trusted real estate advisory specializing in
-        premium residential and investment opportunities across Mumbai
+        Golden Brix Realty is a trusted real estate advisory specializing in
+        premium residential and investment opportunities across Navi Mumbai
         and Navi Mumbai. With years of industry expertise, we help
         clients discover properties aligned with their lifestyle,
         financial goals, and long-term investment strategies.
@@ -499,7 +499,7 @@ Featured properties
 
         <div className="flex items-center gap-3">
           <span className="text-[#C5A24A] text-lg">✓</span>
-          <span>15+ Years of Experience</span>
+          <span>20+ Years of Experience</span>
         </div>
 
         <div className="flex items-center gap-3">
@@ -540,7 +540,7 @@ Featured properties
       {/* Experience badge */}
       <div className="absolute bottom-3 left-3 rounded-xl bg-[#C5A24A] px-6 py-4 text-white shadow-xl sm:-bottom-8 sm:-left-8 sm:px-10 sm:py-6">
 
-        <p className="text-2xl font-bold sm:text-3xl">15+</p>
+        <p className="text-2xl font-bold sm:text-3xl">20+</p>
         <p className="text-xs opacity-90 sm:text-sm">Years Experience</p>
 
       </div>
@@ -618,7 +618,7 @@ Featured properties
             </h2>
             <div className="mx-auto mt-5 h-px w-24 bg-linear-to-r from-transparent via-[#C5A24A] to-transparent" />
             <p className="mt-5 text-[#0c1b2a]/65 leading-relaxed">
-              Real feedback from buyers and investors across Mumbai and Navi Mumbai.
+              Real feedback from buyers and investors across Navi Mumbai.
             </p>
           </Reveal>
 
@@ -790,8 +790,8 @@ Read Article →
     </h2>
 
     <p className="mx-auto mb-10 max-w-2xl text-base text-[#4A4A4A] sm:text-lg">
-      Let our experts help you discover the perfect property in Mumbai or
-      Navi Mumbai. Start your real estate journey with Golden Brix Properties today.
+      Let our experts help you discover the perfect property in Navi Mumbai or
+      Navi Mumbai. Start your real estate journey with Golden Brix Realty today.
     </p>
 
     <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">

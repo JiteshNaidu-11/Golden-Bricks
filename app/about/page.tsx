@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -7,9 +7,9 @@ import Reveal from "@/components/motion/Reveal";
 import { Award, Compass, Sparkles, Users } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About Us | Golden Brix Properties",
+  title: "About Us | Golden Brix Realty",
   description:
-    "Golden Brix Properties is a premium real estate advisory for Mumbai & Navi Mumbai. Learn about our mission, vision, team, and client-first process.",
+    "Golden Brix Realty is a premium real estate advisory for Navi Mumbai. Learn about our mission, vision, team, and client-first process.",
 };
 
 export default function AboutPage() {

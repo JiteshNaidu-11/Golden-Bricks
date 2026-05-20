@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: "CEO's Message | Golden Brix Properties",
+  title: "CEO's Message | Golden Brix Realty",
   description:
     "A message from our leadership team sharing our vision and commitment to trust in real estate.",
 };
@@ -46,7 +46,7 @@ export default function CEOMessage() {
                       Founder & CEO
                     </p>
                     <p className="text-xs text-[#001F3F]/60 mt-1">
-                      15+ years of premium advisory experience
+                      20+ years of premium advisory experience
                     </p>
                   </div>
                 </div> */}
@@ -56,7 +56,7 @@ export default function CEOMessage() {
             {/* Message Content */}
             <div className="space-y-4 sm:space-y-5 md:space-y-6 text-base sm:text-lg leading-relaxed">
               <p className="text-[#1a1a1a]/80">
-                Welcome to Golden Brix Properties, where{" "}
+                Welcome to Golden Brix Realty, where{" "}
                 <span className="font-semibold gold-gradient-text">
                   trust is the real currency of real estate
                 </span>
@@ -66,7 +66,7 @@ export default function CEOMessage() {
               </p>
               
               <p className="text-[#1a1a1a]/80">
-                With years of experience across Mumbai and Navi Mumbai, we’ve
+                With years of experience across Navi Mumbai, we’ve
                 seen how much the right advice matters. One thing remains
                 constant: the need for transparency, expertise, and genuine
                 care.
@@ -86,7 +86,7 @@ export default function CEOMessage() {
               </p>
               
               <p className="text-[#1a1a1a]/80">
-                Mumbai and Navi Mumbai aren’t just property markets—they’re
+                Navi Mumbai aren’t just property markets—they’re
                 long-term wealth platforms. We’re here to help you navigate
                 decisions with confidence, clarity, and calm execution.
               </p>
@@ -96,7 +96,7 @@ export default function CEOMessage() {
                   — <span className="font-semibold gold-gradient-text">Aajay Sagar</span>
                 </p>
                 <p className="text-right text-[#1a1a1a]/70 text-sm sm:text-base">
-                  Golden Brix Properties
+                  Golden Brix Realty
                 </p>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+﻿import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(request: NextRequest) {
@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     const mailOptions = {
       from: emailUser,
       to: recipientEmail,
-      subject: `New Contact Form Inquiry - ${inquiryType} | Golden Brix Properties`,
+      subject: `New Contact Form Inquiry - ${inquiryType} | Golden Brix Realty`,
       html: `
         <!DOCTYPE html>
         <html>
@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
             <div class="container">
               <div class="header">
                 <h2>New Contact Form Inquiry</h2>
-                <p>Golden Brix Properties</p>
+                <p>Golden Brix Realty</p>
               </div>
               <div class="content">
                 <div class="field">
@@ -125,7 +125,7 @@ export async function POST(request: NextRequest) {
                 </div>
               </div>
               <div class="footer">
-                <p>This email was sent from the Golden Brix Properties contact form.</p>
+                <p>This email was sent from the Golden Brix Realty contact form.</p>
                 <p>Reply directly to: ${email}</p>
               </div>
             </div>

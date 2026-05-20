@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -120,7 +120,7 @@ export default function AllPropertiesPage() {
               All properties
             </h1>
             <p className="mt-4 text-[#0c1b2a]/70 text-base sm:text-lg leading-relaxed">
-              Explore every Golden Brix listing across Mumbai and Navi Mumbai.
+              Explore every Golden Brix listing across Navi Mumbai.
               Tap a card for full details.
             </p>
           </header>

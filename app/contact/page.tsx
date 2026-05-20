@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -18,7 +18,7 @@ import {
 import { getWhatsAppUrl, openWhatsApp } from "@/lib/whatsapp";
 
 const CONTACT = {
-  tagline: "Premium real estate advisory — Mumbai & Navi Mumbai",
+  tagline: "Premium real estate advisory — Navi Mumbai",
   addressLines: [
     "Shop No. 5, Madhushree CHS",
     "Plot No. 33, Sector 40",
@@ -27,7 +27,7 @@ const CONTACT = {
   ],
   phoneDisplay: "+91 98198 93359",
   phoneTel: "+919819893359",
-  email: "goldenbrix@gmail.com",
+  email: "goldenbrix05@gmail.com",
   hours: "Monday – Saturday: 9:00 AM – 7:00 PM",
   hoursNote: "Sunday: by appointment",
   mapsEmbedQuery:
@@ -125,7 +125,7 @@ export default function Contact() {
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
                 Curated listings, transparent advice, and end-to-end support across
-                Mumbai and Navi Mumbai. Share your requirement—we&apos;ll respond
+                Navi Mumbai. Share your requirement—we&apos;ll respond
                 promptly.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
@@ -464,7 +464,7 @@ export default function Contact() {
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Golden Brix Properties — Seawoods, Navi Mumbai"
+                title="Golden Brix Realty — Seawoods, Navi Mumbai"
               />
             </div>
           </div>

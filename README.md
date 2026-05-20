@@ -1,12 +1,12 @@
-# Golden Brix Properties - Premium Real Estate Advisory
+﻿# Golden Brix Realty - Premium Real Estate Advisory
 
-A luxury real estate website for Golden Brix Properties, a premium real estate advisory based in Mumbai & Navi Mumbai. Built with modern design principles, featuring a golden gradient theme that conveys elegance and sophistication.
+A luxury real estate website for Golden Brix Realty, a premium real estate advisory based in Navi Mumbai. Built with modern design principles, featuring a golden gradient theme that conveys elegance and sophistication.
 
 ## 🏢 About
 
-**Golden Brix Properties** — Premium decisions, made calm.
+**Golden Brix Realty** — Premium decisions, made calm.
 
-Golden Brix Properties is a premium real estate advisory specializing in curated residential opportunities and investment insights across Mumbai and Navi Mumbai. This website showcases properties, projects, and insights while providing an elegant, high-end user experience.
+Golden Brix Realty is a premium real estate advisory specializing in curated residential opportunities and investment insights across Navi Mumbai. This website showcases properties, projects, and insights while providing an elegant, high-end user experience.
 
 ## ✨ Features
 
@@ -157,9 +157,9 @@ This project is private and proprietary.
 
 ## 🤝 Support
 
-For support, email goldenbrix@gmail.com or visit our office in Seawoods, Navi Mumbai.
+For support, email goldenbrix05@gmail.com or visit our office in Seawoods, Navi Mumbai.
 
 ---
 
-**Golden Brix Properties** — Premium decisions, made calm.
+**Golden Brix Realty** — Premium decisions, made calm.
 

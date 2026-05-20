@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/motion/Reveal";
@@ -8,9 +8,9 @@ import { Quote, Star } from "lucide-react";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Testimonials | Golden Brix Properties",
+  title: "Testimonials | Golden Brix Realty",
   description:
-    "What premium buyers and investors say about Golden Brix Properties across Mumbai & Navi Mumbai.",
+    "What premium buyers and investors say about Golden Brix Realty across Navi Mumbai.",
 };
 
 type Row = {
@@ -46,7 +46,7 @@ function toDisplayItems(rows: Row[]): DisplayItem[] {
   if (!rows.length) return [...TESTIMONIALS_FALLBACK];
   return rows.map((r) => ({
     name: r.name,
-    location: r.role ?? "Mumbai & Navi Mumbai",
+    location: r.role ?? "Navi Mumbai",
     rating: (typeof r.rating === "number" ? r.rating : 5) as 4 | 5,
     text: r.quote,
   }));
