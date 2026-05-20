@@ -246,7 +246,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "hidden-cost-of-buying-wrong-home",
     title: "The Hidden Cost of Buying the Wrong Home",
     dateLabel: "May 2026",
-    coverImage: "/Blogs/b1.png",
+    coverImage: "/images/blogs/b1.png",
     excerpt:
       "A beautiful apartment with poor connectivity. A cheaper property with no future appreciation. The real cost of buying the wrong home often comes much later.",
     content: [
@@ -270,7 +270,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "why-luxury-amenities-are-no-longer-a-luxury",
     title: "Why Luxury Amenities Are No Longer a \"Luxury\"",
     dateLabel: "May 2026",
-    coverImage: "/Blogs/b2.png",
+    coverImage: "/images/blogs/b2.png",
     excerpt:
       "After long working hours and stressful commutes, people now want homes that help them relax, recharge, and live better — and amenities are at the heart of that shift.",
     content: [
@@ -294,7 +294,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "rent-or-buy-question-every-young-professional",
     title: "Rent or Buy? The Question Every Young Professional is Asking",
     dateLabel: "Apr 2026",
-    coverImage: "/Blogs/b6.png",
+    coverImage: "/images/blogs/b6.png",
     excerpt:
       "Rising rents, unstable housing costs, and changing lifestyles are making young professionals reconsider their long-term plans — and the answer might surprise you.",
     content: [
@@ -318,7 +318,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "smart-investors-choosing-navi-mumbai",
     title: "Why Smart Investors Are Looking Beyond Mumbai and Choosing Navi Mumbai",
     dateLabel: "Apr 2026",
-    coverImage: "/Blogs/b4.png",
+    coverImage: "/images/blogs/b4.png",
     excerpt:
       "High prices, overcrowding, and limited growth potential are pushing investors toward Navi Mumbai — a planned urban hub with serious future upside.",
     content: [
@@ -339,7 +339,7 @@ export const BLOGS_FALLBACK: BlogPost[] = [
     slug: "why-homes-location-changes-your-lifestyle",
     title: "Why Your Home’s Location Can Change Your Entire Lifestyle",
     dateLabel: "Mar 2026",
-    coverImage: "/Blogs/b3.png",
+    coverImage: "/images/blogs/b3.png",
     excerpt:
       "Long commutes, poor connectivity, traffic stress — over time, these small inconveniences quietly reduce quality of life. Location is everything.",
     content: [

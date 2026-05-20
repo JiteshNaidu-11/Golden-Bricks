@@ -1,20 +1,40 @@
-Options -MultiViews
+Options -MultiViews -Indexes +FollowSymLinks
 DirectoryIndex index.html
 
-RewriteEngine On
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
 
-# Force HTTPS
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-# Serve real files (images, JS, CSS, fonts) directly — no rewriting
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule ^ - [L]
+  # Next.js 16 static-export compatibility:
+  # rewrite dot-style RSC payload URLs to exported folder paths.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*/)?__next\.([^.\/]+)\.([^\/]+)\.__PAGE__\.txt$ $1__next.$2/$3/__PAGE__.txt [L,NC]
 
-# Add trailing slash when the path maps to a directory with an index.html
-# Fixes shared URLs like /property/birla-estate-airoli → /property/birla-estate-airoli/
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^(.+[^/])$ %{REQUEST_URI}/ [R=301,L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*/)?__next\.([^.\/]+)\.([^\/]+)\.txt$ $1__next.$2/$3.txt [L,NC]
 
-# Use Next.js 404 page for unknown routes
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*/)?__next\.([^.\/]+)\.__PAGE__\.txt$ $1__next.$2/__PAGE__.txt [L,NC]
+
+  # Serve existing files directly (JS, CSS, images, fonts)
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+
+  # Let Apache serve directories via DirectoryIndex (do not intercept)
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Support extensionless URLs when route is emitted as .html
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
+
 ErrorDocument 404 /404.html
